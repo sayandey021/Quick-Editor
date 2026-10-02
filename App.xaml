@@ -27,6 +27,7 @@
                     <SolidColorBrush x:Key="TimelineSelectionBrush" Color="#B9D8F4" />
                     <SolidColorBrush x:Key="TimelineSelectionHighlightBrush" Color="#35FFFFFF" />
                     <SolidColorBrush x:Key="TimelineHandleBrush" Color="#FFFFFF" />
+                    <SolidColorBrush x:Key="TimelinePlayheadBrush" Color="#FF3B30" />
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="AccentBrush" Color="#60CDFF" />
@@ -45,6 +46,7 @@
                     <SolidColorBrush x:Key="TimelineSelectionBrush" Color="#1A5B96" />
                     <SolidColorBrush x:Key="TimelineSelectionHighlightBrush" Color="#35FFFFFF" />
                     <SolidColorBrush x:Key="TimelineHandleBrush" Color="#F5F5F5" />
+                    <SolidColorBrush x:Key="TimelinePlayheadBrush" Color="#FF3B30" />
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Default">
                     <SolidColorBrush x:Key="AccentBrush" Color="#0067C0" />
@@ -63,6 +65,7 @@
                     <SolidColorBrush x:Key="TimelineSelectionBrush" Color="#B9D8F4" />
                     <SolidColorBrush x:Key="TimelineSelectionHighlightBrush" Color="#35FFFFFF" />
                     <SolidColorBrush x:Key="TimelineHandleBrush" Color="#FFFFFF" />
+                    <SolidColorBrush x:Key="TimelinePlayheadBrush" Color="#FF3B30" />
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>

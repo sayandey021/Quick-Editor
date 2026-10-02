@@ -4,21 +4,42 @@
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>QuickEditor</RootNamespace>
+    <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platform Condition="'$(Platform)' == ''">x64</Platform>
     <Platforms>x64;ARM64</Platforms>
     <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
-    <WindowsPackageType>None</WindowsPackageType>
+    <WindowsPackageType Condition="'$(WindowsPackageType)' == ''">None</WindowsPackageType>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <SelfContained>true</SelfContained>
     <UseXamlCompilerExecutable>false</UseXamlCompilerExecutable>
     <UseWinUI>true</UseWinUI>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <Version>0.8.0.0</Version>
+    <AssemblyVersion>0.8.0.0</AssemblyVersion>
+    <FileVersion>0.8.0.0</FileVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\ShellExtension\QuickEditorShell.dll" Condition="Exists('bin\ShellExtension\QuickEditorShell.dll')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>QuickEditorShell.dll</TargetPath>
+    </Content>
+    <Manifest Include="$(ApplicationManifest)" Condition="'$(WindowsPackageType)' == 'None'" />
+    <AppxManifest Include="Package.appxmanifest" Condition="'$(WindowsPackageType)' != 'None'">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.4.0" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260209005" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.4654" />
     <PackageReference Include="NAudio" Version="2.2.1" />
   </ItemGroup>
 </Project>

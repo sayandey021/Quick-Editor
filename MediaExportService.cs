@@ -22,7 +22,8 @@ public sealed record MediaAdjustments(
     bool Normalize = false,
     double[]? EqBands = null,
     double ReverbMix = 0.0,
-    double ReverbRoomSize = 0.5);
+    double ReverbRoomSize = 0.5,
+    bool HasAudioTrack = true);
 
 public sealed class MediaExportService
 {
@@ -80,13 +81,16 @@ public sealed class MediaExportService
         info.ArgumentList.Add("-i");
         info.ArgumentList.Add(inputPath);
         info.ArgumentList.Add("-t");
-        info.ArgumentList.Add(outputDuration.ToString("0.###", CultureInfo.InvariantCulture));
+        info.ArgumentList.Add(durationSeconds.ToString("0.###", CultureInfo.InvariantCulture));
         if (isVideo)
         {
             info.ArgumentList.Add("-map");
             info.ArgumentList.Add("0:v:0?");
-            info.ArgumentList.Add("-map");
-            info.ArgumentList.Add("0:a:0?");
+            if (adjustments.HasAudioTrack)
+            {
+                info.ArgumentList.Add("-map");
+                info.ArgumentList.Add("0:a:0?");
+            }
         }
         else
         {
@@ -233,13 +237,25 @@ public sealed class MediaExportService
             }
         }
 
+        if (!adjustments.HasAudioTrack)
+        {
+            return;
+        }
+
         var pitch = Math.Pow(2, adjustments.PitchSemitones / 12);
         var audioFilters = new List<string>();
 
         if (Math.Abs(playbackSpeed - 1) > 0.001 || Math.Abs(pitch - 1) > 0.001)
         {
-            audioFilters.Add(
-                $"rubberband=tempo={playbackSpeed.ToString("0.###", CultureInfo.InvariantCulture)}:pitch={pitch.ToString("0.#####", CultureInfo.InvariantCulture)}");
+            if (Math.Abs(pitch - 1) <= 0.001)
+            {
+                audioFilters.Add($"atempo={playbackSpeed.ToString("0.###", CultureInfo.InvariantCulture)}");
+            }
+            else
+            {
+                audioFilters.Add(
+                    $"rubberband=tempo={playbackSpeed.ToString("0.###", CultureInfo.InvariantCulture)}:pitch={pitch.ToString("0.#####", CultureInfo.InvariantCulture)}");
+            }
         }
 
         // 6-Band Equalizer (80, 240, 750, 2200, 6000, 12000 Hz)
@@ -274,18 +290,18 @@ public sealed class MediaExportService
             audioFilters.Add($"aecho={inGain}:{outGain}:{d1}|{d2}|{d3}|{d4}:{dec1}|{dec2}|{dec3}|{dec4}");
         }
 
-        // Volume Boost
+        // Normalize first to calibrated reference level
+        if (adjustments.Normalize)
+        {
+            audioFilters.Add("loudnorm=I=-16:TP=-1.5:LRA=11");
+        }
+
+        // Volume Boost applied with soft limiter
         if (adjustments.VolumeBoost > 1.01)
         {
             var boost = Math.Clamp(adjustments.VolumeBoost, 1.0, 3.0);
             audioFilters.Add($"volume={boost.ToString("0.##", CultureInfo.InvariantCulture)}");
             audioFilters.Add("alimiter=limit=0.98");
-        }
-
-        // Normalize
-        if (adjustments.Normalize)
-        {
-            audioFilters.Add("loudnorm=I=-16:TP=-1.5:LRA=11");
         }
 
         if (audioFilters.Count > 0)

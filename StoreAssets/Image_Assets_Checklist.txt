@@ -1,0 +1,66 @@
+================================================================================
+           MICROSOFT STORE IMAGE ASSETS SPECIFICATION & CHECKLIST
+================================================================================
+Application: Quick Editor
+Package ID: Saayan.QuickEditor
+
+This document outlines the required and recommended image assets for submitting
+Quick Editor to Microsoft Partner Center (Microsoft Store).
+
+--------------------------------------------------------------------------------
+1. MANDATORY STORE ASSETS
+--------------------------------------------------------------------------------
+
+[ ] 1. 1:1 App Tile / Icon (App list & Search results)
+    • Required Size: 300 x 300 pixels (or 512 x 512 pixels)
+    • File Format: PNG (transparent or solid brand background)
+    • Source File in Project: Assets/AppIcon-512.png (scale to 300x300 or use 512x512)
+    • Placement: Used in search results, Start menu, Store product page header.
+
+[ ] 2. Store Logo (Small Icon)
+    • Required Size: 50 x 50 pixels
+    • File Format: PNG (transparent background)
+    • Source File in Project: Assets/StoreLogo.png
+    • Placement: Shown in search suggestion dropdowns and purchase confirmation.
+
+[ ] 3. Desktop Screenshots (Minimum 1 required, 4 to 9 recommended)
+    • Required Size: 1920 x 1080 pixels (16:9) or 3840 x 2160 pixels (4K)
+    • File Format: PNG or JPG (PNG recommended for crisp text and UI)
+    • Recommended Screenshots to Capture:
+      - Screenshot 1: Main Video Editing & Trim View (Showing timeline, playhead, and sidebar controls)
+      - Screenshot 2: Smart Video Crop in Action (Showing the magnetic guidelines and axis badges)
+      - Screenshot 3: Real-Time Audio DSP (Showing the 6-band Parametric EQ and Studio Reverb)
+      - Screenshot 4: Color Grading Panel (Showing exposure, contrast, temperature, and tint sliders)
+      - Screenshot 5: Windows 11 Modern Context Menu (Showing "Edit with Quick Editor" in File Explorer)
+      - Screenshot 6: Dark & Light Theme Comparison (Showing Fluent design and Mica backdrop)
+
+--------------------------------------------------------------------------------
+2. HIGHLY RECOMMENDED PROMOTIONAL ASSETS (Required for Store Featuring)
+--------------------------------------------------------------------------------
+
+[ ] 4. 2:3 Poster Art (Store Grid & Collection cards)
+    • Required Size: 720 x 1080 pixels (or 1440 x 2160 pixels, 2:3 ratio)
+    • File Format: PNG or JPG
+    • Design Guide: App logo and title centered, sleek dark gradient background,
+      no small text. Keep all critical elements within the center 60% safe zone.
+
+[ ] 5. 16:9 Hero / Super Hero Artwork (Store Front Spotlight & Hero banners)
+    • Required Size: 1920 x 1080 pixels (or 3840 x 2160 pixels, 16:9 ratio)
+    • File Format: PNG or JPG
+    • Design Guide: Clean brand presentation, high-contrast imagery, logo on the
+      left or center-left (avoid placing vital text in bottom-left or bottom-right
+      where Store badges and buy buttons are rendered).
+
+[ ] 6. 1:1 Box Art (Square Promotion)
+    • Required Size: 1080 x 1080 pixels (1:1 ratio)
+    • File Format: PNG or JPG
+
+--------------------------------------------------------------------------------
+3. SCREENSHOT CAPTION SUGGESTIONS FOR PARTNER CENTER
+--------------------------------------------------------------------------------
+• Screenshot 1 Caption: "Fast and precise audio & video trimming with millisecond timeline control."
+• Screenshot 2 Caption: "Smart video cropping with magnetic center axis snapping and alignment guidelines."
+• Screenshot 3 Caption: "Real-time audio DSP: 6-band parametric EQ, pitch shifting, studio reverb, and volume boost."
+• Screenshot 4 Caption: "Cinematic color grading: adjust exposure, contrast, temperature, tint, and saturation."
+• Screenshot 5 Caption: "Seamless Windows 11 integration: right-click any media file to edit instantly."
+• Screenshot 6 Caption: "Modern Fluent Design with dynamic light and dark theme support."

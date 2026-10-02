@@ -14,6 +14,10 @@ using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI;
 using WinRT.Interop;
+using Microsoft.Win32;
+using System.Diagnostics;
+using Microsoft.UI.Windowing;
+using System.Runtime.InteropServices;
 
 namespace QuickEditor;
 
@@ -60,6 +64,8 @@ public sealed partial class MainWindow : Window
         ".mp3", ".wav", ".m4a", ".aac", ".flac", ".ogg", ".wma", ".opus"
     ];
 
+    private static readonly SolidColorBrush PlayheadRedBrush = new(Color.FromArgb(255, 255, 59, 48));
+
     private readonly MediaPlayer _player = new() { AutoPlay = false };
     private readonly MediaExportService _exportService = new();
     private readonly WaveformService _waveformService = new();
@@ -71,6 +77,8 @@ public sealed partial class MainWindow : Window
     private bool _showingEditedPreview;
     private bool _startPreviewWhenReady;
     private bool _isDarkTheme;
+    private bool _isThemeAnimating;
+    private readonly Windows.UI.ViewManagement.UISettings? _uiSettings;
     private bool _waveformReady;
     private double _durationSeconds;
     private double _trimStartSeconds;
@@ -90,6 +98,8 @@ public sealed partial class MainWindow : Window
     private Windows.Foundation.Rect _cropDragStartRectangle;
     private Windows.Foundation.Rect? _cropDragRectangle;
     private CropRegion _cropRegion = new(0, 0, 1, 1);
+    private double? _snapGuideVerticalX;
+    private double? _snapGuideHorizontalY;
     private TimelineDragMode _timelineDragMode;
     private CancellationTokenSource? _exportCancellation;
     private CancellationTokenSource? _waveformCancellation;
@@ -98,17 +108,42 @@ public sealed partial class MainWindow : Window
     private bool _isReady;
     private AudioPitchEngine? _audioEngine;
     private bool _userMuted;
+    private DateTime _lastDriftCorrection = DateTime.MinValue;
 
     public MainWindow(string? initialFile = null)
     {
         InitializeComponent();
         _isReady = true;
+        SetupTitleBar();
         VolumeSlider.ValueChanged += VolumeSlider_ValueChanged;
         SpeedSlider.Maximum = 2;
         SpeedSlider.Value = 1;
         SpeedSlider.Minimum = 0.5;
-        RootLayout.RequestedTheme = ElementTheme.Light;
+        _isDarkTheme = DetectWindowsDarkTheme();
+        ApplyThemeState();
+
+        try
+        {
+            _uiSettings = new Windows.UI.ViewManagement.UISettings();
+            _uiSettings.ColorValuesChanged += (_, _) =>
+            {
+                DispatcherQueue.TryEnqueue(() =>
+                {
+                    var systemIsDark = DetectWindowsDarkTheme();
+                    if (systemIsDark != _isDarkTheme)
+                    {
+                        AnimateThemeToggle();
+                    }
+                });
+            };
+        }
+        catch
+        {
+            // System color change listener is optional fallback
+        }
+
         Title = "Quick Editor";
+        SetAppIcon();
         Preview.SetMediaPlayer(_player);
         _player.Volume = VolumeSlider.Value;
         _player.IsMuted = false;
@@ -133,9 +168,51 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    private void ThemeToggleButton_Click(object sender, RoutedEventArgs e)
+    private void SetAppIcon()
     {
-        _isDarkTheme = !_isDarkTheme;
+        try
+        {
+            var iconPath = Path.Combine(AppContext.BaseDirectory, "Assets", "AppIcon.ico");
+            if (File.Exists(iconPath))
+            {
+                AppWindow.SetIcon(iconPath);
+            }
+        }
+        catch
+        {
+            // Ignore if setting the icon fails on some platforms
+        }
+    }
+
+    private static bool DetectWindowsDarkTheme()
+    {
+        try
+        {
+            using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize");
+            if (key?.GetValue("AppsUseLightTheme") is int appsUseLightTheme)
+            {
+                return appsUseLightTheme == 0;
+            }
+        }
+        catch
+        {
+            // Fall through to UISettings
+        }
+
+        try
+        {
+            var settings = new Windows.UI.ViewManagement.UISettings();
+            var bg = settings.GetColorValue(Windows.UI.ViewManagement.UIColorType.Background);
+            return (299 * bg.R + 587 * bg.G + 114 * bg.B) < 128000;
+        }
+        catch
+        {
+            return Application.Current.RequestedTheme == ApplicationTheme.Dark;
+        }
+    }
+
+    private void ApplyThemeState()
+    {
         RootLayout.RequestedTheme = _isDarkTheme ? ElementTheme.Dark : ElementTheme.Light;
         ThemeToggleGlyph.Glyph = _isDarkTheme ? "\uE706" : "\uE708";
         var nextTheme = _isDarkTheme ? "light" : "dark";
@@ -143,6 +220,288 @@ public sealed partial class MainWindow : Window
         Microsoft.UI.Xaml.Automation.AutomationProperties.SetName(ThemeToggleButton, $"Switch to {nextTheme} theme");
         DrawTimeline();
         DrawAudioWaveformViewport();
+    }
+
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    private delegate nint SubclassProc(nint hWnd, uint uMsg, nint wParam, nint lParam, nuint uIdSubclass, nint dwRefData);
+
+    [DllImport("comctl32.dll", SetLastError = true)]
+    private static extern bool SetWindowSubclass(nint hWnd, SubclassProc pfnSubclass, nuint uIdSubclass, nint dwRefData);
+
+    [DllImport("comctl32.dll", SetLastError = true)]
+    private static extern nint DefSubclassProc(nint hWnd, uint uMsg, nint wParam, nint lParam);
+
+    [DllImport("user32.dll")]
+    private static extern bool ScreenToClient(nint hWnd, ref POINT lpPoint);
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct POINT
+    {
+        public int X;
+        public int Y;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct RECT
+    {
+        public int Left;
+        public int Top;
+        public int Right;
+        public int Bottom;
+    }
+
+    private const uint WM_NCHITTEST = 0x0084;
+    private const nint HTCLIENT = 1;
+    private const nint HTCAPTION = 2;
+
+    private SubclassProc? _titleBarSubclassProc;
+    private readonly List<RECT> _titleBarButtonRects = new();
+
+    private void SetupTitleBar()
+    {
+        try
+        {
+            if (AppWindow.Presenter is OverlappedPresenter presenter)
+            {
+                presenter.SetBorderAndTitleBar(true, false);
+            }
+
+            var hWnd = WindowNative.GetWindowHandle(this);
+            _titleBarSubclassProc = TitleBarSubclassProc;
+            SetWindowSubclass(hWnd, _titleBarSubclassProc, 101, 0);
+
+            AppTitleBar.SizeChanged += (s, e) => UpdateTitleBarRegions();
+            AppTitleBar.Loaded += (s, e) => UpdateTitleBarRegions();
+
+            AppWindow.Changed += (s, e) =>
+            {
+                if (e.DidPresenterChange || e.DidSizeChange)
+                {
+                    DispatcherQueue.TryEnqueue(() =>
+                    {
+                        UpdateMaximizeGlyph();
+                        UpdateTitleBarRegions();
+                    });
+                }
+            };
+            UpdateMaximizeGlyph();
+        }
+        catch
+        {
+            // Fallback to default title bar if customization is not supported
+        }
+    }
+
+    private void UpdateTitleBarRegions()
+    {
+        if (AppTitleBar is null || RootLayout?.XamlRoot is null) return;
+        double scale = RootLayout.XamlRoot.RasterizationScale;
+        var buttons = new FrameworkElement?[]
+        {
+            ThemeToggleButton,
+            OpenButton,
+            ExportButton,
+            MinimizeButton,
+            MaximizeButton,
+            CloseButton
+        };
+
+        var list = new List<RECT>();
+        foreach (var btn in buttons)
+        {
+            if (btn is not null && btn.ActualWidth > 0 && btn.ActualHeight > 0)
+            {
+                try
+                {
+                    var transform = btn.TransformToVisual(AppTitleBar);
+                    var origin = transform.TransformPoint(new Windows.Foundation.Point(0, 0));
+                    list.Add(new RECT
+                    {
+                        Left = (int)Math.Round(origin.X * scale),
+                        Top = (int)Math.Round(origin.Y * scale),
+                        Right = (int)Math.Round((origin.X + btn.ActualWidth) * scale),
+                        Bottom = (int)Math.Round((origin.Y + btn.ActualHeight) * scale)
+                    });
+                }
+                catch { }
+            }
+        }
+
+        lock (_titleBarButtonRects)
+        {
+            _titleBarButtonRects.Clear();
+            _titleBarButtonRects.AddRange(list);
+        }
+
+        try
+        {
+            int titleBarHeight = (int)Math.Round(AppTitleBar.ActualHeight * scale);
+            if (titleBarHeight <= 0) titleBarHeight = (int)Math.Round(48.0 * scale);
+            int dragWidth = list.Count > 0 ? list[0].Left : (int)Math.Round(AppTitleBar.ActualWidth * scale);
+            if (dragWidth > 0)
+            {
+                AppWindow.TitleBar.SetDragRectangles([new Windows.Graphics.RectInt32(0, 0, dragWidth, titleBarHeight)]);
+            }
+        }
+        catch { }
+    }
+
+    private nint TitleBarSubclassProc(nint hWnd, uint uMsg, nint wParam, nint lParam, nuint uIdSubclass, nint dwRefData)
+    {
+        if (uMsg == WM_NCHITTEST)
+        {
+            var def = DefSubclassProc(hWnd, uMsg, wParam, lParam);
+            if (def != HTCLIENT)
+            {
+                return def;
+            }
+
+            int screenX = unchecked((short)(long)lParam);
+            int screenY = unchecked((short)((long)lParam >> 16));
+
+            var pt = new POINT { X = screenX, Y = screenY };
+            ScreenToClient(hWnd, ref pt);
+
+            double scale = RootLayout?.XamlRoot?.RasterizationScale ?? 1.0;
+            int titleBarHeight = (int)Math.Round((AppTitleBar?.ActualHeight ?? 48.0) * scale);
+            if (titleBarHeight <= 0) titleBarHeight = (int)Math.Round(48.0 * scale);
+
+            if (pt.Y >= 0 && pt.Y < titleBarHeight)
+            {
+                bool isOverButton = false;
+                lock (_titleBarButtonRects)
+                {
+                    foreach (var r in _titleBarButtonRects)
+                    {
+                        if (pt.X >= r.Left && pt.X <= r.Right && pt.Y >= r.Top && pt.Y <= r.Bottom)
+                        {
+                            isOverButton = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!isOverButton)
+                {
+                    return HTCAPTION;
+                }
+            }
+
+            return HTCLIENT;
+        }
+
+        return DefSubclassProc(hWnd, uMsg, wParam, lParam);
+    }
+
+    private void ToggleMaximize()
+    {
+        if (AppWindow.Presenter is OverlappedPresenter presenter)
+        {
+            if (presenter.State == OverlappedPresenterState.Maximized)
+            {
+                presenter.Restore();
+            }
+            else
+            {
+                presenter.Maximize();
+            }
+        }
+    }
+
+    private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (AppWindow.Presenter is OverlappedPresenter presenter)
+        {
+            presenter.Minimize();
+        }
+    }
+
+    private void MaximizeButton_Click(object sender, RoutedEventArgs e)
+    {
+        ToggleMaximize();
+    }
+
+    private void CloseButton_Click(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
+
+    private void UpdateMaximizeGlyph()
+    {
+        if (AppWindow.Presenter is OverlappedPresenter presenter && MaximizeGlyph is not null)
+        {
+            bool isMaximized = presenter.State == OverlappedPresenterState.Maximized;
+            MaximizeGlyph.Glyph = isMaximized ? "\uE923" : "\uE922";
+            ToolTipService.SetToolTip(MaximizeButton, isMaximized ? "Restore" : "Maximize");
+            Microsoft.UI.Xaml.Automation.AutomationProperties.SetName(MaximizeButton, isMaximized ? "Restore" : "Maximize");
+        }
+    }
+
+    private void ThemeToggleButton_Click(object sender, RoutedEventArgs e)
+    {
+        AnimateThemeToggle();
+    }
+
+    private void AnimateThemeToggle()
+    {
+        if (_isThemeAnimating) return;
+        _isThemeAnimating = true;
+
+        var sw = Stopwatch.StartNew();
+        const double phase1Duration = 180.0;
+        const double phase2Duration = 220.0;
+        const double totalDuration = phase1Duration + phase2Duration;
+        bool swapped = false;
+
+        _isDarkTheme = !_isDarkTheme;
+
+        void OnRendering(object? sender, object e)
+        {
+            double elapsed = sw.Elapsed.TotalMilliseconds;
+
+            if (elapsed < phase1Duration)
+            {
+                // Phase 1: Spin 0 -> 180 deg, shrink scale 1.0 -> 0.0 with ease-in
+                double p = Math.Clamp(elapsed / phase1Duration, 0.0, 1.0);
+                double ease = p * p;
+                ThemeGlyphRotate.Angle = ease * 180.0;
+                double s = Math.Max(0.0, 1.0 - ease);
+                ThemeGlyphScale.ScaleX = s;
+                ThemeGlyphScale.ScaleY = s;
+            }
+            else if (elapsed < totalDuration)
+            {
+                if (!swapped)
+                {
+                    swapped = true;
+                    ApplyThemeState();
+                }
+
+                // Phase 2: Spin 180 -> 360 deg, bounce scale 0.0 -> 1.0 with BackEase out
+                double p = Math.Clamp((elapsed - phase1Duration) / phase2Duration, 0.0, 1.0);
+                double t = p - 1.0;
+                const double overshoot = 1.70158;
+                double easeOutBack = 1.0 + (t * t * ((overshoot + 1.0) * t + overshoot));
+
+                ThemeGlyphRotate.Angle = 180.0 + (p * 180.0);
+                ThemeGlyphScale.ScaleX = Math.Max(0.0, easeOutBack);
+                ThemeGlyphScale.ScaleY = Math.Max(0.0, easeOutBack);
+            }
+            else
+            {
+                CompositionTarget.Rendering -= OnRendering;
+                if (!swapped)
+                {
+                    ApplyThemeState();
+                }
+                ThemeGlyphRotate.Angle = 0;
+                ThemeGlyphScale.ScaleX = 1.0;
+                ThemeGlyphScale.ScaleY = 1.0;
+                _isThemeAnimating = false;
+            }
+        }
+
+        CompositionTarget.Rendering += OnRendering;
     }
 
     private async void OpenButton_Click(object sender, RoutedEventArgs e)
@@ -207,10 +566,20 @@ public sealed partial class MainWindow : Window
             SelectAdjustmentTab(!isVideo);
             _audioEngine?.Dispose();
             _audioEngine = new AudioPitchEngine();
+            _audioEngine.PlaybackStopped += AudioEngine_PlaybackStopped;
             _audioEngine.Load(path);
             _audioEngine.SetVolume(VolumeSlider?.Value ?? 1.0, _userMuted);
-            _player.IsMuted = _userMuted;
-            _player.Volume = _userMuted ? 0 : (VolumeSlider?.Value ?? 1.0);
+            AudioPitchEngine.LogAudio($"MainWindow.LoadFileAsync: HasAudioTrack={_audioEngine.HasAudioTrack}, Device={_audioEngine.OutputDeviceName}, _userMuted={_userMuted}");
+            if (_audioEngine.HasAudioTrack)
+            {
+                _player.IsMuted = true;
+                _player.Volume = 0;
+            }
+            else
+            {
+                _player.IsMuted = _userMuted;
+                _player.Volume = _userMuted ? 0 : (VolumeSlider?.Value ?? 1.0);
+            }
             ResetVideoAdjustments();
             ResetAudioAdjustments();
             EmptyStateSurface.Visibility = Visibility.Collapsed;
@@ -234,7 +603,6 @@ public sealed partial class MainWindow : Window
                 mediaSource = MediaSource.CreateFromUri(new Uri(Path.GetFullPath(path)));
             }
 
-            Preview.Source = mediaSource;
             _player.Source = mediaSource;
         }
         catch (Exception ex)
@@ -244,6 +612,19 @@ public sealed partial class MainWindow : Window
             AudioWaveformViewport.Visibility = Visibility.Collapsed;
             Preview.Visibility = Visibility.Visible;
             ExportButton.IsEnabled = false;
+        }
+    }
+
+    private void AudioEngine_PlaybackStopped(object? sender, NAudio.Wave.StoppedEventArgs e)
+    {
+        if (e.Exception is not null)
+        {
+            AudioPitchEngine.LogAudio($"MainWindow fallback: AudioEngine stopped with exception: {e.Exception.Message}. Unmuting _player.");
+            DispatcherQueue.TryEnqueue(() =>
+            {
+                _player.IsMuted = _userMuted;
+                _player.Volume = _userMuted ? 0 : (VolumeSlider?.Value ?? 1.0);
+            });
         }
     }
 
@@ -344,6 +725,7 @@ public sealed partial class MainWindow : Window
                 _waveformReady = true;
                 DrawTimeline();
                 DrawAudioWaveformViewport();
+                ApplyAudioPitchAndSpeed();
             }
         }
         catch (OperationCanceledException)
@@ -481,6 +863,8 @@ public sealed partial class MainWindow : Window
 
         _cropDragStart = point;
         _cropDragStartRectangle = GetCropSelectionBounds(frame);
+        _snapGuideVerticalX = null;
+        _snapGuideHorizontalY = null;
         var handleMode = _hasCropSelection ? GetCropHandleMode(point, _cropDragStartRectangle) : CropDragMode.None;
         if (handleMode != CropDragMode.None)
         {
@@ -542,6 +926,8 @@ public sealed partial class MainWindow : Window
 
         _cropDragRectangle = nextRectangle.Width > 0 && nextRectangle.Height > 0 ? nextRectangle : null;
         _cropDragMode = CropDragMode.None;
+        _snapGuideVerticalX = null;
+        _snapGuideHorizontalY = null;
         CropOverlay.ReleasePointerCapture(e.Pointer);
 
         if (_cropDragRectangle is { Width: >= 20, Height: >= 20 } selection)
@@ -566,6 +952,8 @@ public sealed partial class MainWindow : Window
     {
         _cropDragMode = CropDragMode.None;
         _cropDragRectangle = null;
+        _snapGuideVerticalX = null;
+        _snapGuideHorizontalY = null;
         DrawCropOverlay();
     }
 
@@ -598,9 +986,57 @@ public sealed partial class MainWindow : Window
         var frame = GetVideoFrameBounds(ignoreCrop: true);
         var deltaX = point.X - _cropDragStart.X;
         var deltaY = point.Y - _cropDragStart.Y;
-        var left = Math.Clamp(_cropDragStartRectangle.Left + deltaX, frame.Left, frame.Right - _cropDragStartRectangle.Width);
-        var top = Math.Clamp(_cropDragStartRectangle.Top + deltaY, frame.Top, frame.Bottom - _cropDragStartRectangle.Height);
-        return new Windows.Foundation.Rect(left, top, _cropDragStartRectangle.Width, _cropDragStartRectangle.Height);
+        var width = _cropDragStartRectangle.Width;
+        var height = _cropDragStartRectangle.Height;
+
+        var left = Math.Clamp(_cropDragStartRectangle.Left + deltaX, frame.Left, frame.Right - width);
+        var top = Math.Clamp(_cropDragStartRectangle.Top + deltaY, frame.Top, frame.Bottom - height);
+
+        const double snapThreshold = 9.0;
+        _snapGuideVerticalX = null;
+        _snapGuideHorizontalY = null;
+
+        var centerX = left + width / 2.0;
+        var frameCenterX = frame.X + frame.Width / 2.0;
+
+        // Vertical axis snap: center vertical axis, left edge, right edge
+        if (Math.Abs(centerX - frameCenterX) <= snapThreshold)
+        {
+            left = frameCenterX - width / 2.0;
+            _snapGuideVerticalX = frameCenterX;
+        }
+        else if (Math.Abs(left - frame.Left) <= snapThreshold)
+        {
+            left = frame.Left;
+            _snapGuideVerticalX = frame.Left;
+        }
+        else if (Math.Abs(left + width - frame.Right) <= snapThreshold)
+        {
+            left = frame.Right - width;
+            _snapGuideVerticalX = frame.Right;
+        }
+
+        var centerY = top + height / 2.0;
+        var frameCenterY = frame.Y + frame.Height / 2.0;
+
+        // Horizontal axis snap: center horizontal axis, top edge, bottom edge
+        if (Math.Abs(centerY - frameCenterY) <= snapThreshold)
+        {
+            top = frameCenterY - height / 2.0;
+            _snapGuideHorizontalY = frameCenterY;
+        }
+        else if (Math.Abs(top - frame.Top) <= snapThreshold)
+        {
+            top = frame.Top;
+            _snapGuideHorizontalY = frame.Top;
+        }
+        else if (Math.Abs(top + height - frame.Bottom) <= snapThreshold)
+        {
+            top = frame.Bottom - height;
+            _snapGuideHorizontalY = frame.Bottom;
+        }
+
+        return new Windows.Foundation.Rect(left, top, width, height);
     }
 
     private Windows.Foundation.Rect ResizeCropRectangle(Windows.Foundation.Point point)
@@ -612,6 +1048,13 @@ public sealed partial class MainWindow : Window
         var right = start.Right;
         var bottom = start.Bottom;
 
+        const double snapThreshold = 9.0;
+        _snapGuideVerticalX = null;
+        _snapGuideHorizontalY = null;
+
+        var frameCenterX = frame.X + frame.Width / 2.0;
+        var frameCenterY = frame.Y + frame.Height / 2.0;
+
         switch (_cropDragMode)
         {
             case CropDragMode.TopLeft: left = point.X; top = point.Y; break;
@@ -622,6 +1065,61 @@ public sealed partial class MainWindow : Window
             case CropDragMode.Bottom: bottom = point.Y; break;
             case CropDragMode.BottomLeft: left = point.X; bottom = point.Y; break;
             case CropDragMode.Left: left = point.X; break;
+        }
+
+        // Snap active moving edges to frame boundary or center axis
+        if (_cropDragMode is CropDragMode.Left or CropDragMode.TopLeft or CropDragMode.BottomLeft)
+        {
+            if (Math.Abs(left - frame.Left) <= snapThreshold)
+            {
+                left = frame.Left;
+                _snapGuideVerticalX = frame.Left;
+            }
+            else if (Math.Abs(left - frameCenterX) <= snapThreshold)
+            {
+                left = frameCenterX;
+                _snapGuideVerticalX = frameCenterX;
+            }
+        }
+        else if (_cropDragMode is CropDragMode.Right or CropDragMode.TopRight or CropDragMode.BottomRight)
+        {
+            if (Math.Abs(right - frame.Right) <= snapThreshold)
+            {
+                right = frame.Right;
+                _snapGuideVerticalX = frame.Right;
+            }
+            else if (Math.Abs(right - frameCenterX) <= snapThreshold)
+            {
+                right = frameCenterX;
+                _snapGuideVerticalX = frameCenterX;
+            }
+        }
+
+        if (_cropDragMode is CropDragMode.Top or CropDragMode.TopLeft or CropDragMode.TopRight)
+        {
+            if (Math.Abs(top - frame.Top) <= snapThreshold)
+            {
+                top = frame.Top;
+                _snapGuideHorizontalY = frame.Top;
+            }
+            else if (Math.Abs(top - frameCenterY) <= snapThreshold)
+            {
+                top = frameCenterY;
+                _snapGuideHorizontalY = frameCenterY;
+            }
+        }
+        else if (_cropDragMode is CropDragMode.Bottom or CropDragMode.BottomLeft or CropDragMode.BottomRight)
+        {
+            if (Math.Abs(bottom - frame.Bottom) <= snapThreshold)
+            {
+                bottom = frame.Bottom;
+                _snapGuideHorizontalY = frame.Bottom;
+            }
+            else if (Math.Abs(bottom - frameCenterY) <= snapThreshold)
+            {
+                bottom = frameCenterY;
+                _snapGuideHorizontalY = frameCenterY;
+            }
         }
 
         left = Math.Clamp(left, frame.Left, right - 20);
@@ -636,7 +1134,15 @@ public sealed partial class MainWindow : Window
                 var anchorX = _cropDragMode == CropDragMode.Left ? start.Right : start.Left;
                 var width = Math.Abs((_cropDragMode == CropDragMode.Left ? left : right) - anchorX);
                 var height = width / ratio;
-                var centerY = (start.Top + start.Bottom) / 2;
+                var centerY = (start.Top + start.Bottom) / 2.0;
+
+                // Snap center Y to horizontal center axis
+                if (Math.Abs(centerY - frameCenterY) <= snapThreshold)
+                {
+                    centerY = frameCenterY;
+                    _snapGuideHorizontalY = frameCenterY;
+                }
+
                 var maxHeight = 2 * Math.Min(centerY - frame.Top, frame.Bottom - centerY);
                 if (height > maxHeight)
                 {
@@ -646,15 +1152,28 @@ public sealed partial class MainWindow : Window
 
                 left = _cropDragMode == CropDragMode.Left ? anchorX - width : anchorX;
                 right = left + width;
-                top = centerY - height / 2;
-                bottom = centerY + height / 2;
+                top = centerY - height / 2.0;
+                bottom = centerY + height / 2.0;
+
+                if (Math.Abs((left + right) / 2.0 - frameCenterX) <= snapThreshold)
+                {
+                    _snapGuideVerticalX = frameCenterX;
+                }
             }
             else if (_cropDragMode is CropDragMode.Top or CropDragMode.Bottom)
             {
                 var anchorY = _cropDragMode == CropDragMode.Top ? start.Bottom : start.Top;
                 var height = Math.Abs((_cropDragMode == CropDragMode.Top ? top : bottom) - anchorY);
                 var width = height * ratio;
-                var centerX = (start.Left + start.Right) / 2;
+                var centerX = (start.Left + start.Right) / 2.0;
+
+                // Snap center X to vertical center axis
+                if (Math.Abs(centerX - frameCenterX) <= snapThreshold)
+                {
+                    centerX = frameCenterX;
+                    _snapGuideVerticalX = frameCenterX;
+                }
+
                 var maxWidth = 2 * Math.Min(centerX - frame.Left, frame.Right - centerX);
                 if (width > maxWidth)
                 {
@@ -662,10 +1181,15 @@ public sealed partial class MainWindow : Window
                     height = width / ratio;
                 }
 
-                left = centerX - width / 2;
-                right = centerX + width / 2;
+                left = centerX - width / 2.0;
+                right = centerX + width / 2.0;
                 top = _cropDragMode == CropDragMode.Top ? anchorY - height : anchorY;
                 bottom = top + height;
+
+                if (Math.Abs((top + bottom) / 2.0 - frameCenterY) <= snapThreshold)
+                {
+                    _snapGuideHorizontalY = frameCenterY;
+                }
             }
             else
             {
@@ -693,6 +1217,26 @@ public sealed partial class MainWindow : Window
                 right = left + width;
                 top = growsUp ? anchorY - height : anchorY;
                 bottom = top + height;
+
+                if (Math.Abs((left + right) / 2.0 - frameCenterX) <= snapThreshold)
+                {
+                    _snapGuideVerticalX = frameCenterX;
+                }
+                if (Math.Abs((top + bottom) / 2.0 - frameCenterY) <= snapThreshold)
+                {
+                    _snapGuideHorizontalY = frameCenterY;
+                }
+            }
+        }
+        else
+        {
+            if (Math.Abs((left + right) / 2.0 - frameCenterX) <= snapThreshold)
+            {
+                _snapGuideVerticalX = frameCenterX;
+            }
+            if (Math.Abs((top + bottom) / 2.0 - frameCenterY) <= snapThreshold)
+            {
+                _snapGuideHorizontalY = frameCenterY;
             }
         }
 
@@ -704,6 +1248,46 @@ public sealed partial class MainWindow : Window
         var frame = GetVideoFrameBounds(ignoreCrop: true);
         var currentX = Math.Clamp(point.X, frame.Left, frame.Right);
         var currentY = Math.Clamp(point.Y, frame.Top, frame.Bottom);
+
+        const double snapThreshold = 9.0;
+        _snapGuideVerticalX = null;
+        _snapGuideHorizontalY = null;
+
+        var frameCenterX = frame.X + frame.Width / 2.0;
+        var frameCenterY = frame.Y + frame.Height / 2.0;
+
+        if (Math.Abs(currentX - frameCenterX) <= snapThreshold)
+        {
+            currentX = frameCenterX;
+            _snapGuideVerticalX = frameCenterX;
+        }
+        else if (Math.Abs(currentX - frame.Left) <= snapThreshold)
+        {
+            currentX = frame.Left;
+            _snapGuideVerticalX = frame.Left;
+        }
+        else if (Math.Abs(currentX - frame.Right) <= snapThreshold)
+        {
+            currentX = frame.Right;
+            _snapGuideVerticalX = frame.Right;
+        }
+
+        if (Math.Abs(currentY - frameCenterY) <= snapThreshold)
+        {
+            currentY = frameCenterY;
+            _snapGuideHorizontalY = frameCenterY;
+        }
+        else if (Math.Abs(currentY - frame.Top) <= snapThreshold)
+        {
+            currentY = frame.Top;
+            _snapGuideHorizontalY = frame.Top;
+        }
+        else if (Math.Abs(currentY - frame.Bottom) <= snapThreshold)
+        {
+            currentY = frame.Bottom;
+            _snapGuideHorizontalY = frame.Bottom;
+        }
+
         var signX = Math.Sign(currentX - _cropDragStart.X);
         var signY = Math.Sign(currentY - _cropDragStart.Y);
         var width = Math.Abs(currentX - _cropDragStart.X);
@@ -729,6 +1313,16 @@ public sealed partial class MainWindow : Window
         height = Math.Min(height, signY < 0 ? _cropDragStart.Y - frame.Top : frame.Bottom - _cropDragStart.Y);
         var left = signX < 0 ? _cropDragStart.X - width : _cropDragStart.X;
         var top = signY < 0 ? _cropDragStart.Y - height : _cropDragStart.Y;
+
+        if (Math.Abs((left + width / 2.0) - frameCenterX) <= snapThreshold)
+        {
+            _snapGuideVerticalX = frameCenterX;
+        }
+        if (Math.Abs((top + height / 2.0) - frameCenterY) <= snapThreshold)
+        {
+            _snapGuideHorizontalY = frameCenterY;
+        }
+
         return new Windows.Foundation.Rect(left, top, Math.Max(0, width), Math.Max(0, height));
     }
 
@@ -816,6 +1410,79 @@ public sealed partial class MainWindow : Window
 
         if (_hasCropSelection || _cropDragMode != CropDragMode.None)
         {
+            if (_cropDragMode != CropDragMode.None)
+            {
+                if (_snapGuideVerticalX is double snapX)
+                {
+                    var vLine = new Microsoft.UI.Xaml.Shapes.Line
+                    {
+                        X1 = snapX,
+                        Y1 = frame.Top,
+                        X2 = snapX,
+                        Y2 = frame.Bottom,
+                        Stroke = new SolidColorBrush(Color.FromArgb(255, 255, 204, 0)),
+                        StrokeThickness = 1.5,
+                        StrokeDashArray = new DoubleCollection { 4, 3 }
+                    };
+                    CropOverlay.Children.Add(vLine);
+
+                    bool isCenter = Math.Abs(snapX - (frame.X + frame.Width / 2.0)) < 1.0;
+                    var badge = new Border
+                    {
+                        Background = new SolidColorBrush(Color.FromArgb(230, 24, 24, 24)),
+                        BorderBrush = new SolidColorBrush(Color.FromArgb(255, 255, 204, 0)),
+                        BorderThickness = new Thickness(1),
+                        CornerRadius = new CornerRadius(3),
+                        Padding = new Thickness(4, 1, 4, 1),
+                        Child = new TextBlock
+                        {
+                            Text = isCenter ? "Center X" : (snapX <= frame.Left + 1 ? "Left" : "Right"),
+                            FontSize = 10,
+                            FontWeight = Microsoft.UI.Text.FontWeights.SemiBold,
+                            Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 204, 0))
+                        }
+                    };
+                    CropOverlay.Children.Add(badge);
+                    Canvas.SetLeft(badge, Math.Clamp(snapX + 4, 0, Math.Max(0, CropOverlay.ActualWidth - 65)));
+                    Canvas.SetTop(badge, Math.Max(frame.Top + 6, 6));
+                }
+
+                if (_snapGuideHorizontalY is double snapY)
+                {
+                    var hLine = new Microsoft.UI.Xaml.Shapes.Line
+                    {
+                        X1 = frame.Left,
+                        Y1 = snapY,
+                        X2 = frame.Right,
+                        Y2 = snapY,
+                        Stroke = new SolidColorBrush(Color.FromArgb(255, 255, 204, 0)),
+                        StrokeThickness = 1.5,
+                        StrokeDashArray = new DoubleCollection { 4, 3 }
+                    };
+                    CropOverlay.Children.Add(hLine);
+
+                    bool isCenter = Math.Abs(snapY - (frame.Y + frame.Height / 2.0)) < 1.0;
+                    var badge = new Border
+                    {
+                        Background = new SolidColorBrush(Color.FromArgb(230, 24, 24, 24)),
+                        BorderBrush = new SolidColorBrush(Color.FromArgb(255, 255, 204, 0)),
+                        BorderThickness = new Thickness(1),
+                        CornerRadius = new CornerRadius(3),
+                        Padding = new Thickness(4, 1, 4, 1),
+                        Child = new TextBlock
+                        {
+                            Text = isCenter ? "Center Y" : (snapY <= frame.Top + 1 ? "Top" : "Bottom"),
+                            FontSize = 10,
+                            FontWeight = Microsoft.UI.Text.FontWeights.SemiBold,
+                            Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 204, 0))
+                        }
+                    };
+                    CropOverlay.Children.Add(badge);
+                    Canvas.SetLeft(badge, Math.Max(frame.Left + 6, 6));
+                    Canvas.SetTop(badge, Math.Clamp(snapY + 4, 0, Math.Max(0, CropOverlay.ActualHeight - 25)));
+                }
+            }
+
             AddCropHandle(selection.Left, selection.Top);
             AddCropHandle((selection.Left + selection.Right) / 2, selection.Top);
             AddCropHandle(selection.Right, selection.Top);
@@ -865,6 +1532,7 @@ public sealed partial class MainWindow : Window
         }
 
         var session = _player.PlaybackSession;
+        AudioPitchEngine.LogAudio($"MainWindow.PlaybackButton_Click: session.State={session.PlaybackState}, Pos={session.Position.TotalSeconds:F2}, HasAudioTrack={_audioEngine?.HasAudioTrack}, EngineIsPlaying={_audioEngine?.IsPlaying}");
         if (session.PlaybackState == MediaPlaybackState.Playing)
         {
             _player.Pause();
@@ -880,14 +1548,25 @@ public sealed partial class MainWindow : Window
                 _audioEngine?.Seek(session.Position);
             }
 
-            var hasAudioEffects = _audioEngine is not null && _audioEngine.HasActiveAudioEffects;
-            if (!_showingEditedPreview && hasAudioEffects && _audioEngine is not null && _audioEngine.HasAudioTrack)
+            if (_showingEditedPreview)
+            {
+                _audioEngine?.Stop();
+                _player.IsMuted = _userMuted;
+                _player.Volume = _userMuted ? 0 : (VolumeSlider?.Value ?? 1.0);
+                _player.Play();
+            }
+            else if (_audioEngine is not null && _audioEngine.HasAudioTrack)
             {
                 _player.IsMuted = true;
                 _player.Volume = 0;
                 _audioEngine.Seek(_player.PlaybackSession.Position);
                 _player.Play();
                 _audioEngine.Play();
+                if (!_audioEngine.IsPlaying)
+                {
+                    _player.IsMuted = _userMuted;
+                    _player.Volume = _userMuted ? 0 : (VolumeSlider?.Value ?? 1.0);
+                }
             }
             else
             {
@@ -983,11 +1662,10 @@ public sealed partial class MainWindow : Window
         _playheadSeconds = TimelineXToTime(x);
         if (_showingEditedPreview)
         {
-            var speed = Math.Clamp(SpeedSlider.Value, 0.5, 2.0);
-            var previewPosition = (_playheadSeconds - _trimStartSeconds) / speed;
-            _player.PlaybackSession.Position = TimeSpan.FromSeconds(Math.Clamp(previewPosition, 0, _previewPlaybackDuration));
+            ExitEditedPreview();
         }
-        else if (_sourcePath is not null)
+
+        if (_sourcePath is not null)
         {
             _player.PlaybackSession.Position = TimeSpan.FromSeconds(_playheadSeconds);
             _audioEngine?.Seek(TimeSpan.FromSeconds(_playheadSeconds));
@@ -1030,18 +1708,50 @@ public sealed partial class MainWindow : Window
         const double rulerBottom = 21;
         const double trackTop = 29;
         const double trackHeight = 24;
+        const double trackRadius = 6;
 
-        AddTimelineRectangle(trackLeft, trackTop, trackWidth, trackHeight, ThemeBrush(Color.FromArgb(255, 222, 227, 232), Color.FromArgb(255, 56, 56, 56)));
+        AddTrackSegment(TimelineCanvas, trackLeft, trackTop, trackWidth, trackHeight,
+            ThemeBrush(Color.FromArgb(255, 222, 227, 232), Color.FromArgb(255, 56, 56, 56)),
+            new CornerRadius(trackRadius));
 
         if (_durationSeconds > 0)
         {
             var startX = TimeToTimelineX(_trimStartSeconds);
             var endX = TimeToTimelineX(_trimEndSeconds);
-            AddTimelineRectangle(trackLeft, trackTop, Math.Max(0, startX - trackLeft), trackHeight, ThemeBrush(Color.FromArgb(180, 184, 192, 200), Color.FromArgb(180, 16, 16, 16)));
-            AddTimelineRectangle(endX, trackTop, Math.Max(0, trackLeft + trackWidth - endX), trackHeight, ThemeBrush(Color.FromArgb(180, 184, 192, 200), Color.FromArgb(180, 16, 16, 16)));
-            AddTimelineRectangle(startX, trackTop, Math.Max(0, endX - startX), trackHeight, ThemeBrush(Color.FromArgb(255, 185, 216, 244), Color.FromArgb(255, 26, 91, 150)));
-            AddTimelineRectangle(startX, trackTop, Math.Max(0, endX - startX), trackHeight, ThemeBrush(Color.FromArgb(30, 255, 255, 255), Color.FromArgb(30, 255, 255, 255)));
-            DrawWaveform(trackLeft, trackTop, trackWidth, trackHeight, startX, endX);
+            var leftDimWidth = Math.Max(0, startX - trackLeft);
+            var rightDimWidth = Math.Max(0, trackLeft + trackWidth - endX);
+            var selWidth = Math.Max(0, endX - startX);
+
+            if (leftDimWidth > 0)
+            {
+                AddTrackSegment(TimelineCanvas, trackLeft, trackTop, leftDimWidth, trackHeight,
+                    ThemeBrush(Color.FromArgb(180, 184, 192, 200), Color.FromArgb(180, 16, 16, 16)),
+                    new CornerRadius(trackRadius, 0, 0, trackRadius));
+            }
+
+            if (rightDimWidth > 0)
+            {
+                AddTrackSegment(TimelineCanvas, endX, trackTop, rightDimWidth, trackHeight,
+                    ThemeBrush(Color.FromArgb(180, 184, 192, 200), Color.FromArgb(180, 16, 16, 16)),
+                    new CornerRadius(0, trackRadius, trackRadius, 0));
+            }
+
+            if (selWidth > 0)
+            {
+                var selLeftRadius = Math.Abs(startX - trackLeft) < 1 ? trackRadius : 0;
+                var selRightRadius = Math.Abs(endX - (trackLeft + trackWidth)) < 1 ? trackRadius : 0;
+                var selCornerRadius = new CornerRadius(selLeftRadius, selRightRadius, selRightRadius, selLeftRadius);
+
+                AddTrackSegment(TimelineCanvas, startX, trackTop, selWidth, trackHeight,
+                    ThemeBrush(Color.FromArgb(255, 185, 216, 244), Color.FromArgb(255, 26, 91, 150)),
+                    selCornerRadius);
+
+                AddTrackSegment(TimelineCanvas, startX, trackTop, selWidth, trackHeight,
+                    ThemeBrush(Color.FromArgb(30, 255, 255, 255), Color.FromArgb(30, 255, 255, 255)),
+                    selCornerRadius);
+            }
+
+            DrawWaveform(TimelineCanvas, trackLeft, trackTop, trackWidth, trackHeight, startX, endX);
             AddTimelineHandle(startX, trackTop, trackHeight);
             AddTimelineHandle(endX, trackTop, trackHeight);
 
@@ -1067,7 +1777,6 @@ public sealed partial class MainWindow : Window
             }
 
             var playheadX = TimeToTimelineX(_playheadSeconds);
-            var playheadBrush = ThemeBrush(Color.FromArgb(255, 0, 103, 192), Color.FromArgb(255, 96, 205, 255));
             _playheadMarker = new Grid
             {
                 Width = 9,
@@ -1076,14 +1785,14 @@ public sealed partial class MainWindow : Window
             var stem = new Microsoft.UI.Xaml.Shapes.Rectangle
             {
                 Width = 2,
-                Fill = playheadBrush,
+                Fill = PlayheadRedBrush,
                 HorizontalAlignment = HorizontalAlignment.Center
             };
             var head = new Microsoft.UI.Xaml.Shapes.Ellipse
             {
                 Width = 9,
                 Height = 9,
-                Fill = playheadBrush,
+                Fill = PlayheadRedBrush,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Top,
                 Margin = new Thickness(0, 18, 0, 0)
@@ -1100,7 +1809,7 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    private void DrawWaveform(double left, double top, double width, double height, double selectionStart, double selectionEnd)
+    private void DrawWaveform(Canvas container, double left, double top, double width, double height, double selectionStart, double selectionEnd)
     {
         if (_waveformPeaks.Count == 0)
         {
@@ -1125,7 +1834,7 @@ public sealed partial class MainWindow : Window
             var brush = ThemeBrush(
                 insideSelection ? Color.FromArgb(255, 0, 78, 138) : Color.FromArgb(175, 101, 116, 132),
                 insideSelection ? Color.FromArgb(255, 214, 235, 255) : Color.FromArgb(165, 153, 163, 174));
-            AddTimelineRectangle(x - barWidth / 2, centerY - barHeight / 2, barWidth, barHeight, brush);
+            AddTrackRectangle(container, x - barWidth / 2, centerY - barHeight / 2, barWidth, barHeight, brush);
         }
     }
 
@@ -1239,7 +1948,7 @@ public sealed partial class MainWindow : Window
         {
             Width = 2,
             Height = maximumBarHeight * 2 + 14,
-            Fill = ThemeBrush(Color.FromArgb(255, 0, 103, 192), Color.FromArgb(255, 96, 205, 255))
+            Fill = PlayheadRedBrush
         };
         AudioWaveformViewport.Children.Add(_audioWaveformPlayhead);
         Canvas.SetTop(_audioWaveformPlayhead, centerY - _audioWaveformPlayhead.Height / 2);
@@ -1313,22 +2022,61 @@ public sealed partial class MainWindow : Window
         Canvas.SetTop(handle, top - 4);
     }
 
-    private void AddTimelineRectangle(double left, double top, double width, double height, Brush fill)
+    private void AddTrackSegment(Canvas container, double left, double top, double width, double height, Brush background, CornerRadius cornerRadius)
     {
         if (width <= 0 || height <= 0)
         {
             return;
         }
 
-        var rectangle = new Microsoft.UI.Xaml.Shapes.Rectangle { Width = width, Height = height, Fill = fill };
-        TimelineCanvas.Children.Add(rectangle);
+        var segment = new Border
+        {
+            Width = width,
+            Height = height,
+            Background = background,
+            CornerRadius = cornerRadius
+        };
+        container.Children.Add(segment);
+        Canvas.SetLeft(segment, left);
+        Canvas.SetTop(segment, top);
+    }
+
+    private void AddTimelineRectangle(double left, double top, double width, double height, Brush fill, double radius = 0)
+        => AddTrackRectangle(TimelineCanvas, left, top, width, height, fill, radius);
+
+    private void AddTrackRectangle(Canvas container, double left, double top, double width, double height, Brush fill, double radius = 0)
+    {
+        if (width <= 0 || height <= 0)
+        {
+            return;
+        }
+
+        var rectangle = new Microsoft.UI.Xaml.Shapes.Rectangle
+        {
+            Width = width,
+            Height = height,
+            Fill = fill,
+            RadiusX = radius,
+            RadiusY = radius
+        };
+        container.Children.Add(rectangle);
         Canvas.SetLeft(rectangle, left);
         Canvas.SetTop(rectangle, top);
     }
 
     private void AddTimelineLine(double x1, double y1, double x2, double y2, Brush stroke, double thickness)
     {
-        var line = new Microsoft.UI.Xaml.Shapes.Line { X1 = x1, Y1 = y1, X2 = x2, Y2 = y2, Stroke = stroke, StrokeThickness = thickness };
+        var line = new Microsoft.UI.Xaml.Shapes.Line
+        {
+            X1 = x1,
+            Y1 = y1,
+            X2 = x2,
+            Y2 = y2,
+            Stroke = stroke,
+            StrokeThickness = thickness,
+            StrokeStartLineCap = PenLineCap.Round,
+            StrokeEndLineCap = PenLineCap.Round
+        };
         TimelineCanvas.Children.Add(line);
     }
 
@@ -1374,8 +2122,65 @@ public sealed partial class MainWindow : Window
         DrawTimeline();
     }
 
+    private void ExitEditedPreview()
+    {
+        if (!_showingEditedPreview) return;
+        _ = ExitEditedPreviewAsync();
+    }
+
+    private async Task ExitEditedPreviewAsync()
+    {
+        if (!_showingEditedPreview || string.IsNullOrWhiteSpace(_sourcePath))
+        {
+            return;
+        }
+
+        _showingEditedPreview = false;
+        _startPreviewWhenReady = false;
+        if (PreviewTrimButton is not null)
+        {
+            PreviewTrimButton.Content = "Preview edits";
+        }
+
+        var isVideo = VideoExtensions.Contains(Path.GetExtension(_sourcePath));
+        _player.Pause();
+        _audioEngine?.Pause();
+
+        _player.IsVideoFrameServerEnabled = isVideo;
+        if (VideoCanvas is not null) VideoCanvas.Visibility = isVideo ? Visibility.Visible : Visibility.Collapsed;
+        if (Preview is not null) Preview.Visibility = Visibility.Collapsed;
+
+        MediaSource mediaSource;
+        try
+        {
+            var file = await StorageFile.GetFileFromPathAsync(_sourcePath);
+            mediaSource = MediaSource.CreateFromStorageFile(file);
+        }
+        catch
+        {
+            mediaSource = MediaSource.CreateFromUri(new Uri(Path.GetFullPath(_sourcePath)));
+        }
+
+        _player.Source = mediaSource;
+
+        _player.PlaybackSession.Position = TimeSpan.FromSeconds(_playheadSeconds);
+        _audioEngine?.Seek(TimeSpan.FromSeconds(_playheadSeconds));
+
+        StatusText.Text = "Live editing mode";
+        UpdateTrimLabels();
+        DrawTimeline();
+        ApplyVideoPreviewEffects();
+        ApplyAudioPitchAndSpeed();
+    }
+
     private async void PreviewTrimButton_Click(object sender, RoutedEventArgs e)
     {
+        if (_showingEditedPreview)
+        {
+            await ExitEditedPreviewAsync();
+            return;
+        }
+
         if (_sourcePath is null || _durationSeconds <= 0)
         {
             return;
@@ -1405,12 +2210,14 @@ public sealed partial class MainWindow : Window
 
             _player.Pause();
             _audioEngine?.Stop();
-            Preview.Source = null;
             _player.Source = null;
             _showingEditedPreview = true;
+            if (PreviewTrimButton is not null) PreviewTrimButton.Content = "Exit preview";
             _player.IsVideoFrameServerEnabled = false;
             VideoCanvas.Visibility = Visibility.Collapsed;
             Preview.Visibility = Visibility.Visible;
+            _player.IsMuted = _userMuted;
+            _player.Volume = _userMuted ? 0 : (VolumeSlider?.Value ?? 1.0);
             _startPreviewWhenReady = true;
             _previewPlaybackDuration = (_trimEndSeconds - _trimStartSeconds) / Math.Clamp(SpeedSlider.Value, 0.5, 2.0);
             _previewFiles.Add(previewPath);
@@ -1425,17 +2232,18 @@ public sealed partial class MainWindow : Window
                 previewSource = MediaSource.CreateFromUri(new Uri(Path.GetFullPath(previewPath)));
             }
 
-            Preview.Source = previewSource;
             _player.Source = previewSource;
-            StatusText.Text = "Playing edited preview";
+            StatusText.Text = "Playing edited preview (Click 'Exit preview' or adjust sliders to return to live editing)";
         }
         catch (OperationCanceledException)
         {
             StatusText.Text = "Preview canceled.";
+            if (PreviewTrimButton is not null) PreviewTrimButton.Content = "Preview edits";
         }
         catch (Exception ex)
         {
             StatusText.Text = ex.Message;
+            if (PreviewTrimButton is not null) PreviewTrimButton.Content = "Preview edits";
             if (File.Exists(previewPath))
             {
                 File.Delete(previewPath);
@@ -1556,13 +2364,19 @@ public sealed partial class MainWindow : Window
             EqBand6Slider?.Value ?? 0
         ],
         (ReverbMixSlider?.Value ?? 0) / 100.0,
-        (ReverbRoomSlider?.Value ?? 50) / 100.0);
+        (ReverbRoomSlider?.Value ?? 50) / 100.0,
+        (_audioEngine?.HasAudioTrack ?? true) || !VideoExtensions.Contains(Path.GetExtension(_sourcePath ?? string.Empty)));
 
     private void VideoAdjustment_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
     {
         if (!_isReady)
         {
             return;
+        }
+
+        if (_showingEditedPreview)
+        {
+            ExitEditedPreview();
         }
 
         if (TemperatureValueText is not null && TemperatureSlider is not null)
@@ -1599,6 +2413,12 @@ public sealed partial class MainWindow : Window
     {
         if (!_isReady)
         {
+            return;
+        }
+
+        if (_showingEditedPreview)
+        {
+            ExitEditedPreview();
             return;
         }
 
@@ -1822,6 +2642,7 @@ public sealed partial class MainWindow : Window
         EqBand4Slider.Value = preset[3];
         EqBand5Slider.Value = preset[4];
         EqBand6Slider.Value = preset[5];
+        ApplyAudioPitchAndSpeed();
     }
 
     private void ResetEq_Click(object sender, RoutedEventArgs e)
@@ -1833,6 +2654,7 @@ public sealed partial class MainWindow : Window
         if (EqBand4Slider is not null) EqBand4Slider.Value = 0;
         if (EqBand5Slider is not null) EqBand5Slider.Value = 0;
         if (EqBand6Slider is not null) EqBand6Slider.Value = 0;
+        ApplyAudioPitchAndSpeed();
     }
 
     private void AutoNormalizeButton_Click(object sender, RoutedEventArgs e)
@@ -1885,6 +2707,7 @@ public sealed partial class MainWindow : Window
 
         if (_showingEditedPreview)
         {
+            ExitEditedPreview();
             return;
         }
 
@@ -1898,29 +2721,27 @@ public sealed partial class MainWindow : Window
 
             var hasActiveEffects = _audioEngine.HasActiveAudioEffects;
             UpdateAudioActiveIndicator(hasActiveEffects);
-            if (hasActiveEffects)
-            {
-                _player.IsMuted = true;
-                _player.Volume = 0;
 
-                if (_player.PlaybackSession?.PlaybackState == MediaPlaybackState.Playing)
+            _player.IsMuted = true;
+            _player.Volume = 0;
+
+            if (_player.PlaybackSession?.PlaybackState == MediaPlaybackState.Playing)
+            {
+                if (!_audioEngine.IsPlaying)
                 {
+                    _audioEngine.Seek(_player.PlaybackSession.Position);
+                    _audioEngine.Play();
                     if (!_audioEngine.IsPlaying)
                     {
-                        _audioEngine.Seek(_player.PlaybackSession.Position);
-                        _audioEngine.Play();
+                        _player.IsMuted = _userMuted;
+                        _player.Volume = _userMuted ? 0 : (VolumeSlider?.Value ?? 1.0);
                     }
                 }
-            }
-            else
-            {
-                _audioEngine.Stop();
-                _player.IsMuted = _userMuted;
-                _player.Volume = _userMuted ? 0 : (VolumeSlider?.Value ?? 1.0);
             }
         }
         else
         {
+            UpdateAudioActiveIndicator(false);
             _player.IsMuted = _userMuted;
             _player.Volume = _userMuted ? 0 : (VolumeSlider?.Value ?? 1.0);
         }
@@ -1929,7 +2750,6 @@ public sealed partial class MainWindow : Window
     private void SyncAudioVolume()
     {
         var vol = VolumeSlider?.Value ?? 1.0;
-        var hasActiveEffects = _audioEngine is not null && _audioEngine.HasActiveAudioEffects;
 
         if (_showingEditedPreview)
         {
@@ -1937,19 +2757,16 @@ public sealed partial class MainWindow : Window
             _player.IsMuted = _userMuted;
             _audioEngine?.Stop();
         }
+        else if (_audioEngine is not null && _audioEngine.HasAudioTrack)
+        {
+            _audioEngine.SetVolume(vol, _userMuted);
+            _player.IsMuted = true;
+            _player.Volume = 0;
+        }
         else
         {
-            _audioEngine?.SetVolume(vol, _userMuted);
-            if (hasActiveEffects)
-            {
-                _player.IsMuted = true;
-                _player.Volume = 0;
-            }
-            else
-            {
-                _player.Volume = _userMuted ? 0 : vol;
-                _player.IsMuted = _userMuted;
-            }
+            _player.Volume = _userMuted ? 0 : vol;
+            _player.IsMuted = _userMuted;
         }
 
         UpdateVolumeControl();
@@ -2114,8 +2931,9 @@ public sealed partial class MainWindow : Window
             if (!_showingEditedPreview && _audioEngine is not null && _audioEngine.IsPlaying)
             {
                 var drift = Math.Abs((_player.PlaybackSession.Position - _audioEngine.CurrentPosition).TotalSeconds);
-                if (drift > 0.85)
+                if (drift > 1.5 && (DateTime.UtcNow - _lastDriftCorrection).TotalSeconds > 2.0)
                 {
+                    _lastDriftCorrection = DateTime.UtcNow;
                     _audioEngine.Seek(_player.PlaybackSession.Position);
                 }
             }

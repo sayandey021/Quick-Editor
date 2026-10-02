@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
+  xmlns:desktop5="http://schemas.microsoft.com/appx/manifest/desktop/windows10/5"
+  xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+  IgnorableNamespaces="uap rescap desktop4 desktop5 com">
+
+  <Identity
+    Name="Saayan.QuickEditor"
+    Publisher="CN=37E2AF47-D2FC-489C-BDC1-02C989A7B989"
+    Version="0.8.0.0" />
+
+  <Properties>
+    <DisplayName>Quick Editor</DisplayName>
+    <PublisherDisplayName>SaayanSoft</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements
+        DisplayName="Quick Editor"
+        Description="Quick Editor - Fast audio and video trimming tool"
+        BackgroundColor="transparent"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png">
+        <uap:DefaultTile ShortName="Quick Editor">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+      </uap:VisualElements>
+      <Extensions>
+        <!-- Windows 11 Modern Context Menu COM Server -->
+        <com:Extension Category="windows.comServer">
+          <com:ComServer>
+            <com:SurrogateServer DisplayName="Quick Editor Context Menu">
+              <com:Class Id="3B4D8A9F-2581-4FE4-8395-927A88C1542F" Path="QuickEditorShell.dll" ThreadingModel="STA"/>
+            </com:SurrogateServer>
+          </com:ComServer>
+        </com:Extension>
+
+        <!-- Windows 11 File Explorer Context Menu Integration -->
+        <desktop4:Extension Category="windows.fileExplorerContextMenus">
+          <desktop4:FileExplorerContextMenus>
+            <desktop5:ItemType Type="*">
+              <desktop5:Verb Id="EditWithQuickEditor" Clsid="3B4D8A9F-2581-4FE4-8395-927A88C1542F" />
+            </desktop5:ItemType>
+          </desktop4:FileExplorerContextMenus>
+        </desktop4:Extension>
+
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="quickeditormedia">
+            <uap:DisplayName>Quick Editor</uap:DisplayName>
+            <uap:SupportedFileTypes>
+              <uap:FileType>.mp4</uap:FileType>
+              <uap:FileType>.mov</uap:FileType>
+              <uap:FileType>.mkv</uap:FileType>
+              <uap:FileType>.avi</uap:FileType>
+              <uap:FileType>.wmv</uap:FileType>
+              <uap:FileType>.webm</uap:FileType>
+              <uap:FileType>.m4v</uap:FileType>
+              <uap:FileType>.mp3</uap:FileType>
+              <uap:FileType>.wav</uap:FileType>
+              <uap:FileType>.m4a</uap:FileType>
+              <uap:FileType>.aac</uap:FileType>
+              <uap:FileType>.flac</uap:FileType>
+              <uap:FileType>.ogg</uap:FileType>
+              <uap:FileType>.wma</uap:FileType>
+              <uap:FileType>.opus</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>

@@ -6,31 +6,117 @@
     xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml">
     <Grid x:Name="RootLayout" Background="{ThemeResource CanvasBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="56" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="36" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Padding="22,0" Background="{ThemeResource PanelBrush}">
+        <Grid x:Name="AppTitleBar" Grid.Row="0" Background="{ThemeResource PanelBrush}" BorderThickness="0,0,0,1" BorderBrush="{ThemeResource LineBrush}" Height="48">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="16" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="12" />
             </Grid.ColumnDefinitions>
-            <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
-                <Border Width="28" Height="28" CornerRadius="7" Background="{ThemeResource AccentBrush}">
-                    <FontIcon Glyph="&#xE768;" FontSize="14" Foreground="White" />
-                </Border>
-                <TextBlock Text="Quick Editor" FontSize="16" FontWeight="SemiBold" Foreground="{ThemeResource InkBrush}" VerticalAlignment="Center" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                <Image Source="ms-appx:///Assets/AppIcon.png" Width="22" Height="22" VerticalAlignment="Center" />
+                <TextBlock Text="Quick Editor" FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource InkBrush}" VerticalAlignment="Center" />
             </StackPanel>
-            <TextBlock x:Name="FileNameText" Grid.Column="1" Text="No file open" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" />
-            <Button x:Name="ThemeToggleButton" Grid.Column="2" Click="ThemeToggleButton_Click" AutomationProperties.Name="Switch to dark theme" ToolTipService.ToolTip="Switch to dark theme" VerticalAlignment="Center" Margin="4,0">
-                <FontIcon x:Name="ThemeToggleGlyph" Glyph="&#xE708;" />
+            <TextBlock x:Name="FileNameText" Grid.Column="2" Text="No file open" FontSize="12" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="12,0" />
+            <Button x:Name="ThemeToggleButton" Grid.Column="3" Width="32" Height="32" Padding="0"
+                    Background="Transparent" BorderBrush="Transparent" BorderThickness="0" CornerRadius="16"
+                    UseSystemFocusVisuals="False"
+                    Click="ThemeToggleButton_Click"
+                    AutomationProperties.Name="Switch theme" ToolTipService.ToolTip="Switch theme"
+                    VerticalAlignment="Center" Margin="3,0">
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBorderBrush" Color="Transparent" />
+                    <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="Transparent" />
+                    <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="Transparent" />
+                    <SolidColorBrush x:Key="ButtonBorderBrushFocused" Color="Transparent" />
+                    <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="Transparent" />
+                    <SolidColorBrush x:Key="FocusStrokeColorOuter" Color="Transparent" />
+                    <SolidColorBrush x:Key="FocusStrokeColorInner" Color="Transparent" />
+                </Button.Resources>
+                <Grid Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center"
+                      RenderTransformOrigin="0.5,0.5">
+                    <Grid.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform x:Name="ThemeGlyphRotate" Angle="0" />
+                            <ScaleTransform x:Name="ThemeGlyphScale" ScaleX="1" ScaleY="1" />
+                        </TransformGroup>
+                    </Grid.RenderTransform>
+                    <FontIcon x:Name="ThemeToggleGlyph" Glyph="&#xE708;" FontSize="15"
+                              Foreground="{ThemeResource InkBrush}"
+                              HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Grid>
             </Button>
-            <Button x:Name="OpenButton" Grid.Column="3" Content="Open file" Click="OpenButton_Click" Margin="8,0" VerticalAlignment="Center" />
-            <Button x:Name="ExportButton" Grid.Column="4" Content="Export copy" Click="ExportButton_Click" Background="{ThemeResource AccentBrush}" Foreground="{ThemeResource AccentForegroundBrush}" VerticalAlignment="Center" IsEnabled="False" />
+            <Button x:Name="OpenButton" Grid.Column="4" Content="Open file" Click="OpenButton_Click" Height="32" Padding="12,0" Margin="4,0" VerticalAlignment="Center" />
+            <Button x:Name="ExportButton" Grid.Column="5" Content="Export copy" Click="ExportButton_Click" Height="32" Padding="12,0" Margin="4,0" Background="{ThemeResource AccentBrush}" Foreground="{ThemeResource AccentForegroundBrush}" VerticalAlignment="Center" IsEnabled="False" />
+
+            <!-- Custom Window Caption Buttons matching the app aesthetic -->
+            <StackPanel Grid.Column="6" Orientation="Horizontal" Spacing="3" VerticalAlignment="Center" Margin="6,0,0,0">
+                <Rectangle Width="1" Height="18" Fill="{ThemeResource LineBrush}" Margin="2,0,6,0" VerticalAlignment="Center" />
+
+                <!-- Minimize Button -->
+                <Button x:Name="MinimizeButton" Width="32" Height="32" Padding="0"
+                        Background="Transparent" BorderBrush="Transparent" BorderThickness="0" CornerRadius="6"
+                        UseSystemFocusVisuals="False"
+                        Click="MinimizeButton_Click"
+                        AutomationProperties.Name="Minimize" ToolTipService.ToolTip="Minimize"
+                        VerticalAlignment="Center">
+                    <Button.Resources>
+                        <SolidColorBrush x:Key="ButtonBorderBrush" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushFocused" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="Transparent" />
+                    </Button.Resources>
+                    <FontIcon Glyph="&#xE921;" FontSize="10" Foreground="{ThemeResource InkBrush}" />
+                </Button>
+
+                <!-- Maximize / Restore Button -->
+                <Button x:Name="MaximizeButton" Width="32" Height="32" Padding="0"
+                        Background="Transparent" BorderBrush="Transparent" BorderThickness="0" CornerRadius="6"
+                        UseSystemFocusVisuals="False"
+                        Click="MaximizeButton_Click"
+                        AutomationProperties.Name="Maximize" ToolTipService.ToolTip="Maximize"
+                        VerticalAlignment="Center">
+                    <Button.Resources>
+                        <SolidColorBrush x:Key="ButtonBorderBrush" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushFocused" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="Transparent" />
+                    </Button.Resources>
+                    <FontIcon x:Name="MaximizeGlyph" Glyph="&#xE922;" FontSize="10" Foreground="{ThemeResource InkBrush}" />
+                </Button>
+
+                <!-- Close Button -->
+                <Button x:Name="CloseButton" Width="32" Height="32" Padding="0"
+                        Background="Transparent" BorderBrush="Transparent" BorderThickness="0" CornerRadius="6"
+                        UseSystemFocusVisuals="False"
+                        Click="CloseButton_Click"
+                        AutomationProperties.Name="Close" ToolTipService.ToolTip="Close"
+                        VerticalAlignment="Center">
+                    <Button.Resources>
+                        <SolidColorBrush x:Key="ButtonBorderBrush" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushFocused" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#E81123" />
+                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#C42B1C" />
+                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#FFFFFF" />
+                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#FFFFFF" />
+                    </Button.Resources>
+                    <FontIcon x:Name="CloseGlyph" Glyph="&#xE8BB;" FontSize="10" Foreground="{ThemeResource InkBrush}" />
+                </Button>
+            </StackPanel>
         </Grid>
 
         <Grid Grid.Row="1" Padding="20" ColumnSpacing="16">
@@ -46,7 +132,7 @@
                 </Grid.RowDefinitions>
                 <Border x:Name="PreviewSurface" Grid.Row="0" Background="{ThemeResource PreviewBrush}" CornerRadius="8" AllowDrop="True" SizeChanged="PreviewSurface_SizeChanged">
                     <Grid>
-                        <media:MediaPlayerElement x:Name="Preview" AreTransportControlsEnabled="False" Stretch="Uniform" />
+                        <media:MediaPlayerElement x:Name="Preview" AutoPlay="False" AreTransportControlsEnabled="False" Stretch="Uniform" />
                         <canvas:CanvasControl x:Name="VideoCanvas" Draw="VideoCanvas_Draw" Visibility="Collapsed" IsHitTestVisible="False" />
                         <Canvas x:Name="CropOverlay"
                             Background="Transparent"
@@ -84,25 +170,27 @@
                                 <FontIcon x:Name="PlaybackGlyph" Glyph="&#xE768;" FontSize="14" />
                             </Button>
                             <Button x:Name="PreviewTrimButton" Grid.Column="2" Content="Preview edits" Click="PreviewTrimButton_Click" IsEnabled="False" Height="32" Padding="10,0" Background="{ThemeResource PanelBrush}" Foreground="{ThemeResource InkBrush}" BorderBrush="{ThemeResource LineBrush}" BorderThickness="1" VerticalAlignment="Center" />
-                            <Border Grid.Column="3" Height="32" Padding="8,0" Background="{ThemeResource CanvasBrush}" CornerRadius="6" VerticalAlignment="Center">
-                                <StackPanel Orientation="Horizontal" Height="32" Spacing="6" VerticalAlignment="Center">
+                            <Border Grid.Column="3" Height="32" Padding="8,0,8,0" Background="{ThemeResource CanvasBrush}" CornerRadius="6" VerticalAlignment="Center">
+                                <StackPanel Orientation="Horizontal" Height="32" Spacing="4" VerticalAlignment="Center">
                                     <Button x:Name="VolumeMuteButton" Width="20" Height="32" Padding="0" Click="VolumeMuteButton_Click" AutomationProperties.Name="Mute" ToolTipService.ToolTip="Mute" Background="Transparent" BorderThickness="0" VerticalAlignment="Center">
                                         <FontIcon x:Name="VolumeGlyph" Glyph="&#xE767;" FontSize="13" Foreground="{ThemeResource MutedBrush}" />
                                     </Button>
-                                    <Slider x:Name="VolumeSlider" Width="88" Height="32" Minimum="0" Maximum="1" Value="1" StepFrequency="0.01" IsThumbToolTipEnabled="False" AutomationProperties.Name="Volume" Foreground="{ThemeResource AccentBrush}" VerticalAlignment="Center" />
-                                    <TextBlock x:Name="VolumePercentText" Text="100%" MinWidth="30" FontSize="10" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" TextAlignment="Right" />
+                                    <Slider x:Name="VolumeSlider" Width="92" Height="32" Padding="10,0,10,0" Minimum="0" Maximum="1" Value="1" StepFrequency="0.01" IsThumbToolTipEnabled="False" AutomationProperties.Name="Volume" Foreground="{ThemeResource AccentBrush}" VerticalAlignment="Center" Margin="2,0,6,0" />
+                                    <TextBlock x:Name="VolumePercentText" Text="100%" MinWidth="34" FontSize="10" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" TextAlignment="Right" />
                                 </StackPanel>
                             </Border>
                             <TextBlock x:Name="DurationText" Grid.Column="5" Text="00:00.0 selected / 00:00.0" HorizontalAlignment="Right" FontSize="11" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" Margin="12,0,0,0" />
                         </Grid>
-                        <Canvas x:Name="TimelineCanvas"
-                            Height="72"
-                            Background="{ThemeResource TimelineBrush}"
-                            PointerPressed="TimelineCanvas_PointerPressed"
-                            PointerMoved="TimelineCanvas_PointerMoved"
-                            PointerReleased="TimelineCanvas_PointerReleased"
-                            PointerCanceled="TimelineCanvas_PointerCanceled"
-                            SizeChanged="TimelineCanvas_SizeChanged" />
+                        <Border Background="{ThemeResource TimelineBrush}" CornerRadius="8">
+                            <Canvas x:Name="TimelineCanvas"
+                                Height="72"
+                                Background="Transparent"
+                                PointerPressed="TimelineCanvas_PointerPressed"
+                                PointerMoved="TimelineCanvas_PointerMoved"
+                                PointerReleased="TimelineCanvas_PointerReleased"
+                                PointerCanceled="TimelineCanvas_PointerCanceled"
+                                SizeChanged="TimelineCanvas_SizeChanged" />
+                        </Border>
                         <Grid ColumnSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />

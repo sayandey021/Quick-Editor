@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.8
+
+- Fixed window movement and dragging: replaced manual `PointerPressed` message dispatch with native `WM_NCHITTEST` subclassing and `AppWindow.TitleBar.SetDragRectangles`, restoring seamless single-motion title bar dragging without requiring a prior click to activate or focus the window, while keeping all interactive title bar controls fully responsive.
+- Cleaned preview status bar text: removed audio output device diagnostic label (`Wave Mapper (System Default)`), displaying a clean and uncluttered `"Preview ready"` message.
+- Added vertical and horizontal axis snapping for video crop: moving, resizing, and drawing crop boxes now automatically snaps to the frame's vertical and horizontal center axes as well as outer boundaries, rendering high-contrast amber alignment guidelines and pill badges ("Center X", "Center Y", "Left", "Right", "Top", "Bottom") during active drag operations for precision centering and alignment.
+- Integrated custom Fluent title bar and matching window caption buttons: replaced harsh native Windows system buttons with custom styled Minimize, Maximize/Restore, and Close buttons (`CornerRadius="6"`, 32x32) that perfectly match the app's aesthetic and vertical alignment, featuring Segoe Fluent icons (`\uE921`, `\uE922` / `\uE923`, `\uE8BB`), dynamic theme ink colors, square with rounded corners hover highlights, and smooth red close hover effects while preserving native window dragging and double-click to maximize.
+- Improved theme toggle with borderless design, fluid animation, and Windows default theme compliance: removed the square rectangular button border in favor of a sleek circular icon button with subtle hover highlights, implemented a 360-degree rotation and spring-bounce scale morph animation when switching between Moon and Sun modes, and configured the application to automatically detect and obey the Windows system default theme on startup with live dynamic synchronization.
+- Updated playhead to vibrant red across all themes: styled both the timeline scrubber (stem and circular head) and the audio waveform viewport playhead in persistent high-visibility red (`#FF3B30`), ensuring instant contrast against light and dark media backgrounds alike.
+- Fixed volume slider knob overlapping and clipping: added internal horizontal padding (`Padding="10,0,10,0"`) and adjusted slider layout dimensions on `VolumeSlider` so the thumb knob and circular hover halo at 100% volume have full breathing room and render as a complete circle without being clipped flat by the control boundaries or colliding with the percentage text.
+- Enlarged Taskbar and Start Menu icon: cropped excess outer transparent padding and scaled the icon full-bleed edge-to-edge across all ICO resolutions (including high-DPI steps 16, 20, 24, 30, 32, 36, 40, 48, 64, 72, 96, 128, 256), matching standard Windows app icon dimensions on the taskbar and start menu.
+- Styled timeline with rounded corners: wrapped `TimelineCanvas` in a `Border` with `CornerRadius="8"` and rendered all timeline tracks, unselected trims, and selection highlights using smooth `CornerRadius` segments (`AddTrackSegment`) with rounded line caps on guide lines, eliminating sharp rectangular corners across the trim interface.
+- Set default app icon across the entire application: generated multi-size Windows icon (`Assets/AppIcon.ico`) with full resolution hierarchy (16x16 through 256x256), embedded as PE application icon in `QuickEditor.csproj`, assigned to `AppWindow.SetIcon` for title bar and taskbar, added in-app header branding image, and linked to File Explorer context menu.
+
+## 0.7
+
+- Fixed audio playback failure (`E_NOINTERFACE` / `InvalidCastException` on `IMFSourceReader`): eliminated the probe read during `AudioPitchEngine.Load` that contaminated Media Foundation COM apartment state across background playback threads, upgraded fallback decode to native `WaveFileReader`, and added automatic `MediaPlayer` fallback recovery on audio driver/device playback stop.
+- Fixed audio playback routing: configured NAudio `WaveOutEvent` as primary output targeting the Windows system default device (`WAVE_MAPPER`), dynamically outputting to headphones, monitors, Bluetooth, or speakers without format mismatches or WASAPI device-binding lockouts.
+- Added `ThreadSafeSampleProvider` in `AudioPitchEngine` to prevent concurrent access between real-time audio threads and seek operations on `MediaFoundationReader`.
+- Fixed speed change clock tracking in `AudioPitchEngine.SetPitchAndSpeed`, maintaining seamless playback position without artificial drift triggers.
+- Added automatic fallback to `MediaPlayer` audio output if physical output devices fail to initialize or play, ensuring media playback is never completely silent.
+- Displayed active audio output device in the preview status bar for immediate visual confirmation.
+- Fixed live audio preview routing: made `AudioPitchEngine` the exclusive audio pipeline during playback, preventing Windows Media Player from bypassing real-time EQ, pitch shifting, reverb, and volume boost.
+- Fixed `MediaPlayerElement` auto-play and dual-player collision: removed duplicate `Preview.Source` assignments and disabled AutoPlay on `Preview`.
+- Fixed FFmpeg standard error pipe buffer deadlock in `AudioPitchEngine.ExtractAudioToWav` by consuming stderr asynchronously.
+- Improved audio format detection and fallback in `AudioPitchEngine.Load`, ensuring zero-sample decoding attempts automatically fallback to FFmpeg extraction.
+- Fixed export audio track detection in `GetAdjustments`, ensuring audio filters (pitch, EQ, reverb, volume boost, normalize) are always applied to exported media.
+- Fixed live audio preview when changing EQ, Pitch, Volume Boost, Normalization, and Reverb: eliminated the 40Hz seek loop caused by pre-buffered `MediaFoundationReader` read position.
+- Implemented high-precision Stopwatch-based playback clock tracking in `AudioPitchEngine` for synchronized real-time audio playback without dropouts or stutter.
+- Upgraded `BypassablePitchShifterSampleProvider` to independent dual-channel (stereo) phase vocoder processing using `NAudio.Dsp.SmbPitchShifter`, preventing cross-channel phase distortion.
+- Fixed preview edit lockout: adjusting any audio or video slider or scrubbing the timeline now automatically exits the static pre-rendered preview and returns to live real-time editing.
+- Added automatic FFmpeg fallback audio decode in `AudioPitchEngine.Load` for 100% format support, including OGG, Opus, and unsupported containers.
+- Fixed export audio adjustments in `MediaExportService`: corrected input trim duration (`-t durationSeconds`), placed loudness normalization before volume boost, and added universal `atempo` support.
+- Fixed native access violation crash (0xC0000005) caused by unsafe Media Foundation resampler buffer repositioning during seeks.
+
 ## 0.6
 
 - Added dedicated **Video** and **Audio** adjustment tabs in the sidebar for instant one-click switching, preventing audio controls from being hidden below the video sliders.

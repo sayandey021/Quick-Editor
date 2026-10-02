@@ -23,14 +23,16 @@ The Windows media player handles audio/video playback. FFmpeg performs trim, cro
 
 ## File Explorer menu
 
-The Explorer action is an optional per-user registration. After building, run:
+You can easily integrate Quick Editor into the Windows 10 & 11 right-click context menu:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\Register-ExplorerMenu.ps1 -AppPath .\bin\x64\Debug\net8.0-windows10.0.19041.0\QuickEditor.exe
-```
+- **Option 1 (One-click batch):** Double-click `AddContextMenu.bat` to register or `RemoveContextMenu.bat` to remove.
+- **Option 2 (PowerShell):** Run:
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File .\Register-ExplorerMenu.ps1
+  ```
+  Or to unregister:
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File .\Register-ExplorerMenu.ps1 -Unregister
+  ```
 
-This adds **Edit with Quick Editor** to audio and video context menus for the current Windows user. The app reads the selected file from its command-line arguments. Remove the menu with:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\Register-ExplorerMenu.ps1 -Unregister
-```
+This adds **Edit with Quick Editor** (with icon) to audio and video files across Windows 10 and Windows 11 (under the main menu and *Show more options*), and includes Quick Editor in the Windows **Open with** list. For MSIX packaged installations, file associations are automatically registered upon installation.
