@@ -132,3 +132,9 @@ Recommended Requirements:
 • Publisher: SaayanSoft
 • Package ID: Saayan.QuickEditor
 • License: Standard Application License
+
+--------------------------------------------------------------------------------
+10. PRIVACY POLICY URL (For Microsoft Partner Center Submission)
+--------------------------------------------------------------------------------
+https://github.com/sayandey021/Quick-Editor/blob/main/PRIVACY.md
+(or raw link: https://raw.githubusercontent.com/sayandey021/Quick-Editor/main/PRIVACY.md)
