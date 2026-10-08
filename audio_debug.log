@@ -4289,3 +4289,1454 @@
 [16:27:26.143] Seek(0.00s) invoked.
 [16:27:26.145] Seek(0.00s) invoked.
 [16:27:26.328] Seek(0.00s) invoked.
+[17:59:18.419] Load() started for: C:\Users\sayan\Downloads\Kaavish Tairay Naam.mp3
+[17:59:18.508] _reader created: SampleRate=44100, Ch=2, TotalTime=00:05:27.1313095
+[17:59:18.589] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[17:59:18.589] Load() finished successfully. HasAudioTrack=True
+[17:59:18.593] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[17:59:18.593] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[17:59:18.598] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[17:59:18.599] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[17:59:19.853] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[17:59:35.665] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=0.00, HasAudioTrack=True, EngineIsPlaying=False
+[17:59:35.666] Seek(0.00s) invoked.
+[17:59:35.667] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Stopped, Volume=1, IsMuted=False
+[17:59:35.668] _outputDevice.Play() executed. New state=Playing
+[17:59:35.687] Read #1: requested=3000, read=3000, maxSample=0.000000
+[17:59:35.688] Read #2: requested=3000, read=3000, maxSample=0.000000
+[17:59:35.689] Read #3: requested=3000, read=3000, maxSample=0.000000
+[17:59:35.749] Read #4: requested=3000, read=3000, maxSample=0.000000
+[17:59:35.777] Read #5: requested=3000, read=3000, maxSample=0.000000
+[17:59:35.817] Read #6: requested=3000, read=3000, maxSample=0.000000
+[17:59:35.847] Read #7: requested=3000, read=3000, maxSample=0.000000
+[17:59:35.877] Read #8: requested=3000, read=3000, maxSample=0.000000
+[17:59:35.917] Read #9: requested=3000, read=3000, maxSample=0.000000
+[17:59:35.947] Read #10: requested=3000, read=3000, maxSample=0.000000
+[17:59:37.320] Read #50: requested=3000, read=3000, maxSample=0.000000
+[17:59:38.873] MainWindow.PlaybackButton_Click: session.State=Playing, Pos=3.20, HasAudioTrack=True, EngineIsPlaying=True
+[17:59:38.874] Pause() invoked. Current state=Playing
+[17:59:38.878] _outputDevice.Pause() executed. New state=Paused
+[17:59:44.928] Seek(24.56s) invoked.
+[17:59:44.976] Seek(25.25s) invoked.
+[17:59:44.999] Seek(25.71s) invoked.
+[17:59:45.006] Seek(25.71s) invoked.
+[17:59:45.015] Seek(25.94s) invoked.
+[17:59:45.024] Seek(26.17s) invoked.
+[17:59:45.030] Seek(26.63s) invoked.
+[17:59:45.040] Seek(27.32s) invoked.
+[17:59:45.052] Seek(28.01s) invoked.
+[17:59:45.056] Seek(28.93s) invoked.
+[17:59:45.064] Seek(29.61s) invoked.
+[17:59:45.070] Seek(30.07s) invoked.
+[17:59:45.077] Seek(30.07s) invoked.
+[17:59:45.079] Seek(31.22s) invoked.
+[17:59:45.088] Seek(31.68s) invoked.
+[17:59:45.094] Seek(33.06s) invoked.
+[17:59:45.103] Seek(33.29s) invoked.
+[17:59:45.111] Seek(34.43s) invoked.
+[17:59:45.122] Seek(34.89s) invoked.
+[17:59:45.128] Seek(36.04s) invoked.
+[17:59:45.135] Seek(36.50s) invoked.
+[17:59:45.144] Seek(36.96s) invoked.
+[17:59:45.150] Seek(37.19s) invoked.
+[17:59:45.160] Seek(37.65s) invoked.
+[17:59:45.188] Seek(37.88s) invoked.
+[17:59:45.208] Seek(38.34s) invoked.
+[17:59:45.351] Seek(38.57s) invoked.
+[17:59:45.367] Seek(38.80s) invoked.
+[17:59:45.377] Seek(39.49s) invoked.
+[17:59:45.387] Seek(39.94s) invoked.
+[17:59:45.393] Seek(40.86s) invoked.
+[17:59:45.404] Seek(42.01s) invoked.
+[17:59:45.410] Seek(43.16s) invoked.
+[17:59:45.418] Seek(44.31s) invoked.
+[17:59:45.422] Seek(45.68s) invoked.
+[17:59:45.430] Seek(46.83s) invoked.
+[17:59:45.440] Seek(48.90s) invoked.
+[17:59:45.446] Seek(50.27s) invoked.
+[17:59:45.456] Seek(51.88s) invoked.
+[17:59:45.467] Seek(53.72s) invoked.
+[17:59:45.472] Seek(55.10s) invoked.
+[17:59:45.484] Seek(57.62s) invoked.
+[17:59:45.487] Seek(59.00s) invoked.
+[17:59:45.494] Seek(60.15s) invoked.
+[17:59:45.503] Seek(61.06s) invoked.
+[17:59:45.515] Seek(61.75s) invoked.
+[17:59:45.519] Seek(62.44s) invoked.
+[17:59:45.527] Seek(62.67s) invoked.
+[17:59:45.545] Seek(63.36s) invoked.
+[17:59:45.560] Seek(63.82s) invoked.
+[17:59:45.567] Seek(64.28s) invoked.
+[17:59:45.576] Seek(64.28s) invoked.
+[17:59:45.585] Seek(64.74s) invoked.
+[17:59:45.596] Seek(65.66s) invoked.
+[17:59:45.599] Seek(65.89s) invoked.
+[17:59:45.610] Seek(67.03s) invoked.
+[17:59:45.627] Seek(68.18s) invoked.
+[17:59:45.631] Seek(69.33s) invoked.
+[17:59:45.641] Seek(70.25s) invoked.
+[17:59:45.646] Seek(70.48s) invoked.
+[17:59:45.656] Seek(71.17s) invoked.
+[17:59:45.664] Seek(71.39s) invoked.
+[17:59:45.759] Seek(70.25s) invoked.
+[17:59:45.765] Seek(68.87s) invoked.
+[17:59:45.776] Seek(65.89s) invoked.
+[17:59:45.783] Seek(63.36s) invoked.
+[17:59:45.793] Seek(60.15s) invoked.
+[17:59:45.799] Seek(56.70s) invoked.
+[17:59:45.807] Seek(52.34s) invoked.
+[17:59:45.815] Seek(49.59s) invoked.
+[17:59:45.827] Seek(46.83s) invoked.
+[17:59:45.831] Seek(44.99s) invoked.
+[17:59:45.840] Seek(43.39s) invoked.
+[17:59:45.855] Seek(42.47s) invoked.
+[17:59:45.860] Seek(41.55s) invoked.
+[17:59:45.864] Seek(41.09s) invoked.
+[17:59:45.873] Seek(40.40s) invoked.
+[17:59:45.886] Seek(40.17s) invoked.
+[17:59:45.888] Seek(39.94s) invoked.
+[17:59:45.903] Seek(39.49s) invoked.
+[17:59:45.921] Seek(38.80s) invoked.
+[17:59:45.927] Seek(38.34s) invoked.
+[17:59:45.934] Seek(37.65s) invoked.
+[17:59:45.944] Seek(37.19s) invoked.
+[17:59:45.950] Seek(36.27s) invoked.
+[17:59:45.960] Seek(35.35s) invoked.
+[17:59:45.968] Seek(34.89s) invoked.
+[17:59:45.977] Seek(34.43s) invoked.
+[17:59:45.983] Seek(33.75s) invoked.
+[17:59:46.003] Seek(33.06s) invoked.
+[17:59:46.091] Seek(33.06s) invoked.
+[17:59:46.118] Seek(33.75s) invoked.
+[17:59:46.127] Seek(35.35s) invoked.
+[17:59:46.136] Seek(38.57s) invoked.
+[17:59:46.144] Seek(40.86s) invoked.
+[17:59:46.155] Seek(44.31s) invoked.
+[17:59:46.160] Seek(48.90s) invoked.
+[17:59:46.170] Seek(53.49s) invoked.
+[17:59:46.177] Seek(59.23s) invoked.
+[17:59:46.185] Seek(65.66s) invoked.
+[17:59:46.193] Seek(71.85s) invoked.
+[17:59:46.199] Seek(77.82s) invoked.
+[17:59:46.210] Seek(84.02s) invoked.
+[17:59:46.215] Seek(91.14s) invoked.
+[17:59:46.222] Seek(96.42s) invoked.
+[17:59:46.233] Seek(102.85s) invoked.
+[17:59:46.240] Seek(108.81s) invoked.
+[17:59:46.246] Seek(114.09s) invoked.
+[17:59:46.257] Seek(120.52s) invoked.
+[17:59:46.266] Seek(125.11s) invoked.
+[17:59:46.272] Seek(129.93s) invoked.
+[17:59:46.280] Seek(134.98s) invoked.
+[17:59:46.287] Seek(140.26s) invoked.
+[17:59:46.296] Seek(145.77s) invoked.
+[17:59:46.308] Seek(150.14s) invoked.
+[17:59:46.313] Seek(155.42s) invoked.
+[17:59:46.321] Seek(160.93s) invoked.
+[17:59:46.328] Seek(165.52s) invoked.
+[17:59:46.334] Seek(170.34s) invoked.
+[17:59:46.344] Seek(175.39s) invoked.
+[17:59:46.352] Seek(179.29s) invoked.
+[17:59:46.361] Seek(183.42s) invoked.
+[17:59:46.368] Seek(187.33s) invoked.
+[17:59:46.376] Seek(190.54s) invoked.
+[17:59:46.384] Seek(193.52s) invoked.
+[17:59:46.401] Seek(200.18s) invoked.
+[17:59:46.411] Seek(204.08s) invoked.
+[17:59:46.420] Seek(207.99s) invoked.
+[17:59:46.424] Seek(211.66s) invoked.
+[17:59:46.430] Seek(214.87s) invoked.
+[17:59:46.440] Seek(218.32s) invoked.
+[17:59:46.446] Seek(220.84s) invoked.
+[17:59:46.457] Seek(223.83s) invoked.
+[17:59:46.469] Seek(227.50s) invoked.
+[17:59:46.472] Seek(230.25s) invoked.
+[17:59:46.479] Seek(232.55s) invoked.
+[17:59:46.493] Seek(235.53s) invoked.
+[17:59:46.499] Seek(237.37s) invoked.
+[17:59:46.510] Seek(239.44s) invoked.
+[17:59:46.519] Seek(241.27s) invoked.
+[17:59:46.521] Seek(243.57s) invoked.
+[17:59:46.528] Seek(244.49s) invoked.
+[17:59:46.533] Seek(245.87s) invoked.
+[17:59:46.543] Seek(247.47s) invoked.
+[17:59:46.552] Seek(249.77s) invoked.
+[17:59:46.563] Seek(250.69s) invoked.
+[17:59:46.568] Seek(251.83s) invoked.
+[17:59:46.577] Seek(253.90s) invoked.
+[17:59:46.583] Seek(255.74s) invoked.
+[17:59:46.589] Seek(257.11s) invoked.
+[17:59:46.598] Seek(258.72s) invoked.
+[17:59:46.611] Seek(258.95s) invoked.
+[17:59:46.619] Seek(259.41s) invoked.
+[17:59:46.629] Seek(260.33s) invoked.
+[17:59:47.023] Seek(259.64s) invoked.
+[17:59:47.079] Seek(261.02s) invoked.
+[17:59:47.082] Seek(261.02s) invoked.
+[17:59:47.090] Seek(262.62s) invoked.
+[17:59:47.100] Seek(264.92s) invoked.
+[17:59:47.103] Seek(266.53s) invoked.
+[17:59:47.112] Seek(268.82s) invoked.
+[17:59:47.119] Seek(271.35s) invoked.
+[17:59:47.128] Seek(273.87s) invoked.
+[17:59:47.135] Seek(276.86s) invoked.
+[17:59:47.155] Seek(281.68s) invoked.
+[17:59:47.161] Seek(283.97s) invoked.
+[17:59:47.166] Seek(285.58s) invoked.
+[17:59:47.176] Seek(286.73s) invoked.
+[17:59:47.188] Seek(288.11s) invoked.
+[17:59:47.193] Seek(288.79s) invoked.
+[17:59:47.201] Seek(289.71s) invoked.
+[17:59:47.214] Seek(290.40s) invoked.
+[17:59:47.247] Seek(290.40s) invoked.
+[17:59:47.254] Seek(290.63s) invoked.
+[17:59:47.263] Seek(291.32s) invoked.
+[17:59:47.272] Seek(292.70s) invoked.
+[17:59:47.278] Seek(293.84s) invoked.
+[17:59:47.289] Seek(296.14s) invoked.
+[17:59:47.295] Seek(298.44s) invoked.
+[17:59:47.302] Seek(300.04s) invoked.
+[17:59:47.310] Seek(301.65s) invoked.
+[17:59:47.318] Seek(302.57s) invoked.
+[17:59:47.329] Seek(303.03s) invoked.
+[17:59:47.406] Seek(301.65s) invoked.
+[17:59:47.415] Seek(299.12s) invoked.
+[17:59:47.423] Seek(296.83s) invoked.
+[17:59:47.431] Seek(293.61s) invoked.
+[17:59:47.438] Seek(289.94s) invoked.
+[17:59:47.454] Seek(285.81s) invoked.
+[17:59:47.465] Seek(275.25s) invoked.
+[17:59:47.470] Seek(268.13s) invoked.
+[17:59:47.479] Seek(260.33s) invoked.
+[17:59:47.488] Seek(253.90s) invoked.
+[17:59:47.495] Seek(248.62s) invoked.
+[17:59:47.502] Seek(243.11s) invoked.
+[17:59:47.513] Seek(237.14s) invoked.
+[17:59:47.520] Seek(231.86s) invoked.
+[17:59:47.528] Seek(227.04s) invoked.
+[17:59:47.540] Seek(222.45s) invoked.
+[17:59:47.552] Seek(214.18s) invoked.
+[17:59:47.566] Seek(210.97s) invoked.
+[17:59:47.569] Seek(208.45s) invoked.
+[17:59:47.581] Seek(205.69s) invoked.
+[17:59:47.583] Seek(203.85s) invoked.
+[17:59:47.593] Seek(201.79s) invoked.
+[17:59:47.598] Seek(199.72s) invoked.
+[17:59:47.610] Seek(196.97s) invoked.
+[17:59:47.617] Seek(194.90s) invoked.
+[17:59:47.627] Seek(192.15s) invoked.
+[17:59:47.630] Seek(189.62s) invoked.
+[17:59:47.640] Seek(186.64s) invoked.
+[17:59:47.647] Seek(183.19s) invoked.
+[17:59:47.653] Seek(179.98s) invoked.
+[17:59:47.662] Seek(176.08s) invoked.
+[17:59:47.669] Seek(171.26s) invoked.
+[17:59:47.678] Seek(167.12s) invoked.
+[17:59:47.687] Seek(161.16s) invoked.
+[17:59:47.698] Seek(156.33s) invoked.
+[17:59:47.704] Seek(151.28s) invoked.
+[17:59:47.712] Seek(146.92s) invoked.
+[17:59:47.727] Seek(137.97s) invoked.
+[17:59:47.739] Seek(134.07s) invoked.
+[17:59:47.745] Seek(129.93s) invoked.
+[17:59:47.751] Seek(126.03s) invoked.
+[17:59:47.761] Seek(122.59s) invoked.
+[17:59:47.770] Seek(118.69s) invoked.
+[17:59:47.773] Seek(115.47s) invoked.
+[17:59:47.788] Seek(111.80s) invoked.
+[17:59:47.794] Seek(108.36s) invoked.
+[17:59:47.801] Seek(105.37s) invoked.
+[17:59:47.808] Seek(101.93s) invoked.
+[17:59:47.813] Seek(98.48s) invoked.
+[17:59:47.823] Seek(95.04s) invoked.
+[17:59:47.835] Seek(91.60s) invoked.
+[17:59:47.839] Seek(88.61s) invoked.
+[17:59:47.848] Seek(84.94s) invoked.
+[17:59:47.856] Seek(82.41s) invoked.
+[17:59:47.862] Seek(79.66s) invoked.
+[17:59:47.877] Seek(76.90s) invoked.
+[17:59:47.890] Seek(71.85s) invoked.
+[17:59:47.895] Seek(68.18s) invoked.
+[17:59:47.903] Seek(65.89s) invoked.
+[17:59:47.911] Seek(63.13s) invoked.
+[17:59:47.920] Seek(59.92s) invoked.
+[17:59:47.927] Seek(57.85s) invoked.
+[17:59:47.940] Seek(55.10s) invoked.
+[17:59:47.945] Seek(53.49s) invoked.
+[17:59:47.951] Seek(52.11s) invoked.
+[17:59:47.960] Seek(50.27s) invoked.
+[17:59:47.966] Seek(49.13s) invoked.
+[17:59:47.974] Seek(47.98s) invoked.
+[17:59:47.984] Seek(46.83s) invoked.
+[17:59:47.993] Seek(46.60s) invoked.
+[17:59:48.000] Seek(45.91s) invoked.
+[17:59:48.010] Seek(45.68s) invoked.
+[17:59:48.021] Seek(45.22s) invoked.
+[17:59:48.030] Seek(44.99s) invoked.
+[17:59:48.092] Seek(44.99s) invoked.
+[17:59:48.144] Seek(45.68s) invoked.
+[17:59:48.150] Seek(47.29s) invoked.
+[17:59:48.159] Seek(50.73s) invoked.
+[17:59:48.166] Seek(54.64s) invoked.
+[17:59:48.176] Seek(59.23s) invoked.
+[17:59:48.187] Seek(65.66s) invoked.
+[17:59:48.198] Seek(82.41s) invoked.
+[17:59:48.210] Seek(93.20s) invoked.
+[17:59:48.216] Seek(103.76s) invoked.
+[17:59:48.223] Seek(113.18s) invoked.
+[17:59:48.232] Seek(125.34s) invoked.
+[17:59:48.239] Seek(136.13s) invoked.
+[17:59:48.250] Seek(147.38s) invoked.
+[17:59:48.254] Seek(159.55s) invoked.
+[17:59:48.263] Seek(171.26s) invoked.
+[17:59:48.274] Seek(179.98s) invoked.
+[17:59:48.278] Seek(188.70s) invoked.
+[17:59:48.288] Seek(196.74s) invoked.
+[17:59:48.294] Seek(203.85s) invoked.
+[17:59:48.304] Seek(210.05s) invoked.
+[17:59:48.311] Seek(216.02s) invoked.
+[17:59:48.319] Seek(220.38s) invoked.
+[17:59:48.328] Seek(226.12s) invoked.
+[17:59:48.335] Seek(232.55s) invoked.
+[17:59:48.345] Seek(237.83s) invoked.
+[17:59:48.353] Seek(243.80s) invoked.
+[17:59:48.360] Seek(248.62s) invoked.
+[17:59:48.366] Seek(252.98s) invoked.
+[17:59:48.377] Seek(256.88s) invoked.
+[17:59:48.385] Seek(260.33s) invoked.
+[17:59:48.393] Seek(263.54s) invoked.
+[17:59:48.401] Seek(266.76s) invoked.
+[17:59:48.408] Seek(269.74s) invoked.
+[17:59:48.415] Seek(272.49s) invoked.
+[17:59:48.423] Seek(274.56s) invoked.
+[17:59:48.433] Seek(276.40s) invoked.
+[17:59:48.446] Seek(278.69s) invoked.
+[17:59:48.455] Seek(282.37s) invoked.
+[17:59:48.463] Seek(284.89s) invoked.
+[17:59:48.470] Seek(287.19s) invoked.
+[17:59:48.479] Seek(289.71s) invoked.
+[17:59:48.488] Seek(291.55s) invoked.
+[17:59:48.497] Seek(293.16s) invoked.
+[17:59:48.501] Seek(294.76s) invoked.
+[17:59:48.512] Seek(296.14s) invoked.
+[17:59:48.519] Seek(296.83s) invoked.
+[17:59:48.527] Seek(297.52s) invoked.
+[17:59:48.535] Seek(297.75s) invoked.
+[17:59:48.566] Seek(298.21s) invoked.
+[17:59:48.602] Seek(298.21s) invoked.
+[17:59:48.631] Seek(298.21s) invoked.
+[17:59:48.694] Seek(298.67s) invoked.
+[17:59:48.719] Seek(299.12s) invoked.
+[17:59:48.750] Seek(299.81s) invoked.
+[17:59:48.766] Seek(300.04s) invoked.
+[17:59:48.785] Seek(300.73s) invoked.
+[17:59:48.795] Seek(300.96s) invoked.
+[17:59:48.869] Seek(301.88s) invoked.
+[17:59:48.872] Seek(303.03s) invoked.
+[17:59:48.881] Seek(303.49s) invoked.
+[17:59:48.888] Seek(303.95s) invoked.
+[17:59:48.924] Seek(305.78s) invoked.
+[17:59:48.933] Seek(306.24s) invoked.
+[17:59:48.944] Seek(307.16s) invoked.
+[17:59:48.952] Seek(307.85s) invoked.
+[17:59:48.961] Seek(308.08s) invoked.
+[17:59:48.966] Seek(308.77s) invoked.
+[17:59:48.976] Seek(309.45s) invoked.
+[17:59:48.993] Seek(309.68s) invoked.
+[17:59:49.062] Seek(308.77s) invoked.
+[17:59:49.071] Seek(306.24s) invoked.
+[17:59:49.078] Seek(302.34s) invoked.
+[17:59:49.090] Seek(297.75s) invoked.
+[17:59:49.095] Seek(297.75s) invoked.
+[17:59:49.103] Seek(282.83s) invoked.
+[17:59:49.116] Seek(273.18s) invoked.
+[17:59:49.120] Seek(263.54s) invoked.
+[17:59:49.127] Seek(255.05s) invoked.
+[17:59:49.135] Seek(246.09s) invoked.
+[17:59:49.144] Seek(238.75s) invoked.
+[17:59:49.151] Seek(232.32s) invoked.
+[17:59:49.162] Seek(227.50s) invoked.
+[17:59:49.302] Seek(216.48s) invoked.
+[17:59:49.305] Seek(181.13s) invoked.
+[17:59:49.357] Seek(161.84s) invoked.
+[17:59:49.361] Seek(146.00s) invoked.
+[17:59:49.407] Seek(131.08s) invoked.
+[17:59:49.423] Seek(81.27s) invoked.
+[17:59:49.429] Seek(78.51s) invoked.
+[17:59:49.434] Seek(76.90s) invoked.
+[17:59:49.443] Seek(75.30s) invoked.
+[17:59:49.447] Seek(73.00s) invoked.
+[17:59:49.454] Seek(71.85s) invoked.
+[17:59:49.462] Seek(69.79s) invoked.
+[17:59:49.477] Seek(68.64s) invoked.
+[17:59:49.481] Seek(67.26s) invoked.
+[17:59:49.488] Seek(65.89s) invoked.
+[17:59:49.495] Seek(64.74s) invoked.
+[17:59:49.510] Seek(63.82s) invoked.
+[17:59:49.516] Seek(63.36s) invoked.
+[17:59:49.533] Seek(62.21s) invoked.
+[17:59:49.543] Seek(61.52s) invoked.
+[17:59:49.559] Seek(61.06s) invoked.
+[17:59:49.565] Seek(60.61s) invoked.
+[17:59:49.576] Seek(60.15s) invoked.
+[17:59:49.590] Seek(59.46s) invoked.
+[17:59:49.600] Seek(59.46s) invoked.
+[17:59:49.604] Seek(59.00s) invoked.
+[17:59:49.610] Seek(57.85s) invoked.
+[17:59:49.622] Seek(56.93s) invoked.
+[17:59:49.633] Seek(56.01s) invoked.
+[17:59:49.639] Seek(55.55s) invoked.
+[17:59:49.651] Seek(53.72s) invoked.
+[17:59:49.654] Seek(53.49s) invoked.
+[17:59:49.662] Seek(52.11s) invoked.
+[17:59:49.671] Seek(51.42s) invoked.
+[17:59:49.683] Seek(50.50s) invoked.
+[17:59:49.687] Seek(49.59s) invoked.
+[17:59:49.695] Seek(47.98s) invoked.
+[17:59:49.704] Seek(46.60s) invoked.
+[17:59:49.711] Seek(45.22s) invoked.
+[17:59:49.718] Seek(44.31s) invoked.
+[17:59:49.728] Seek(43.39s) invoked.
+[17:59:49.735] Seek(42.47s) invoked.
+[17:59:49.743] Seek(41.78s) invoked.
+[17:59:49.752] Seek(41.55s) invoked.
+[17:59:49.933] Seek(42.01s) invoked.
+[17:59:49.943] Seek(42.70s) invoked.
+[17:59:49.952] Seek(43.62s) invoked.
+[17:59:49.960] Seek(45.22s) invoked.
+[17:59:49.967] Seek(47.98s) invoked.
+[17:59:49.977] Seek(50.27s) invoked.
+[17:59:49.985] Seek(52.34s) invoked.
+[17:59:49.990] Seek(54.41s) invoked.
+[17:59:49.998] Seek(57.85s) invoked.
+[17:59:50.009] Seek(60.83s) invoked.
+[17:59:50.014] Seek(64.05s) invoked.
+[17:59:50.023] Seek(67.95s) invoked.
+[17:59:50.030] Seek(70.94s) invoked.
+[17:59:50.039] Seek(73.69s) invoked.
+[17:59:50.046] Seek(76.90s) invoked.
+[17:59:50.055] Seek(79.89s) invoked.
+[17:59:50.061] Seek(83.33s) invoked.
+[17:59:50.071] Seek(86.55s) invoked.
+[17:59:50.083] Seek(90.22s) invoked.
+[17:59:50.088] Seek(94.35s) invoked.
+[17:59:50.093] Seek(94.35s) invoked.
+[17:59:50.096] Seek(98.25s) invoked.
+[17:59:50.102] Seek(102.16s) invoked.
+[17:59:50.111] Seek(105.37s) invoked.
+[17:59:50.118] Seek(108.81s) invoked.
+[17:59:50.127] Seek(112.49s) invoked.
+[17:59:50.134] Seek(115.70s) invoked.
+[17:59:50.153] Seek(122.82s) invoked.
+[17:59:50.160] Seek(125.80s) invoked.
+[17:59:50.167] Seek(129.25s) invoked.
+[17:59:50.181] Seek(133.38s) invoked.
+[17:59:50.183] Seek(137.97s) invoked.
+[17:59:50.190] Seek(142.79s) invoked.
+[17:59:50.197] Seek(148.07s) invoked.
+[17:59:50.217] Seek(159.55s) invoked.
+[17:59:50.227] Seek(165.75s) invoked.
+[17:59:50.237] Seek(172.86s) invoked.
+[17:59:50.246] Seek(187.10s) invoked.
+[17:59:50.260] Seek(194.90s) invoked.
+[17:59:50.263] Seek(202.94s) invoked.
+[17:59:50.270] Seek(210.05s) invoked.
+[17:59:50.280] Seek(217.63s) invoked.
+[17:59:50.287] Seek(224.74s) invoked.
+[17:59:50.299] Seek(231.86s) invoked.
+[17:59:50.302] Seek(238.06s) invoked.
+[17:59:50.311] Seek(243.57s) invoked.
+[17:59:50.320] Seek(247.70s) invoked.
+[17:59:50.328] Seek(250.92s) invoked.
+[17:59:50.333] Seek(254.13s) invoked.
+[17:59:50.345] Seek(257.11s) invoked.
+[17:59:50.351] Seek(260.10s) invoked.
+[17:59:50.360] Seek(261.93s) invoked.
+[17:59:50.367] Seek(263.54s) invoked.
+[17:59:50.377] Seek(265.84s) invoked.
+[17:59:50.383] Seek(267.21s) invoked.
+[17:59:50.391] Seek(267.67s) invoked.
+[17:59:50.398] Seek(268.36s) invoked.
+[17:59:50.409] Seek(269.28s) invoked.
+[17:59:50.419] Seek(269.74s) invoked.
+[17:59:50.424] Seek(269.97s) invoked.
+[17:59:50.432] Seek(270.43s) invoked.
+[17:59:50.455] Seek(270.66s) invoked.
+[17:59:50.486] Seek(270.89s) invoked.
+[17:59:50.567] Seek(270.66s) invoked.
+[17:59:50.574] Seek(267.44s) invoked.
+[17:59:50.583] Seek(263.77s) invoked.
+[17:59:50.590] Seek(258.03s) invoked.
+[17:59:50.594] Seek(258.03s) invoked.
+[17:59:50.601] Seek(250.00s) invoked.
+[17:59:50.609] Seek(241.04s) invoked.
+[17:59:50.614] Seek(227.96s) invoked.
+[17:59:50.625] Seek(217.40s) invoked.
+[17:59:50.632] Seek(204.08s) invoked.
+[17:59:50.639] Seek(190.31s) invoked.
+[17:59:50.651] Seek(177.00s) invoked.
+[17:59:50.655] Seek(165.75s) invoked.
+[17:59:50.662] Seek(157.02s) invoked.
+[17:59:50.671] Seek(149.91s) invoked.
+[17:59:50.678] Seek(143.71s) invoked.
+[17:59:50.686] Seek(139.81s) invoked.
+[17:59:50.698] Seek(136.36s) invoked.
+[17:59:50.704] Seek(133.84s) invoked.
+[17:59:50.711] Seek(132.46s) invoked.
+[17:59:50.721] Seek(132.23s) invoked.
+[17:59:50.727] Seek(131.77s) invoked.
+[17:59:50.737] Seek(131.54s) invoked.
+[17:59:50.754] Seek(131.08s) invoked.
+[17:59:50.878] Seek(130.16s) invoked.
+[17:59:50.885] Seek(128.56s) invoked.
+[17:59:50.895] Seek(126.03s) invoked.
+[17:59:50.902] Seek(122.13s) invoked.
+[17:59:50.911] Seek(118.23s) invoked.
+[17:59:50.918] Seek(114.32s) invoked.
+[17:59:50.929] Seek(110.19s) invoked.
+[17:59:50.935] Seek(106.29s) invoked.
+[17:59:50.944] Seek(103.08s) invoked.
+[17:59:50.951] Seek(100.55s) invoked.
+[17:59:50.961] Seek(98.02s) invoked.
+[17:59:50.966] Seek(96.88s) invoked.
+[17:59:50.978] Seek(96.42s) invoked.
+[17:59:50.988] Seek(95.73s) invoked.
+[17:59:51.000] Seek(95.27s) invoked.
+[17:59:51.107] Seek(95.27s) invoked.
+[17:59:51.150] Seek(95.73s) invoked.
+[17:59:51.160] Seek(96.88s) invoked.
+[17:59:51.167] Seek(99.63s) invoked.
+[17:59:51.176] Seek(102.39s) invoked.
+[17:59:51.182] Seek(106.06s) invoked.
+[17:59:51.193] Seek(109.96s) invoked.
+[17:59:51.198] Seek(114.09s) invoked.
+[17:59:51.207] Seek(118.69s) invoked.
+[17:59:51.219] Seek(123.51s) invoked.
+[17:59:51.223] Seek(129.93s) invoked.
+[17:59:51.230] Seek(137.05s) invoked.
+[17:59:51.238] Seek(144.17s) invoked.
+[17:59:51.247] Seek(150.14s) invoked.
+[17:59:51.259] Seek(155.19s) invoked.
+[17:59:51.264] Seek(159.32s) invoked.
+[17:59:51.272] Seek(163.22s) invoked.
+[17:59:51.279] Seek(165.98s) invoked.
+[17:59:51.285] Seek(168.27s) invoked.
+[17:59:51.295] Seek(169.88s) invoked.
+[17:59:51.304] Seek(171.26s) invoked.
+[17:59:51.311] Seek(171.94s) invoked.
+[18:00:03.551] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:03.568] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:03.583] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:03.600] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:03.606] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:03.625] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:03.631] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:03.641] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:03.651] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:03.659] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:04.899] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:04.912] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:04.936] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:04.953] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:04.963] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:04.985] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:04.995] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.010] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.028] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.223] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.242] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.249] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.263] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.272] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.289] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.312] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.705] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.775] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.810] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.828] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.850] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.899] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.920] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:05.944] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:06.024] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:06.064] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:06.818] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:06.871] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:06.883] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:06.897] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:06.913] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:06.926] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:06.938] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:06.945] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:06.954] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:06.968] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:06.985] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.000] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.012] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.017] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.029] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.034] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.042] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.087] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.183] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.233] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.246] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.252] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.263] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.276] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.283] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.290] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.297] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.304] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.313] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.320] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.337] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.434] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.448] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.457] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.464] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.648] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.654] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.663] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.672] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.680] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.690] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:07.703] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:10.673] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=171.94, HasAudioTrack=True, EngineIsPlaying=False
+[18:00:10.673] Seek(171.94s) invoked.
+[18:00:10.675] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Paused, Volume=1, IsMuted=False
+[18:00:10.676] _outputDevice.Play() executed. New state=Playing
+[18:00:11.154] Read #100: requested=16384, read=16384, maxSample=0.568604
+[18:00:11.744] Seek(123.05s) invoked.
+[18:00:11.748] Seek(121.90s) invoked.
+[18:00:11.754] Seek(120.98s) invoked.
+[18:00:11.761] Seek(119.83s) invoked.
+[18:00:11.777] Seek(117.54s) invoked.
+[18:00:11.784] Seek(116.39s) invoked.
+[18:00:11.800] Seek(115.01s) invoked.
+[18:00:11.803] Seek(114.09s) invoked.
+[18:00:11.809] Seek(113.18s) invoked.
+[18:00:11.815] Seek(112.26s) invoked.
+[18:00:11.829] Seek(111.11s) invoked.
+[18:00:11.836] Seek(110.42s) invoked.
+[18:00:11.852] Seek(109.96s) invoked.
+[18:00:11.857] Seek(109.50s) invoked.
+[18:00:11.874] Seek(109.27s) invoked.
+[18:00:11.896] Seek(108.81s) invoked.
+[18:00:11.936] Seek(108.58s) invoked.
+[18:00:11.990] Seek(108.58s) invoked.
+[18:00:14.377] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:14.400] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:14.427] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:14.432] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:14.449] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:14.465] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:14.478] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:14.504] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:14.529] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:14.832] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:14.848] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:14.867] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:15.855] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:15.874] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:15.884] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:15.890] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:15.907] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:15.915] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:15.921] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:15.929] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:15.935] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:15.945] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:15.961] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:16.794] Read #150: requested=16382, read=16382, maxSample=0.467773
+[18:00:16.895] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:16.912] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:16.919] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:16.928] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:16.937] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:16.947] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:16.954] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:17.917] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:17.928] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:17.932] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:17.936] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:17.968] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:18.810] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:18.816] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:18.820] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:18.836] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:18.842] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:18.870] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:18.880] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:18.885] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:19.568] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:19.599] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:19.605] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:19.612] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:19.624] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:19.631] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:19.635] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:19.641] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.701] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.710] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.715] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.752] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.755] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.769] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.810] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.849] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.874] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.881] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.889] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.898] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.908] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.918] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.925] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.935] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.940] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.949] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:21.966] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:22.072] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:23.024] Read #200: requested=16382, read=16382, maxSample=0.658386
+[18:00:23.400] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:23.411] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:23.417] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:23.430] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:23.435] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:23.445] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:25.585] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:25.605] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:25.620] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:25.658] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:25.674] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:25.688] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:25.701] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:27.717] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:27.730] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:27.743] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:27.755] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:27.772] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:27.784] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:27.807] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:27.819] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:29.620] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:29.633] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:29.652] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:29.666] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:29.724] Read #250: requested=16382, read=16382, maxSample=0.624146
+[18:00:31.053] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:31.064] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:31.088] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:31.099] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:31.106] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:31.116] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:31.120] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:31.130] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:33.410] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:33.425] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:33.433] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:33.450] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:33.456] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:33.474] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:33.485] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:33.499] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:33.513] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:33.531] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:33.545] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:33.695] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:33.752] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:33.810] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:34.384] Read #300: requested=16384, read=16384, maxSample=0.548553
+[18:00:35.105] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.121] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.136] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.145] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.152] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.170] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.193] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.227] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.248] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.281] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.320] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.351] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.928] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.937] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.945] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.954] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.961] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.970] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.978] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.984] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:35.994] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:36.003] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:36.010] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:36.442] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:36.649] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:39.004] Read #350: requested=16384, read=16384, maxSample=0.451202
+[18:00:40.832] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:40.848] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:40.859] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:40.865] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:40.878] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:40.882] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:40.891] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:40.897] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:40.906] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:40.915] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:41.808] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:41.817] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:41.828] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:41.833] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:41.841] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:41.849] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:42.792] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:42.801] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:42.811] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:42.817] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:43.664] Read #400: requested=16384, read=16384, maxSample=0.562164
+[18:00:44.812] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:44.852] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:44.858] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:44.869] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:44.875] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:44.885] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:44.891] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:44.898] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:44.908] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:44.916] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:44.922] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:46.702] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:46.739] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:46.746] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:46.756] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:46.763] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:46.771] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:46.781] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:46.795] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:46.928] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:46.985] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:47.011] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:47.025] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:47.032] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:47.045] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:47.049] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:47.060] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:47.904] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:47.918] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:47.950] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:47.968] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:48.027] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:48.294] Read #450: requested=16384, read=16384, maxSample=0.385101
+[18:00:48.617] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:48.642] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:48.670] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:48.688] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:48.705] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:48.728] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:48.761] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:48.817] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:49.800] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:49.817] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:49.841] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:50.338] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:51.000] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:51.009] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:51.019] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:51.049] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:51.088] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:51.425] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:51.458] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:51.474] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:51.486] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:51.499] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:51.521] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:52.154] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:52.172] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:52.208] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:52.216] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:52.221] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:52.230] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:52.235] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:52.954] Read #500: requested=16384, read=16384, maxSample=0.654480
+[18:00:53.167] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:53.214] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:53.223] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:53.738] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:53.746] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:53.752] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:53.762] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:56.185] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:57.584] Read #550: requested=16384, read=16384, maxSample=0.534698
+[18:00:58.209] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:58.229] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:58.236] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:58.252] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:58.266] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:58.274] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:58.282] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:58.777] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:58.786] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:58.794] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:58.800] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:58.816] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:00:59.786] Pause() invoked. Current state=Playing
+[18:00:59.794] _outputDevice.Pause() executed. New state=Paused
+[18:00:59.794] Seek(193.52s) invoked.
+[18:01:28.525] Load() started for: C:\Users\sayan\Downloads\upscaled-video.mp4
+[18:01:28.566] _reader created: SampleRate=48000, Ch=2, TotalTime=00:00:10.0050000
+[18:01:28.587] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[18:01:28.588] Load() finished successfully. HasAudioTrack=True
+[18:01:28.588] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:28.588] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[18:01:28.589] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:28.590] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:28.590] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:28.591] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:28.592] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:28.592] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:28.593] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:28.593] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:28.594] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:28.594] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:28.595] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:28.595] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:28.595] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:28.596] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:29.147] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:01:30.681] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=0.00, HasAudioTrack=True, EngineIsPlaying=False
+[18:01:30.682] Seek(0.00s) invoked.
+[18:01:30.682] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Stopped, Volume=1, IsMuted=False
+[18:01:30.682] _outputDevice.Play() executed. New state=Playing
+[18:01:30.693] Read #1: requested=3264, read=3264, maxSample=0.000031
+[18:01:30.695] Read #2: requested=3264, read=3264, maxSample=0.000397
+[18:01:30.696] Read #3: requested=3264, read=3264, maxSample=0.001038
+[18:01:30.749] Read #4: requested=3264, read=3264, maxSample=0.001892
+[18:01:30.779] Read #5: requested=3264, read=3264, maxSample=0.003845
+[18:01:30.819] Read #6: requested=3264, read=3264, maxSample=0.004974
+[18:01:30.849] Read #7: requested=3264, read=3264, maxSample=0.005951
+[18:01:30.879] Read #8: requested=3264, read=3264, maxSample=0.008301
+[18:01:30.919] Read #9: requested=3264, read=3264, maxSample=0.028503
+[18:01:30.949] Read #10: requested=3264, read=3264, maxSample=0.011902
+[18:01:31.485] MainWindow.PlaybackButton_Click: session.State=Playing, Pos=0.78, HasAudioTrack=True, EngineIsPlaying=True
+[18:01:31.487] Pause() invoked. Current state=Playing
+[18:01:31.489] _outputDevice.Pause() executed. New state=Paused
+[18:01:35.542] Seek(1.09s) invoked.
+[18:01:35.546] Seek(1.10s) invoked.
+[18:01:35.550] Seek(1.13s) invoked.
+[18:01:35.555] Seek(1.18s) invoked.
+[18:01:35.563] Seek(1.23s) invoked.
+[18:01:35.579] Seek(1.38s) invoked.
+[18:01:35.585] Seek(1.47s) invoked.
+[18:01:35.593] Seek(1.57s) invoked.
+[18:01:35.602] Seek(1.66s) invoked.
+[18:01:35.610] Seek(1.73s) invoked.
+[18:01:35.616] Seek(1.82s) invoked.
+[18:01:35.632] Seek(1.89s) invoked.
+[18:01:35.634] Seek(1.97s) invoked.
+[18:01:35.641] Seek(2.02s) invoked.
+[18:01:35.650] Seek(2.06s) invoked.
+[18:01:35.659] Seek(2.09s) invoked.
+[18:01:35.665] Seek(2.11s) invoked.
+[18:01:35.678] Seek(2.12s) invoked.
+[18:01:35.691] Seek(2.13s) invoked.
+[18:01:35.865] Seek(2.12s) invoked.
+[18:01:35.872] Seek(2.11s) invoked.
+[18:01:35.899] Seek(2.06s) invoked.
+[18:01:35.908] Seek(2.04s) invoked.
+[18:01:36.667] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=2.04, HasAudioTrack=True, EngineIsPlaying=False
+[18:01:36.667] Seek(2.04s) invoked.
+[18:01:36.679] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Paused, Volume=1, IsMuted=False
+[18:01:36.680] _outputDevice.Play() executed. New state=Playing
+[18:01:37.507] Read #50: requested=3264, read=3264, maxSample=0.182831
+[18:01:39.207] Read #100: requested=3264, read=3264, maxSample=0.195374
+[18:01:40.907] Read #150: requested=3264, read=3264, maxSample=0.275238
+[18:01:42.607] Read #200: requested=3264, read=3264, maxSample=0.103485
+[18:01:44.307] Read #250: requested=3264, read=3264, maxSample=0.016754
+[18:01:44.728] OutputDevice_PlaybackStopped event fired! Exception=
+[18:03:06.525] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=10.01, HasAudioTrack=True, EngineIsPlaying=False
+[18:03:06.526] Seek(0.00s) invoked.
+[18:03:06.526] Seek(0.00s) invoked.
+[18:03:06.537] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Stopped, Volume=1, IsMuted=False
+[18:03:06.538] _outputDevice.Play() executed. New state=Playing
+[18:03:07.610] Read #300: requested=3264, read=3264, maxSample=0.078827
+[18:03:09.310] Read #350: requested=3264, read=3264, maxSample=0.215454
+[18:03:09.851] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:09.964] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:10.884] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:10.892] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:11.351] Read #400: requested=16384, read=16384, maxSample=0.203857
+[18:03:11.403] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:11.432] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:11.474] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:11.480] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:11.487] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:11.497] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:11.505] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:11.519] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:11.535] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:11.550] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:11.846] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:11.868] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:16.060] OutputDevice_PlaybackStopped event fired! Exception=
+[18:03:23.696] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:23.702] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[18:03:23.712] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[19:08:29.099] Load() started for: C:\Users\sayan\Downloads\25650b8e8e404a31991078e7cbf1f951.mp4
+[19:08:29.191] _reader created: SampleRate=48000, Ch=2, TotalTime=00:00:10.0050000
+[19:08:29.298] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[19:08:29.299] Load() finished successfully. HasAudioTrack=True
+[19:08:29.303] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[19:08:29.304] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[19:08:29.312] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[19:08:29.314] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[19:08:30.462] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[19:08:33.119] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=0.08, HasAudioTrack=True, EngineIsPlaying=False
+[19:08:33.119] Seek(0.08s) invoked.
+[19:08:33.122] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Stopped, Volume=1, IsMuted=False
+[19:08:33.124] _outputDevice.Play() executed. New state=Playing
+[19:08:33.151] Read #1: requested=3264, read=3264, maxSample=0.000549
+[19:08:33.153] Read #2: requested=3264, read=3264, maxSample=0.001099
+[19:08:33.154] Read #3: requested=3264, read=3264, maxSample=0.002319
+[19:08:33.205] Read #4: requested=3264, read=3264, maxSample=0.004089
+[19:08:33.233] Read #5: requested=3264, read=3264, maxSample=0.004974
+[19:08:33.273] Read #6: requested=3264, read=3264, maxSample=0.007172
+[19:08:33.303] Read #7: requested=3264, read=3264, maxSample=0.008301
+[19:08:33.333] Read #8: requested=3264, read=3264, maxSample=0.028503
+[19:08:33.373] Read #9: requested=3264, read=3264, maxSample=0.011902
+[19:08:33.403] Read #10: requested=3264, read=3264, maxSample=0.015259
+[19:08:34.763] Read #50: requested=3264, read=3264, maxSample=0.119232
+[19:08:35.172] MainWindow.PlaybackButton_Click: session.State=Playing, Pos=2.11, HasAudioTrack=True, EngineIsPlaying=True
+[19:08:35.174] Pause() invoked. Current state=Playing
+[19:08:35.176] _outputDevice.Pause() executed. New state=Paused
+[19:08:36.057] Seek(0.15s) invoked.
+[19:08:36.084] Seek(0.15s) invoked.
+[19:08:36.092] Seek(0.15s) invoked.
+[19:08:36.095] Seek(0.15s) invoked.
+[19:08:36.109] Seek(0.16s) invoked.
+[19:08:36.128] Seek(0.18s) invoked.
+[19:08:36.133] Seek(0.19s) invoked.
+[19:08:36.141] Seek(0.20s) invoked.
+[19:08:36.148] Seek(0.22s) invoked.
+[19:08:36.160] Seek(0.25s) invoked.
+[19:08:36.165] Seek(0.26s) invoked.
+[19:08:36.186] Seek(0.29s) invoked.
+[19:08:36.194] Seek(0.37s) invoked.
+[19:08:36.197] Seek(0.43s) invoked.
+[19:08:36.227] Seek(0.62s) invoked.
+[19:08:36.232] Seek(0.68s) invoked.
+[19:08:36.236] Seek(0.74s) invoked.
+[19:08:36.260] Seek(0.84s) invoked.
+[19:08:36.264] Seek(0.88s) invoked.
+[19:08:36.268] Seek(0.92s) invoked.
+[19:08:36.279] Seek(0.95s) invoked.
+[19:08:36.284] Seek(0.98s) invoked.
+[19:08:36.292] Seek(1.01s) invoked.
+[19:08:36.300] Seek(1.03s) invoked.
+[19:08:36.312] Seek(1.05s) invoked.
+[19:08:36.317] Seek(1.07s) invoked.
+[19:08:36.325] Seek(1.09s) invoked.
+[19:08:36.332] Seek(1.11s) invoked.
+[19:08:36.341] Seek(1.12s) invoked.
+[19:08:36.348] Seek(1.13s) invoked.
+[19:08:36.356] Seek(1.14s) invoked.
+[19:08:36.364] Seek(1.15s) invoked.
+[19:08:36.372] Seek(1.16s) invoked.
+[19:08:36.380] Seek(1.17s) invoked.
+[19:08:36.516] Seek(1.17s) invoked.
+[19:08:36.533] Seek(1.18s) invoked.
+[19:08:36.545] Seek(1.19s) invoked.
+[19:08:36.549] Seek(1.19s) invoked.
+[19:08:36.558] Seek(1.21s) invoked.
+[19:08:36.564] Seek(1.24s) invoked.
+[19:08:36.572] Seek(1.29s) invoked.
+[19:08:36.576] Seek(1.29s) invoked.
+[19:08:36.580] Seek(1.38s) invoked.
+[19:08:36.593] Seek(1.46s) invoked.
+[19:08:36.596] Seek(1.57s) invoked.
+[19:08:36.604] Seek(1.67s) invoked.
+[19:08:36.612] Seek(1.80s) invoked.
+[19:08:36.620] Seek(1.93s) invoked.
+[19:08:36.628] Seek(2.06s) invoked.
+[19:08:36.637] Seek(2.18s) invoked.
+[19:08:36.644] Seek(2.29s) invoked.
+[19:08:36.652] Seek(2.41s) invoked.
+[19:08:36.660] Seek(2.51s) invoked.
+[19:08:36.668] Seek(2.60s) invoked.
+[19:08:36.676] Seek(2.68s) invoked.
+[19:08:36.687] Seek(2.77s) invoked.
+[19:08:36.694] Seek(2.85s) invoked.
+[19:08:36.700] Seek(2.93s) invoked.
+[19:08:36.708] Seek(3.02s) invoked.
+[19:08:36.717] Seek(3.10s) invoked.
+[19:08:36.724] Seek(3.19s) invoked.
+[19:08:36.733] Seek(3.27s) invoked.
+[19:08:36.741] Seek(3.36s) invoked.
+[19:08:36.748] Seek(3.43s) invoked.
+[19:08:36.757] Seek(3.52s) invoked.
+[19:08:36.764] Seek(3.60s) invoked.
+[19:08:36.772] Seek(3.69s) invoked.
+[19:08:36.780] Seek(3.77s) invoked.
+[19:08:36.788] Seek(3.84s) invoked.
+[19:08:36.797] Seek(3.90s) invoked.
+[19:08:36.804] Seek(3.96s) invoked.
+[19:08:36.812] Seek(4.01s) invoked.
+[19:08:36.820] Seek(4.06s) invoked.
+[19:08:36.828] Seek(4.09s) invoked.
+[19:08:36.838] Seek(4.10s) invoked.
+[19:08:36.845] Seek(4.11s) invoked.
+[19:08:36.852] Seek(4.13s) invoked.
+[19:08:36.860] Seek(4.14s) invoked.
+[19:08:36.868] Seek(4.14s) invoked.
+[19:08:36.876] Seek(4.15s) invoked.
+[19:08:36.885] Seek(4.16s) invoked.
+[19:08:36.893] Seek(4.18s) invoked.
+[19:08:36.908] Seek(4.19s) invoked.
+[19:08:36.925] Seek(4.20s) invoked.
+[19:08:36.932] Seek(4.21s) invoked.
+[19:08:36.948] Seek(4.21s) invoked.
+[19:08:37.090] Seek(4.21s) invoked.
+[19:22:08.879] Load() started for: C:\Users\sayan\Downloads\Naam Reh Jayegaa - Watch FULL Episode 6 - Arijit's Perfect tribute to Lata Mangeshkar.mp4
+[19:22:09.001] _reader created: SampleRate=44100, Ch=2, TotalTime=00:43:31.4859977
+[19:22:09.114] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[19:22:09.115] Load() finished successfully. HasAudioTrack=True
+[19:22:09.123] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[19:22:09.124] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[19:22:09.130] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[19:22:09.131] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:34.950] Load() started for: C:\Users\sayan\Desktop\D-G-A-D 108 stumming.wav
+[13:54:35.114] _reader created: SampleRate=48000, Ch=2, TotalTime=00:00:08.6284739
+[13:54:35.185] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[13:54:35.186] Load() finished successfully. HasAudioTrack=True
+[13:54:35.189] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:35.190] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[13:54:35.195] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:35.196] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:35.794] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:42.038] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=0.00, HasAudioTrack=True, EngineIsPlaying=False
+[13:54:42.039] Seek(0.00s) invoked.
+[13:54:42.042] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Stopped, Volume=1, IsMuted=False
+[13:54:42.043] _outputDevice.Play() executed. New state=Playing
+[13:54:42.054] Read #1: requested=3264, read=3264, maxSample=0.026947
+[13:54:42.055] Read #2: requested=3264, read=3264, maxSample=0.094116
+[13:54:42.056] Read #3: requested=3264, read=3264, maxSample=0.100586
+[13:54:42.108] Read #4: requested=3264, read=3264, maxSample=0.066437
+[13:54:42.136] Read #5: requested=3264, read=3264, maxSample=0.042480
+[13:54:42.176] Read #6: requested=3264, read=3264, maxSample=0.039551
+[13:54:42.206] Read #7: requested=3264, read=3264, maxSample=0.038330
+[13:54:42.236] Read #8: requested=3264, read=3264, maxSample=0.035400
+[13:54:42.276] Read #9: requested=3264, read=3264, maxSample=0.033447
+[13:54:42.306] Read #10: requested=3264, read=3264, maxSample=0.036407
+[13:54:43.666] Read #50: requested=3264, read=3264, maxSample=0.056885
+[13:54:45.198] MainWindow.PlaybackButton_Click: session.State=Playing, Pos=3.14, HasAudioTrack=True, EngineIsPlaying=True
+[13:54:45.199] Pause() invoked. Current state=Playing
+[13:54:45.206] _outputDevice.Pause() executed. New state=Paused
+[13:54:51.940] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=3.16, HasAudioTrack=True, EngineIsPlaying=False
+[13:54:51.941] Seek(3.16s) invoked.
+[13:54:51.941] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Paused, Volume=1, IsMuted=False
+[13:54:51.968] _outputDevice.Play() executed. New state=Playing
+[13:54:52.179] Read #100: requested=3264, read=3264, maxSample=0.035461
+[13:54:53.878] Read #150: requested=3264, read=3264, maxSample=0.026886
+[13:54:54.444] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:54.452] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:54.468] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:54.477] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:54.488] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:54.497] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:54.510] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:54.548] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:54.604] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:54.620] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:54.628] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:54.644] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:54.652] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:54.668] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:54.693] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:54:55.440] Seek(5.51s) invoked.
+[13:54:57.368] Read #200: requested=16382, read=0, maxSample=0.000000
+[13:54:57.370] OutputDevice_PlaybackStopped event fired! Exception=
+[13:54:58.788] MainWindow.PlaybackButton_Click: session.State=Playing, Pos=5.51, HasAudioTrack=True, EngineIsPlaying=False
+[13:54:58.789] Pause() invoked. Current state=Stopped
+[13:54:59.332] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=5.51, HasAudioTrack=True, EngineIsPlaying=False
+[13:54:59.332] Seek(5.51s) invoked.
+[13:54:59.333] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Stopped, Volume=1, IsMuted=False
+[13:54:59.333] _outputDevice.Play() executed. New state=Playing
+[13:55:01.174] OutputDevice_PlaybackStopped event fired! Exception=
+[13:55:01.618] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.748] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.772] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.780] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.796] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.812] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.821] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.836] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.844] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.853] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.868] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.877] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.885] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.896] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.901] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.912] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.917] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.929] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.934] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.942] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.948] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.959] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.965] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.974] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:01.981] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:03.484] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=8.63, HasAudioTrack=True, EngineIsPlaying=False
+[13:55:03.485] Seek(0.00s) invoked.
+[13:55:03.486] Seek(0.00s) invoked.
+[13:55:03.486] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Stopped, Volume=1, IsMuted=False
+[13:55:03.486] _outputDevice.Play() executed. New state=Playing
+[13:55:07.700] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:07.777] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:07.825] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:07.844] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:07.876] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:07.920] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:08.008] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:08.096] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:08.160] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:08.233] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:08.304] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:08.392] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:08.596] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:09.164] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:09.218] Read #250: requested=16382, read=16382, maxSample=0.031616
+[13:55:10.993] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:11.007] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:11.021] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:11.036] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:11.049] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:12.708] OutputDevice_PlaybackStopped event fired! Exception=
+[13:55:14.172] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.197] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.204] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.220] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.228] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.236] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.244] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.260] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.268] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.276] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.285] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.293] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.300] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.309] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.316] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.327] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.332] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.348] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.396] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.453] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.476] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.820] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:14.852] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:15.156] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:17.876] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:19.516] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=8.63, HasAudioTrack=True, EngineIsPlaying=False
+[13:55:19.516] Seek(0.00s) invoked.
+[13:55:19.519] Seek(0.00s) invoked.
+[13:55:19.520] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Stopped, Volume=1, IsMuted=False
+[13:55:19.520] _outputDevice.Play() executed. New state=Playing
+[13:55:19.909] Read #300: requested=3264, read=3264, maxSample=0.037109
+[13:55:21.092] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:21.110] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:21.116] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:21.126] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:21.132] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:21.140] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:21.148] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:21.156] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:21.164] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:21.172] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:21.180] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:21.188] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:21.609] Read #350: requested=3264, read=3264, maxSample=0.071075
+[13:55:23.309] Read #400: requested=3264, read=3264, maxSample=0.091522
+[13:55:23.684] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:23.693] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:23.700] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:23.710] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:23.716] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:23.727] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:23.732] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:23.740] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:23.748] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:23.756] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:23.764] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:23.772] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:25.009] Read #450: requested=3264, read=3264, maxSample=0.029633
+[13:55:25.988] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:26.012] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:26.028] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:26.044] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:26.060] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:26.084] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:26.125] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:26.372] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:26.556] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:26.708] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:26.709] Read #500: requested=3264, read=3264, maxSample=0.021606
+[13:55:26.908] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:27.252] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:28.159] OutputDevice_PlaybackStopped event fired! Exception=
+[13:55:30.188] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=8.63, HasAudioTrack=True, EngineIsPlaying=False
+[13:55:30.188] Seek(0.00s) invoked.
+[13:55:30.194] Seek(0.00s) invoked.
+[13:55:30.195] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Stopped, Volume=1, IsMuted=False
+[13:55:30.196] _outputDevice.Play() executed. New state=Playing
+[13:55:30.245] Read #550: requested=3264, read=3264, maxSample=0.066437
+[13:55:31.944] Read #600: requested=3264, read=3264, maxSample=0.038727
+[13:55:32.218] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.325] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.334] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.342] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.348] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.358] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.364] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.373] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.380] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.389] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.396] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.405] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.412] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.421] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.428] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.437] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.444] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.453] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.460] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.469] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.484] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.500] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.516] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.548] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:32.604] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:33.644] Read #650: requested=3264, read=3264, maxSample=0.043884
+[13:55:33.932] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:33.941] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:33.948] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:33.958] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:33.964] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:33.973] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:33.980] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:33.989] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:33.996] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:34.005] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:34.012] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:34.022] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:34.030] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:35.345] Read #700: requested=3264, read=3264, maxSample=0.047760
+[13:55:37.044] Read #750: requested=3264, read=3264, maxSample=0.040344
+[13:55:37.322] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.412] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.422] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.428] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.437] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.444] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.453] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.460] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.469] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.477] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.485] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.494] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.502] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.512] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.518] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.527] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.533] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.541] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.548] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.557] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.564] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.573] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.580] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.589] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.596] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:37.605] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.212] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.222] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.228] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.238] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.244] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.254] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.261] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.269] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.277] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.286] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.604] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.612] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.621] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.628] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.638] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.645] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.745] Read #800: requested=3264, read=2542, maxSample=0.031921
+[13:55:38.835] OutputDevice_PlaybackStopped event fired! Exception=
+[13:55:38.964] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.973] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.980] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.989] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:38.996] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:39.005] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:41.109] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:41.110] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:55:42.628] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=8.63, HasAudioTrack=True, EngineIsPlaying=False
+[13:55:42.629] Seek(0.00s) invoked.
+[13:55:42.629] Seek(0.00s) invoked.
+[13:55:42.629] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Stopped, Volume=1, IsMuted=False
+[13:55:42.630] _outputDevice.Play() executed. New state=Playing
+[13:55:43.332] MainWindow.PlaybackButton_Click: session.State=Playing, Pos=0.79, HasAudioTrack=True, EngineIsPlaying=True
+[13:55:43.332] Pause() invoked. Current state=Playing
+[13:55:43.339] _outputDevice.Pause() executed. New state=Paused
+[23:19:13.550] Load() started for: C:\Users\sayan\Downloads\Tera Mera Rishta New Version Awarapan 2 Emraan Disha Mithoon Saaj Sayeed Mustafa.mp3
+[23:19:13.623] _reader created: SampleRate=44100, Ch=2, TotalTime=00:06:11.5918310
+[23:19:13.697] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[23:19:13.698] Load() finished successfully. HasAudioTrack=True
+[23:19:13.701] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:19:13.702] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[23:19:13.706] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:19:13.707] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:19:14.770] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:19:16.188] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=0.00, HasAudioTrack=True, EngineIsPlaying=False
+[23:19:16.189] Seek(0.00s) invoked.
+[23:19:16.192] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Stopped, Volume=1, IsMuted=False
+[23:19:16.193] _outputDevice.Play() executed. New state=Playing
+[23:19:16.207] Read #1: requested=3000, read=3000, maxSample=0.000000
+[23:19:16.208] Read #2: requested=3000, read=3000, maxSample=0.000000
+[23:19:16.209] Read #3: requested=3000, read=3000, maxSample=0.000000
+[23:19:16.261] Read #4: requested=3000, read=3000, maxSample=0.000610
+[23:19:16.289] Read #5: requested=3000, read=3000, maxSample=0.000458
+[23:19:16.329] Read #6: requested=3000, read=3000, maxSample=0.000580
+[23:19:16.359] Read #7: requested=3000, read=3000, maxSample=0.000458
+[23:19:16.389] Read #8: requested=3000, read=3000, maxSample=0.000549
+[23:19:16.429] Read #9: requested=3000, read=3000, maxSample=0.000488
+[23:19:16.459] Read #10: requested=3000, read=3000, maxSample=0.000366
+[23:19:17.819] Read #50: requested=3000, read=3000, maxSample=0.257812
+[23:19:19.519] Read #100: requested=3000, read=3000, maxSample=0.350739
+[23:19:20.190] Seek(29.99s) invoked.
+[23:19:20.250] Seek(29.99s) invoked.
+[23:19:21.219] Read #150: requested=3000, read=3000, maxSample=0.486816
+[23:19:21.491] Seek(58.67s) invoked.
+[23:19:22.929] Read #200: requested=3000, read=3000, maxSample=0.693573
+[23:19:24.629] Read #250: requested=3000, read=3000, maxSample=0.471588
+[23:19:26.329] Read #300: requested=3000, read=3000, maxSample=0.534424
+[23:19:28.029] Read #350: requested=3000, read=3000, maxSample=0.372192
+[23:19:29.729] Read #400: requested=3000, read=3000, maxSample=0.395416
+[23:19:31.429] Read #450: requested=3000, read=3000, maxSample=0.507385
+[23:19:33.130] Read #500: requested=3000, read=3000, maxSample=0.611115
+[23:19:34.830] Read #550: requested=3000, read=3000, maxSample=0.518463
+[23:19:36.530] Read #600: requested=3000, read=3000, maxSample=0.475769
+[23:19:38.230] Read #650: requested=3000, read=3000, maxSample=0.997772
+[23:19:39.930] Read #700: requested=3000, read=3000, maxSample=0.999969
+[23:19:41.630] Read #750: requested=3000, read=3000, maxSample=0.703461
+[23:19:43.330] Read #800: requested=3000, read=3000, maxSample=0.999969
+[23:19:45.030] Read #850: requested=3000, read=3000, maxSample=0.367218
+[23:19:46.740] Read #900: requested=3000, read=3000, maxSample=0.646027
+[23:19:48.440] Read #950: requested=3000, read=3000, maxSample=0.917603
+[23:19:50.141] Read #1000: requested=3000, read=3000, maxSample=0.999969
+[23:19:51.841] Read #1050: requested=3000, read=3000, maxSample=0.999969
+[23:19:53.541] Read #1100: requested=3000, read=3000, maxSample=0.754578
