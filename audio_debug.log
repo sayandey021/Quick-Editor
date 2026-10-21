@@ -5740,3 +5740,4133 @@
 [23:19:50.141] Read #1000: requested=3000, read=3000, maxSample=0.999969
 [23:19:51.841] Read #1050: requested=3000, read=3000, maxSample=0.999969
 [23:19:53.541] Read #1100: requested=3000, read=3000, maxSample=0.754578
+[01:37:51.229] Load() started for: C:\Users\sayan\Downloads\Dugga Ma Asche.mp3
+[01:37:51.269] _reader created: SampleRate=44100, Ch=2, TotalTime=00:00:49.9983616
+[01:37:51.332] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[01:37:51.333] Load() finished successfully. HasAudioTrack=True
+[01:37:51.336] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[01:37:51.336] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[01:37:51.339] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[01:37:51.340] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[01:37:51.652] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[01:37:56.195] Load() started for: C:\Users\sayan\Downloads\Naam Reh Jayegaa - Watch FULL Episode 6 - Arijit's Perfect tribute to Lata Mangeshkar.mp4
+[01:37:56.462] _reader created: SampleRate=44100, Ch=2, TotalTime=00:43:31.4859977
+[01:37:56.473] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[01:37:56.474] Load() finished successfully. HasAudioTrack=True
+[01:37:56.474] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[01:37:56.475] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[01:37:56.475] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[01:37:56.476] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[01:38:01.445] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[01:40:31.014] Seek(64.14s) invoked.
+[01:40:31.051] Seek(67.81s) invoked.
+[01:40:31.064] Seek(75.14s) invoked.
+[01:40:31.068] Seek(78.80s) invoked.
+[01:40:31.076] Seek(84.30s) invoked.
+[01:40:31.084] Seek(89.80s) invoked.
+[01:40:31.093] Seek(93.46s) invoked.
+[01:40:31.110] Seek(104.46s) invoked.
+[01:40:31.116] Seek(108.12s) invoked.
+[01:40:31.125] Seek(113.62s) invoked.
+[01:40:31.133] Seek(119.12s) invoked.
+[01:40:31.141] Seek(124.62s) invoked.
+[01:40:31.148] Seek(131.95s) invoked.
+[01:40:31.162] Seek(142.94s) invoked.
+[01:40:31.165] Seek(155.77s) invoked.
+[01:40:31.173] Seek(168.60s) invoked.
+[01:40:31.180] Seek(185.09s) invoked.
+[01:40:31.188] Seek(203.42s) invoked.
+[01:40:31.196] Seek(225.41s) invoked.
+[01:40:31.211] Seek(247.40s) invoked.
+[01:40:31.213] Seek(269.40s) invoked.
+[01:40:31.220] Seek(295.05s) invoked.
+[01:40:31.228] Seek(315.21s) invoked.
+[01:40:31.236] Seek(335.37s) invoked.
+[01:40:31.244] Seek(350.03s) invoked.
+[01:40:31.253] Seek(362.86s) invoked.
+[01:40:31.266] Seek(375.69s) invoked.
+[01:40:31.268] Seek(383.02s) invoked.
+[01:40:31.276] Seek(388.52s) invoked.
+[01:40:31.284] Seek(390.35s) invoked.
+[01:40:31.293] Seek(394.01s) invoked.
+[01:40:31.300] Seek(395.85s) invoked.
+[01:40:31.316] Seek(397.68s) invoked.
+[01:40:31.324] Seek(399.51s) invoked.
+[01:40:31.348] Seek(401.34s) invoked.
+[01:40:31.364] Seek(403.18s) invoked.
+[01:40:31.366] Seek(405.01s) invoked.
+[01:40:31.372] Seek(406.84s) invoked.
+[01:40:31.388] Seek(410.51s) invoked.
+[01:40:31.392] Seek(412.34s) invoked.
+[01:40:31.396] Seek(416.01s) invoked.
+[01:40:31.404] Seek(421.50s) invoked.
+[01:40:31.412] Seek(423.34s) invoked.
+[01:40:31.420] Seek(427.00s) invoked.
+[01:40:31.435] Seek(430.67s) invoked.
+[01:40:31.437] Seek(432.50s) invoked.
+[01:40:31.444] Seek(434.33s) invoked.
+[01:40:31.452] Seek(436.16s) invoked.
+[01:40:31.468] Seek(438.00s) invoked.
+[01:40:31.476] Seek(439.83s) invoked.
+[01:40:31.484] Seek(441.66s) invoked.
+[01:40:31.500] Seek(443.49s) invoked.
+[01:40:31.509] Seek(445.33s) invoked.
+[01:40:31.524] Seek(447.16s) invoked.
+[01:40:31.532] Seek(448.99s) invoked.
+[01:40:31.548] Seek(450.82s) invoked.
+[01:40:31.572] Seek(452.66s) invoked.
+[01:40:31.586] Seek(452.66s) invoked.
+[01:40:31.596] Seek(454.49s) invoked.
+[01:40:31.620] Seek(456.32s) invoked.
+[01:40:31.636] Seek(458.16s) invoked.
+[01:40:31.644] Seek(459.99s) invoked.
+[01:40:31.660] Seek(461.82s) invoked.
+[01:40:31.671] Seek(463.65s) invoked.
+[01:40:31.677] Seek(465.49s) invoked.
+[01:40:31.684] Seek(469.15s) invoked.
+[01:40:31.693] Seek(470.98s) invoked.
+[01:40:31.700] Seek(472.82s) invoked.
+[01:40:31.709] Seek(476.48s) invoked.
+[01:40:31.721] Seek(478.31s) invoked.
+[01:40:31.725] Seek(481.98s) invoked.
+[01:40:31.732] Seek(485.64s) invoked.
+[01:40:31.741] Seek(487.48s) invoked.
+[01:40:31.748] Seek(489.31s) invoked.
+[01:40:31.758] Seek(491.14s) invoked.
+[01:40:31.764] Seek(492.98s) invoked.
+[01:40:31.777] Seek(496.64s) invoked.
+[01:40:31.780] Seek(500.31s) invoked.
+[01:40:31.788] Seek(502.14s) invoked.
+[01:40:31.797] Seek(507.64s) invoked.
+[01:40:31.804] Seek(514.97s) invoked.
+[01:40:31.812] Seek(520.46s) invoked.
+[01:40:31.825] Seek(527.80s) invoked.
+[01:40:31.829] Seek(536.96s) invoked.
+[01:40:31.836] Seek(546.12s) invoked.
+[01:40:31.845] Seek(555.28s) invoked.
+[01:40:31.852] Seek(564.45s) invoked.
+[01:40:31.860] Seek(575.44s) invoked.
+[01:40:31.871] Seek(584.61s) invoked.
+[01:40:31.877] Seek(591.94s) invoked.
+[01:40:31.884] Seek(599.27s) invoked.
+[01:40:31.892] Seek(602.93s) invoked.
+[01:40:31.900] Seek(608.43s) invoked.
+[01:40:31.908] Seek(613.93s) invoked.
+[01:40:31.921] Seek(617.59s) invoked.
+[01:40:31.925] Seek(621.26s) invoked.
+[01:40:31.932] Seek(626.76s) invoked.
+[01:40:31.941] Seek(628.59s) invoked.
+[01:40:31.948] Seek(632.25s) invoked.
+[01:40:31.957] Seek(634.09s) invoked.
+[01:40:31.964] Seek(635.92s) invoked.
+[01:40:31.977] Seek(639.59s) invoked.
+[01:40:31.988] Seek(641.42s) invoked.
+[01:40:31.996] Seek(643.25s) invoked.
+[01:40:32.012] Seek(645.08s) invoked.
+[01:40:32.020] Seek(646.92s) invoked.
+[01:40:32.028] Seek(648.75s) invoked.
+[01:40:32.044] Seek(650.58s) invoked.
+[01:40:32.052] Seek(652.41s) invoked.
+[01:40:32.068] Seek(654.25s) invoked.
+[01:40:32.074] Seek(654.25s) invoked.
+[01:40:32.076] Seek(656.08s) invoked.
+[01:40:32.084] Seek(657.91s) invoked.
+[01:40:32.098] Seek(661.58s) invoked.
+[01:40:32.100] Seek(665.24s) invoked.
+[01:40:32.108] Seek(667.07s) invoked.
+[01:40:32.116] Seek(672.57s) invoked.
+[01:40:32.126] Seek(676.24s) invoked.
+[01:40:32.132] Seek(678.07s) invoked.
+[01:40:32.148] Seek(681.74s) invoked.
+[01:40:32.157] Seek(683.57s) invoked.
+[01:40:32.172] Seek(685.40s) invoked.
+[01:40:32.300] Seek(685.40s) invoked.
+[01:40:32.308] Seek(683.57s) invoked.
+[01:40:32.316] Seek(679.90s) invoked.
+[01:40:32.340] Seek(676.24s) invoked.
+[01:40:32.355] Seek(667.07s) invoked.
+[01:40:32.358] Seek(667.07s) invoked.
+[01:40:32.364] Seek(665.24s) invoked.
+[01:40:32.372] Seek(663.41s) invoked.
+[01:40:32.476] Seek(661.58s) invoked.
+[01:40:32.597] Seek(661.58s) invoked.
+[01:40:33.101] Seek(661.58s) invoked.
+[01:40:33.125] Seek(659.74s) invoked.
+[01:40:33.588] Seek(657.91s) invoked.
+[01:40:33.592] Seek(657.91s) invoked.
+[01:40:33.740] Seek(657.91s) invoked.
+[01:40:33.892] Seek(657.91s) invoked.
+[01:40:34.106] Seek(657.91s) invoked.
+[01:40:40.565] Seek(1911.42s) invoked.
+[01:40:40.595] Seek(1918.75s) invoked.
+[01:40:40.608] Seek(1920.59s) invoked.
+[01:40:40.614] Seek(1922.42s) invoked.
+[01:40:40.620] Seek(1924.25s) invoked.
+[01:40:40.636] Seek(1926.09s) invoked.
+[01:40:40.684] Seek(1927.92s) invoked.
+[01:40:40.700] Seek(1929.75s) invoked.
+[01:40:40.716] Seek(1933.42s) invoked.
+[01:40:40.725] Seek(1935.25s) invoked.
+[01:40:40.732] Seek(1938.91s) invoked.
+[01:40:40.741] Seek(1942.58s) invoked.
+[01:40:40.770] Seek(1944.41s) invoked.
+[01:40:40.774] Seek(1948.08s) invoked.
+[01:40:40.836] Seek(1949.91s) invoked.
+[01:40:40.868] Seek(1951.74s) invoked.
+[01:40:40.972] Seek(1953.57s) invoked.
+[01:40:41.012] Seek(1955.41s) invoked.
+[01:40:41.109] Seek(1955.41s) invoked.
+[01:57:11.873] Load() started for: C:\Users\sayan\Downloads\Naam Reh Jayegaa - Watch FULL Episode 6 - Arijit's Perfect tribute to Lata Mangeshkar.mp4
+[01:57:12.156] _reader created: SampleRate=44100, Ch=2, TotalTime=00:43:31.4859977
+[01:57:12.224] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[01:57:12.225] Load() finished successfully. HasAudioTrack=True
+[01:57:12.230] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[01:57:12.230] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[01:57:12.235] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[01:57:12.236] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[01:57:17.340] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:09:53.267] Load() started for: C:\Users\sayan\Downloads\upscaled-video.mp4
+[02:09:53.304] _reader created: SampleRate=48000, Ch=2, TotalTime=00:00:10.0050000
+[02:09:53.369] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[02:09:53.369] Load() finished successfully. HasAudioTrack=True
+[02:09:53.373] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:09:53.373] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[02:09:53.376] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:09:53.377] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:09:53.841] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:09:56.585] Seek(1.72s) invoked.
+[02:09:56.617] Seek(1.72s) invoked.
+[02:09:56.639] Seek(1.73s) invoked.
+[02:09:56.656] Seek(1.74s) invoked.
+[02:09:56.679] Seek(1.74s) invoked.
+[02:09:56.688] Seek(1.75s) invoked.
+[02:09:56.695] Seek(1.76s) invoked.
+[02:09:56.703] Seek(1.76s) invoked.
+[02:09:56.711] Seek(1.77s) invoked.
+[02:09:56.727] Seek(1.77s) invoked.
+[02:09:56.864] Seek(1.77s) invoked.
+[02:09:56.872] Seek(1.76s) invoked.
+[02:09:56.879] Seek(1.74s) invoked.
+[02:09:56.888] Seek(1.71s) invoked.
+[02:09:56.895] Seek(1.67s) invoked.
+[02:09:56.905] Seek(1.63s) invoked.
+[02:09:56.911] Seek(1.59s) invoked.
+[02:09:56.919] Seek(1.55s) invoked.
+[02:09:56.927] Seek(1.51s) invoked.
+[02:09:56.936] Seek(1.49s) invoked.
+[02:09:56.943] Seek(1.46s) invoked.
+[02:09:56.951] Seek(1.44s) invoked.
+[02:09:56.959] Seek(1.43s) invoked.
+[02:09:57.130] Seek(1.43s) invoked.
+[02:09:57.159] Seek(1.44s) invoked.
+[02:09:57.167] Seek(1.44s) invoked.
+[02:09:57.175] Seek(1.46s) invoked.
+[02:09:57.183] Seek(1.49s) invoked.
+[02:09:57.191] Seek(1.50s) invoked.
+[02:09:57.200] Seek(1.51s) invoked.
+[02:09:57.207] Seek(1.52s) invoked.
+[02:09:57.216] Seek(1.54s) invoked.
+[02:09:57.228] Seek(1.54s) invoked.
+[02:09:57.335] Seek(1.55s) invoked.
+[02:10:04.314] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=1.54, HasAudioTrack=True, EngineIsPlaying=False
+[02:10:04.314] Seek(1.54s) invoked.
+[02:10:04.316] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Stopped, Volume=1, IsMuted=False
+[02:10:04.317] _outputDevice.Play() executed. New state=Playing
+[02:10:04.331] Read #1: requested=3264, read=3264, maxSample=0.098297
+[02:10:04.332] Read #2: requested=3264, read=3264, maxSample=0.105408
+[02:10:04.333] Read #3: requested=3264, read=3264, maxSample=0.111664
+[02:10:04.385] Read #4: requested=3264, read=3264, maxSample=0.126801
+[02:10:04.414] Read #5: requested=3264, read=3264, maxSample=0.102570
+[02:10:04.454] Read #6: requested=3264, read=3264, maxSample=0.150757
+[02:10:04.471] Seek(2.55s) invoked.
+[02:10:04.486] Read #7: requested=3264, read=3264, maxSample=0.225372
+[02:10:04.514] Read #8: requested=3264, read=3264, maxSample=0.186676
+[02:10:04.554] Read #9: requested=3264, read=3264, maxSample=0.225922
+[02:10:04.584] Read #10: requested=3264, read=3264, maxSample=0.218536
+[02:10:05.944] Read #50: requested=3264, read=3264, maxSample=0.202545
+[02:10:06.136] MainWindow.PlaybackButton_Click: session.State=Playing, Pos=4.17, HasAudioTrack=True, EngineIsPlaying=True
+[02:10:06.137] Pause() invoked. Current state=Playing
+[02:10:06.144] _outputDevice.Pause() executed. New state=Paused
+[02:10:11.001] Seek(1.16s) invoked.
+[02:10:11.041] Seek(1.16s) invoked.
+[02:10:11.105] Seek(1.15s) invoked.
+[02:10:11.108] Seek(1.13s) invoked.
+[02:10:11.112] Seek(1.11s) invoked.
+[02:10:11.119] Seek(1.07s) invoked.
+[02:10:11.127] Seek(1.03s) invoked.
+[02:10:11.135] Seek(0.97s) invoked.
+[02:10:11.143] Seek(0.91s) invoked.
+[02:10:11.151] Seek(0.83s) invoked.
+[02:10:11.159] Seek(0.75s) invoked.
+[02:10:11.167] Seek(0.65s) invoked.
+[02:10:11.175] Seek(0.55s) invoked.
+[02:10:11.183] Seek(0.44s) invoked.
+[02:10:11.191] Seek(0.34s) invoked.
+[02:10:11.199] Seek(0.23s) invoked.
+[02:10:11.207] Seek(0.14s) invoked.
+[02:10:11.216] Seek(0.04s) invoked.
+[02:10:11.223] Seek(0.00s) invoked.
+[02:10:11.231] Seek(0.00s) invoked.
+[02:10:11.239] Seek(0.00s) invoked.
+[02:10:11.247] Seek(0.00s) invoked.
+[02:10:11.255] Seek(0.00s) invoked.
+[02:10:11.263] Seek(0.00s) invoked.
+[02:10:11.280] Seek(0.00s) invoked.
+[02:10:11.282] Seek(0.00s) invoked.
+[02:10:11.295] Seek(0.00s) invoked.
+[02:10:11.318] Seek(0.00s) invoked.
+[02:10:11.327] Seek(0.00s) invoked.
+[02:10:11.335] Seek(0.00s) invoked.
+[02:10:11.344] Seek(0.00s) invoked.
+[02:10:11.351] Seek(0.00s) invoked.
+[02:10:11.359] Seek(0.00s) invoked.
+[02:10:11.375] Seek(0.00s) invoked.
+[02:10:11.537] Seek(0.00s) invoked.
+[02:10:11.543] Seek(0.00s) invoked.
+[02:10:12.240] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=0.00, HasAudioTrack=True, EngineIsPlaying=False
+[02:10:12.240] Seek(0.00s) invoked.
+[02:10:12.241] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Paused, Volume=1, IsMuted=False
+[02:10:12.242] _outputDevice.Play() executed. New state=Playing
+[02:10:13.750] Read #100: requested=3264, read=3264, maxSample=0.124176
+[02:10:13.888] Seek(9.42s) invoked.
+[02:10:14.580] OutputDevice_PlaybackStopped event fired! Exception=
+[02:28:17.453] Load() started for: C:\Users\sayan\Downloads\upscaled-video.mp4
+[02:28:17.490] _reader created: SampleRate=48000, Ch=2, TotalTime=00:00:10.0050000
+[02:28:17.583] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[02:28:17.584] Load() finished successfully. HasAudioTrack=True
+[02:28:17.587] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:28:17.587] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[02:28:17.590] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:28:17.591] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:28:18.014] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:39:04.604] Load() started for: C:\Users\sayan\Downloads\upscaled-video.mp4
+[02:39:04.643] _reader created: SampleRate=48000, Ch=2, TotalTime=00:00:10.0050000
+[02:39:04.735] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[02:39:04.736] Load() finished successfully. HasAudioTrack=True
+[02:39:04.739] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:39:04.740] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[02:39:04.744] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:39:04.745] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:39:05.158] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:39:16.212] Seek(5.47s) invoked.
+[02:39:16.231] Seek(5.48s) invoked.
+[02:39:16.252] Seek(5.48s) invoked.
+[02:39:16.258] Seek(5.48s) invoked.
+[02:39:16.266] Seek(5.49s) invoked.
+[02:39:16.274] Seek(5.50s) invoked.
+[02:39:16.285] Seek(5.53s) invoked.
+[02:39:16.294] Seek(5.54s) invoked.
+[02:39:16.298] Seek(5.57s) invoked.
+[02:39:16.306] Seek(5.61s) invoked.
+[02:39:16.314] Seek(5.66s) invoked.
+[02:39:16.323] Seek(5.71s) invoked.
+[02:39:16.330] Seek(5.76s) invoked.
+[02:39:16.340] Seek(5.81s) invoked.
+[02:39:16.346] Seek(5.86s) invoked.
+[02:39:16.354] Seek(5.91s) invoked.
+[02:39:16.362] Seek(5.95s) invoked.
+[02:39:16.368] Seek(5.95s) invoked.
+[02:39:16.370] Seek(5.98s) invoked.
+[02:39:16.378] Seek(6.01s) invoked.
+[02:39:16.386] Seek(6.03s) invoked.
+[02:39:16.394] Seek(6.05s) invoked.
+[02:39:16.402] Seek(6.07s) invoked.
+[02:39:16.410] Seek(6.08s) invoked.
+[02:39:16.421] Seek(6.09s) invoked.
+[02:39:16.426] Seek(6.11s) invoked.
+[02:39:16.442] Seek(6.11s) invoked.
+[02:39:16.451] Seek(6.12s) invoked.
+[02:39:16.466] Seek(6.13s) invoked.
+[02:39:16.474] Seek(6.14s) invoked.
+[02:39:16.483] Seek(6.14s) invoked.
+[02:39:16.490] Seek(6.16s) invoked.
+[02:39:16.498] Seek(6.17s) invoked.
+[02:39:16.506] Seek(6.18s) invoked.
+[02:39:16.514] Seek(6.19s) invoked.
+[02:39:16.522] Seek(6.20s) invoked.
+[02:39:16.530] Seek(6.22s) invoked.
+[02:39:16.538] Seek(6.24s) invoked.
+[02:39:16.546] Seek(6.26s) invoked.
+[02:39:16.554] Seek(6.27s) invoked.
+[02:39:16.562] Seek(6.29s) invoked.
+[02:39:16.571] Seek(6.30s) invoked.
+[02:39:16.578] Seek(6.32s) invoked.
+[02:39:16.587] Seek(6.34s) invoked.
+[02:39:16.596] Seek(6.34s) invoked.
+[02:39:16.603] Seek(6.36s) invoked.
+[02:39:16.611] Seek(6.37s) invoked.
+[02:39:16.619] Seek(6.38s) invoked.
+[02:39:16.626] Seek(6.39s) invoked.
+[02:39:16.635] Seek(6.40s) invoked.
+[02:39:16.643] Seek(6.42s) invoked.
+[02:39:16.653] Seek(6.42s) invoked.
+[02:39:16.658] Seek(6.44s) invoked.
+[02:39:16.666] Seek(6.45s) invoked.
+[02:39:16.674] Seek(6.46s) invoked.
+[02:39:16.682] Seek(6.47s) invoked.
+[02:39:16.690] Seek(6.48s) invoked.
+[02:39:16.698] Seek(6.49s) invoked.
+[02:39:16.706] Seek(6.50s) invoked.
+[02:39:16.722] Seek(6.50s) invoked.
+[02:39:16.730] Seek(6.51s) invoked.
+[02:39:16.738] Seek(6.52s) invoked.
+[02:39:16.755] Seek(6.52s) invoked.
+[02:39:16.763] Seek(6.53s) invoked.
+[02:39:16.786] Seek(6.54s) invoked.
+[02:39:16.810] Seek(6.55s) invoked.
+[02:39:16.858] Seek(6.55s) invoked.
+[02:39:57.571] Load() started for: C:\Users\sayan\Downloads\Naam Reh Jayegaa - Watch FULL Episode 6 - Arijit's Perfect tribute to Lata Mangeshkar.mp4
+[02:39:57.859] _reader created: SampleRate=44100, Ch=2, TotalTime=00:43:31.4859977
+[02:39:57.954] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[02:39:57.954] Load() finished successfully. HasAudioTrack=True
+[02:39:57.958] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:39:57.958] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[02:39:57.963] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:39:57.964] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:40:02.821] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:49:30.586] Load() started for: C:\Users\sayan\Downloads\Naam Reh Jayegaa - Watch FULL Episode 6 - Arijit's Perfect tribute to Lata Mangeshkar.mp4
+[02:49:30.647] _reader created: SampleRate=44100, Ch=2, TotalTime=00:43:31.4859977
+[02:49:30.737] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[02:49:30.738] Load() finished successfully. HasAudioTrack=True
+[02:49:30.741] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:49:30.741] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[02:49:30.745] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:49:30.746] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:49:36.067] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[02:49:40.741] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=0.00, HasAudioTrack=True, EngineIsPlaying=False
+[02:49:40.742] Seek(0.00s) invoked.
+[02:49:40.744] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Stopped, Volume=1, IsMuted=False
+[02:49:40.745] _outputDevice.Play() executed. New state=Playing
+[02:49:40.795] Read #1: requested=3000, read=3000, maxSample=0.000000
+[02:49:40.830] Read #2: requested=3000, read=3000, maxSample=0.000000
+[02:49:40.831] Read #3: requested=3000, read=3000, maxSample=0.012238
+[02:49:40.886] Read #4: requested=3000, read=3000, maxSample=0.078461
+[02:49:40.916] Read #5: requested=3000, read=3000, maxSample=0.205048
+[02:49:40.956] Read #6: requested=3000, read=3000, maxSample=0.206360
+[02:49:40.986] Read #7: requested=3000, read=3000, maxSample=0.170227
+[02:49:41.016] Read #8: requested=3000, read=3000, maxSample=0.194214
+[02:49:41.056] Read #9: requested=3000, read=3000, maxSample=0.160889
+[02:49:41.086] Read #10: requested=3000, read=3000, maxSample=0.138275
+[02:49:42.446] Read #50: requested=3000, read=3000, maxSample=0.150635
+[02:49:44.146] Read #100: requested=3000, read=3000, maxSample=0.097839
+[02:49:45.846] Read #150: requested=3000, read=3000, maxSample=0.057068
+[02:49:47.556] Read #200: requested=3000, read=3000, maxSample=0.167572
+[02:49:49.256] Read #250: requested=3000, read=3000, maxSample=0.071533
+[02:49:50.956] Read #300: requested=3000, read=3000, maxSample=0.000000
+[02:49:52.656] Read #350: requested=3000, read=3000, maxSample=0.000000
+[02:49:54.356] Read #400: requested=3000, read=3000, maxSample=0.000000
+[02:49:56.056] Read #450: requested=3000, read=3000, maxSample=0.378418
+[02:49:57.756] Read #500: requested=3000, read=3000, maxSample=0.124359
+[02:49:59.456] Read #550: requested=3000, read=3000, maxSample=0.016785
+[02:50:01.156] Read #600: requested=3000, read=3000, maxSample=0.123871
+[02:50:02.856] Read #650: requested=3000, read=3000, maxSample=0.077087
+[02:50:04.556] Read #700: requested=3000, read=3000, maxSample=0.310303
+[02:50:06.256] Read #750: requested=3000, read=3000, maxSample=0.285309
+[02:50:07.956] Read #800: requested=3000, read=3000, maxSample=0.179718
+[02:50:09.656] Read #850: requested=3000, read=3000, maxSample=0.216675
+[02:50:11.366] Read #900: requested=3000, read=3000, maxSample=0.172455
+[02:50:13.066] Read #950: requested=3000, read=3000, maxSample=0.248627
+[02:50:14.766] Read #1000: requested=3000, read=3000, maxSample=0.220490
+[02:50:16.466] Read #1050: requested=3000, read=3000, maxSample=0.157166
+[02:50:17.605] Seek(1031.77s) invoked.
+[02:50:17.652] Seek(1034.68s) invoked.
+[02:50:17.662] Seek(1037.60s) invoked.
+[02:50:17.667] Seek(1040.51s) invoked.
+[02:50:17.675] Seek(1046.34s) invoked.
+[02:50:17.685] Seek(1052.17s) invoked.
+[03:31:56.984] Load() started for: C:\Users\sayan\Downloads\Naam Reh Jayegaa - Watch FULL Episode 6 - Arijit's Perfect tribute to Lata Mangeshkar.mp4
+[03:31:57.087] _reader created: SampleRate=44100, Ch=2, TotalTime=00:43:31.4859977
+[03:31:57.232] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[03:31:57.233] Load() finished successfully. HasAudioTrack=True
+[03:31:57.237] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[03:31:57.237] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[03:31:57.242] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[03:31:57.243] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[03:32:02.259] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[03:32:06.722] Seek(98.54s) invoked.
+[03:32:06.834] Seek(98.91s) invoked.
+[03:32:06.841] Seek(98.91s) invoked.
+[03:32:06.848] Seek(99.29s) invoked.
+[03:32:06.863] Seek(99.66s) invoked.
+[03:32:06.871] Seek(100.04s) invoked.
+[03:32:06.879] Seek(100.23s) invoked.
+[03:32:06.888] Seek(100.60s) invoked.
+[03:32:06.900] Seek(100.97s) invoked.
+[03:32:06.903] Seek(101.16s) invoked.
+[03:32:06.915] Seek(101.72s) invoked.
+[03:32:06.919] Seek(102.10s) invoked.
+[03:32:06.929] Seek(102.47s) invoked.
+[03:32:06.936] Seek(102.85s) invoked.
+[03:32:06.950] Seek(103.41s) invoked.
+[03:32:06.952] Seek(103.60s) invoked.
+[03:32:06.960] Seek(104.16s) invoked.
+[03:32:06.969] Seek(104.53s) invoked.
+[03:32:06.977] Seek(104.72s) invoked.
+[03:32:06.984] Seek(105.10s) invoked.
+[03:32:07.000] Seek(105.47s) invoked.
+[03:32:07.003] Seek(105.47s) invoked.
+[03:32:07.009] Seek(105.66s) invoked.
+[03:32:07.016] Seek(105.85s) invoked.
+[03:32:07.023] Seek(106.03s) invoked.
+[03:32:07.032] Seek(106.22s) invoked.
+[03:32:07.039] Seek(106.41s) invoked.
+[03:32:07.054] Seek(106.41s) invoked.
+[03:32:07.817] Seek(106.03s) invoked.
+[03:32:07.922] Seek(106.03s) invoked.
+[03:32:07.945] Seek(105.66s) invoked.
+[03:32:07.952] Seek(105.10s) invoked.
+[03:32:07.960] Seek(104.16s) invoked.
+[03:32:07.972] Seek(103.22s) invoked.
+[03:32:07.978] Seek(101.91s) invoked.
+[03:32:07.984] Seek(100.23s) invoked.
+[03:32:07.995] Seek(98.16s) invoked.
+[03:32:08.000] Seek(96.29s) invoked.
+[03:32:08.008] Seek(94.42s) invoked.
+[03:32:08.020] Seek(92.73s) invoked.
+[03:32:08.024] Seek(91.05s) invoked.
+[03:32:08.032] Seek(89.55s) invoked.
+[03:32:08.040] Seek(87.86s) invoked.
+[03:32:08.048] Seek(86.55s) invoked.
+[03:32:08.056] Seek(84.86s) invoked.
+[03:32:08.069] Seek(83.37s) invoked.
+[03:32:08.072] Seek(81.30s) invoked.
+[03:32:08.080] Seek(79.43s) invoked.
+[03:32:08.088] Seek(77.18s) invoked.
+[03:32:08.096] Seek(74.94s) invoked.
+[03:32:08.104] Seek(72.50s) invoked.
+[03:32:08.112] Seek(69.88s) invoked.
+[03:32:08.121] Seek(67.44s) invoked.
+[03:32:08.131] Seek(64.63s) invoked.
+[03:32:08.136] Seek(61.63s) invoked.
+[03:32:08.145] Seek(59.20s) invoked.
+[03:32:08.152] Seek(56.39s) invoked.
+[03:32:08.160] Seek(53.58s) invoked.
+[03:32:08.169] Seek(50.77s) invoked.
+[03:32:08.176] Seek(47.96s) invoked.
+[03:32:08.185] Seek(45.15s) invoked.
+[03:32:08.193] Seek(42.71s) invoked.
+[03:32:08.200] Seek(40.09s) invoked.
+[03:32:08.208] Seek(38.03s) invoked.
+[03:32:08.218] Seek(36.16s) invoked.
+[03:32:08.224] Seek(33.91s) invoked.
+[03:32:08.232] Seek(31.66s) invoked.
+[03:32:08.240] Seek(29.60s) invoked.
+[03:32:08.248] Seek(26.98s) invoked.
+[03:32:08.256] Seek(24.54s) invoked.
+[03:32:08.266] Seek(21.73s) invoked.
+[03:32:08.272] Seek(18.92s) invoked.
+[03:32:08.280] Seek(16.11s) invoked.
+[03:32:08.288] Seek(13.49s) invoked.
+[03:32:08.296] Seek(10.30s) invoked.
+[03:32:08.305] Seek(7.31s) invoked.
+[03:32:08.312] Seek(4.12s) invoked.
+[03:32:08.321] Seek(0.94s) invoked.
+[03:32:08.327] Seek(0.00s) invoked.
+[03:32:08.335] Seek(0.00s) invoked.
+[03:32:08.343] Seek(0.00s) invoked.
+[03:32:08.351] Seek(0.00s) invoked.
+[03:32:08.360] Seek(0.00s) invoked.
+[03:32:08.368] Seek(0.00s) invoked.
+[03:32:08.376] Seek(0.00s) invoked.
+[03:32:08.384] Seek(0.00s) invoked.
+[03:32:08.408] Seek(0.00s) invoked.
+[03:32:08.431] Seek(0.00s) invoked.
+[03:32:08.591] Seek(0.00s) invoked.
+[03:32:08.807] Seek(0.00s) invoked.
+[03:32:08.931] Seek(0.00s) invoked.
+[03:32:08.943] Seek(0.00s) invoked.
+[03:32:08.951] Seek(0.00s) invoked.
+[03:32:08.976] Seek(0.00s) invoked.
+[03:32:08.983] Seek(0.00s) invoked.
+[03:32:08.999] Seek(0.00s) invoked.
+[03:32:09.007] Seek(0.00s) invoked.
+[03:32:09.015] Seek(0.00s) invoked.
+[03:32:09.024] Seek(0.00s) invoked.
+[03:32:09.031] Seek(0.00s) invoked.
+[03:32:09.040] Seek(0.00s) invoked.
+[03:32:09.047] Seek(0.00s) invoked.
+[03:32:09.056] Seek(0.00s) invoked.
+[03:32:09.064] Seek(0.00s) invoked.
+[03:32:09.072] Seek(0.00s) invoked.
+[03:32:09.079] Seek(0.00s) invoked.
+[03:32:09.088] Seek(1.87s) invoked.
+[03:32:09.096] Seek(3.75s) invoked.
+[03:32:09.108] Seek(5.62s) invoked.
+[03:32:09.112] Seek(7.68s) invoked.
+[03:32:09.120] Seek(9.93s) invoked.
+[03:32:09.128] Seek(12.18s) invoked.
+[03:32:09.136] Seek(14.42s) invoked.
+[03:32:09.145] Seek(16.86s) invoked.
+[03:32:09.154] Seek(19.48s) invoked.
+[03:32:09.160] Seek(21.92s) invoked.
+[03:32:09.168] Seek(24.35s) invoked.
+[03:32:09.176] Seek(26.98s) invoked.
+[03:32:09.184] Seek(29.41s) invoked.
+[03:32:09.193] Seek(31.66s) invoked.
+[03:32:09.202] Seek(33.53s) invoked.
+[03:32:09.208] Seek(35.78s) invoked.
+[03:32:09.216] Seek(37.65s) invoked.
+[03:32:09.227] Seek(39.53s) invoked.
+[03:32:09.233] Seek(41.21s) invoked.
+[03:32:09.240] Seek(42.71s) invoked.
+[03:32:09.248] Seek(44.40s) invoked.
+[03:32:09.257] Seek(45.90s) invoked.
+[03:32:09.264] Seek(47.21s) invoked.
+[03:32:09.271] Seek(48.52s) invoked.
+[03:32:09.279] Seek(49.83s) invoked.
+[03:32:09.288] Seek(51.14s) invoked.
+[03:32:09.296] Seek(52.27s) invoked.
+[03:32:09.305] Seek(53.58s) invoked.
+[03:32:09.311] Seek(54.52s) invoked.
+[03:32:09.319] Seek(55.64s) invoked.
+[03:32:09.328] Seek(56.95s) invoked.
+[03:32:09.335] Seek(57.89s) invoked.
+[03:32:09.345] Seek(59.20s) invoked.
+[03:32:09.354] Seek(60.14s) invoked.
+[03:32:09.360] Seek(61.26s) invoked.
+[03:32:09.368] Seek(62.57s) invoked.
+[03:32:09.376] Seek(63.51s) invoked.
+[03:32:09.384] Seek(64.82s) invoked.
+[03:32:09.393] Seek(66.13s) invoked.
+[03:32:09.401] Seek(67.44s) invoked.
+[03:32:09.410] Seek(68.75s) invoked.
+[03:32:09.416] Seek(69.88s) invoked.
+[03:32:09.425] Seek(71.19s) invoked.
+[03:32:09.428] Seek(71.19s) invoked.
+[03:32:09.432] Seek(72.50s) invoked.
+[03:32:09.440] Seek(73.81s) invoked.
+[03:32:09.451] Seek(74.94s) invoked.
+[03:32:09.456] Seek(76.62s) invoked.
+[03:32:09.465] Seek(78.12s) invoked.
+[03:32:09.472] Seek(79.81s) invoked.
+[03:32:09.480] Seek(81.30s) invoked.
+[03:32:09.488] Seek(82.80s) invoked.
+[03:32:09.500] Seek(84.49s) invoked.
+[03:32:09.504] Seek(86.36s) invoked.
+[03:32:09.512] Seek(88.24s) invoked.
+[03:32:09.520] Seek(90.48s) invoked.
+[03:32:09.528] Seek(92.54s) invoked.
+[03:32:09.535] Seek(94.79s) invoked.
+[03:32:09.545] Seek(97.04s) invoked.
+[03:32:09.552] Seek(99.10s) invoked.
+[03:32:09.560] Seek(101.35s) invoked.
+[03:32:09.568] Seek(103.60s) invoked.
+[03:32:09.578] Seek(106.03s) invoked.
+[03:32:09.584] Seek(108.09s) invoked.
+[03:32:09.597] Seek(110.34s) invoked.
+[03:32:09.600] Seek(112.59s) invoked.
+[03:32:09.610] Seek(114.46s) invoked.
+[03:32:09.616] Seek(116.34s) invoked.
+[03:32:09.624] Seek(118.58s) invoked.
+[03:32:09.632] Seek(120.46s) invoked.
+[03:32:09.640] Seek(122.71s) invoked.
+[03:32:09.651] Seek(124.58s) invoked.
+[03:32:09.656] Seek(126.83s) invoked.
+[03:32:09.664] Seek(128.89s) invoked.
+[03:32:09.672] Seek(130.76s) invoked.
+[03:32:09.680] Seek(132.64s) invoked.
+[03:32:09.688] Seek(134.51s) invoked.
+[03:32:09.699] Seek(136.57s) invoked.
+[03:32:09.704] Seek(138.07s) invoked.
+[03:32:09.712] Seek(139.38s) invoked.
+[03:32:09.720] Seek(140.69s) invoked.
+[03:32:09.727] Seek(141.81s) invoked.
+[03:32:09.736] Seek(142.94s) invoked.
+[03:32:09.748] Seek(143.88s) invoked.
+[03:32:09.752] Seek(144.62s) invoked.
+[03:32:09.760] Seek(145.19s) invoked.
+[03:32:09.767] Seek(145.75s) invoked.
+[03:32:09.776] Seek(146.31s) invoked.
+[03:32:09.784] Seek(146.69s) invoked.
+[03:32:09.795] Seek(147.25s) invoked.
+[03:32:09.799] Seek(147.81s) invoked.
+[03:32:09.807] Seek(148.18s) invoked.
+[03:32:09.815] Seek(148.75s) invoked.
+[03:32:09.824] Seek(149.31s) invoked.
+[03:32:09.831] Seek(149.68s) invoked.
+[03:32:09.839] Seek(150.43s) invoked.
+[03:32:09.850] Seek(151.18s) invoked.
+[03:32:09.855] Seek(151.93s) invoked.
+[03:32:09.864] Seek(152.49s) invoked.
+[03:32:09.871] Seek(153.43s) invoked.
+[03:32:09.880] Seek(154.55s) invoked.
+[03:32:09.887] Seek(155.49s) invoked.
+[03:32:09.897] Seek(156.43s) invoked.
+[03:32:09.904] Seek(157.36s) invoked.
+[03:32:09.912] Seek(158.67s) invoked.
+[03:32:09.920] Seek(159.61s) invoked.
+[03:32:09.925] Seek(159.61s) invoked.
+[03:32:09.928] Seek(160.55s) invoked.
+[03:32:09.937] Seek(161.48s) invoked.
+[03:32:09.945] Seek(162.80s) invoked.
+[03:32:09.952] Seek(163.73s) invoked.
+[03:32:09.960] Seek(165.04s) invoked.
+[03:32:09.967] Seek(165.98s) invoked.
+[03:32:09.976] Seek(166.92s) invoked.
+[03:32:09.985] Seek(168.23s) invoked.
+[03:32:09.992] Seek(169.17s) invoked.
+[03:32:10.000] Seek(170.48s) invoked.
+[03:32:10.008] Seek(171.41s) invoked.
+[03:32:10.015] Seek(172.35s) invoked.
+[03:32:10.024] Seek(173.47s) invoked.
+[03:32:10.031] Seek(174.41s) invoked.
+[03:32:10.040] Seek(175.35s) invoked.
+[03:32:10.047] Seek(176.28s) invoked.
+[03:32:10.055] Seek(177.22s) invoked.
+[03:32:10.064] Seek(178.16s) invoked.
+[03:32:10.071] Seek(179.09s) invoked.
+[03:32:10.080] Seek(180.22s) invoked.
+[03:32:10.088] Seek(181.16s) invoked.
+[03:32:10.095] Seek(182.09s) invoked.
+[03:32:10.104] Seek(183.03s) invoked.
+[03:32:10.112] Seek(184.34s) invoked.
+[03:32:10.119] Seek(185.28s) invoked.
+[03:32:10.127] Seek(186.21s) invoked.
+[03:32:10.136] Seek(187.52s) invoked.
+[03:32:10.145] Seek(188.84s) invoked.
+[03:32:10.152] Seek(190.15s) invoked.
+[03:32:10.160] Seek(191.46s) invoked.
+[03:32:10.168] Seek(192.77s) invoked.
+[03:32:10.176] Seek(193.89s) invoked.
+[03:32:10.184] Seek(195.58s) invoked.
+[03:32:10.195] Seek(197.08s) invoked.
+[03:32:10.200] Seek(198.77s) invoked.
+[03:32:10.208] Seek(200.26s) invoked.
+[03:32:10.215] Seek(201.58s) invoked.
+[03:32:10.224] Seek(203.26s) invoked.
+[03:32:10.232] Seek(204.57s) invoked.
+[03:32:10.243] Seek(206.07s) invoked.
+[03:32:10.248] Seek(207.76s) invoked.
+[03:32:10.256] Seek(209.26s) invoked.
+[03:32:10.264] Seek(211.13s) invoked.
+[03:32:10.272] Seek(213.00s) invoked.
+[03:32:10.280] Seek(215.06s) invoked.
+[03:32:10.290] Seek(216.56s) invoked.
+[03:32:10.296] Seek(218.44s) invoked.
+[03:32:10.304] Seek(220.31s) invoked.
+[03:32:10.312] Seek(222.18s) invoked.
+[03:32:10.320] Seek(224.06s) invoked.
+[03:32:10.328] Seek(225.74s) invoked.
+[03:32:10.336] Seek(227.24s) invoked.
+[03:32:10.345] Seek(228.93s) invoked.
+[03:32:10.352] Seek(230.43s) invoked.
+[03:32:10.360] Seek(232.11s) invoked.
+[03:32:10.368] Seek(233.61s) invoked.
+[03:32:10.376] Seek(234.92s) invoked.
+[03:32:10.384] Seek(236.61s) invoked.
+[03:32:10.393] Seek(237.92s) invoked.
+[03:32:10.400] Seek(239.23s) invoked.
+[03:32:10.409] Seek(240.73s) invoked.
+[03:32:10.416] Seek(242.04s) invoked.
+[03:32:10.424] Seek(243.35s) invoked.
+[03:32:10.428] Seek(243.35s) invoked.
+[03:32:10.437] Seek(244.29s) invoked.
+[03:32:10.440] Seek(245.60s) invoked.
+[03:32:10.448] Seek(246.54s) invoked.
+[03:32:10.456] Seek(247.85s) invoked.
+[03:32:10.465] Seek(248.78s) invoked.
+[03:32:10.472] Seek(250.10s) invoked.
+[03:32:10.484] Seek(251.03s) invoked.
+[03:32:10.488] Seek(252.16s) invoked.
+[03:32:10.496] Seek(253.09s) invoked.
+[03:32:10.504] Seek(254.40s) invoked.
+[03:32:10.512] Seek(255.72s) invoked.
+[03:32:10.520] Seek(256.65s) invoked.
+[03:32:10.530] Seek(257.96s) invoked.
+[03:32:10.536] Seek(264.75s) invoked.
+[03:32:10.544] Seek(271.55s) invoked.
+[03:32:10.552] Seek(278.34s) invoked.
+[03:32:10.560] Seek(285.32s) invoked.
+[03:32:10.568] Seek(292.11s) invoked.
+[03:32:10.578] Seek(298.90s) invoked.
+[03:32:10.583] Seek(305.50s) invoked.
+[03:32:10.592] Seek(311.92s) invoked.
+[03:32:10.599] Seek(318.52s) invoked.
+[03:32:10.608] Seek(324.94s) invoked.
+[03:32:10.615] Seek(331.35s) invoked.
+[03:32:10.623] Seek(337.58s) invoked.
+[03:32:10.637] Seek(343.81s) invoked.
+[03:32:10.640] Seek(350.04s) invoked.
+[03:32:10.647] Seek(356.27s) invoked.
+[03:32:10.656] Seek(362.50s) invoked.
+[03:32:10.664] Seek(368.54s) invoked.
+[03:32:10.672] Seek(374.77s) invoked.
+[03:32:10.686] Seek(381.00s) invoked.
+[03:32:10.689] Seek(387.04s) invoked.
+[03:32:10.695] Seek(393.27s) invoked.
+[03:32:10.711] Seek(399.50s) invoked.
+[03:32:10.720] Seek(405.54s) invoked.
+[03:32:10.727] Seek(411.58s) invoked.
+[03:32:10.738] Seek(417.62s) invoked.
+[03:32:10.744] Seek(423.66s) invoked.
+[03:32:10.751] Seek(429.71s) invoked.
+[03:32:10.760] Seek(435.75s) invoked.
+[03:32:10.767] Seek(441.79s) invoked.
+[03:32:10.784] Seek(447.83s) invoked.
+[03:32:10.797] Seek(453.87s) invoked.
+[03:32:10.815] Seek(459.91s) invoked.
+[03:32:10.832] Seek(465.96s) invoked.
+[03:32:10.840] Seek(472.00s) invoked.
+[03:32:10.863] Seek(478.04s) invoked.
+[03:32:10.872] Seek(484.08s) invoked.
+[03:32:10.887] Seek(490.12s) invoked.
+[03:32:10.900] Seek(496.16s) invoked.
+[03:32:10.911] Seek(502.21s) invoked.
+[03:32:10.929] Seek(508.06s) invoked.
+[03:32:10.932] Seek(514.10s) invoked.
+[03:32:10.936] Seek(520.14s) invoked.
+[03:32:10.952] Seek(526.37s) invoked.
+[03:32:10.965] Seek(532.41s) invoked.
+[03:32:10.968] Seek(538.64s) invoked.
+[03:32:10.976] Seek(544.87s) invoked.
+[03:32:10.984] Seek(550.91s) invoked.
+[03:32:10.993] Seek(557.14s) invoked.
+[03:32:11.000] Seek(563.37s) invoked.
+[03:32:11.013] Seek(569.41s) invoked.
+[03:32:11.016] Seek(575.64s) invoked.
+[03:32:11.023] Seek(581.68s) invoked.
+[03:32:11.031] Seek(587.91s) invoked.
+[03:32:11.040] Seek(594.14s) invoked.
+[03:32:11.047] Seek(600.37s) invoked.
+[03:32:11.061] Seek(606.60s) invoked.
+[03:32:11.064] Seek(613.02s) invoked.
+[03:32:11.072] Seek(619.24s) invoked.
+[03:32:11.079] Seek(625.66s) invoked.
+[03:32:11.087] Seek(631.70s) invoked.
+[03:32:11.095] Seek(638.12s) invoked.
+[03:32:11.104] Seek(644.53s) invoked.
+[03:32:11.118] Seek(650.95s) invoked.
+[03:32:11.121] Seek(657.18s) invoked.
+[03:32:11.128] Seek(663.41s) invoked.
+[03:32:11.136] Seek(669.83s) invoked.
+[03:32:11.144] Seek(675.87s) invoked.
+[03:32:11.151] Seek(682.10s) invoked.
+[03:32:11.163] Seek(688.14s) invoked.
+[03:32:11.167] Seek(694.37s) invoked.
+[03:32:11.176] Seek(700.60s) invoked.
+[03:32:11.183] Seek(706.64s) invoked.
+[03:32:11.193] Seek(712.87s) invoked.
+[03:32:11.200] Seek(718.91s) invoked.
+[03:32:11.211] Seek(724.95s) invoked.
+[03:32:11.215] Seek(730.99s) invoked.
+[03:32:11.223] Seek(737.03s) invoked.
+[03:32:11.240] Seek(743.07s) invoked.
+[03:32:11.247] Seek(749.12s) invoked.
+[03:32:11.264] Seek(755.16s) invoked.
+[03:32:11.272] Seek(761.20s) invoked.
+[03:32:11.280] Seek(767.24s) invoked.
+[03:32:11.295] Seek(773.28s) invoked.
+[03:32:11.303] Seek(779.32s) invoked.
+[03:32:11.320] Seek(785.37s) invoked.
+[03:32:11.327] Seek(791.41s) invoked.
+[03:32:11.336] Seek(797.45s) invoked.
+[03:32:11.352] Seek(803.49s) invoked.
+[03:32:11.360] Seek(809.53s) invoked.
+[03:32:11.377] Seek(815.57s) invoked.
+[03:32:11.393] Seek(821.62s) invoked.
+[03:32:11.400] Seek(827.66s) invoked.
+[03:32:11.423] Seek(833.70s) invoked.
+[03:32:11.435] Seek(839.55s) invoked.
+[03:32:11.439] Seek(845.60s) invoked.
+[03:32:11.472] Seek(851.64s) invoked.
+[03:32:11.527] Seek(857.68s) invoked.
+[03:32:11.583] Seek(863.35s) invoked.
+[03:32:11.591] Seek(868.26s) invoked.
+[03:32:11.600] Seek(872.43s) invoked.
+[03:32:11.609] Seek(876.04s) invoked.
+[03:32:11.616] Seek(879.46s) invoked.
+[03:32:11.624] Seek(882.50s) invoked.
+[03:32:11.632] Seek(884.98s) invoked.
+[03:32:11.639] Seek(887.28s) invoked.
+[03:32:11.659] Seek(889.39s) invoked.
+[03:32:11.662] Seek(891.31s) invoked.
+[03:32:11.665] Seek(892.66s) invoked.
+[03:32:11.672] Seek(894.02s) invoked.
+[03:32:11.680] Seek(889.71s) invoked.
+[03:32:11.688] Seek(885.97s) invoked.
+[03:32:11.696] Seek(882.22s) invoked.
+[03:32:11.705] Seek(879.03s) invoked.
+[03:32:11.712] Seek(876.22s) invoked.
+[03:32:11.720] Seek(873.60s) invoked.
+[03:32:11.728] Seek(871.35s) invoked.
+[03:32:11.735] Seek(868.92s) invoked.
+[03:32:11.745] Seek(866.48s) invoked.
+[03:32:11.754] Seek(864.24s) invoked.
+[03:32:11.760] Seek(862.36s) invoked.
+[03:32:11.767] Seek(861.05s) invoked.
+[03:32:11.776] Seek(859.93s) invoked.
+[03:32:11.784] Seek(859.36s) invoked.
+[03:32:11.792] Seek(858.99s) invoked.
+[03:32:11.804] Seek(858.62s) invoked.
+[03:32:11.807] Seek(858.43s) invoked.
+[03:32:11.958] Seek(858.43s) invoked.
+[03:32:11.976] Seek(858.43s) invoked.
+[03:32:11.984] Seek(858.62s) invoked.
+[03:32:11.993] Seek(858.99s) invoked.
+[03:32:12.002] Seek(859.55s) invoked.
+[03:32:12.009] Seek(859.93s) invoked.
+[03:32:12.016] Seek(860.49s) invoked.
+[03:32:12.023] Seek(861.24s) invoked.
+[03:32:12.038] Seek(861.99s) invoked.
+[03:32:12.040] Seek(863.11s) invoked.
+[03:32:12.047] Seek(864.05s) invoked.
+[03:32:12.060] Seek(864.98s) invoked.
+[03:32:12.063] Seek(866.11s) invoked.
+[03:32:12.072] Seek(866.86s) invoked.
+[03:32:12.080] Seek(867.61s) invoked.
+[03:32:12.088] Seek(868.17s) invoked.
+[03:32:12.097] Seek(868.54s) invoked.
+[03:32:12.107] Seek(868.92s) invoked.
+[03:32:12.112] Seek(869.29s) invoked.
+[03:32:12.127] Seek(869.48s) invoked.
+[03:32:12.136] Seek(869.67s) invoked.
+[03:32:12.143] Seek(869.86s) invoked.
+[03:32:12.151] Seek(870.04s) invoked.
+[03:32:12.162] Seek(870.23s) invoked.
+[03:32:12.167] Seek(870.42s) invoked.
+[03:32:12.177] Seek(870.60s) invoked.
+[03:32:12.183] Seek(870.79s) invoked.
+[03:32:12.192] Seek(870.98s) invoked.
+[03:32:12.200] Seek(871.35s) invoked.
+[03:32:12.216] Seek(871.73s) invoked.
+[03:32:12.223] Seek(871.92s) invoked.
+[03:32:12.239] Seek(872.10s) invoked.
+[03:32:12.247] Seek(872.29s) invoked.
+[03:32:12.264] Seek(872.48s) invoked.
+[03:32:13.017] Seek(859.93s) invoked.
+[03:32:13.128] Seek(859.93s) invoked.
+[03:32:13.136] Seek(860.11s) invoked.
+[03:32:13.143] Seek(860.30s) invoked.
+[03:32:13.151] Seek(860.49s) invoked.
+[03:32:13.160] Seek(861.05s) invoked.
+[03:32:13.167] Seek(861.61s) invoked.
+[03:32:13.180] Seek(861.99s) invoked.
+[03:32:13.192] Seek(862.74s) invoked.
+[03:32:13.195] Seek(863.49s) invoked.
+[03:32:13.200] Seek(864.24s) invoked.
+[03:32:13.207] Seek(864.98s) invoked.
+[03:32:13.216] Seek(865.55s) invoked.
+[03:32:13.223] Seek(866.30s) invoked.
+[03:32:13.233] Seek(866.86s) invoked.
+[03:32:13.239] Seek(867.42s) invoked.
+[03:32:13.247] Seek(867.79s) invoked.
+[03:32:13.257] Seek(868.36s) invoked.
+[03:32:13.266] Seek(868.73s) invoked.
+[03:32:13.271] Seek(869.11s) invoked.
+[03:32:13.286] Seek(869.48s) invoked.
+[03:32:13.288] Seek(869.86s) invoked.
+[03:32:13.296] Seek(870.23s) invoked.
+[03:32:13.304] Seek(870.60s) invoked.
+[03:32:13.312] Seek(871.17s) invoked.
+[03:32:13.320] Seek(871.35s) invoked.
+[03:32:13.328] Seek(871.92s) invoked.
+[03:32:13.338] Seek(872.29s) invoked.
+[03:32:13.343] Seek(872.67s) invoked.
+[03:32:13.352] Seek(873.23s) invoked.
+[03:32:13.360] Seek(873.60s) invoked.
+[03:32:13.367] Seek(873.98s) invoked.
+[03:32:13.376] Seek(874.35s) invoked.
+[03:32:13.384] Seek(874.73s) invoked.
+[03:32:13.392] Seek(875.10s) invoked.
+[03:32:13.399] Seek(875.66s) invoked.
+[03:32:13.411] Seek(875.85s) invoked.
+[03:32:13.416] Seek(876.22s) invoked.
+[03:32:13.423] Seek(876.60s) invoked.
+[03:32:13.434] Seek(876.79s) invoked.
+[03:32:13.439] Seek(877.16s) invoked.
+[03:32:13.447] Seek(877.35s) invoked.
+[03:32:13.464] Seek(877.72s) invoked.
+[03:32:13.471] Seek(877.91s) invoked.
+[03:32:13.487] Seek(878.10s) invoked.
+[03:32:13.498] Seek(878.29s) invoked.
+[03:32:13.512] Seek(878.47s) invoked.
+[03:32:13.519] Seek(878.66s) invoked.
+[03:32:13.527] Seek(878.85s) invoked.
+[03:32:13.544] Seek(879.03s) invoked.
+[03:32:13.552] Seek(879.22s) invoked.
+[03:32:13.575] Seek(879.41s) invoked.
+[03:32:13.585] Seek(879.60s) invoked.
+[03:32:13.600] Seek(879.78s) invoked.
+[03:32:13.607] Seek(879.97s) invoked.
+[03:32:13.615] Seek(880.16s) invoked.
+[03:32:13.623] Seek(880.53s) invoked.
+[03:32:13.627] Seek(880.53s) invoked.
+[03:32:13.635] Seek(881.10s) invoked.
+[03:32:13.640] Seek(881.47s) invoked.
+[03:32:13.647] Seek(882.22s) invoked.
+[03:32:13.656] Seek(882.97s) invoked.
+[03:32:13.663] Seek(883.72s) invoked.
+[03:32:13.671] Seek(884.65s) invoked.
+[03:32:13.684] Seek(885.59s) invoked.
+[03:32:13.687] Seek(886.72s) invoked.
+[03:32:13.695] Seek(887.65s) invoked.
+[03:32:13.703] Seek(888.59s) invoked.
+[03:32:13.711] Seek(889.90s) invoked.
+[03:32:13.720] Seek(891.59s) invoked.
+[03:32:13.730] Seek(893.09s) invoked.
+[03:32:13.736] Seek(894.77s) invoked.
+[03:32:13.744] Seek(896.46s) invoked.
+[03:32:13.752] Seek(903.81s) invoked.
+[03:32:13.761] Seek(911.35s) invoked.
+[03:32:13.767] Seek(918.70s) invoked.
+[03:32:13.776] Seek(925.87s) invoked.
+[03:32:13.786] Seek(933.03s) invoked.
+[03:32:13.792] Seek(940.01s) invoked.
+[03:32:13.799] Seek(946.80s) invoked.
+[03:32:13.807] Seek(953.60s) invoked.
+[03:32:13.815] Seek(960.20s) invoked.
+[03:32:13.823] Seek(966.80s) invoked.
+[03:32:13.835] Seek(973.41s) invoked.
+[03:32:13.839] Seek(979.82s) invoked.
+[03:32:13.847] Seek(986.05s) invoked.
+[03:32:13.855] Seek(992.28s) invoked.
+[03:32:13.863] Seek(998.51s) invoked.
+[03:32:13.871] Seek(1004.55s) invoked.
+[03:32:13.882] Seek(1010.59s) invoked.
+[03:32:13.887] Seek(1016.63s) invoked.
+[03:32:13.903] Seek(1022.68s) invoked.
+[03:32:13.911] Seek(1028.72s) invoked.
+[03:32:13.920] Seek(1034.76s) invoked.
+[03:32:13.928] Seek(1040.99s) invoked.
+[03:32:13.938] Seek(1047.03s) invoked.
+[03:32:13.944] Seek(1053.07s) invoked.
+[03:32:13.951] Seek(1059.11s) invoked.
+[03:32:13.969] Seek(1065.15s) invoked.
+[03:32:13.972] Seek(1071.20s) invoked.
+[03:32:13.978] Seek(1077.24s) invoked.
+[03:32:13.983] Seek(1083.28s) invoked.
+[03:32:13.994] Seek(1089.32s) invoked.
+[03:32:14.000] Seek(1095.36s) invoked.
+[03:32:14.015] Seek(1101.40s) invoked.
+[03:32:14.023] Seek(1107.45s) invoked.
+[03:32:14.056] Seek(1113.49s) invoked.
+[03:32:14.071] Seek(1119.53s) invoked.
+[03:32:14.104] Seek(1125.57s) invoked.
+[03:32:14.125] Seek(1131.43s) invoked.
+[03:32:14.159] Seek(1137.47s) invoked.
+[03:32:14.183] Seek(1143.51s) invoked.
+[03:32:14.248] Seek(1149.55s) invoked.
+[03:32:14.415] Seek(1154.84s) invoked.
+[03:32:14.427] Seek(1159.57s) invoked.
+[03:32:14.431] Seek(1163.55s) invoked.
+[03:32:14.439] Seek(1166.97s) invoked.
+[03:32:14.447] Seek(1169.83s) invoked.
+[03:32:14.455] Seek(1172.69s) invoked.
+[03:32:14.464] Seek(1174.98s) invoked.
+[03:32:14.473] Seek(1176.71s) invoked.
+[03:32:14.479] Seek(1177.14s) invoked.
+[03:32:14.487] Seek(1170.95s) invoked.
+[03:32:14.496] Seek(1163.46s) invoked.
+[03:32:14.503] Seek(1155.40s) invoked.
+[03:32:14.511] Seek(1146.79s) invoked.
+[03:32:14.519] Seek(1137.42s) invoked.
+[03:32:14.529] Seek(1127.49s) invoked.
+[03:32:14.535] Seek(1118.31s) invoked.
+[03:32:14.544] Seek(1108.38s) invoked.
+[03:32:14.551] Seek(1099.20s) invoked.
+[03:32:14.560] Seek(1089.27s) invoked.
+[03:32:14.567] Seek(1079.53s) invoked.
+[03:32:14.578] Seek(1069.60s) invoked.
+[03:32:14.583] Seek(1061.17s) invoked.
+[03:32:14.592] Seek(1052.74s) invoked.
+[03:32:14.599] Seek(1044.88s) invoked.
+[03:32:14.609] Seek(1037.76s) invoked.
+[03:32:14.615] Seek(1031.20s) invoked.
+[03:32:14.636] Seek(1025.20s) invoked.
+[03:32:14.641] Seek(1015.28s) invoked.
+[03:32:14.647] Seek(1011.34s) invoked.
+[03:32:14.656] Seek(1007.97s) invoked.
+[03:32:14.663] Seek(1004.60s) invoked.
+[03:32:14.671] Seek(1001.41s) invoked.
+[03:32:14.683] Seek(998.23s) invoked.
+[03:32:14.687] Seek(995.61s) invoked.
+[03:32:14.695] Seek(992.80s) invoked.
+[03:32:14.703] Seek(990.17s) invoked.
+[03:32:14.711] Seek(988.11s) invoked.
+[03:32:14.719] Seek(985.86s) invoked.
+[03:32:14.727] Seek(983.62s) invoked.
+[03:32:14.737] Seek(981.74s) invoked.
+[03:32:14.744] Seek(979.87s) invoked.
+[03:32:14.751] Seek(978.37s) invoked.
+[03:32:14.760] Seek(976.87s) invoked.
+[03:32:14.768] Seek(975.56s) invoked.
+[03:32:14.776] Seek(974.25s) invoked.
+[03:32:14.785] Seek(973.31s) invoked.
+[03:32:14.793] Seek(972.56s) invoked.
+[03:32:14.799] Seek(971.81s) invoked.
+[03:32:14.807] Seek(971.25s) invoked.
+[03:32:14.815] Seek(970.88s) invoked.
+[03:32:14.823] Seek(970.32s) invoked.
+[03:32:14.836] Seek(969.57s) invoked.
+[03:32:14.839] Seek(968.82s) invoked.
+[03:32:14.847] Seek(968.25s) invoked.
+[03:32:14.855] Seek(967.51s) invoked.
+[03:32:14.864] Seek(966.57s) invoked.
+[03:32:14.872] Seek(965.63s) invoked.
+[03:32:14.885] Seek(964.51s) invoked.
+[03:32:14.888] Seek(963.38s) invoked.
+[03:32:14.896] Seek(962.26s) invoked.
+[03:32:14.904] Seek(961.32s) invoked.
+[03:32:14.912] Seek(960.39s) invoked.
+[03:32:14.920] Seek(959.26s) invoked.
+[03:32:14.928] Seek(958.33s) invoked.
+[03:32:14.938] Seek(957.39s) invoked.
+[03:32:14.944] Seek(956.26s) invoked.
+[03:32:14.952] Seek(955.33s) invoked.
+[03:32:14.959] Seek(954.20s) invoked.
+[03:32:14.967] Seek(953.27s) invoked.
+[03:32:14.976] Seek(951.96s) invoked.
+[03:32:14.985] Seek(950.27s) invoked.
+[03:32:14.992] Seek(948.58s) invoked.
+[03:32:14.999] Seek(946.71s) invoked.
+[03:32:15.016] Seek(944.46s) invoked.
+[03:32:15.018] Seek(942.03s) invoked.
+[03:32:15.023] Seek(939.03s) invoked.
+[03:32:15.037] Seek(936.03s) invoked.
+[03:32:15.040] Seek(932.85s) invoked.
+[03:32:15.047] Seek(929.66s) invoked.
+[03:32:15.055] Seek(926.67s) invoked.
+[03:32:15.063] Seek(917.63s) invoked.
+[03:32:15.072] Seek(908.96s) invoked.
+[03:32:15.083] Seek(900.48s) invoked.
+[03:32:15.087] Seek(892.57s) invoked.
+[03:32:15.096] Seek(886.34s) invoked.
+[03:32:15.104] Seek(880.49s) invoked.
+[03:32:15.119] Seek(874.63s) invoked.
+[03:32:15.136] Seek(868.78s) invoked.
+[03:32:15.143] Seek(862.92s) invoked.
+[03:32:15.239] Seek(857.07s) invoked.
+[03:32:15.263] Seek(851.22s) invoked.
+[03:32:15.287] Seek(845.36s) invoked.
+[03:32:15.303] Seek(839.51s) invoked.
+[03:32:15.319] Seek(833.65s) invoked.
+[03:32:15.423] Seek(827.80s) invoked.
+[03:32:15.552] Seek(821.94s) invoked.
+[03:32:15.658] Seek(816.09s) invoked.
+[03:32:15.839] Seek(810.24s) invoked.
+[03:32:15.855] Seek(804.38s) invoked.
+[03:32:15.863] Seek(798.71s) invoked.
+[03:32:15.872] Seek(793.42s) invoked.
+[03:32:24.689] Seek(793.98s) invoked.
+[03:32:24.804] Seek(793.98s) invoked.
+[03:32:24.871] Seek(794.17s) invoked.
+[03:32:24.879] Seek(794.36s) invoked.
+[03:32:24.895] Seek(794.55s) invoked.
+[03:32:24.912] Seek(794.73s) invoked.
+[03:32:24.919] Seek(794.92s) invoked.
+[03:32:24.935] Seek(795.11s) invoked.
+[03:32:24.946] Seek(795.29s) invoked.
+[03:32:24.960] Seek(795.48s) invoked.
+[03:32:24.967] Seek(795.67s) invoked.
+[03:32:24.976] Seek(795.86s) invoked.
+[03:32:25.000] Seek(796.04s) invoked.
+[03:32:25.007] Seek(796.23s) invoked.
+[03:32:25.031] Seek(796.42s) invoked.
+[03:32:25.040] Seek(796.61s) invoked.
+[03:32:25.063] Seek(796.79s) invoked.
+[03:32:25.095] Seek(796.98s) invoked.
+[03:32:25.111] Seek(797.17s) invoked.
+[03:32:25.159] Seek(797.36s) invoked.
+[03:32:25.183] Seek(797.54s) invoked.
+[03:32:25.200] Seek(797.73s) invoked.
+[03:32:25.240] Seek(797.92s) invoked.
+[03:32:25.255] Seek(798.10s) invoked.
+[03:32:25.296] Seek(798.29s) invoked.
+[03:32:25.301] Seek(798.29s) invoked.
+[03:32:25.311] Seek(798.48s) invoked.
+[03:32:25.336] Seek(798.67s) invoked.
+[03:32:25.359] Seek(798.85s) invoked.
+[03:32:25.376] Seek(799.04s) invoked.
+[03:32:25.408] Seek(799.23s) invoked.
+[03:32:25.424] Seek(799.42s) invoked.
+[03:32:25.439] Seek(799.60s) invoked.
+[03:32:25.479] Seek(799.79s) invoked.
+[03:32:25.503] Seek(799.98s) invoked.
+[03:32:25.535] Seek(800.17s) invoked.
+[03:32:25.551] Seek(800.35s) invoked.
+[03:32:25.559] Seek(800.54s) invoked.
+[03:32:25.592] Seek(800.73s) invoked.
+[03:32:25.601] Seek(800.91s) invoked.
+[03:32:25.623] Seek(801.10s) invoked.
+[03:32:25.632] Seek(801.29s) invoked.
+[03:32:25.647] Seek(801.48s) invoked.
+[03:32:25.663] Seek(801.66s) invoked.
+[03:32:25.672] Seek(801.85s) invoked.
+[03:32:25.688] Seek(802.04s) invoked.
+[03:32:25.696] Seek(802.23s) invoked.
+[03:32:25.704] Seek(802.41s) invoked.
+[03:32:25.712] Seek(802.60s) invoked.
+[03:32:25.720] Seek(802.98s) invoked.
+[03:32:25.736] Seek(803.35s) invoked.
+[03:32:25.752] Seek(803.54s) invoked.
+[03:32:25.765] Seek(803.73s) invoked.
+[03:32:25.768] Seek(803.91s) invoked.
+[03:32:25.776] Seek(804.10s) invoked.
+[03:32:25.784] Seek(804.29s) invoked.
+[03:32:25.793] Seek(804.29s) invoked.
+[03:32:25.795] Seek(804.47s) invoked.
+[03:32:25.807] Seek(804.47s) invoked.
+[03:32:25.811] Seek(804.66s) invoked.
+[03:32:25.815] Seek(804.85s) invoked.
+[03:32:25.823] Seek(805.04s) invoked.
+[03:32:25.832] Seek(805.22s) invoked.
+[03:32:25.839] Seek(805.41s) invoked.
+[03:32:25.854] Seek(805.60s) invoked.
+[03:32:25.857] Seek(805.97s) invoked.
+[03:32:25.863] Seek(806.16s) invoked.
+[03:32:25.872] Seek(806.54s) invoked.
+[03:32:25.880] Seek(806.91s) invoked.
+[03:32:25.887] Seek(807.10s) invoked.
+[03:32:25.899] Seek(807.47s) invoked.
+[03:32:25.904] Seek(807.85s) invoked.
+[03:32:25.912] Seek(808.22s) invoked.
+[03:32:25.920] Seek(808.60s) invoked.
+[03:32:25.928] Seek(809.16s) invoked.
+[03:32:25.936] Seek(809.53s) invoked.
+[03:32:25.949] Seek(809.91s) invoked.
+[03:32:25.960] Seek(810.47s) invoked.
+[03:32:25.963] Seek(810.84s) invoked.
+[03:32:25.969] Seek(811.41s) invoked.
+[03:32:25.976] Seek(811.78s) invoked.
+[03:32:25.984] Seek(812.16s) invoked.
+[03:32:25.993] Seek(812.53s) invoked.
+[03:32:26.002] Seek(813.09s) invoked.
+[03:32:26.007] Seek(813.28s) invoked.
+[03:32:26.016] Seek(813.84s) invoked.
+[03:32:26.024] Seek(814.22s) invoked.
+[03:32:26.032] Seek(814.59s) invoked.
+[03:32:26.040] Seek(814.97s) invoked.
+[03:32:26.052] Seek(815.15s) invoked.
+[03:32:26.056] Seek(815.71s) invoked.
+[03:32:26.064] Seek(816.09s) invoked.
+[03:32:26.072] Seek(816.46s) invoked.
+[03:32:26.080] Seek(816.84s) invoked.
+[03:32:26.088] Seek(817.40s) invoked.
+[03:32:26.100] Seek(817.78s) invoked.
+[03:32:26.104] Seek(818.34s) invoked.
+[03:32:26.113] Seek(818.71s) invoked.
+[03:32:26.120] Seek(819.09s) invoked.
+[03:32:26.128] Seek(819.65s) invoked.
+[03:32:26.136] Seek(820.21s) invoked.
+[03:32:26.144] Seek(820.77s) invoked.
+[03:32:26.153] Seek(821.15s) invoked.
+[03:32:26.160] Seek(821.71s) invoked.
+[03:32:26.168] Seek(822.27s) invoked.
+[03:32:26.176] Seek(822.46s) invoked.
+[03:32:26.184] Seek(823.02s) invoked.
+[03:32:26.194] Seek(823.58s) invoked.
+[03:32:26.206] Seek(823.96s) invoked.
+[03:32:26.215] Seek(824.33s) invoked.
+[03:32:26.219] Seek(824.89s) invoked.
+[03:32:26.224] Seek(825.08s) invoked.
+[03:32:26.233] Seek(825.64s) invoked.
+[03:32:26.240] Seek(826.21s) invoked.
+[03:32:26.255] Seek(826.39s) invoked.
+[03:32:26.260] Seek(826.77s) invoked.
+[03:32:26.264] Seek(827.14s) invoked.
+[03:32:26.272] Seek(827.33s) invoked.
+[03:32:26.280] Seek(827.89s) invoked.
+[03:32:26.288] Seek(828.27s) invoked.
+[03:32:26.304] Seek(828.45s) invoked.
+[03:32:26.307] Seek(828.83s) invoked.
+[03:32:26.313] Seek(829.39s) invoked.
+[03:32:26.320] Seek(829.58s) invoked.
+[03:32:26.328] Seek(829.95s) invoked.
+[03:32:26.336] Seek(830.14s) invoked.
+[03:32:26.344] Seek(830.51s) invoked.
+[03:32:26.355] Seek(830.89s) invoked.
+[03:32:26.360] Seek(831.08s) invoked.
+[03:32:26.367] Seek(831.45s) invoked.
+[03:32:26.376] Seek(831.83s) invoked.
+[03:32:26.383] Seek(832.20s) invoked.
+[03:32:26.393] Seek(832.58s) invoked.
+[03:32:26.405] Seek(832.95s) invoked.
+[03:32:26.409] Seek(833.14s) invoked.
+[03:32:26.415] Seek(833.51s) invoked.
+[03:32:26.423] Seek(833.70s) invoked.
+[03:32:26.436] Seek(833.89s) invoked.
+[03:32:26.440] Seek(834.26s) invoked.
+[03:32:26.453] Seek(834.45s) invoked.
+[03:32:26.456] Seek(834.64s) invoked.
+[03:32:26.463] Seek(835.01s) invoked.
+[03:32:26.479] Seek(835.20s) invoked.
+[03:32:26.488] Seek(835.39s) invoked.
+[03:32:26.495] Seek(835.57s) invoked.
+[03:32:26.505] Seek(835.76s) invoked.
+[03:32:26.512] Seek(835.95s) invoked.
+[03:32:26.528] Seek(836.13s) invoked.
+[03:32:26.536] Seek(836.32s) invoked.
+[03:32:26.551] Seek(836.51s) invoked.
+[03:32:26.560] Seek(836.70s) invoked.
+[03:32:26.567] Seek(836.88s) invoked.
+[03:32:26.583] Seek(837.26s) invoked.
+[03:32:26.592] Seek(837.45s) invoked.
+[03:32:26.609] Seek(837.63s) invoked.
+[03:32:26.616] Seek(837.82s) invoked.
+[03:32:26.624] Seek(838.01s) invoked.
+[03:32:26.631] Seek(838.20s) invoked.
+[03:32:26.642] Seek(838.38s) invoked.
+[03:32:26.648] Seek(838.57s) invoked.
+[03:32:26.656] Seek(838.76s) invoked.
+[03:32:26.663] Seek(838.94s) invoked.
+[03:32:26.672] Seek(839.13s) invoked.
+[03:32:26.679] Seek(839.32s) invoked.
+[03:32:26.689] Seek(839.51s) invoked.
+[03:32:26.704] Seek(839.69s) invoked.
+[03:32:26.722] Seek(839.88s) invoked.
+[03:32:26.728] Seek(840.07s) invoked.
+[03:32:26.736] Seek(840.26s) invoked.
+[03:32:26.744] Seek(840.44s) invoked.
+[03:32:26.759] Seek(840.63s) invoked.
+[03:32:26.768] Seek(840.82s) invoked.
+[03:32:26.791] Seek(841.01s) invoked.
+[03:32:26.809] Seek(841.19s) invoked.
+[03:32:26.831] Seek(841.38s) invoked.
+[03:32:26.920] Seek(841.57s) invoked.
+[03:32:27.151] Seek(841.38s) invoked.
+[03:32:27.163] Seek(841.01s) invoked.
+[03:32:27.167] Seek(840.44s) invoked.
+[03:32:27.178] Seek(839.88s) invoked.
+[03:32:27.184] Seek(839.13s) invoked.
+[03:32:27.193] Seek(838.38s) invoked.
+[03:32:27.200] Seek(837.45s) invoked.
+[03:32:27.209] Seek(836.51s) invoked.
+[03:32:27.215] Seek(835.57s) invoked.
+[03:32:27.223] Seek(834.64s) invoked.
+[03:32:27.232] Seek(833.51s) invoked.
+[03:32:27.240] Seek(832.58s) invoked.
+[03:32:27.248] Seek(831.64s) invoked.
+[03:32:27.260] Seek(830.70s) invoked.
+[03:32:27.264] Seek(829.95s) invoked.
+[03:32:27.271] Seek(829.20s) invoked.
+[03:32:27.280] Seek(828.45s) invoked.
+[03:32:27.287] Seek(827.70s) invoked.
+[03:32:27.295] Seek(827.33s) invoked.
+[03:32:27.305] Seek(826.77s) invoked.
+[03:32:27.309] Seek(826.77s) invoked.
+[03:32:27.312] Seek(826.21s) invoked.
+[03:32:27.319] Seek(825.83s) invoked.
+[03:32:27.327] Seek(825.27s) invoked.
+[03:32:27.336] Seek(824.71s) invoked.
+[03:32:27.344] Seek(824.14s) invoked.
+[03:32:27.354] Seek(823.77s) invoked.
+[03:32:27.360] Seek(823.40s) invoked.
+[03:32:27.368] Seek(822.83s) invoked.
+[03:32:27.376] Seek(822.46s) invoked.
+[03:32:27.384] Seek(822.08s) invoked.
+[03:32:27.394] Seek(821.52s) invoked.
+[03:32:27.405] Seek(821.33s) invoked.
+[03:32:27.419] Seek(820.96s) invoked.
+[03:32:27.421] Seek(820.59s) invoked.
+[03:32:27.424] Seek(820.40s) invoked.
+[03:32:27.433] Seek(820.02s) invoked.
+[03:32:27.439] Seek(819.84s) invoked.
+[03:32:27.454] Seek(819.46s) invoked.
+[03:32:27.457] Seek(819.09s) invoked.
+[03:32:27.463] Seek(818.90s) invoked.
+[03:32:27.472] Seek(818.52s) invoked.
+[03:32:27.480] Seek(818.34s) invoked.
+[03:32:27.488] Seek(817.78s) invoked.
+[03:32:27.499] Seek(817.40s) invoked.
+[03:32:27.503] Seek(817.21s) invoked.
+[03:32:27.513] Seek(816.84s) invoked.
+[03:32:27.520] Seek(816.46s) invoked.
+[03:32:27.528] Seek(816.28s) invoked.
+[03:32:27.536] Seek(815.90s) invoked.
+[03:32:27.544] Seek(815.71s) invoked.
+[03:32:27.554] Seek(815.34s) invoked.
+[03:32:27.560] Seek(815.15s) invoked.
+[03:32:27.576] Seek(814.97s) invoked.
+[03:32:27.584] Seek(814.59s) invoked.
+[03:32:27.600] Seek(814.22s) invoked.
+[03:32:27.609] Seek(814.03s) invoked.
+[03:32:27.619] Seek(813.65s) invoked.
+[03:32:27.624] Seek(813.28s) invoked.
+[03:32:27.631] Seek(813.09s) invoked.
+[03:32:27.641] Seek(812.72s) invoked.
+[03:32:27.648] Seek(812.34s) invoked.
+[03:32:27.656] Seek(812.16s) invoked.
+[03:32:27.676] Seek(811.59s) invoked.
+[03:32:27.679] Seek(811.22s) invoked.
+[03:32:27.682] Seek(811.03s) invoked.
+[03:32:27.688] Seek(810.66s) invoked.
+[03:32:27.695] Seek(810.47s) invoked.
+[03:32:27.712] Seek(810.09s) invoked.
+[03:32:27.721] Seek(809.91s) invoked.
+[03:32:27.735] Seek(809.72s) invoked.
+[03:32:27.744] Seek(809.53s) invoked.
+[03:32:27.761] Seek(809.35s) invoked.
+[03:32:27.767] Seek(809.16s) invoked.
+[03:32:27.808] Seek(808.97s) invoked.
+[03:32:27.812] Seek(808.97s) invoked.
+[03:32:27.823] Seek(808.78s) invoked.
+[03:32:27.839] Seek(808.60s) invoked.
+[03:33:21.873] Seek(898.37s) invoked.
+[03:33:21.966] Seek(898.37s) invoked.
+[03:33:21.968] Seek(898.37s) invoked.
+[03:33:21.989] Seek(898.95s) invoked.
+[03:33:21.993] Seek(900.70s) invoked.
+[03:33:22.000] Seek(901.86s) invoked.
+[03:33:22.009] Seek(903.61s) invoked.
+[03:33:22.015] Seek(905.94s) invoked.
+[03:33:22.028] Seek(908.28s) invoked.
+[03:33:22.031] Seek(910.02s) invoked.
+[03:33:22.040] Seek(911.77s) invoked.
+[03:33:22.047] Seek(914.10s) invoked.
+[03:33:22.056] Seek(916.44s) invoked.
+[03:33:22.063] Seek(918.77s) invoked.
+[03:33:22.072] Seek(920.52s) invoked.
+[03:33:22.080] Seek(922.27s) invoked.
+[03:33:22.087] Seek(924.01s) invoked.
+[03:33:22.095] Seek(925.76s) invoked.
+[03:33:22.104] Seek(927.51s) invoked.
+[03:33:22.111] Seek(928.09s) invoked.
+[03:33:22.120] Seek(929.26s) invoked.
+[03:33:22.127] Seek(929.84s) invoked.
+[03:33:22.136] Seek(930.43s) invoked.
+[03:33:22.144] Seek(931.59s) invoked.
+[03:33:22.160] Seek(932.76s) invoked.
+[03:33:22.167] Seek(933.34s) invoked.
+[03:33:22.184] Seek(934.51s) invoked.
+[03:33:22.194] Seek(935.09s) invoked.
+[03:33:22.200] Seek(935.67s) invoked.
+[03:33:22.211] Seek(936.26s) invoked.
+[03:33:22.216] Seek(936.84s) invoked.
+[03:33:22.224] Seek(937.42s) invoked.
+[03:33:22.233] Seek(938.00s) invoked.
+[03:33:22.244] Seek(938.59s) invoked.
+[03:33:22.247] Seek(939.17s) invoked.
+[03:33:22.256] Seek(939.75s) invoked.
+[03:33:22.264] Seek(940.34s) invoked.
+[03:33:22.272] Seek(941.50s) invoked.
+[03:33:22.280] Seek(942.08s) invoked.
+[03:33:22.289] Seek(943.25s) invoked.
+[03:33:22.295] Seek(943.83s) invoked.
+[03:33:22.303] Seek(945.00s) invoked.
+[03:33:22.312] Seek(946.17s) invoked.
+[03:33:22.320] Seek(946.75s) invoked.
+[03:33:22.327] Seek(947.33s) invoked.
+[03:33:22.337] Seek(948.50s) invoked.
+[03:33:22.344] Seek(949.08s) invoked.
+[03:33:22.352] Seek(950.25s) invoked.
+[03:33:22.368] Seek(951.41s) invoked.
+[03:33:22.376] Seek(952.58s) invoked.
+[03:33:22.383] Seek(953.16s) invoked.
+[03:33:22.392] Seek(954.33s) invoked.
+[03:33:22.402] Seek(954.91s) invoked.
+[03:33:22.409] Seek(956.07s) invoked.
+[03:33:22.416] Seek(957.24s) invoked.
+[03:33:22.424] Seek(957.82s) invoked.
+[03:33:22.432] Seek(958.99s) invoked.
+[03:33:22.439] Seek(960.16s) invoked.
+[03:33:22.450] Seek(961.90s) invoked.
+[03:33:22.456] Seek(963.07s) invoked.
+[03:33:22.463] Seek(964.24s) invoked.
+[03:33:22.471] Seek(965.40s) invoked.
+[03:33:22.479] Seek(965.40s) invoked.
+[03:33:22.482] Seek(966.57s) invoked.
+[03:33:22.491] Seek(967.15s) invoked.
+[03:33:22.497] Seek(968.32s) invoked.
+[03:33:22.504] Seek(968.90s) invoked.
+[03:33:22.511] Seek(970.06s) invoked.
+[03:33:22.519] Seek(971.23s) invoked.
+[03:33:22.528] Seek(971.81s) invoked.
+[03:33:22.538] Seek(973.56s) invoked.
+[03:33:22.544] Seek(975.31s) invoked.
+[03:33:22.551] Seek(976.48s) invoked.
+[03:33:22.560] Seek(978.23s) invoked.
+[03:33:22.568] Seek(979.39s) invoked.
+[03:33:22.576] Seek(980.56s) invoked.
+[03:33:22.584] Seek(981.72s) invoked.
+[03:33:22.593] Seek(982.31s) invoked.
+[03:33:22.599] Seek(984.06s) invoked.
+[03:33:22.609] Seek(985.22s) invoked.
+[03:33:22.616] Seek(985.80s) invoked.
+[03:33:22.624] Seek(986.97s) invoked.
+[03:33:22.631] Seek(988.14s) invoked.
+[03:33:22.640] Seek(988.72s) invoked.
+[03:33:22.647] Seek(990.47s) invoked.
+[03:33:22.656] Seek(991.63s) invoked.
+[03:33:22.663] Seek(992.80s) invoked.
+[03:33:22.672] Seek(994.55s) invoked.
+[03:33:22.679] Seek(996.30s) invoked.
+[03:33:22.688] Seek(996.88s) invoked.
+[03:33:22.695] Seek(998.05s) invoked.
+[03:33:22.704] Seek(999.79s) invoked.
+[03:33:22.711] Seek(1000.38s) invoked.
+[03:33:22.720] Seek(1002.13s) invoked.
+[03:33:22.728] Seek(1002.71s) invoked.
+[03:33:22.738] Seek(1004.46s) invoked.
+[03:33:22.744] Seek(1006.21s) invoked.
+[03:33:22.752] Seek(1006.79s) invoked.
+[03:33:22.762] Seek(1008.54s) invoked.
+[03:33:22.768] Seek(1010.29s) invoked.
+[03:33:22.776] Seek(1010.87s) invoked.
+[03:33:22.784] Seek(1012.62s) invoked.
+[03:33:22.793] Seek(1014.37s) invoked.
+[03:33:22.799] Seek(1014.95s) invoked.
+[03:33:22.809] Seek(1016.12s) invoked.
+[03:33:22.815] Seek(1017.86s) invoked.
+[03:33:22.824] Seek(1018.45s) invoked.
+[03:33:22.832] Seek(1020.20s) invoked.
+[03:33:22.842] Seek(1021.36s) invoked.
+[03:33:22.848] Seek(1021.94s) invoked.
+[03:33:22.856] Seek(1023.11s) invoked.
+[03:33:22.863] Seek(1024.28s) invoked.
+[03:33:22.872] Seek(1026.03s) invoked.
+[03:33:22.880] Seek(1027.77s) invoked.
+[03:33:22.889] Seek(1028.94s) invoked.
+[03:33:22.895] Seek(1030.69s) invoked.
+[03:33:22.903] Seek(1031.85s) invoked.
+[03:33:22.912] Seek(1033.02s) invoked.
+[03:33:22.920] Seek(1034.77s) invoked.
+[03:33:22.928] Seek(1036.52s) invoked.
+[03:33:22.936] Seek(1038.27s) invoked.
+[03:33:22.944] Seek(1040.02s) invoked.
+[03:33:22.952] Seek(1042.35s) invoked.
+[03:33:22.962] Seek(1043.51s) invoked.
+[03:33:22.968] Seek(1045.84s) invoked.
+[03:33:22.977] Seek(1045.84s) invoked.
+[03:33:22.979] Seek(1048.18s) invoked.
+[03:33:22.988] Seek(1050.51s) invoked.
+[03:33:22.992] Seek(1051.67s) invoked.
+[03:33:23.000] Seek(1054.01s) invoked.
+[03:33:23.009] Seek(1055.75s) invoked.
+[03:33:23.015] Seek(1058.09s) invoked.
+[03:33:23.024] Seek(1059.83s) invoked.
+[03:33:23.035] Seek(1080.38s) invoked.
+[03:33:23.040] Seek(1100.35s) invoked.
+[03:33:23.048] Seek(1120.31s) invoked.
+[03:33:23.056] Seek(1140.86s) invoked.
+[03:33:23.064] Seek(1161.41s) invoked.
+[03:33:23.072] Seek(1181.96s) invoked.
+[03:33:23.083] Seek(1201.92s) invoked.
+[03:33:23.088] Seek(1222.47s) invoked.
+[03:33:23.096] Seek(1243.02s) invoked.
+[03:33:23.103] Seek(1263.57s) invoked.
+[03:33:23.112] Seek(1283.53s) invoked.
+[03:33:23.119] Seek(1304.08s) invoked.
+[03:33:23.131] Seek(1324.63s) invoked.
+[03:33:23.136] Seek(1345.17s) invoked.
+[03:33:23.144] Seek(1365.14s) invoked.
+[03:33:23.152] Seek(1385.69s) invoked.
+[03:33:23.160] Seek(1406.24s) invoked.
+[03:33:23.167] Seek(1426.78s) invoked.
+[03:33:23.176] Seek(1446.17s) invoked.
+[03:33:23.184] Seek(1466.13s) invoked.
+[03:33:23.194] Seek(1486.10s) invoked.
+[03:33:23.200] Seek(1505.48s) invoked.
+[03:33:23.210] Seek(1525.44s) invoked.
+[03:33:23.216] Seek(1545.41s) invoked.
+[03:33:23.224] Seek(1564.79s) invoked.
+[03:33:23.234] Seek(1584.76s) invoked.
+[03:33:23.240] Seek(1604.14s) invoked.
+[03:33:23.248] Seek(1623.52s) invoked.
+[03:33:23.256] Seek(1642.90s) invoked.
+[03:33:23.264] Seek(1662.87s) invoked.
+[03:33:23.272] Seek(1681.67s) invoked.
+[03:33:23.284] Seek(1701.63s) invoked.
+[03:33:23.288] Seek(1721.60s) invoked.
+[03:33:23.296] Seek(1740.98s) invoked.
+[03:33:23.304] Seek(1760.94s) invoked.
+[03:33:23.312] Seek(1780.91s) invoked.
+[03:33:23.320] Seek(1800.29s) invoked.
+[03:33:23.330] Seek(1819.67s) invoked.
+[03:33:23.335] Seek(1839.64s) invoked.
+[03:33:23.344] Seek(1859.02s) invoked.
+[03:33:23.352] Seek(1877.82s) invoked.
+[03:33:23.360] Seek(1897.78s) invoked.
+[03:33:23.368] Seek(1916.58s) invoked.
+[03:33:23.376] Seek(1935.97s) invoked.
+[03:33:23.384] Seek(1955.93s) invoked.
+[03:33:23.392] Seek(1975.31s) invoked.
+[03:33:23.400] Seek(1994.69s) invoked.
+[03:33:23.411] Seek(2014.08s) invoked.
+[03:33:23.416] Seek(2032.88s) invoked.
+[03:33:23.424] Seek(2052.26s) invoked.
+[03:33:23.438] Seek(2071.64s) invoked.
+[03:33:23.443] Seek(2090.44s) invoked.
+[03:33:23.448] Seek(2109.82s) invoked.
+[03:33:23.456] Seek(2129.20s) invoked.
+[03:33:23.464] Seek(2148.00s) invoked.
+[03:33:23.472] Seek(2167.38s) invoked.
+[03:33:23.486] Seek(2186.18s) invoked.
+[03:33:23.489] Seek(2205.57s) invoked.
+[03:33:23.496] Seek(2224.95s) invoked.
+[03:33:23.504] Seek(2243.75s) invoked.
+[03:33:23.512] Seek(2263.13s) invoked.
+[03:33:23.520] Seek(2282.51s) invoked.
+[03:33:23.530] Seek(2301.31s) invoked.
+[03:33:23.536] Seek(2320.69s) invoked.
+[03:33:23.544] Seek(2339.49s) invoked.
+[03:33:23.552] Seek(2358.87s) invoked.
+[03:33:23.560] Seek(2378.26s) invoked.
+[03:33:23.568] Seek(2397.06s) invoked.
+[03:33:23.576] Seek(2416.44s) invoked.
+[03:33:23.584] Seek(2435.82s) invoked.
+[03:33:23.592] Seek(2454.62s) invoked.
+[03:33:23.600] Seek(2474.58s) invoked.
+[03:33:23.609] Seek(2493.97s) invoked.
+[03:33:23.615] Seek(2513.35s) invoked.
+[03:33:23.624] Seek(2532.73s) invoked.
+[03:33:23.635] Seek(2552.11s) invoked.
+[03:33:23.640] Seek(2570.91s) invoked.
+[03:33:23.648] Seek(2590.29s) invoked.
+[03:33:23.656] Seek(2609.09s) invoked.
+[03:33:23.664] Seek(2611.49s) invoked.
+[03:33:23.672] Seek(2611.49s) invoked.
+[03:33:23.693] Seek(2611.49s) invoked.
+[03:33:23.698] Seek(2611.49s) invoked.
+[03:33:23.704] Seek(2611.49s) invoked.
+[03:33:23.712] Seek(2611.49s) invoked.
+[03:33:23.720] Seek(2611.49s) invoked.
+[03:33:23.728] Seek(2611.49s) invoked.
+[03:33:23.737] Seek(2611.49s) invoked.
+[03:33:23.744] Seek(2611.49s) invoked.
+[03:33:23.752] Seek(2611.49s) invoked.
+[03:33:23.760] Seek(2611.49s) invoked.
+[03:33:23.768] Seek(2611.49s) invoked.
+[03:33:23.776] Seek(2611.49s) invoked.
+[03:33:23.784] Seek(2611.49s) invoked.
+[03:33:23.793] Seek(2611.49s) invoked.
+[03:33:23.800] Seek(2611.49s) invoked.
+[03:33:23.809] Seek(2611.49s) invoked.
+[03:33:23.815] Seek(2611.49s) invoked.
+[03:33:23.824] Seek(2611.49s) invoked.
+[03:33:23.832] Seek(2611.49s) invoked.
+[03:33:23.840] Seek(2611.49s) invoked.
+[03:33:23.848] Seek(2611.49s) invoked.
+[03:33:23.856] Seek(2611.49s) invoked.
+[03:33:23.864] Seek(2611.49s) invoked.
+[03:33:23.872] Seek(2611.49s) invoked.
+[03:33:23.880] Seek(2611.49s) invoked.
+[03:33:23.888] Seek(2611.49s) invoked.
+[03:33:23.896] Seek(2611.49s) invoked.
+[03:33:23.904] Seek(2611.49s) invoked.
+[03:33:23.912] Seek(2611.49s) invoked.
+[03:33:23.920] Seek(2611.49s) invoked.
+[03:33:23.928] Seek(2611.49s) invoked.
+[03:33:23.936] Seek(2611.49s) invoked.
+[03:33:23.944] Seek(2611.49s) invoked.
+[03:33:23.952] Seek(2611.49s) invoked.
+[03:33:23.960] Seek(2611.49s) invoked.
+[03:33:23.968] Seek(2611.49s) invoked.
+[03:33:23.976] Seek(2611.49s) invoked.
+[03:33:23.984] Seek(2611.49s) invoked.
+[03:33:23.993] Seek(2611.49s) invoked.
+[03:33:24.000] Seek(2611.49s) invoked.
+[03:33:24.008] Seek(2611.49s) invoked.
+[03:33:24.016] Seek(2611.49s) invoked.
+[03:33:24.024] Seek(2611.49s) invoked.
+[03:33:24.032] Seek(2611.49s) invoked.
+[03:33:24.041] Seek(2611.49s) invoked.
+[03:33:24.048] Seek(2611.49s) invoked.
+[03:33:24.056] Seek(2611.49s) invoked.
+[03:33:24.064] Seek(2611.49s) invoked.
+[03:33:24.072] Seek(2611.49s) invoked.
+[03:33:24.080] Seek(2611.49s) invoked.
+[03:33:24.088] Seek(2611.49s) invoked.
+[03:33:24.096] Seek(2611.49s) invoked.
+[03:33:24.104] Seek(2611.49s) invoked.
+[03:33:24.112] Seek(2611.49s) invoked.
+[03:33:24.120] Seek(2611.49s) invoked.
+[03:33:24.128] Seek(2611.49s) invoked.
+[03:33:24.136] Seek(2611.49s) invoked.
+[03:33:24.152] Seek(2611.49s) invoked.
+[03:33:24.160] Seek(2611.49s) invoked.
+[03:33:24.168] Seek(2611.49s) invoked.
+[03:33:24.184] Seek(2611.49s) invoked.
+[03:33:24.192] Seek(2611.49s) invoked.
+[03:33:24.209] Seek(2611.49s) invoked.
+[03:33:24.216] Seek(2611.49s) invoked.
+[03:33:24.223] Seek(2611.49s) invoked.
+[03:33:24.280] Seek(2611.49s) invoked.
+[03:33:24.368] Seek(2611.49s) invoked.
+[03:33:24.376] Seek(2611.49s) invoked.
+[03:33:24.384] Seek(2611.49s) invoked.
+[03:33:24.393] Seek(2611.49s) invoked.
+[03:33:24.400] Seek(2611.49s) invoked.
+[03:33:24.408] Seek(2611.49s) invoked.
+[03:33:24.416] Seek(2611.49s) invoked.
+[03:33:24.424] Seek(2611.49s) invoked.
+[03:33:24.432] Seek(2611.49s) invoked.
+[03:33:24.440] Seek(2611.49s) invoked.
+[03:33:24.448] Seek(2611.49s) invoked.
+[03:33:24.456] Seek(2611.49s) invoked.
+[03:33:24.463] Seek(2611.49s) invoked.
+[03:33:24.472] Seek(2611.49s) invoked.
+[03:33:24.480] Seek(2611.49s) invoked.
+[03:33:24.488] Seek(2611.49s) invoked.
+[03:33:24.492] Seek(2611.49s) invoked.
+[03:33:24.495] Seek(2611.49s) invoked.
+[03:33:24.504] Seek(2611.49s) invoked.
+[03:33:24.512] Seek(2611.49s) invoked.
+[03:33:24.519] Seek(2611.49s) invoked.
+[03:33:24.528] Seek(2611.49s) invoked.
+[03:33:24.536] Seek(2611.49s) invoked.
+[03:33:24.544] Seek(2611.49s) invoked.
+[03:33:24.551] Seek(2611.49s) invoked.
+[03:33:24.560] Seek(2611.49s) invoked.
+[03:33:24.568] Seek(2600.41s) invoked.
+[03:33:24.576] Seek(2582.92s) invoked.
+[03:33:24.584] Seek(2568.35s) invoked.
+[03:33:24.592] Seek(2552.61s) invoked.
+[03:33:24.600] Seek(2539.79s) invoked.
+[03:33:24.609] Seek(2528.71s) invoked.
+[03:33:24.615] Seek(2517.64s) invoked.
+[03:33:24.624] Seek(2507.73s) invoked.
+[03:33:24.633] Seek(2497.82s) invoked.
+[03:33:24.640] Seek(2489.07s) invoked.
+[03:33:24.648] Seek(2480.33s) invoked.
+[03:33:24.656] Seek(2471.00s) invoked.
+[03:33:24.663] Seek(2461.09s) invoked.
+[03:33:24.672] Seek(2450.60s) invoked.
+[03:33:24.682] Seek(2439.52s) invoked.
+[03:33:24.687] Seek(2427.87s) invoked.
+[03:33:24.695] Seek(2413.29s) invoked.
+[03:33:24.703] Seek(2396.97s) invoked.
+[03:33:24.711] Seek(2380.07s) invoked.
+[03:33:24.720] Seek(2363.74s) invoked.
+[03:33:24.727] Seek(2346.84s) invoked.
+[03:33:24.736] Seek(2328.19s) invoked.
+[03:33:24.744] Seek(2311.86s) invoked.
+[03:33:24.751] Seek(2295.54s) invoked.
+[03:33:24.761] Seek(2280.97s) invoked.
+[03:33:24.768] Seek(2268.73s) invoked.
+[03:33:24.776] Seek(2258.82s) invoked.
+[03:33:24.785] Seek(2250.07s) invoked.
+[03:33:24.792] Seek(2242.50s) invoked.
+[03:33:24.799] Seek(2235.50s) invoked.
+[03:33:24.809] Seek(2229.67s) invoked.
+[03:33:24.816] Seek(2223.84s) invoked.
+[03:33:24.824] Seek(2219.18s) invoked.
+[03:33:24.835] Seek(2213.93s) invoked.
+[03:33:24.840] Seek(2209.85s) invoked.
+[03:33:24.848] Seek(2205.19s) invoked.
+[03:33:24.855] Seek(2199.36s) invoked.
+[03:33:24.864] Seek(2192.37s) invoked.
+[03:33:24.872] Seek(2184.79s) invoked.
+[03:33:24.881] Seek(2176.63s) invoked.
+[03:33:24.888] Seek(2167.88s) invoked.
+[03:33:24.895] Seek(2158.56s) invoked.
+[03:33:24.904] Seek(2147.48s) invoked.
+[03:33:24.912] Seek(2136.99s) invoked.
+[03:33:24.920] Seek(2126.50s) invoked.
+[03:33:24.928] Seek(2116.00s) invoked.
+[03:33:24.936] Seek(2103.76s) invoked.
+[03:33:24.944] Seek(2093.27s) invoked.
+[03:33:24.952] Seek(2062.81s) invoked.
+[03:33:24.960] Seek(2034.10s) invoked.
+[03:33:24.968] Seek(2004.81s) invoked.
+[03:33:24.976] Seek(1976.69s) invoked.
+[03:33:24.984] Seek(1948.56s) invoked.
+[03:33:24.992] Seek(1930.34s) invoked.
+[03:33:24.995] Seek(1903.38s) invoked.
+[03:33:25.000] Seek(1876.42s) invoked.
+[03:33:25.009] Seek(1849.46s) invoked.
+[03:33:25.015] Seek(1823.67s) invoked.
+[03:33:25.026] Seek(1798.46s) invoked.
+[03:33:25.032] Seek(1780.24s) invoked.
+[03:33:25.040] Seek(1762.02s) invoked.
+[03:33:25.048] Seek(1743.81s) invoked.
+[03:33:25.055] Seek(1725.59s) invoked.
+[03:33:25.064] Seek(1707.38s) invoked.
+[03:33:25.078] Seek(1689.16s) invoked.
+[03:33:25.088] Seek(1670.94s) invoked.
+[03:33:25.104] Seek(1652.73s) invoked.
+[03:33:25.119] Seek(1634.51s) invoked.
+[03:33:25.144] Seek(1616.29s) invoked.
+[03:33:25.160] Seek(1598.08s) invoked.
+[03:33:25.176] Seek(1579.86s) invoked.
+[03:33:25.192] Seek(1561.65s) invoked.
+[03:33:25.200] Seek(1543.43s) invoked.
+[03:33:25.215] Seek(1525.21s) invoked.
+[03:33:25.223] Seek(1507.00s) invoked.
+[03:33:25.240] Seek(1488.78s) invoked.
+[03:33:25.255] Seek(1470.56s) invoked.
+[03:33:25.271] Seek(1452.35s) invoked.
+[03:33:25.295] Seek(1434.13s) invoked.
+[03:33:25.311] Seek(1415.92s) invoked.
+[03:33:25.319] Seek(1397.70s) invoked.
+[03:33:25.343] Seek(1379.48s) invoked.
+[03:33:25.360] Seek(1361.27s) invoked.
+[03:33:25.400] Seek(1343.05s) invoked.
+[03:33:25.410] Seek(1324.83s) invoked.
+[03:33:25.424] Seek(1306.62s) invoked.
+[03:33:25.440] Seek(1288.40s) invoked.
+[03:33:25.463] Seek(1270.18s) invoked.
+[03:33:25.491] Seek(1251.97s) invoked.
+[03:33:25.500] Seek(1233.75s) invoked.
+[03:33:25.591] Seek(1215.54s) invoked.
+[03:33:25.608] Seek(1197.32s) invoked.
+[03:33:25.632] Seek(1179.10s) invoked.
+[03:33:25.671] Seek(1160.89s) invoked.
+[03:33:25.704] Seek(1142.67s) invoked.
+[03:33:25.728] Seek(1124.45s) invoked.
+[03:33:25.816] Seek(1106.24s) invoked.
+[03:33:25.960] Seek(1088.02s) invoked.
+[03:33:25.991] Seek(1069.81s) invoked.
+[03:33:26.104] Seek(1051.59s) invoked.
+[03:33:26.432] Seek(1033.37s) invoked.
+[03:33:26.448] Seek(1015.16s) invoked.
+[03:33:26.457] Seek(996.94s) invoked.
+[03:33:26.463] Seek(978.72s) invoked.
+[03:33:26.472] Seek(960.51s) invoked.
+[03:33:26.480] Seek(942.29s) invoked.
+[03:33:26.488] Seek(924.08s) invoked.
+[03:33:26.492] Seek(905.86s) invoked.
+[03:33:26.502] Seek(887.64s) invoked.
+[03:33:26.504] Seek(869.43s) invoked.
+[03:33:26.512] Seek(851.21s) invoked.
+[03:33:26.520] Seek(832.99s) invoked.
+[03:33:26.529] Seek(814.78s) invoked.
+[03:33:26.536] Seek(796.56s) invoked.
+[03:33:26.548] Seek(778.35s) invoked.
+[03:33:26.552] Seek(760.13s) invoked.
+[03:33:26.560] Seek(741.91s) invoked.
+[03:33:26.568] Seek(723.70s) invoked.
+[03:33:26.576] Seek(705.48s) invoked.
+[03:33:26.584] Seek(687.26s) invoked.
+[03:33:26.592] Seek(669.05s) invoked.
+[03:33:26.600] Seek(651.41s) invoked.
+[03:33:26.609] Seek(633.78s) invoked.
+[03:33:26.615] Seek(616.73s) invoked.
+[03:33:26.624] Seek(600.26s) invoked.
+[03:33:26.632] Seek(584.38s) invoked.
+[03:33:26.639] Seek(569.66s) invoked.
+[03:33:26.650] Seek(555.52s) invoked.
+[03:33:26.656] Seek(541.39s) invoked.
+[03:33:26.663] Seek(527.25s) invoked.
+[03:33:26.672] Seek(513.12s) invoked.
+[03:33:26.680] Seek(500.15s) invoked.
+[03:33:26.688] Seek(486.59s) invoked.
+[03:33:26.701] Seek(472.46s) invoked.
+[03:33:26.704] Seek(458.32s) invoked.
+[03:33:26.712] Seek(444.19s) invoked.
+[03:33:26.720] Seek(430.63s) invoked.
+[03:33:26.728] Seek(416.50s) invoked.
+[03:33:26.735] Seek(402.36s) invoked.
+[03:33:26.749] Seek(388.23s) invoked.
+[03:33:26.752] Seek(374.09s) invoked.
+[03:33:26.760] Seek(358.79s) invoked.
+[03:33:26.767] Seek(343.49s) invoked.
+[03:33:26.776] Seek(328.18s) invoked.
+[03:33:26.784] Seek(311.72s) invoked.
+[03:33:26.799] Seek(295.83s) invoked.
+[03:33:26.810] Seek(280.53s) invoked.
+[03:33:26.816] Seek(264.65s) invoked.
+[03:33:26.824] Seek(248.76s) invoked.
+[03:33:26.832] Seek(232.88s) invoked.
+[03:33:26.840] Seek(218.16s) invoked.
+[03:33:26.847] Seek(202.86s) invoked.
+[03:33:26.856] Seek(186.97s) invoked.
+[03:33:26.864] Seek(171.67s) invoked.
+[03:33:26.871] Seek(174.58s) invoked.
+[03:33:26.880] Seek(176.92s) invoked.
+[03:33:26.887] Seek(179.25s) invoked.
+[03:33:26.896] Seek(182.16s) invoked.
+[03:33:26.904] Seek(184.49s) invoked.
+[03:33:26.912] Seek(186.83s) invoked.
+[03:33:26.919] Seek(189.16s) invoked.
+[03:33:26.927] Seek(191.49s) invoked.
+[03:33:26.935] Seek(194.99s) invoked.
+[03:33:26.944] Seek(198.48s) invoked.
+[03:33:26.953] Seek(201.98s) invoked.
+[03:33:26.960] Seek(204.90s) invoked.
+[03:33:26.968] Seek(208.39s) invoked.
+[03:33:26.976] Seek(210.73s) invoked.
+[03:33:26.983] Seek(213.06s) invoked.
+[03:33:26.992] Seek(213.06s) invoked.
+[03:33:26.994] Seek(214.81s) invoked.
+[03:33:27.003] Seek(216.56s) invoked.
+[03:33:27.009] Seek(217.72s) invoked.
+[03:33:27.016] Seek(218.30s) invoked.
+[03:33:27.023] Seek(218.89s) invoked.
+[03:33:27.032] Seek(219.47s) invoked.
+[03:33:27.040] Seek(219.47s) invoked.
+[03:33:27.049] Seek(219.47s) invoked.
+[03:33:27.056] Seek(219.47s) invoked.
+[03:33:27.063] Seek(219.47s) invoked.
+[03:33:27.072] Seek(219.47s) invoked.
+[03:33:27.080] Seek(219.47s) invoked.
+[03:33:27.088] Seek(219.47s) invoked.
+[03:33:27.100] Seek(219.47s) invoked.
+[03:33:27.103] Seek(219.47s) invoked.
+[03:33:27.112] Seek(219.47s) invoked.
+[03:33:27.120] Seek(219.47s) invoked.
+[03:33:27.128] Seek(219.47s) invoked.
+[03:33:27.136] Seek(219.47s) invoked.
+[03:33:27.154] Seek(218.89s) invoked.
+[03:33:27.156] Seek(218.30s) invoked.
+[03:33:27.160] Seek(217.72s) invoked.
+[03:33:27.168] Seek(217.14s) invoked.
+[03:33:27.176] Seek(215.97s) invoked.
+[03:33:27.184] Seek(215.39s) invoked.
+[03:33:27.193] Seek(214.81s) invoked.
+[03:33:27.201] Seek(214.22s) invoked.
+[03:33:27.209] Seek(212.47s) invoked.
+[03:33:27.216] Seek(210.14s) invoked.
+[03:33:27.224] Seek(207.81s) invoked.
+[03:33:27.232] Seek(204.90s) invoked.
+[03:33:27.240] Seek(201.40s) invoked.
+[03:33:27.252] Seek(196.15s) invoked.
+[03:33:27.255] Seek(190.32s) invoked.
+[03:33:27.264] Seek(184.49s) invoked.
+[03:33:27.272] Seek(178.67s) invoked.
+[03:33:27.280] Seek(172.84s) invoked.
+[03:33:27.288] Seek(167.59s) invoked.
+[03:33:27.300] Seek(144.71s) invoked.
+[03:33:27.304] Seek(122.41s) invoked.
+[03:33:27.313] Seek(100.12s) invoked.
+[03:33:27.320] Seek(78.99s) invoked.
+[03:33:27.328] Seek(58.44s) invoked.
+[03:33:27.335] Seek(39.06s) invoked.
+[03:33:27.347] Seek(19.09s) invoked.
+[03:33:27.352] Seek(0.00s) invoked.
+[03:33:27.360] Seek(0.00s) invoked.
+[03:33:27.368] Seek(0.00s) invoked.
+[03:33:27.376] Seek(0.00s) invoked.
+[03:33:27.392] Seek(0.00s) invoked.
+[03:33:27.399] Seek(0.00s) invoked.
+[03:33:27.415] Seek(0.00s) invoked.
+[03:33:27.424] Seek(0.00s) invoked.
+[03:33:27.432] Seek(0.00s) invoked.
+[03:33:27.439] Seek(0.00s) invoked.
+[03:33:27.448] Seek(0.00s) invoked.
+[03:33:27.456] Seek(0.00s) invoked.
+[03:33:27.466] Seek(0.00s) invoked.
+[03:33:27.472] Seek(0.00s) invoked.
+[03:33:27.483] Seek(0.00s) invoked.
+[03:33:27.488] Seek(0.00s) invoked.
+[03:33:27.492] Seek(0.00s) invoked.
+[03:33:27.496] Seek(0.00s) invoked.
+[03:33:27.504] Seek(0.00s) invoked.
+[03:33:27.512] Seek(0.00s) invoked.
+[03:33:27.520] Seek(0.00s) invoked.
+[03:33:27.535] Seek(0.00s) invoked.
+[03:33:27.672] Seek(0.00s) invoked.
+[03:33:27.704] Seek(0.00s) invoked.
+[03:33:27.713] Seek(0.00s) invoked.
+[03:33:27.784] Seek(0.00s) invoked.
+[03:33:27.807] Seek(0.00s) invoked.
+[03:33:27.832] Seek(0.00s) invoked.
+[03:33:27.840] Seek(0.00s) invoked.
+[03:33:27.848] Seek(0.00s) invoked.
+[03:33:27.863] Seek(0.00s) invoked.
+[03:33:27.872] Seek(0.00s) invoked.
+[03:33:27.888] Seek(0.00s) invoked.
+[03:33:27.895] Seek(0.00s) invoked.
+[03:33:27.911] Seek(0.00s) invoked.
+[03:33:27.919] Seek(0.00s) invoked.
+[03:33:27.936] Seek(0.00s) invoked.
+[03:33:27.968] Seek(0.00s) invoked.
+[03:33:27.991] Seek(0.00s) invoked.
+[03:33:28.064] Seek(0.00s) invoked.
+[03:33:28.079] Seek(0.00s) invoked.
+[03:33:28.087] Seek(0.00s) invoked.
+[03:33:28.096] Seek(0.00s) invoked.
+[03:33:28.105] Seek(0.00s) invoked.
+[03:33:28.111] Seek(0.00s) invoked.
+[03:33:28.120] Seek(0.00s) invoked.
+[03:33:28.128] Seek(0.00s) invoked.
+[03:33:28.135] Seek(0.00s) invoked.
+[03:33:28.144] Seek(0.00s) invoked.
+[03:33:28.152] Seek(0.00s) invoked.
+[03:33:28.160] Seek(0.00s) invoked.
+[03:33:28.168] Seek(0.00s) invoked.
+[03:33:28.176] Seek(0.00s) invoked.
+[03:33:28.184] Seek(0.00s) invoked.
+[03:33:28.192] Seek(0.00s) invoked.
+[03:33:28.200] Seek(0.00s) invoked.
+[03:33:28.209] Seek(0.00s) invoked.
+[03:33:28.216] Seek(4.66s) invoked.
+[03:33:28.226] Seek(10.49s) invoked.
+[03:33:28.232] Seek(16.32s) invoked.
+[03:33:28.240] Seek(22.15s) invoked.
+[03:33:28.248] Seek(27.98s) invoked.
+[03:33:28.257] Seek(33.81s) invoked.
+[03:33:28.264] Seek(38.47s) invoked.
+[03:33:28.272] Seek(44.30s) invoked.
+[03:33:28.280] Seek(49.55s) invoked.
+[03:33:28.288] Seek(54.21s) invoked.
+[03:33:28.296] Seek(58.29s) invoked.
+[03:33:28.305] Seek(62.37s) invoked.
+[03:33:28.312] Seek(66.45s) invoked.
+[03:33:28.320] Seek(69.37s) invoked.
+[03:33:28.328] Seek(72.28s) invoked.
+[03:33:28.336] Seek(75.20s) invoked.
+[03:33:28.345] Seek(77.53s) invoked.
+[03:33:28.360] Seek(81.03s) invoked.
+[03:33:28.368] Seek(82.77s) invoked.
+[03:33:28.376] Seek(84.52s) invoked.
+[03:33:28.384] Seek(85.11s) invoked.
+[03:33:28.393] Seek(86.27s) invoked.
+[03:33:28.399] Seek(86.86s) invoked.
+[03:33:28.416] Seek(88.02s) invoked.
+[03:33:28.426] Seek(88.60s) invoked.
+[03:33:28.432] Seek(89.77s) invoked.
+[03:33:28.440] Seek(90.94s) invoked.
+[03:33:28.447] Seek(91.52s) invoked.
+[03:33:28.456] Seek(92.68s) invoked.
+[03:33:28.464] Seek(94.43s) invoked.
+[03:33:28.474] Seek(95.60s) invoked.
+[03:33:28.480] Seek(97.35s) invoked.
+[03:33:28.488] Seek(99.10s) invoked.
+[03:33:28.492] Seek(99.10s) invoked.
+[03:33:28.496] Seek(100.26s) invoked.
+[03:33:28.504] Seek(102.01s) invoked.
+[03:33:28.516] Seek(103.18s) invoked.
+[03:33:28.519] Seek(103.76s) invoked.
+[03:33:28.528] Seek(104.93s) invoked.
+[03:33:28.536] Seek(105.51s) invoked.
+[03:33:28.552] Seek(106.09s) invoked.
+[03:33:28.560] Seek(106.67s) invoked.
+[03:33:28.578] Seek(107.26s) invoked.
+[03:33:28.584] Seek(107.84s) invoked.
+[03:33:28.593] Seek(108.42s) invoked.
+[03:33:28.609] Seek(109.01s) invoked.
+[03:33:28.616] Seek(109.59s) invoked.
+[03:33:28.632] Seek(110.17s) invoked.
+[03:33:28.640] Seek(111.34s) invoked.
+[03:33:28.656] Seek(112.50s) invoked.
+[03:33:28.663] Seek(113.09s) invoked.
+[03:33:28.672] Seek(113.67s) invoked.
+[03:33:28.680] Seek(114.25s) invoked.
+[03:33:28.688] Seek(114.84s) invoked.
+[03:33:28.696] Seek(116.00s) invoked.
+[03:33:28.704] Seek(117.17s) invoked.
+[03:33:28.712] Seek(117.75s) invoked.
+[03:33:28.719] Seek(118.33s) invoked.
+[03:33:28.728] Seek(118.92s) invoked.
+[03:33:28.736] Seek(119.50s) invoked.
+[03:33:28.744] Seek(120.08s) invoked.
+[03:33:28.753] Seek(120.66s) invoked.
+[03:33:28.768] Seek(121.25s) invoked.
+[03:33:28.776] Seek(121.83s) invoked.
+[03:33:28.856] Seek(122.41s) invoked.
+[03:33:28.879] Seek(123.00s) invoked.
+[03:33:28.896] Seek(123.58s) invoked.
+[03:33:28.936] Seek(124.16s) invoked.
+[03:33:28.990] Seek(124.16s) invoked.
+[03:33:29.151] Seek(123.58s) invoked.
+[03:33:29.160] Seek(121.83s) invoked.
+[03:33:29.168] Seek(118.92s) invoked.
+[03:33:29.177] Seek(114.25s) invoked.
+[03:33:29.184] Seek(109.01s) invoked.
+[03:33:29.197] Seek(102.59s) invoked.
+[03:33:29.200] Seek(95.60s) invoked.
+[03:33:29.209] Seek(87.44s) invoked.
+[03:33:29.216] Seek(79.86s) invoked.
+[03:33:29.224] Seek(71.12s) invoked.
+[03:33:29.233] Seek(62.37s) invoked.
+[03:33:29.243] Seek(53.63s) invoked.
+[03:33:29.248] Seek(44.88s) invoked.
+[03:33:29.256] Seek(36.14s) invoked.
+[03:33:29.264] Seek(27.40s) invoked.
+[03:33:29.273] Seek(18.65s) invoked.
+[03:33:29.280] Seek(9.33s) invoked.
+[03:33:29.288] Seek(0.00s) invoked.
+[03:33:29.295] Seek(0.00s) invoked.
+[03:33:29.304] Seek(0.00s) invoked.
+[03:33:29.311] Seek(0.00s) invoked.
+[03:33:29.320] Seek(0.00s) invoked.
+[03:33:29.327] Seek(0.00s) invoked.
+[03:33:29.336] Seek(0.00s) invoked.
+[03:33:29.344] Seek(0.00s) invoked.
+[03:33:29.352] Seek(0.00s) invoked.
+[03:33:29.360] Seek(0.00s) invoked.
+[03:33:29.367] Seek(0.00s) invoked.
+[03:33:29.379] Seek(0.00s) invoked.
+[03:33:29.384] Seek(0.00s) invoked.
+[03:33:29.394] Seek(0.00s) invoked.
+[03:33:29.399] Seek(0.00s) invoked.
+[03:33:29.417] Seek(0.00s) invoked.
+[03:33:29.419] Seek(0.00s) invoked.
+[03:33:29.424] Seek(0.00s) invoked.
+[03:33:29.431] Seek(0.00s) invoked.
+[03:33:29.440] Seek(0.00s) invoked.
+[03:33:29.495] Seek(0.00s) invoked.
+[03:33:29.508] Seek(0.00s) invoked.
+[12:01:50.400] Load() started for: C:\Users\sayan\Downloads\Naam Reh Jayegaa - Watch FULL Episode 6 - Arijit's Perfect tribute to Lata Mangeshkar.mp4
+[12:01:50.483] _reader created: SampleRate=44100, Ch=2, TotalTime=00:43:31.4859977
+[12:01:50.572] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[12:01:50.573] Load() finished successfully. HasAudioTrack=True
+[12:01:50.576] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[12:01:50.577] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[12:01:50.581] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[12:01:50.582] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[12:01:54.875] Seek(2.91s) invoked.
+[12:01:54.894] Seek(2.91s) invoked.
+[12:01:54.960] Seek(8.74s) invoked.
+[12:01:54.968] Seek(14.57s) invoked.
+[12:01:54.977] Seek(23.32s) invoked.
+[12:01:54.984] Seek(34.98s) invoked.
+[12:01:54.994] Seek(46.63s) invoked.
+[12:01:55.000] Seek(61.21s) invoked.
+[12:01:55.008] Seek(78.69s) invoked.
+[12:01:55.017] Seek(99.10s) invoked.
+[12:01:55.024] Seek(125.33s) invoked.
+[12:01:55.032] Seek(148.64s) invoked.
+[12:01:55.040] Seek(171.96s) invoked.
+[12:01:55.048] Seek(198.19s) invoked.
+[12:01:55.056] Seek(218.60s) invoked.
+[12:01:55.064] Seek(236.08s) invoked.
+[12:01:55.072] Seek(253.57s) invoked.
+[12:01:55.080] Seek(259.40s) invoked.
+[12:01:55.088] Seek(268.14s) invoked.
+[12:01:55.096] Seek(271.06s) invoked.
+[12:01:55.114] Seek(273.97s) invoked.
+[12:01:55.184] Seek(276.89s) invoked.
+[12:01:55.208] Seek(279.80s) invoked.
+[12:01:55.216] Seek(282.72s) invoked.
+[12:01:55.224] Seek(285.63s) invoked.
+[12:01:55.328] Seek(288.55s) invoked.
+[12:01:55.344] Seek(291.46s) invoked.
+[12:01:55.367] Seek(294.38s) invoked.
+[12:01:55.414] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[12:01:55.423] Seek(294.38s) invoked.
+[12:01:55.455] Seek(291.46s) invoked.
+[12:01:55.463] Seek(285.63s) invoked.
+[12:01:55.471] Seek(282.72s) invoked.
+[12:01:55.479] Seek(276.89s) invoked.
+[12:01:55.488] Seek(265.23s) invoked.
+[12:01:55.496] Seek(250.66s) invoked.
+[12:01:55.504] Seek(221.51s) invoked.
+[12:01:55.511] Seek(177.79s) invoked.
+[12:01:55.519] Seek(125.33s) invoked.
+[12:01:55.530] Seek(64.12s) invoked.
+[12:01:55.535] Seek(0.00s) invoked.
+[12:01:55.544] Seek(0.00s) invoked.
+[12:01:55.551] Seek(0.00s) invoked.
+[12:01:55.560] Seek(0.00s) invoked.
+[12:01:55.567] Seek(0.00s) invoked.
+[12:01:55.576] Seek(0.00s) invoked.
+[12:01:55.583] Seek(0.00s) invoked.
+[12:01:55.591] Seek(0.00s) invoked.
+[12:01:55.601] Seek(0.00s) invoked.
+[12:01:55.607] Seek(0.00s) invoked.
+[12:01:55.934] Seek(0.00s) invoked.
+[12:04:52.885] SetVolume(0.99, isMuted=False) -> VolumeProvider.Volume=0.98999995
+[12:04:52.900] SetVolume(0.97, isMuted=False) -> VolumeProvider.Volume=0.96999997
+[12:04:52.908] SetVolume(0.94, isMuted=False) -> VolumeProvider.Volume=0.94
+[12:04:52.916] SetVolume(0.93, isMuted=False) -> VolumeProvider.Volume=0.93
+[12:04:52.924] SetVolume(0.91, isMuted=False) -> VolumeProvider.Volume=0.90999997
+[12:04:52.932] SetVolume(0.88, isMuted=False) -> VolumeProvider.Volume=0.88
+[12:04:52.940] SetVolume(0.87, isMuted=False) -> VolumeProvider.Volume=0.87
+[12:04:52.948] SetVolume(0.84, isMuted=False) -> VolumeProvider.Volume=0.84
+[12:04:52.956] SetVolume(0.82, isMuted=False) -> VolumeProvider.Volume=0.82
+[12:04:52.965] SetVolume(0.79, isMuted=False) -> VolumeProvider.Volume=0.78999996
+[12:04:52.972] SetVolume(0.76, isMuted=False) -> VolumeProvider.Volume=0.76
+[12:04:52.981] SetVolume(0.75, isMuted=False) -> VolumeProvider.Volume=0.75
+[12:04:52.988] SetVolume(0.73, isMuted=False) -> VolumeProvider.Volume=0.72999996
+[12:04:52.998] SetVolume(0.72, isMuted=False) -> VolumeProvider.Volume=0.71999997
+[12:04:53.012] SetVolume(0.70, isMuted=False) -> VolumeProvider.Volume=0.7
+[12:04:53.020] SetVolume(0.69, isMuted=False) -> VolumeProvider.Volume=0.69
+[12:04:53.052] SetVolume(0.67, isMuted=False) -> VolumeProvider.Volume=0.66999996
+[12:04:53.084] SetVolume(0.66, isMuted=False) -> VolumeProvider.Volume=0.65999997
+[12:04:53.100] SetVolume(0.64, isMuted=False) -> VolumeProvider.Volume=0.64
+[12:04:53.124] SetVolume(0.63, isMuted=False) -> VolumeProvider.Volume=0.63
+[12:04:53.132] SetVolume(0.61, isMuted=False) -> VolumeProvider.Volume=0.61
+[12:04:53.140] SetVolume(0.60, isMuted=False) -> VolumeProvider.Volume=0.59999996
+[12:04:53.156] SetVolume(0.58, isMuted=False) -> VolumeProvider.Volume=0.58
+[12:04:53.164] SetVolume(0.55, isMuted=False) -> VolumeProvider.Volume=0.55
+[12:04:53.180] SetVolume(0.54, isMuted=False) -> VolumeProvider.Volume=0.53999996
+[12:04:53.188] SetVolume(0.52, isMuted=False) -> VolumeProvider.Volume=0.52
+[12:04:53.197] SetVolume(0.51, isMuted=False) -> VolumeProvider.Volume=0.51
+[12:04:53.204] SetVolume(0.49, isMuted=False) -> VolumeProvider.Volume=0.48999998
+[12:04:53.212] SetVolume(0.48, isMuted=False) -> VolumeProvider.Volume=0.48
+[12:04:53.228] SetVolume(0.46, isMuted=False) -> VolumeProvider.Volume=0.45999998
+[12:04:53.236] SetVolume(0.45, isMuted=False) -> VolumeProvider.Volume=0.45
+[12:04:53.589] SetVolume(0.46, isMuted=False) -> VolumeProvider.Volume=0.45999998
+[12:04:53.604] SetVolume(0.49, isMuted=False) -> VolumeProvider.Volume=0.48999998
+[12:04:53.612] SetVolume(0.51, isMuted=False) -> VolumeProvider.Volume=0.51
+[12:04:53.620] SetVolume(0.54, isMuted=False) -> VolumeProvider.Volume=0.53999996
+[12:04:53.628] SetVolume(0.57, isMuted=False) -> VolumeProvider.Volume=0.57
+[12:04:53.636] SetVolume(0.58, isMuted=False) -> VolumeProvider.Volume=0.58
+[12:04:53.644] SetVolume(0.61, isMuted=False) -> VolumeProvider.Volume=0.61
+[12:04:53.652] SetVolume(0.66, isMuted=False) -> VolumeProvider.Volume=0.65999997
+[12:04:53.660] SetVolume(0.67, isMuted=False) -> VolumeProvider.Volume=0.66999996
+[12:04:53.668] SetVolume(0.70, isMuted=False) -> VolumeProvider.Volume=0.7
+[12:04:53.676] SetVolume(0.73, isMuted=False) -> VolumeProvider.Volume=0.72999996
+[12:04:53.684] SetVolume(0.75, isMuted=False) -> VolumeProvider.Volume=0.75
+[12:04:53.692] SetVolume(0.78, isMuted=False) -> VolumeProvider.Volume=0.78
+[12:04:53.708] SetVolume(0.79, isMuted=False) -> VolumeProvider.Volume=0.78999996
+[12:04:53.716] SetVolume(0.81, isMuted=False) -> VolumeProvider.Volume=0.81
+[12:04:53.724] SetVolume(0.82, isMuted=False) -> VolumeProvider.Volume=0.82
+[12:04:53.741] SetVolume(0.84, isMuted=False) -> VolumeProvider.Volume=0.84
+[12:04:53.748] SetVolume(0.85, isMuted=False) -> VolumeProvider.Volume=0.84999996
+[12:04:53.764] SetVolume(0.87, isMuted=False) -> VolumeProvider.Volume=0.87
+[12:04:53.772] SetVolume(0.88, isMuted=False) -> VolumeProvider.Volume=0.88
+[12:04:53.797] SetVolume(0.90, isMuted=False) -> VolumeProvider.Volume=0.9
+[12:04:53.988] SetVolume(0.91, isMuted=False) -> VolumeProvider.Volume=0.90999997
+[12:04:54.004] SetVolume(0.93, isMuted=False) -> VolumeProvider.Volume=0.93
+[12:04:54.020] SetVolume(0.94, isMuted=False) -> VolumeProvider.Volume=0.94
+[12:04:54.028] SetVolume(0.96, isMuted=False) -> VolumeProvider.Volume=0.96
+[12:04:54.036] SetVolume(0.97, isMuted=False) -> VolumeProvider.Volume=0.96999997
+[12:05:15.340] Seek(38.03s) invoked.
+[12:05:15.408] Seek(39.90s) invoked.
+[12:05:15.447] Seek(42.71s) invoked.
+[12:05:15.455] Seek(43.27s) invoked.
+[12:05:15.459] Seek(43.65s) invoked.
+[12:05:15.476] Seek(44.40s) invoked.
+[12:05:15.481] Seek(44.96s) invoked.
+[12:05:15.483] Seek(45.52s) invoked.
+[12:05:15.490] Seek(45.90s) invoked.
+[12:05:15.498] Seek(46.46s) invoked.
+[12:05:15.507] Seek(47.02s) invoked.
+[12:05:15.514] Seek(47.58s) invoked.
+[12:05:15.525] Seek(48.33s) invoked.
+[12:05:15.530] Seek(49.08s) invoked.
+[12:05:15.538] Seek(49.83s) invoked.
+[12:05:15.546] Seek(50.77s) invoked.
+[12:05:15.556] Seek(51.71s) invoked.
+[12:05:15.562] Seek(53.02s) invoked.
+[12:05:15.571] Seek(54.14s) invoked.
+[12:05:15.578] Seek(55.45s) invoked.
+[12:05:15.586] Seek(56.76s) invoked.
+[12:05:15.594] Seek(58.45s) invoked.
+[12:05:15.603] Seek(59.95s) invoked.
+[12:05:15.610] Seek(61.63s) invoked.
+[12:05:15.620] Seek(63.13s) invoked.
+[12:05:15.626] Seek(65.01s) invoked.
+[12:05:15.634] Seek(66.88s) invoked.
+[12:05:15.642] Seek(69.13s) invoked.
+[12:05:15.650] Seek(71.38s) invoked.
+[12:05:15.658] Seek(73.25s) invoked.
+[12:05:15.666] Seek(75.50s) invoked.
+[12:05:15.686] Seek(77.75s) invoked.
+[12:05:15.688] Seek(79.81s) invoked.
+[12:05:15.690] Seek(82.05s) invoked.
+[12:05:15.698] Seek(83.93s) invoked.
+[12:05:15.706] Seek(86.18s) invoked.
+[12:05:15.714] Seek(88.05s) invoked.
+[12:05:15.725] Seek(89.55s) invoked.
+[12:05:15.730] Seek(90.86s) invoked.
+[12:05:15.738] Seek(91.80s) invoked.
+[12:05:15.746] Seek(92.54s) invoked.
+[12:05:15.754] Seek(93.11s) invoked.
+[12:05:15.762] Seek(93.48s) invoked.
+[12:05:15.771] Seek(93.86s) invoked.
+[12:05:15.778] Seek(94.04s) invoked.
+[12:05:15.794] Seek(94.23s) invoked.
+[12:05:15.810] Seek(94.42s) invoked.
+[12:05:15.818] Seek(94.61s) invoked.
+[12:05:15.858] Seek(94.79s) invoked.
+[12:05:15.867] Seek(94.98s) invoked.
+[12:05:15.882] Seek(95.17s) invoked.
+[12:05:15.890] Seek(95.35s) invoked.
+[12:05:15.898] Seek(95.54s) invoked.
+[12:05:15.906] Seek(95.73s) invoked.
+[12:05:15.914] Seek(95.92s) invoked.
+[12:05:15.930] Seek(96.10s) invoked.
+[12:05:15.939] Seek(96.48s) invoked.
+[12:05:15.953] Seek(96.48s) invoked.
+[12:05:15.954] Seek(96.85s) invoked.
+[12:05:15.962] Seek(97.04s) invoked.
+[12:05:15.978] Seek(97.42s) invoked.
+[12:05:15.987] Seek(97.60s) invoked.
+[12:05:15.994] Seek(97.79s) invoked.
+[12:05:16.004] Seek(98.16s) invoked.
+[12:05:16.010] Seek(98.35s) invoked.
+[12:05:16.018] Seek(98.73s) invoked.
+[12:05:16.026] Seek(99.10s) invoked.
+[12:05:16.042] Seek(99.29s) invoked.
+[12:05:16.050] Seek(99.66s) invoked.
+[12:05:16.066] Seek(99.85s) invoked.
+[12:05:16.074] Seek(100.04s) invoked.
+[12:05:16.090] Seek(100.23s) invoked.
+[12:05:16.098] Seek(100.60s) invoked.
+[12:05:16.106] Seek(100.79s) invoked.
+[12:05:16.114] Seek(101.35s) invoked.
+[12:05:16.122] Seek(101.91s) invoked.
+[12:05:16.130] Seek(102.29s) invoked.
+[12:05:16.138] Seek(103.04s) invoked.
+[12:05:16.146] Seek(103.79s) invoked.
+[12:05:16.154] Seek(104.35s) invoked.
+[12:05:16.162] Seek(105.10s) invoked.
+[12:05:16.171] Seek(105.85s) invoked.
+[12:05:16.178] Seek(106.41s) invoked.
+[12:05:16.187] Seek(106.78s) invoked.
+[12:05:16.194] Seek(107.53s) invoked.
+[12:05:16.203] Seek(108.09s) invoked.
+[12:05:16.210] Seek(108.84s) invoked.
+[12:05:16.218] Seek(109.41s) invoked.
+[12:05:16.226] Seek(110.15s) invoked.
+[12:05:16.234] Seek(111.09s) invoked.
+[12:05:16.242] Seek(112.03s) invoked.
+[12:05:16.250] Seek(113.34s) invoked.
+[12:05:16.258] Seek(114.84s) invoked.
+[12:05:16.266] Seek(116.52s) invoked.
+[12:05:16.274] Seek(118.40s) invoked.
+[12:05:16.282] Seek(120.46s) invoked.
+[12:05:16.290] Seek(123.08s) invoked.
+[12:05:16.298] Seek(125.89s) invoked.
+[12:05:16.306] Seek(128.70s) invoked.
+[12:05:16.316] Seek(131.70s) invoked.
+[12:05:16.322] Seek(134.88s) invoked.
+[12:05:16.330] Seek(138.26s) invoked.
+[12:05:16.338] Seek(141.63s) invoked.
+[12:05:16.346] Seek(145.37s) invoked.
+[12:05:16.354] Seek(148.75s) invoked.
+[12:05:16.362] Seek(152.12s) invoked.
+[12:05:16.371] Seek(155.68s) invoked.
+[12:05:16.378] Seek(159.05s) invoked.
+[12:05:16.386] Seek(162.05s) invoked.
+[12:05:16.394] Seek(165.23s) invoked.
+[12:05:16.403] Seek(168.04s) invoked.
+[12:05:16.410] Seek(170.85s) invoked.
+[12:05:16.420] Seek(173.29s) invoked.
+[12:05:16.426] Seek(175.72s) invoked.
+[12:05:16.434] Seek(178.16s) invoked.
+[12:05:16.442] Seek(180.41s) invoked.
+[12:05:16.450] Seek(182.65s) invoked.
+[12:05:16.453] Seek(182.65s) invoked.
+[12:05:16.461] Seek(185.09s) invoked.
+[12:05:16.466] Seek(187.52s) invoked.
+[12:05:16.474] Seek(190.15s) invoked.
+[12:05:16.482] Seek(192.96s) invoked.
+[12:05:16.490] Seek(195.58s) invoked.
+[12:05:16.498] Seek(198.77s) invoked.
+[12:05:16.508] Seek(201.76s) invoked.
+[12:05:16.514] Seek(204.95s) invoked.
+[12:05:16.522] Seek(208.32s) invoked.
+[12:05:16.530] Seek(211.69s) invoked.
+[12:05:16.538] Seek(214.88s) invoked.
+[12:05:16.546] Seek(217.69s) invoked.
+[12:05:16.554] Seek(220.50s) invoked.
+[12:05:16.563] Seek(222.93s) invoked.
+[12:05:16.570] Seek(225.18s) invoked.
+[12:05:16.578] Seek(227.05s) invoked.
+[12:05:16.587] Seek(228.55s) invoked.
+[12:05:16.594] Seek(230.05s) invoked.
+[12:05:16.607] Seek(231.36s) invoked.
+[12:05:16.616] Seek(232.30s) invoked.
+[12:05:16.618] Seek(233.42s) invoked.
+[12:05:16.626] Seek(234.36s) invoked.
+[12:05:16.634] Seek(235.30s) invoked.
+[12:05:16.642] Seek(236.05s) invoked.
+[12:05:16.650] Seek(236.61s) invoked.
+[12:05:16.660] Seek(237.54s) invoked.
+[12:05:16.666] Seek(238.29s) invoked.
+[12:05:16.674] Seek(239.23s) invoked.
+[12:05:16.682] Seek(240.17s) invoked.
+[12:05:16.690] Seek(241.10s) invoked.
+[12:05:16.698] Seek(242.04s) invoked.
+[12:05:16.707] Seek(243.16s) invoked.
+[12:05:16.714] Seek(244.10s) invoked.
+[12:05:16.722] Seek(245.04s) invoked.
+[12:05:16.730] Seek(245.97s) invoked.
+[12:05:16.738] Seek(246.91s) invoked.
+[12:05:16.746] Seek(247.85s) invoked.
+[12:05:16.754] Seek(248.97s) invoked.
+[12:05:16.762] Seek(249.91s) invoked.
+[12:05:16.770] Seek(250.85s) invoked.
+[12:05:16.778] Seek(251.78s) invoked.
+[12:05:16.786] Seek(252.72s) invoked.
+[12:05:16.794] Seek(253.66s) invoked.
+[12:05:16.804] Seek(254.78s) invoked.
+[12:05:16.813] Seek(255.34s) invoked.
+[12:05:16.824] Seek(256.09s) invoked.
+[12:05:16.828] Seek(256.84s) invoked.
+[12:05:16.834] Seek(257.40s) invoked.
+[12:05:16.842] Seek(258.15s) invoked.
+[12:05:16.850] Seek(264.57s) invoked.
+[12:05:16.859] Seek(270.98s) invoked.
+[12:05:16.866] Seek(277.21s) invoked.
+[12:05:16.874] Seek(283.82s) invoked.
+[12:05:16.882] Seek(290.23s) invoked.
+[12:05:16.896] Seek(296.46s) invoked.
+[12:05:16.898] Seek(302.69s) invoked.
+[12:05:16.908] Seek(309.11s) invoked.
+[12:05:16.914] Seek(315.15s) invoked.
+[12:05:16.922] Seek(321.38s) invoked.
+[12:05:16.930] Seek(327.42s) invoked.
+[12:05:16.938] Seek(333.46s) invoked.
+[12:05:16.946] Seek(339.50s) invoked.
+[12:05:16.953] Seek(345.36s) invoked.
+[12:05:16.964] Seek(351.59s) invoked.
+[12:05:16.970] Seek(357.63s) invoked.
+[12:05:16.987] Seek(363.86s) invoked.
+[12:05:16.994] Seek(370.09s) invoked.
+[12:05:17.004] Seek(376.13s) invoked.
+[12:05:17.010] Seek(382.36s) invoked.
+[12:05:17.020] Seek(388.40s) invoked.
+[12:05:17.026] Seek(394.63s) invoked.
+[12:05:17.034] Seek(400.86s) invoked.
+[12:05:17.042] Seek(406.90s) invoked.
+[12:05:17.050] Seek(413.13s) invoked.
+[12:05:17.058] Seek(419.17s) invoked.
+[12:05:17.066] Seek(425.21s) invoked.
+[12:05:17.074] Seek(431.25s) invoked.
+[12:05:17.082] Seek(437.29s) invoked.
+[12:05:17.090] Seek(443.52s) invoked.
+[12:05:17.098] Seek(449.75s) invoked.
+[12:05:17.106] Seek(455.79s) invoked.
+[12:05:17.114] Seek(462.02s) invoked.
+[12:05:17.129] Seek(468.06s) invoked.
+[12:05:17.132] Seek(474.10s) invoked.
+[12:05:17.138] Seek(480.15s) invoked.
+[12:05:17.146] Seek(486.00s) invoked.
+[12:05:17.155] Seek(492.04s) invoked.
+[12:05:17.162] Seek(498.08s) invoked.
+[12:05:17.173] Seek(504.13s) invoked.
+[12:05:17.453] Seek(509.98s) invoked.
+[12:05:17.482] Seek(515.65s) invoked.
+[12:05:17.490] Seek(520.94s) invoked.
+[12:05:17.498] Seek(526.42s) invoked.
+[12:05:17.506] Seek(531.34s) invoked.
+[12:05:17.514] Seek(535.88s) invoked.
+[12:05:17.522] Seek(540.23s) invoked.
+[12:05:17.530] Seek(544.40s) invoked.
+[12:05:17.538] Seek(548.76s) invoked.
+[12:05:17.546] Seek(552.93s) invoked.
+[12:05:17.554] Seek(557.28s) invoked.
+[12:05:17.563] Seek(561.83s) invoked.
+[12:05:17.571] Seek(560.89s) invoked.
+[12:05:17.578] Seek(560.33s) invoked.
+[12:05:17.587] Seek(560.14s) invoked.
+[12:05:17.594] Seek(559.95s) invoked.
+[12:05:17.603] Seek(559.76s) invoked.
+[12:05:17.642] Seek(559.76s) invoked.
+[12:05:17.650] Seek(559.58s) invoked.
+[12:05:17.658] Seek(559.20s) invoked.
+[12:05:17.666] Seek(558.83s) invoked.
+[12:05:17.674] Seek(558.45s) invoked.
+[12:05:17.682] Seek(557.89s) invoked.
+[12:05:17.690] Seek(557.70s) invoked.
+[12:05:17.698] Seek(557.33s) invoked.
+[12:05:17.706] Seek(557.14s) invoked.
+[12:05:17.778] Seek(557.52s) invoked.
+[12:05:17.787] Seek(557.70s) invoked.
+[12:05:17.794] Seek(558.27s) invoked.
+[12:05:17.803] Seek(559.02s) invoked.
+[12:05:17.811] Seek(559.58s) invoked.
+[12:05:17.818] Seek(560.51s) invoked.
+[12:05:17.826] Seek(561.83s) invoked.
+[12:05:17.834] Seek(563.14s) invoked.
+[12:05:17.842] Seek(569.93s) invoked.
+[12:05:17.850] Seek(576.72s) invoked.
+[12:05:17.861] Seek(583.70s) invoked.
+[12:05:17.866] Seek(590.49s) invoked.
+[12:05:17.874] Seek(597.09s) invoked.
+[12:05:17.882] Seek(603.32s) invoked.
+[12:05:17.890] Seek(609.74s) invoked.
+[12:05:17.898] Seek(615.97s) invoked.
+[12:05:17.909] Seek(622.01s) invoked.
+[12:05:17.914] Seek(628.24s) invoked.
+[12:05:17.930] Seek(634.28s) invoked.
+[12:05:17.939] Seek(640.32s) invoked.
+[12:05:17.954] Seek(646.17s) invoked.
+[12:05:17.956] Seek(652.22s) invoked.
+[12:05:17.978] Seek(658.26s) invoked.
+[12:05:17.990] Seek(664.30s) invoked.
+[12:05:18.004] Seek(670.34s) invoked.
+[12:05:18.010] Seek(676.38s) invoked.
+[12:05:18.018] Seek(682.42s) invoked.
+[12:05:18.034] Seek(688.65s) invoked.
+[12:05:18.050] Seek(694.88s) invoked.
+[12:05:18.060] Seek(700.92s) invoked.
+[12:05:18.074] Seek(706.97s) invoked.
+[12:05:18.082] Seek(713.19s) invoked.
+[12:05:18.090] Seek(719.24s) invoked.
+[12:05:18.098] Seek(725.28s) invoked.
+[12:05:18.106] Seek(731.32s) invoked.
+[12:05:18.115] Seek(737.55s) invoked.
+[12:05:18.130] Seek(743.78s) invoked.
+[12:05:18.139] Seek(749.82s) invoked.
+[12:05:18.146] Seek(755.86s) invoked.
+[12:05:18.154] Seek(761.90s) invoked.
+[12:05:18.170] Seek(767.94s) invoked.
+[12:05:18.179] Seek(773.99s) invoked.
+[12:05:18.194] Seek(780.03s) invoked.
+[12:05:18.204] Seek(786.07s) invoked.
+[12:05:18.226] Seek(792.11s) invoked.
+[12:05:18.234] Seek(798.15s) invoked.
+[12:05:18.242] Seek(804.19s) invoked.
+[12:05:18.266] Seek(810.24s) invoked.
+[12:05:18.282] Seek(816.28s) invoked.
+[12:05:18.307] Seek(822.32s) invoked.
+[12:05:18.314] Seek(828.36s) invoked.
+[12:05:18.322] Seek(834.40s) invoked.
+[12:05:18.339] Seek(840.44s) invoked.
+[12:05:18.354] Seek(846.48s) invoked.
+[12:05:18.371] Seek(852.53s) invoked.
+[12:05:18.378] Seek(858.57s) invoked.
+[12:05:18.397] Seek(864.61s) invoked.
+[12:05:18.405] Seek(870.65s) invoked.
+[12:05:18.410] Seek(876.69s) invoked.
+[12:05:18.434] Seek(882.73s) invoked.
+[12:05:18.450] Seek(888.78s) invoked.
+[12:05:18.454] Seek(894.63s) invoked.
+[12:05:18.466] Seek(900.67s) invoked.
+[12:05:18.482] Seek(906.71s) invoked.
+[12:05:18.491] Seek(912.76s) invoked.
+[12:05:18.506] Seek(918.80s) invoked.
+[12:05:18.515] Seek(924.84s) invoked.
+[12:05:18.531] Seek(930.88s) invoked.
+[12:05:18.556] Seek(936.92s) invoked.
+[12:05:18.562] Seek(942.96s) invoked.
+[12:05:18.579] Seek(949.01s) invoked.
+[12:05:18.587] Seek(955.05s) invoked.
+[12:05:18.594] Seek(961.09s) invoked.
+[12:05:18.610] Seek(967.13s) invoked.
+[12:05:18.619] Seek(973.17s) invoked.
+[12:05:18.634] Seek(979.21s) invoked.
+[12:05:18.642] Seek(985.26s) invoked.
+[12:05:18.659] Seek(991.30s) invoked.
+[12:05:18.666] Seek(997.34s) invoked.
+[12:05:18.682] Seek(1003.38s) invoked.
+[12:05:18.699] Seek(1009.42s) invoked.
+[12:05:18.722] Seek(1015.46s) invoked.
+[12:05:18.747] Seek(1021.51s) invoked.
+[12:05:18.755] Seek(1027.36s) invoked.
+[12:05:18.762] Seek(1033.40s) invoked.
+[12:05:18.772] Seek(1039.44s) invoked.
+[12:05:18.797] Seek(1045.48s) invoked.
+[12:05:18.800] Seek(1051.53s) invoked.
+[12:05:18.811] Seek(1057.57s) invoked.
+[12:05:18.819] Seek(1063.61s) invoked.
+[12:05:18.835] Seek(1069.65s) invoked.
+[12:05:18.923] Seek(1075.69s) invoked.
+[12:05:18.956] Seek(1081.55s) invoked.
+[12:05:19.155] Seek(1087.21s) invoked.
+[12:05:19.163] Seek(1092.32s) invoked.
+[12:05:19.171] Seek(1097.24s) invoked.
+[12:05:19.179] Seek(1101.78s) invoked.
+[12:05:19.187] Seek(1105.76s) invoked.
+[12:05:19.195] Seek(1109.18s) invoked.
+[12:05:19.204] Seek(1112.60s) invoked.
+[12:05:19.211] Seek(1115.64s) invoked.
+[12:05:19.219] Seek(1118.69s) invoked.
+[12:05:19.227] Seek(1121.36s) invoked.
+[12:05:19.235] Seek(1124.21s) invoked.
+[12:05:19.245] Seek(1126.88s) invoked.
+[12:05:19.250] Seek(1123.89s) invoked.
+[12:05:19.259] Seek(1120.51s) invoked.
+[12:05:19.267] Seek(1116.95s) invoked.
+[12:05:19.275] Seek(1113.21s) invoked.
+[12:05:19.282] Seek(1108.15s) invoked.
+[12:05:19.293] Seek(1103.09s) invoked.
+[12:05:19.299] Seek(1097.85s) invoked.
+[12:05:19.307] Seek(1092.04s) invoked.
+[12:05:19.315] Seek(1086.23s) invoked.
+[12:05:19.323] Seek(1080.42s) invoked.
+[12:05:19.331] Seek(1074.62s) invoked.
+[12:05:19.340] Seek(1068.81s) invoked.
+[12:05:19.347] Seek(1062.44s) invoked.
+[12:05:19.355] Seek(1055.51s) invoked.
+[12:05:19.362] Seek(1048.39s) invoked.
+[12:05:19.371] Seek(1040.71s) invoked.
+[12:05:19.379] Seek(1033.03s) invoked.
+[12:05:19.387] Seek(1026.09s) invoked.
+[12:05:19.395] Seek(1018.98s) invoked.
+[12:05:19.404] Seek(1012.61s) invoked.
+[12:05:19.411] Seek(1007.55s) invoked.
+[12:05:19.419] Seek(1002.30s) invoked.
+[12:05:19.427] Seek(998.56s) invoked.
+[12:05:19.435] Seek(995.18s) invoked.
+[12:05:19.444] Seek(991.62s) invoked.
+[12:05:19.451] Seek(988.25s) invoked.
+[12:05:19.454] Seek(988.25s) invoked.
+[12:05:19.459] Seek(984.88s) invoked.
+[12:05:19.467] Seek(981.51s) invoked.
+[12:05:19.475] Seek(977.95s) invoked.
+[12:05:19.483] Seek(974.58s) invoked.
+[12:05:19.491] Seek(971.20s) invoked.
+[12:05:19.499] Seek(968.02s) invoked.
+[12:05:19.507] Seek(965.02s) invoked.
+[12:05:19.515] Seek(961.84s) invoked.
+[12:05:19.523] Seek(958.84s) invoked.
+[12:05:19.531] Seek(955.66s) invoked.
+[12:05:19.539] Seek(952.66s) invoked.
+[12:05:19.547] Seek(949.85s) invoked.
+[12:05:19.555] Seek(947.04s) invoked.
+[12:05:19.563] Seek(944.23s) invoked.
+[12:05:19.571] Seek(941.79s) invoked.
+[12:05:19.579] Seek(939.17s) invoked.
+[12:05:19.598] Seek(936.73s) invoked.
+[12:05:19.600] Seek(934.11s) invoked.
+[12:05:19.605] Seek(932.24s) invoked.
+[12:05:19.611] Seek(930.37s) invoked.
+[12:05:19.619] Seek(928.49s) invoked.
+[12:05:19.627] Seek(926.99s) invoked.
+[12:05:19.640] Seek(925.31s) invoked.
+[12:05:19.645] Seek(923.81s) invoked.
+[12:05:19.651] Seek(922.31s) invoked.
+[12:05:19.659] Seek(920.62s) invoked.
+[12:05:19.667] Seek(919.13s) invoked.
+[12:05:19.676] Seek(917.81s) invoked.
+[12:05:19.683] Seek(916.50s) invoked.
+[12:05:19.691] Seek(915.19s) invoked.
+[12:05:19.699] Seek(914.07s) invoked.
+[12:05:19.707] Seek(912.76s) invoked.
+[12:05:19.715] Seek(911.44s) invoked.
+[12:05:19.723] Seek(910.13s) invoked.
+[12:05:19.731] Seek(908.82s) invoked.
+[12:05:19.739] Seek(907.70s) invoked.
+[12:05:19.747] Seek(906.39s) invoked.
+[12:05:19.755] Seek(905.07s) invoked.
+[12:05:19.763] Seek(903.58s) invoked.
+[12:05:19.771] Seek(901.89s) invoked.
+[12:05:19.779] Seek(900.77s) invoked.
+[12:05:19.788] Seek(899.08s) invoked.
+[12:05:19.795] Seek(897.58s) invoked.
+[12:05:19.804] Seek(896.27s) invoked.
+[12:05:19.811] Seek(894.96s) invoked.
+[12:05:19.819] Seek(893.65s) invoked.
+[12:05:19.827] Seek(892.34s) invoked.
+[12:05:19.836] Seek(891.21s) invoked.
+[12:05:19.843] Seek(890.09s) invoked.
+[12:05:19.851] Seek(888.96s) invoked.
+[12:05:19.859] Seek(887.84s) invoked.
+[12:05:19.867] Seek(886.90s) invoked.
+[12:05:19.875] Seek(885.97s) invoked.
+[12:05:19.884] Seek(885.03s) invoked.
+[12:05:19.891] Seek(884.09s) invoked.
+[12:05:19.899] Seek(883.34s) invoked.
+[12:05:19.907] Seek(882.59s) invoked.
+[12:05:19.915] Seek(881.84s) invoked.
+[12:05:19.923] Seek(881.28s) invoked.
+[12:05:19.931] Seek(880.53s) invoked.
+[12:05:19.949] Seek(879.78s) invoked.
+[12:05:19.952] Seek(879.22s) invoked.
+[12:05:19.957] Seek(879.22s) invoked.
+[12:05:19.958] Seek(878.66s) invoked.
+[12:05:19.963] Seek(877.91s) invoked.
+[12:05:19.971] Seek(877.35s) invoked.
+[12:05:19.980] Seek(876.60s) invoked.
+[12:05:19.987] Seek(876.22s) invoked.
+[12:05:19.996] Seek(875.48s) invoked.
+[12:05:20.004] Seek(869.06s) invoked.
+[12:05:20.011] Seek(862.83s) invoked.
+[12:05:20.019] Seek(856.41s) invoked.
+[12:05:20.029] Seek(850.00s) invoked.
+[12:05:20.036] Seek(843.58s) invoked.
+[12:05:20.043] Seek(837.16s) invoked.
+[12:05:20.051] Seek(830.75s) invoked.
+[12:05:20.059] Seek(824.14s) invoked.
+[12:05:20.067] Seek(817.92s) invoked.
+[12:05:20.077] Seek(811.31s) invoked.
+[12:05:20.083] Seek(804.71s) invoked.
+[12:05:20.091] Seek(798.10s) invoked.
+[12:05:20.099] Seek(791.31s) invoked.
+[12:05:20.107] Seek(784.52s) invoked.
+[12:05:20.115] Seek(777.73s) invoked.
+[12:05:20.126] Seek(770.94s) invoked.
+[12:05:20.131] Seek(764.15s) invoked.
+[12:05:20.139] Seek(757.55s) invoked.
+[12:05:20.163] Seek(751.69s) invoked.
+[12:05:20.449] Seek(745.84s) invoked.
+[12:05:20.499] Seek(739.98s) invoked.
+[12:05:20.547] Seek(734.13s) invoked.
+[12:05:20.563] Seek(728.27s) invoked.
+[12:05:20.607] Seek(722.42s) invoked.
+[12:05:20.651] Seek(716.57s) invoked.
+[12:05:20.683] Seek(710.71s) invoked.
+[12:05:20.715] Seek(704.86s) invoked.
+[12:05:20.739] Seek(699.00s) invoked.
+[12:05:20.763] Seek(693.15s) invoked.
+[12:05:20.803] Seek(687.29s) invoked.
+[12:05:20.843] Seek(681.44s) invoked.
+[12:05:20.859] Seek(675.59s) invoked.
+[12:05:20.875] Seek(669.73s) invoked.
+[12:05:20.883] Seek(663.88s) invoked.
+[12:05:20.907] Seek(658.02s) invoked.
+[12:05:20.923] Seek(652.17s) invoked.
+[12:05:20.931] Seek(646.31s) invoked.
+[12:05:20.939] Seek(640.46s) invoked.
+[12:05:20.954] Seek(634.61s) invoked.
+[12:05:20.956] Seek(628.75s) invoked.
+[12:05:20.968] Seek(622.90s) invoked.
+[12:05:20.981] Seek(617.04s) invoked.
+[12:05:20.997] Seek(611.19s) invoked.
+[12:05:21.006] Seek(605.33s) invoked.
+[12:05:21.027] Seek(599.48s) invoked.
+[12:05:21.051] Seek(593.63s) invoked.
+[12:05:21.083] Seek(587.77s) invoked.
+[12:05:21.099] Seek(581.92s) invoked.
+[12:05:21.123] Seek(576.06s) invoked.
+[12:05:21.139] Seek(570.21s) invoked.
+[12:05:21.424] Seek(564.35s) invoked.
+[12:05:21.435] Seek(558.50s) invoked.
+[12:05:21.443] Seek(552.65s) invoked.
+[12:05:21.455] Seek(546.79s) invoked.
+[12:05:21.459] Seek(540.94s) invoked.
+[12:05:21.468] Seek(535.08s) invoked.
+[12:05:21.477] Seek(529.23s) invoked.
+[12:05:21.483] Seek(523.37s) invoked.
+[12:05:21.491] Seek(517.52s) invoked.
+[12:05:21.501] Seek(511.67s) invoked.
+[12:05:21.508] Seek(505.81s) invoked.
+[12:05:21.515] Seek(499.96s) invoked.
+[12:05:21.523] Seek(494.10s) invoked.
+[12:05:21.531] Seek(488.25s) invoked.
+[12:05:21.539] Seek(482.39s) invoked.
+[12:05:21.550] Seek(476.54s) invoked.
+[12:05:21.555] Seek(470.69s) invoked.
+[12:05:21.564] Seek(464.83s) invoked.
+[12:05:21.572] Seek(458.98s) invoked.
+[12:05:21.580] Seek(453.12s) invoked.
+[12:05:21.589] Seek(447.27s) invoked.
+[12:05:21.595] Seek(441.41s) invoked.
+[12:05:21.609] Seek(435.56s) invoked.
+[12:05:21.613] Seek(429.71s) invoked.
+[12:05:21.619] Seek(423.85s) invoked.
+[12:05:21.627] Seek(418.00s) invoked.
+[12:05:21.635] Seek(412.14s) invoked.
+[12:05:21.643] Seek(406.29s) invoked.
+[12:05:21.655] Seek(400.43s) invoked.
+[12:05:21.659] Seek(394.58s) invoked.
+[12:05:21.667] Seek(388.73s) invoked.
+[12:05:21.675] Seek(382.87s) invoked.
+[12:05:21.691] Seek(377.02s) invoked.
+[12:05:21.700] Seek(371.16s) invoked.
+[12:05:21.715] Seek(365.31s) invoked.
+[12:05:21.718] Seek(359.45s) invoked.
+[12:05:21.723] Seek(353.60s) invoked.
+[12:05:21.732] Seek(347.75s) invoked.
+[12:05:21.739] Seek(341.89s) invoked.
+[12:05:21.747] Seek(336.04s) invoked.
+[12:05:21.763] Seek(330.18s) invoked.
+[12:05:21.772] Seek(324.33s) invoked.
+[12:05:21.779] Seek(318.47s) invoked.
+[12:05:21.788] Seek(312.62s) invoked.
+[12:05:21.795] Seek(306.77s) invoked.
+[12:05:21.805] Seek(300.91s) invoked.
+[12:05:21.811] Seek(295.06s) invoked.
+[12:05:21.822] Seek(289.20s) invoked.
+[12:05:21.828] Seek(283.35s) invoked.
+[12:05:21.835] Seek(277.49s) invoked.
+[12:05:21.843] Seek(271.64s) invoked.
+[12:05:21.851] Seek(265.79s) invoked.
+[12:05:21.859] Seek(259.93s) invoked.
+[12:05:21.869] Seek(254.08s) invoked.
+[12:05:21.875] Seek(248.22s) invoked.
+[12:05:21.883] Seek(242.37s) invoked.
+[12:05:21.891] Seek(236.51s) invoked.
+[12:05:21.900] Seek(230.66s) invoked.
+[12:05:21.907] Seek(224.81s) invoked.
+[12:05:21.918] Seek(218.95s) invoked.
+[12:05:21.923] Seek(213.10s) invoked.
+[12:05:21.932] Seek(207.24s) invoked.
+[12:05:21.940] Seek(201.39s) invoked.
+[12:05:21.948] Seek(195.53s) invoked.
+[12:05:21.957] Seek(189.68s) invoked.
+[12:05:21.988] Seek(183.83s) invoked.
+[12:05:22.404] Seek(177.97s) invoked.
+[12:05:22.412] Seek(172.12s) invoked.
+[12:05:22.420] Seek(166.26s) invoked.
+[12:05:22.428] Seek(160.41s) invoked.
+[12:05:22.437] Seek(154.55s) invoked.
+[12:05:22.445] Seek(148.70s) invoked.
+[12:05:22.467] Seek(142.84s) invoked.
+[12:05:22.473] Seek(136.99s) invoked.
+[12:05:22.480] Seek(131.14s) invoked.
+[12:05:22.486] Seek(125.28s) invoked.
+[12:05:22.493] Seek(119.43s) invoked.
+[12:05:22.501] Seek(113.57s) invoked.
+[12:05:22.533] Seek(107.72s) invoked.
+[12:05:22.543] Seek(101.86s) invoked.
+[12:05:22.549] Seek(96.01s) invoked.
+[12:05:22.558] Seek(90.16s) invoked.
+[12:05:22.564] Seek(84.30s) invoked.
+[12:05:22.576] Seek(78.45s) invoked.
+[12:05:22.607] Seek(72.59s) invoked.
+[12:05:22.615] Seek(66.74s) invoked.
+[12:05:22.624] Seek(60.88s) invoked.
+[12:05:22.629] Seek(55.03s) invoked.
+[12:05:22.636] Seek(49.18s) invoked.
+[12:05:22.645] Seek(43.32s) invoked.
+[12:05:22.665] Seek(37.47s) invoked.
+[12:05:22.670] Seek(31.61s) invoked.
+[12:05:22.677] Seek(25.76s) invoked.
+[12:05:22.685] Seek(19.90s) invoked.
+[12:05:22.693] Seek(14.05s) invoked.
+[12:05:22.700] Seek(8.20s) invoked.
+[12:05:22.709] Seek(2.34s) invoked.
+[12:05:22.726] Seek(0.00s) invoked.
+[12:05:22.732] Seek(0.00s) invoked.
+[12:05:22.764] Seek(0.00s) invoked.
+[12:05:22.836] Seek(0.00s) invoked.
+[12:05:22.876] Seek(0.00s) invoked.
+[12:05:22.967] Seek(0.00s) invoked.
+[12:05:23.156] Seek(0.00s) invoked.
+[12:05:23.332] Seek(0.00s) invoked.
+[12:05:23.468] Seek(0.00s) invoked.
+[13:00:25.752] Seek(73.06s) invoked.
+[13:00:25.788] Seek(74.94s) invoked.
+[13:00:25.806] Seek(76.81s) invoked.
+[13:00:25.814] Seek(78.68s) invoked.
+[13:00:25.822] Seek(80.56s) invoked.
+[13:00:25.830] Seek(84.30s) invoked.
+[13:00:25.843] Seek(88.05s) invoked.
+[13:00:25.855] Seek(97.42s) invoked.
+[13:00:25.862] Seek(103.04s) invoked.
+[13:00:25.872] Seek(108.66s) invoked.
+[13:00:25.878] Seek(114.28s) invoked.
+[13:00:25.886] Seek(121.77s) invoked.
+[13:00:25.894] Seek(129.26s) invoked.
+[13:00:25.903] Seek(136.76s) invoked.
+[13:00:25.910] Seek(142.38s) invoked.
+[13:00:25.918] Seek(149.87s) invoked.
+[13:00:25.926] Seek(157.36s) invoked.
+[13:00:25.934] Seek(164.86s) invoked.
+[13:00:25.942] Seek(170.48s) invoked.
+[13:00:25.950] Seek(176.10s) invoked.
+[13:00:25.958] Seek(181.72s) invoked.
+[13:00:25.966] Seek(185.46s) invoked.
+[13:00:25.974] Seek(191.08s) invoked.
+[13:00:25.982] Seek(194.83s) invoked.
+[13:00:25.990] Seek(196.70s) invoked.
+[13:00:25.998] Seek(200.45s) invoked.
+[13:00:26.006] Seek(202.32s) invoked.
+[13:00:26.022] Seek(204.20s) invoked.
+[13:00:26.030] Seek(207.94s) invoked.
+[13:00:26.038] Seek(209.82s) invoked.
+[13:00:26.046] Seek(213.56s) invoked.
+[13:00:26.054] Seek(219.19s) invoked.
+[13:00:26.062] Seek(224.81s) invoked.
+[13:00:26.071] Seek(234.17s) invoked.
+[13:00:26.078] Seek(247.29s) invoked.
+[13:00:26.094] Seek(260.40s) invoked.
+[13:00:26.099] Seek(273.51s) invoked.
+[13:00:26.102] Seek(288.50s) invoked.
+[13:00:26.111] Seek(301.61s) invoked.
+[13:00:26.118] Seek(312.85s) invoked.
+[13:00:26.126] Seek(318.47s) invoked.
+[13:00:26.134] Seek(322.22s) invoked.
+[13:00:26.142] Seek(324.09s) invoked.
+[13:00:26.174] Seek(325.97s) invoked.
+[13:00:26.198] Seek(327.84s) invoked.
+[13:00:26.214] Seek(329.71s) invoked.
+[13:00:26.230] Seek(331.59s) invoked.
+[13:00:26.244] Seek(333.46s) invoked.
+[13:00:26.246] Seek(335.33s) invoked.
+[13:00:26.255] Seek(339.08s) invoked.
+[13:00:26.262] Seek(342.83s) invoked.
+[13:00:26.271] Seek(344.70s) invoked.
+[13:00:26.278] Seek(346.57s) invoked.
+[13:00:26.286] Seek(348.45s) invoked.
+[13:00:26.289] Seek(348.45s) invoked.
+[13:00:26.342] Seek(346.57s) invoked.
+[13:00:26.350] Seek(342.83s) invoked.
+[13:00:26.359] Seek(339.08s) invoked.
+[13:00:26.366] Seek(333.46s) invoked.
+[13:00:26.374] Seek(325.97s) invoked.
+[13:00:26.382] Seek(318.47s) invoked.
+[13:00:26.390] Seek(310.98s) invoked.
+[13:00:26.398] Seek(297.87s) invoked.
+[13:00:26.413] Seek(282.88s) invoked.
+[13:00:26.416] Seek(264.15s) invoked.
+[13:00:26.422] Seek(241.67s) invoked.
+[13:00:26.430] Seek(217.31s) invoked.
+[13:00:26.438] Seek(191.08s) invoked.
+[13:00:26.446] Seek(166.73s) invoked.
+[13:00:26.454] Seek(138.63s) invoked.
+[13:00:26.462] Seek(114.28s) invoked.
+[13:00:26.471] Seek(86.18s) invoked.
+[13:00:26.478] Seek(58.07s) invoked.
+[13:00:26.486] Seek(29.97s) invoked.
+[13:00:26.494] Seek(3.75s) invoked.
+[13:00:26.502] Seek(0.00s) invoked.
+[13:00:26.511] Seek(0.00s) invoked.
+[13:00:26.517] Seek(0.00s) invoked.
+[13:00:26.526] Seek(0.00s) invoked.
+[13:00:26.534] Seek(0.00s) invoked.
+[13:00:26.542] Seek(0.00s) invoked.
+[13:00:26.550] Seek(0.00s) invoked.
+[13:00:26.563] Seek(0.00s) invoked.
+[13:00:26.670] Seek(0.00s) invoked.
+[13:00:26.678] Seek(0.00s) invoked.
+[13:00:26.686] Seek(0.00s) invoked.
+[13:00:26.694] Seek(0.00s) invoked.
+[13:00:26.792] Seek(0.00s) invoked.
+[13:03:51.814] Load() started for: C:\Users\sayan\Downloads\Naam Reh Jayegaa - Watch FULL Episode 6 - Arijit's Perfect tribute to Lata Mangeshkar.mp4
+[13:03:51.924] _reader created: SampleRate=44100, Ch=2, TotalTime=00:43:31.4859977
+[13:03:51.999] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[13:03:52.000] Load() finished successfully. HasAudioTrack=True
+[13:03:52.003] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:03:52.004] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[13:03:52.009] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:03:52.009] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:03:58.014] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[13:04:08.148] Seek(2.62s) invoked.
+[13:04:08.229] Seek(2.44s) invoked.
+[13:04:08.269] Seek(2.62s) invoked.
+[13:04:08.276] Seek(2.81s) invoked.
+[13:04:08.282] Seek(3.00s) invoked.
+[13:04:08.291] Seek(3.37s) invoked.
+[13:04:08.298] Seek(3.75s) invoked.
+[13:04:08.308] Seek(3.93s) invoked.
+[13:04:08.316] Seek(4.31s) invoked.
+[13:04:08.324] Seek(4.50s) invoked.
+[13:04:08.330] Seek(5.06s) invoked.
+[13:04:08.338] Seek(5.62s) invoked.
+[13:04:08.346] Seek(5.99s) invoked.
+[13:04:08.354] Seek(6.37s) invoked.
+[13:04:08.370] Seek(6.74s) invoked.
+[13:04:08.373] Seek(6.93s) invoked.
+[13:04:08.378] Seek(7.31s) invoked.
+[13:04:08.386] Seek(7.49s) invoked.
+[13:04:08.395] Seek(7.87s) invoked.
+[13:04:08.403] Seek(8.06s) invoked.
+[13:04:08.417] Seek(8.24s) invoked.
+[13:04:08.420] Seek(8.43s) invoked.
+[13:04:08.426] Seek(8.62s) invoked.
+[13:04:08.443] Seek(8.80s) invoked.
+[13:04:08.458] Seek(8.99s) invoked.
+[13:04:08.474] Seek(9.18s) invoked.
+[13:04:08.491] Seek(9.37s) invoked.
+[13:04:08.498] Seek(9.55s) invoked.
+[13:04:08.514] Seek(9.74s) invoked.
+[13:04:08.522] Seek(9.93s) invoked.
+[13:04:08.531] Seek(10.12s) invoked.
+[13:04:08.538] Seek(10.30s) invoked.
+[13:04:08.546] Seek(10.68s) invoked.
+[13:04:08.554] Seek(10.87s) invoked.
+[13:04:08.571] Seek(11.24s) invoked.
+[13:04:08.574] Seek(11.61s) invoked.
+[13:04:08.578] Seek(11.99s) invoked.
+[13:04:08.586] Seek(12.55s) invoked.
+[13:04:08.594] Seek(12.93s) invoked.
+[13:04:08.603] Seek(13.49s) invoked.
+[13:04:08.613] Seek(14.24s) invoked.
+[13:04:08.620] Seek(14.80s) invoked.
+[13:04:08.634] Seek(15.55s) invoked.
+[13:04:08.637] Seek(16.11s) invoked.
+[13:04:08.643] Seek(16.86s) invoked.
+[13:04:08.651] Seek(17.42s) invoked.
+[13:04:08.658] Seek(18.17s) invoked.
+[13:04:08.667] Seek(18.73s) invoked.
+[13:04:08.675] Seek(19.48s) invoked.
+[13:04:08.685] Seek(20.05s) invoked.
+[13:04:08.692] Seek(20.79s) invoked.
+[13:04:08.698] Seek(21.73s) invoked.
+[13:04:08.708] Seek(22.67s) invoked.
+[13:04:08.715] Seek(23.98s) invoked.
+[13:04:08.723] Seek(25.29s) invoked.
+[13:04:08.731] Seek(26.60s) invoked.
+[13:04:08.739] Seek(28.29s) invoked.
+[13:04:08.755] Seek(31.47s) invoked.
+[13:04:08.763] Seek(32.97s) invoked.
+[13:04:08.771] Seek(34.66s) invoked.
+[13:04:08.778] Seek(36.53s) invoked.
+[13:04:08.786] Seek(38.59s) invoked.
+[13:04:08.794] Seek(40.84s) invoked.
+[13:04:08.802] Seek(43.27s) invoked.
+[13:04:08.817] Seek(46.09s) invoked.
+[13:04:08.820] Seek(48.90s) invoked.
+[13:04:08.826] Seek(51.71s) invoked.
+[13:04:08.835] Seek(54.52s) invoked.
+[13:04:08.843] Seek(57.33s) invoked.
+[13:04:08.851] Seek(60.14s) invoked.
+[13:04:08.859] Seek(62.95s) invoked.
+[13:04:08.866] Seek(65.76s) invoked.
+[13:04:08.879] Seek(68.38s) invoked.
+[13:04:08.883] Seek(71.19s) invoked.
+[13:04:08.892] Seek(74.00s) invoked.
+[13:04:08.898] Seek(76.81s) invoked.
+[13:04:08.909] Seek(79.99s) invoked.
+[13:04:08.914] Seek(83.37s) invoked.
+[13:04:08.923] Seek(86.74s) invoked.
+[13:04:08.937] Seek(90.67s) invoked.
+[13:04:08.939] Seek(94.61s) invoked.
+[13:04:08.946] Seek(98.54s) invoked.
+[13:04:08.955] Seek(102.47s) invoked.
+[13:04:08.963] Seek(105.85s) invoked.
+[13:04:08.972] Seek(109.03s) invoked.
+[13:04:08.978] Seek(111.84s) invoked.
+[13:04:08.987] Seek(114.28s) invoked.
+[13:04:08.999] Seek(116.52s) invoked.
+[13:04:09.003] Seek(118.58s) invoked.
+[13:04:09.011] Seek(120.65s) invoked.
+[13:04:09.019] Seek(122.52s) invoked.
+[13:04:09.027] Seek(124.39s) invoked.
+[13:04:09.034] Seek(126.45s) invoked.
+[13:04:09.042] Seek(128.70s) invoked.
+[13:04:09.053] Seek(130.95s) invoked.
+[13:04:09.060] Seek(132.82s) invoked.
+[13:04:09.067] Seek(135.07s) invoked.
+[13:04:09.075] Seek(136.57s) invoked.
+[13:04:09.082] Seek(138.26s) invoked.
+[13:04:09.093] Seek(139.57s) invoked.
+[13:04:09.099] Seek(140.88s) invoked.
+[13:04:09.109] Seek(142.00s) invoked.
+[13:04:09.118] Seek(143.31s) invoked.
+[13:04:09.122] Seek(144.62s) invoked.
+[13:04:09.130] Seek(146.12s) invoked.
+[13:04:09.138] Seek(147.43s) invoked.
+[13:04:09.147] Seek(148.75s) invoked.
+[13:04:09.154] Seek(150.06s) invoked.
+[13:04:09.162] Seek(150.99s) invoked.
+[13:04:09.173] Seek(152.12s) invoked.
+[13:04:09.179] Seek(153.05s) invoked.
+[13:04:09.186] Seek(153.80s) invoked.
+[13:04:09.195] Seek(154.37s) invoked.
+[13:04:09.202] Seek(154.93s) invoked.
+[13:04:09.210] Seek(155.30s) invoked.
+[13:04:09.218] Seek(155.86s) invoked.
+[13:04:09.226] Seek(156.61s) invoked.
+[13:04:09.237] Seek(157.36s) invoked.
+[13:04:09.242] Seek(157.93s) invoked.
+[13:04:09.250] Seek(159.05s) invoked.
+[13:04:09.258] Seek(159.99s) invoked.
+[13:04:09.266] Seek(161.11s) invoked.
+[13:04:09.275] Seek(161.11s) invoked.
+[13:04:09.278] Seek(162.05s) invoked.
+[13:04:09.292] Seek(162.98s) invoked.
+[13:04:09.295] Seek(164.11s) invoked.
+[13:04:09.300] Seek(165.42s) invoked.
+[13:04:09.313] Seek(166.73s) invoked.
+[13:04:09.316] Seek(168.04s) invoked.
+[13:04:09.322] Seek(168.98s) invoked.
+[13:04:09.330] Seek(170.29s) invoked.
+[13:04:09.338] Seek(171.41s) invoked.
+[13:04:09.352] Seek(171.98s) invoked.
+[13:04:09.354] Seek(172.73s) invoked.
+[13:04:09.362] Seek(173.29s) invoked.
+[13:04:09.370] Seek(173.85s) invoked.
+[13:04:09.378] Seek(174.41s) invoked.
+[13:04:09.386] Seek(175.16s) invoked.
+[13:04:09.394] Seek(175.72s) invoked.
+[13:04:09.404] Seek(176.47s) invoked.
+[13:04:09.410] Seek(177.22s) invoked.
+[13:04:09.418] Seek(177.78s) invoked.
+[13:04:09.426] Seek(178.53s) invoked.
+[13:04:09.434] Seek(179.28s) invoked.
+[13:04:09.442] Seek(180.03s) invoked.
+[13:04:09.450] Seek(180.78s) invoked.
+[13:04:09.458] Seek(181.72s) invoked.
+[13:04:09.469] Seek(182.47s) invoked.
+[13:04:09.475] Seek(183.40s) invoked.
+[13:04:09.482] Seek(184.34s) invoked.
+[13:04:09.491] Seek(185.28s) invoked.
+[13:04:09.498] Seek(186.40s) invoked.
+[13:04:09.508] Seek(187.34s) invoked.
+[13:04:09.514] Seek(188.65s) invoked.
+[13:04:09.523] Seek(189.59s) invoked.
+[13:04:09.530] Seek(190.90s) invoked.
+[13:04:09.538] Seek(192.02s) invoked.
+[13:04:09.546] Seek(193.33s) invoked.
+[13:04:09.554] Seek(194.64s) invoked.
+[13:04:09.562] Seek(196.33s) invoked.
+[13:04:09.570] Seek(197.45s) invoked.
+[13:04:09.578] Seek(199.14s) invoked.
+[13:04:09.586] Seek(200.64s) invoked.
+[13:04:09.594] Seek(201.95s) invoked.
+[13:04:09.602] Seek(203.26s) invoked.
+[13:04:09.610] Seek(204.76s) invoked.
+[13:04:09.618] Seek(206.07s) invoked.
+[13:04:09.626] Seek(207.38s) invoked.
+[13:04:09.634] Seek(208.69s) invoked.
+[13:04:09.648] Seek(209.63s) invoked.
+[13:04:09.651] Seek(210.57s) invoked.
+[13:04:09.659] Seek(211.32s) invoked.
+[13:04:09.666] Seek(211.88s) invoked.
+[13:04:09.674] Seek(212.63s) invoked.
+[13:04:09.682] Seek(213.38s) invoked.
+[13:04:09.691] Seek(214.13s) invoked.
+[13:04:09.698] Seek(214.69s) invoked.
+[13:04:09.710] Seek(215.44s) invoked.
+[13:04:09.714] Seek(216.19s) invoked.
+[13:04:09.722] Seek(216.75s) invoked.
+[13:04:09.730] Seek(217.12s) invoked.
+[13:04:09.738] Seek(217.87s) invoked.
+[13:04:09.746] Seek(218.44s) invoked.
+[13:04:09.754] Seek(218.81s) invoked.
+[13:04:09.767] Seek(219.56s) invoked.
+[13:04:09.770] Seek(220.31s) invoked.
+[13:04:09.774] Seek(220.31s) invoked.
+[13:04:09.778] Seek(220.87s) invoked.
+[13:04:09.786] Seek(221.25s) invoked.
+[13:04:09.794] Seek(222.00s) invoked.
+[13:04:09.802] Seek(222.56s) invoked.
+[13:04:09.810] Seek(223.12s) invoked.
+[13:04:09.821] Seek(223.87s) invoked.
+[13:04:09.826] Seek(224.62s) invoked.
+[13:04:09.834] Seek(225.37s) invoked.
+[13:04:09.842] Seek(225.93s) invoked.
+[13:04:09.850] Seek(226.49s) invoked.
+[13:04:09.858] Seek(227.24s) invoked.
+[13:04:09.866] Seek(227.99s) invoked.
+[13:04:09.878] Seek(228.74s) invoked.
+[13:04:09.882] Seek(229.30s) invoked.
+[13:04:09.891] Seek(230.05s) invoked.
+[13:04:09.898] Seek(230.80s) invoked.
+[13:04:09.908] Seek(231.55s) invoked.
+[13:04:09.914] Seek(231.92s) invoked.
+[13:04:09.922] Seek(232.49s) invoked.
+[13:04:09.930] Seek(233.05s) invoked.
+[13:04:09.938] Seek(233.42s) invoked.
+[13:04:09.946] Seek(233.98s) invoked.
+[13:04:09.954] Seek(234.55s) invoked.
+[13:04:09.962] Seek(234.92s) invoked.
+[13:04:09.970] Seek(235.48s) invoked.
+[13:04:09.978] Seek(236.23s) invoked.
+[13:04:09.986] Seek(236.61s) invoked.
+[13:04:10.001] Seek(237.17s) invoked.
+[13:04:10.003] Seek(237.73s) invoked.
+[13:04:10.011] Seek(238.11s) invoked.
+[13:04:10.018] Seek(238.48s) invoked.
+[13:04:10.026] Seek(238.86s) invoked.
+[13:04:10.034] Seek(239.04s) invoked.
+[13:04:10.042] Seek(239.42s) invoked.
+[13:04:10.050] Seek(239.79s) invoked.
+[13:04:10.066] Seek(240.17s) invoked.
+[13:04:10.074] Seek(240.35s) invoked.
+[13:04:10.082] Seek(240.54s) invoked.
+[13:04:10.095] Seek(240.92s) invoked.
+[13:04:10.099] Seek(241.10s) invoked.
+[13:04:10.108] Seek(241.48s) invoked.
+[13:04:10.114] Seek(241.85s) invoked.
+[13:04:10.123] Seek(242.23s) invoked.
+[13:04:10.130] Seek(242.79s) invoked.
+[13:04:10.138] Seek(242.98s) invoked.
+[13:04:10.146] Seek(243.35s) invoked.
+[13:04:10.154] Seek(243.73s) invoked.
+[13:04:10.163] Seek(243.91s) invoked.
+[13:04:10.170] Seek(244.29s) invoked.
+[13:04:10.178] Seek(244.66s) invoked.
+[13:04:10.187] Seek(244.85s) invoked.
+[13:04:10.194] Seek(245.41s) invoked.
+[13:04:10.202] Seek(245.60s) invoked.
+[13:04:10.210] Seek(246.16s) invoked.
+[13:04:10.218] Seek(246.72s) invoked.
+[13:04:10.226] Seek(247.10s) invoked.
+[13:04:10.234] Seek(247.47s) invoked.
+[13:04:10.254] Seek(247.85s) invoked.
+[13:04:10.257] Seek(248.03s) invoked.
+[13:04:10.260] Seek(248.41s) invoked.
+[13:04:10.266] Seek(248.60s) invoked.
+[13:04:10.275] Seek(248.60s) invoked.
+[13:04:10.276] Seek(248.78s) invoked.
+[13:04:10.282] Seek(249.16s) invoked.
+[13:04:10.298] Seek(249.53s) invoked.
+[13:04:10.308] Seek(249.72s) invoked.
+[13:04:10.314] Seek(249.72s) invoked.
+[13:04:10.322] Seek(250.10s) invoked.
+[13:04:10.330] Seek(250.28s) invoked.
+[13:04:10.346] Seek(250.47s) invoked.
+[13:04:10.354] Seek(250.66s) invoked.
+[13:04:10.370] Seek(251.03s) invoked.
+[13:04:10.384] Seek(251.22s) invoked.
+[13:04:10.386] Seek(251.41s) invoked.
+[13:04:10.395] Seek(251.78s) invoked.
+[13:04:10.402] Seek(252.16s) invoked.
+[13:04:10.410] Seek(252.34s) invoked.
+[13:04:10.418] Seek(252.72s) invoked.
+[13:04:10.426] Seek(252.91s) invoked.
+[13:04:10.434] Seek(253.47s) invoked.
+[13:04:10.446] Seek(253.84s) invoked.
+[13:04:10.450] Seek(254.22s) invoked.
+[13:04:10.458] Seek(254.59s) invoked.
+[13:04:10.466] Seek(254.97s) invoked.
+[13:04:10.475] Seek(255.15s) invoked.
+[13:04:10.482] Seek(255.53s) invoked.
+[13:04:10.491] Seek(255.72s) invoked.
+[13:04:10.508] Seek(256.09s) invoked.
+[13:04:10.514] Seek(256.28s) invoked.
+[13:04:10.522] Seek(256.28s) invoked.
+[13:04:10.530] Seek(256.65s) invoked.
+[13:04:10.538] Seek(256.84s) invoked.
+[13:04:10.554] Seek(257.21s) invoked.
+[13:04:10.570] Seek(257.59s) invoked.
+[13:04:10.578] Seek(263.82s) invoked.
+[13:04:10.589] Seek(269.86s) invoked.
+[13:04:10.594] Seek(276.09s) invoked.
+[13:04:10.602] Seek(282.13s) invoked.
+[13:04:10.610] Seek(288.17s) invoked.
+[13:04:10.618] Seek(294.40s) invoked.
+[13:04:10.628] Seek(300.44s) invoked.
+[13:04:10.635] Seek(306.48s) invoked.
+[13:04:10.650] Seek(312.71s) invoked.
+[13:04:10.653] Seek(318.75s) invoked.
+[13:04:10.658] Seek(324.98s) invoked.
+[13:04:10.666] Seek(331.03s) invoked.
+[13:04:10.675] Seek(337.07s) invoked.
+[13:04:10.682] Seek(343.30s) invoked.
+[13:04:10.697] Seek(349.34s) invoked.
+[13:04:10.703] Seek(355.38s) invoked.
+[13:04:10.715] Seek(361.80s) invoked.
+[13:04:10.722] Seek(367.84s) invoked.
+[13:04:10.730] Seek(373.88s) invoked.
+[13:04:10.738] Seek(379.92s) invoked.
+[13:04:10.746] Seek(386.15s) invoked.
+[13:04:10.762] Seek(392.38s) invoked.
+[13:04:10.770] Seek(398.61s) invoked.
+[13:04:10.783] Seek(404.65s) invoked.
+[13:04:10.786] Seek(410.88s) invoked.
+[13:04:10.794] Seek(417.11s) invoked.
+[13:04:10.802] Seek(423.15s) invoked.
+[13:04:10.810] Seek(429.38s) invoked.
+[13:04:10.818] Seek(435.42s) invoked.
+[13:04:10.826] Seek(441.46s) invoked.
+[13:04:10.834] Seek(447.50s) invoked.
+[13:04:10.848] Seek(453.54s) invoked.
+[13:04:10.858] Seek(459.77s) invoked.
+[13:04:10.866] Seek(465.81s) invoked.
+[13:04:10.882] Seek(472.04s) invoked.
+[13:04:10.891] Seek(478.09s) invoked.
+[13:04:10.898] Seek(484.13s) invoked.
+[13:04:10.908] Seek(490.36s) invoked.
+[13:04:10.920] Seek(496.40s) invoked.
+[13:04:10.923] Seek(502.44s) invoked.
+[13:04:10.931] Seek(508.67s) invoked.
+[13:04:10.946] Seek(514.71s) invoked.
+[13:04:10.954] Seek(520.75s) invoked.
+[13:04:10.986] Seek(526.79s) invoked.
+[13:04:11.018] Seek(532.83s) invoked.
+[13:04:11.034] Seek(538.88s) invoked.
+[13:04:11.058] Seek(544.73s) invoked.
+[13:04:11.275] Seek(550.59s) invoked.
+[13:04:11.307] Seek(556.44s) invoked.
+[13:04:11.314] Seek(561.73s) invoked.
+[13:04:11.322] Seek(566.65s) invoked.
+[13:04:11.330] Seek(570.82s) invoked.
+[13:04:11.338] Seek(574.42s) invoked.
+[13:04:11.350] Seek(577.84s) invoked.
+[13:04:11.354] Seek(579.95s) invoked.
+[13:04:11.362] Seek(581.50s) invoked.
+[13:04:11.370] Seek(576.06s) invoked.
+[13:04:11.385] Seek(570.26s) invoked.
+[13:04:11.387] Seek(564.45s) invoked.
+[13:04:11.394] Seek(559.20s) invoked.
+[13:04:11.402] Seek(553.77s) invoked.
+[13:04:11.416] Seek(549.65s) invoked.
+[13:04:11.419] Seek(546.09s) invoked.
+[13:04:11.426] Seek(542.90s) invoked.
+[13:04:11.434] Seek(540.09s) invoked.
+[13:04:11.442] Seek(537.47s) invoked.
+[13:04:11.450] Seek(535.22s) invoked.
+[13:04:11.458] Seek(533.35s) invoked.
+[13:04:11.468] Seek(531.85s) invoked.
+[13:04:11.475] Seek(530.54s) invoked.
+[13:04:11.482] Seek(529.60s) invoked.
+[13:04:11.491] Seek(528.48s) invoked.
+[13:04:11.498] Seek(527.92s) invoked.
+[13:04:11.508] Seek(527.17s) invoked.
+[13:04:11.514] Seek(526.23s) invoked.
+[13:04:11.522] Seek(524.92s) invoked.
+[13:04:11.535] Seek(523.23s) invoked.
+[13:04:11.538] Seek(521.74s) invoked.
+[13:04:11.546] Seek(520.05s) invoked.
+[13:04:11.554] Seek(518.36s) invoked.
+[13:04:11.562] Seek(516.68s) invoked.
+[13:04:11.570] Seek(515.18s) invoked.
+[13:04:11.578] Seek(513.87s) invoked.
+[13:04:11.588] Seek(512.56s) invoked.
+[13:04:11.595] Seek(511.43s) invoked.
+[13:04:11.602] Seek(510.68s) invoked.
+[13:04:11.610] Seek(509.93s) invoked.
+[13:04:11.618] Seek(509.56s) invoked.
+[13:04:11.626] Seek(509.00s) invoked.
+[13:04:11.634] Seek(508.62s) invoked.
+[13:04:11.642] Seek(508.25s) invoked.
+[13:04:11.658] Seek(508.06s) invoked.
+[13:04:11.666] Seek(507.87s) invoked.
+[13:04:11.675] Seek(507.87s) invoked.
+[13:04:11.789] Seek(507.87s) invoked.
+[13:04:11.802] Seek(507.87s) invoked.
+[13:04:11.818] Seek(508.06s) invoked.
+[13:04:11.836] Seek(508.43s) invoked.
+[13:04:11.851] Seek(509.37s) invoked.
+[13:04:11.858] Seek(509.56s) invoked.
+[13:04:11.866] Seek(509.93s) invoked.
+[13:04:11.874] Seek(510.31s) invoked.
+[13:04:11.882] Seek(510.49s) invoked.
+[13:04:11.891] Seek(510.68s) invoked.
+[13:04:11.898] Seek(510.87s) invoked.
+[13:04:11.908] Seek(511.06s) invoked.
+[13:04:11.917] Seek(511.24s) invoked.
+[13:04:11.922] Seek(511.43s) invoked.
+[13:04:11.938] Seek(511.62s) invoked.
+[13:04:11.946] Seek(511.81s) invoked.
+[13:04:11.971] Seek(511.99s) invoked.
+[13:04:11.986] Seek(512.18s) invoked.
+[13:04:12.002] Seek(512.37s) invoked.
+[13:04:12.018] Seek(512.56s) invoked.
+[13:04:12.026] Seek(512.74s) invoked.
+[13:04:12.050] Seek(512.93s) invoked.
+[13:04:12.058] Seek(513.12s) invoked.
+[13:04:12.114] Seek(513.30s) invoked.
+[13:04:12.306] Seek(513.30s) invoked.
+[13:04:12.811] Seek(513.30s) invoked.
+[13:04:13.010] Seek(513.49s) invoked.
+[13:04:13.022] Seek(513.68s) invoked.
+[13:04:13.028] Seek(514.05s) invoked.
+[13:04:13.034] Seek(514.62s) invoked.
+[13:04:13.043] Seek(515.37s) invoked.
+[13:04:13.051] Seek(516.30s) invoked.
+[13:04:13.058] Seek(517.61s) invoked.
+[13:04:13.066] Seek(518.74s) invoked.
+[13:04:13.077] Seek(520.42s) invoked.
+[13:04:13.082] Seek(522.11s) invoked.
+[13:04:13.091] Seek(523.98s) invoked.
+[13:04:13.098] Seek(525.86s) invoked.
+[13:04:13.113] Seek(528.10s) invoked.
+[13:04:13.115] Seek(530.17s) invoked.
+[13:04:13.122] Seek(532.79s) invoked.
+[13:04:13.130] Seek(535.22s) invoked.
+[13:04:13.140] Seek(537.85s) invoked.
+[13:04:13.146] Seek(540.28s) invoked.
+[13:04:13.154] Seek(543.09s) invoked.
+[13:04:13.162] Seek(545.90s) invoked.
+[13:04:13.170] Seek(548.71s) invoked.
+[13:04:13.178] Seek(551.71s) invoked.
+[13:04:13.186] Seek(554.52s) invoked.
+[13:04:13.199] Seek(557.33s) invoked.
+[13:04:13.202] Seek(559.95s) invoked.
+[13:04:13.215] Seek(562.01s) invoked.
+[13:04:13.219] Seek(563.89s) invoked.
+[13:04:13.227] Seek(565.57s) invoked.
+[13:04:13.234] Seek(566.88s) invoked.
+[13:04:13.242] Seek(568.01s) invoked.
+[13:04:13.251] Seek(569.13s) invoked.
+[13:04:13.261] Seek(570.07s) invoked.
+[13:04:13.266] Seek(570.82s) invoked.
+[13:04:13.275] Seek(571.38s) invoked.
+[13:04:13.282] Seek(572.13s) invoked.
+[13:04:13.291] Seek(572.88s) invoked.
+[13:04:13.298] Seek(573.25s) invoked.
+[13:04:13.308] Seek(574.00s) invoked.
+[13:04:13.318] Seek(574.75s) invoked.
+[13:04:13.322] Seek(575.31s) invoked.
+[13:04:13.330] Seek(575.69s) invoked.
+[13:04:13.339] Seek(576.06s) invoked.
+[13:04:13.346] Seek(576.25s) invoked.
+[13:04:13.362] Seek(576.44s) invoked.
+[13:04:13.442] Seek(575.88s) invoked.
+[13:04:13.450] Seek(574.75s) invoked.
+[13:04:13.460] Seek(572.50s) invoked.
+[13:04:13.466] Seek(569.32s) invoked.
+[13:04:13.477] Seek(565.38s) invoked.
+[13:04:13.483] Seek(560.89s) invoked.
+[13:04:13.493] Seek(556.21s) invoked.
+[13:04:13.499] Seek(550.77s) invoked.
+[13:04:13.508] Seek(544.03s) invoked.
+[13:04:13.519] Seek(535.97s) invoked.
+[13:04:13.522] Seek(526.04s) invoked.
+[13:04:13.531] Seek(514.24s) invoked.
+[13:04:13.538] Seek(500.19s) invoked.
+[13:04:13.546] Seek(484.83s) invoked.
+[13:04:13.554] Seek(468.34s) invoked.
+[13:04:13.563] Seek(451.67s) invoked.
+[13:04:13.571] Seek(435.00s) invoked.
+[13:04:13.586] Seek(419.64s) invoked.
+[13:04:13.588] Seek(404.65s) invoked.
+[13:04:13.595] Seek(390.41s) invoked.
+[13:04:13.604] Seek(376.74s) invoked.
+[13:04:13.611] Seek(364.56s) invoked.
+[13:04:13.619] Seek(353.51s) invoked.
+[13:04:13.627] Seek(343.20s) invoked.
+[13:04:13.637] Seek(334.40s) invoked.
+[13:04:13.643] Seek(326.15s) invoked.
+[13:04:13.651] Seek(313.18s) invoked.
+[13:04:13.658] Seek(306.77s) invoked.
+[13:04:13.723] Seek(300.91s) invoked.
+[13:04:13.763] Seek(295.06s) invoked.
+[13:04:13.778] Seek(289.20s) invoked.
+[13:04:13.786] Seek(283.35s) invoked.
+[13:04:13.802] Seek(277.49s) invoked.
+[13:04:13.813] Seek(271.64s) invoked.
+[13:04:13.815] Seek(265.79s) invoked.
+[13:04:13.819] Seek(259.93s) invoked.
+[13:04:13.827] Seek(254.08s) invoked.
+[13:04:13.834] Seek(248.22s) invoked.
+[13:04:13.850] Seek(242.37s) invoked.
+[13:04:13.862] Seek(236.51s) invoked.
+[13:04:13.866] Seek(230.66s) invoked.
+[13:04:13.875] Seek(224.81s) invoked.
+[13:04:13.882] Seek(218.95s) invoked.
+[13:04:13.892] Seek(213.10s) invoked.
+[13:04:13.898] Seek(207.24s) invoked.
+[13:04:13.908] Seek(201.39s) invoked.
+[13:04:13.915] Seek(195.53s) invoked.
+[13:04:13.927] Seek(189.68s) invoked.
+[13:04:13.931] Seek(183.83s) invoked.
+[13:04:13.938] Seek(177.97s) invoked.
+[13:04:13.946] Seek(172.12s) invoked.
+[13:04:13.954] Seek(166.26s) invoked.
+[13:04:13.963] Seek(160.41s) invoked.
+[13:04:13.970] Seek(154.55s) invoked.
+[13:04:13.992] Seek(148.70s) invoked.
+[13:04:13.995] Seek(142.84s) invoked.
+[13:04:14.002] Seek(136.99s) invoked.
+[13:04:14.011] Seek(131.14s) invoked.
+[13:04:14.018] Seek(125.28s) invoked.
+[13:04:14.026] Seek(119.43s) invoked.
+[13:04:14.034] Seek(113.57s) invoked.
+[13:04:14.042] Seek(107.72s) invoked.
+[13:04:14.052] Seek(101.86s) invoked.
+[13:04:14.059] Seek(96.01s) invoked.
+[13:04:14.067] Seek(90.16s) invoked.
+[13:04:14.075] Seek(84.30s) invoked.
+[13:04:14.082] Seek(78.45s) invoked.
+[13:04:14.092] Seek(72.59s) invoked.
+[13:04:14.108] Seek(66.74s) invoked.
+[13:04:14.120] Seek(60.88s) invoked.
+[13:04:14.123] Seek(55.03s) invoked.
+[13:04:14.130] Seek(49.18s) invoked.
+[13:04:14.139] Seek(43.32s) invoked.
+[13:04:14.154] Seek(37.47s) invoked.
+[13:04:14.162] Seek(31.61s) invoked.
+[13:04:14.171] Seek(25.76s) invoked.
+[13:04:14.179] Seek(19.90s) invoked.
+[13:04:14.190] Seek(14.05s) invoked.
+[13:04:14.195] Seek(8.20s) invoked.
+[13:04:14.203] Seek(2.34s) invoked.
+[13:04:14.211] Seek(0.00s) invoked.
+[13:04:14.218] Seek(0.00s) invoked.
+[13:04:14.226] Seek(0.00s) invoked.
+[13:04:14.234] Seek(0.00s) invoked.
+[13:04:14.245] Seek(0.00s) invoked.
+[13:04:14.251] Seek(0.00s) invoked.
+[13:04:14.259] Seek(0.00s) invoked.
+[13:04:14.267] Seek(0.00s) invoked.
+[13:04:14.275] Seek(0.00s) invoked.
+[13:04:14.282] Seek(0.00s) invoked.
+[13:04:14.295] Seek(0.00s) invoked.
+[13:04:14.300] Seek(0.00s) invoked.
+[13:04:14.309] Seek(0.00s) invoked.
+[13:04:14.313] Seek(0.00s) invoked.
+[13:04:14.315] Seek(0.00s) invoked.
+[13:04:14.323] Seek(0.00s) invoked.
+[13:04:14.333] Seek(0.00s) invoked.
+[13:04:14.339] Seek(0.00s) invoked.
+[13:04:14.346] Seek(0.00s) invoked.
+[13:04:14.355] Seek(0.00s) invoked.
+[13:04:14.363] Seek(0.00s) invoked.
+[13:04:14.371] Seek(0.00s) invoked.
+[13:04:14.379] Seek(0.00s) invoked.
+[13:04:14.386] Seek(0.00s) invoked.
+[13:04:14.395] Seek(0.00s) invoked.
+[13:04:14.402] Seek(0.00s) invoked.
+[13:04:14.411] Seek(0.00s) invoked.
+[13:04:14.419] Seek(0.00s) invoked.
+[13:04:14.427] Seek(0.00s) invoked.
+[13:04:14.434] Seek(0.00s) invoked.
+[13:04:14.443] Seek(0.00s) invoked.
+[13:04:14.451] Seek(0.00s) invoked.
+[13:04:14.459] Seek(0.00s) invoked.
+[13:04:14.466] Seek(0.00s) invoked.
+[13:04:14.476] Seek(0.00s) invoked.
+[13:04:14.482] Seek(0.00s) invoked.
+[13:04:14.515] Seek(0.00s) invoked.
+[13:04:14.555] Seek(0.00s) invoked.
+[22:06:28.226] Load() started for: C:\Users\sayan\Downloads\Dhun Song Saiyaara Ahaan Panday Aneet Padda Mithoon Arijit Singh.mp3
+[22:06:28.272] _reader created: SampleRate=44100, Ch=2, TotalTime=00:01:04.0521201
+[22:06:28.375] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[22:06:28.375] Load() finished successfully. HasAudioTrack=True
+[22:06:28.379] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[22:06:28.379] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[22:06:28.384] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[22:06:28.384] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[22:06:28.910] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[22:08:23.109] Seek(0.00s) invoked.
+[22:08:23.137] Seek(0.00s) invoked.
+[22:08:23.529] Seek(0.00s) invoked.
+[22:08:23.537] Seek(0.00s) invoked.
+[22:08:23.546] Seek(0.00s) invoked.
+[22:08:23.553] Seek(0.09s) invoked.
+[22:08:23.561] Seek(0.18s) invoked.
+[22:08:23.569] Seek(0.37s) invoked.
+[22:08:23.577] Seek(0.55s) invoked.
+[22:08:23.585] Seek(0.69s) invoked.
+[22:08:23.593] Seek(0.78s) invoked.
+[22:08:23.601] Seek(0.92s) invoked.
+[22:08:23.609] Seek(1.01s) invoked.
+[22:08:23.618] Seek(1.06s) invoked.
+[22:08:23.623] Seek(1.06s) invoked.
+[22:08:23.625] Seek(1.10s) invoked.
+[22:08:23.633] Seek(1.15s) invoked.
+[22:08:23.881] Seek(1.19s) invoked.
+[22:08:23.905] Seek(1.24s) invoked.
+[22:08:23.913] Seek(1.29s) invoked.
+[22:08:23.921] Seek(1.38s) invoked.
+[22:08:23.929] Seek(1.42s) invoked.
+[22:08:23.938] Seek(1.52s) invoked.
+[22:08:23.945] Seek(1.61s) invoked.
+[22:08:23.953] Seek(1.65s) invoked.
+[22:08:23.961] Seek(1.75s) invoked.
+[22:08:23.969] Seek(1.79s) invoked.
+[22:08:23.985] Seek(1.84s) invoked.
+[22:08:24.001] Seek(1.88s) invoked.
+[22:08:24.089] Seek(1.93s) invoked.
+[22:08:24.097] Seek(1.98s) invoked.
+[22:08:24.105] Seek(2.02s) invoked.
+[22:08:24.114] Seek(2.07s) invoked.
+[22:08:24.121] Seek(2.21s) invoked.
+[22:08:24.129] Seek(2.30s) invoked.
+[22:08:24.138] Seek(2.48s) invoked.
+[22:08:24.145] Seek(2.76s) invoked.
+[22:08:24.153] Seek(3.03s) invoked.
+[22:08:24.163] Seek(3.35s) invoked.
+[22:08:24.169] Seek(3.77s) invoked.
+[22:08:24.177] Seek(4.09s) invoked.
+[22:08:24.185] Seek(4.41s) invoked.
+[22:08:24.193] Seek(4.78s) invoked.
+[22:08:24.201] Seek(5.19s) invoked.
+[22:08:24.210] Seek(5.61s) invoked.
+[22:08:24.217] Seek(6.07s) invoked.
+[22:08:24.225] Seek(6.62s) invoked.
+[22:08:24.233] Seek(7.21s) invoked.
+[22:08:24.241] Seek(7.95s) invoked.
+[22:08:24.249] Seek(8.68s) invoked.
+[22:08:24.257] Seek(9.60s) invoked.
+[22:08:24.266] Seek(10.84s) invoked.
+[22:08:24.273] Seek(12.27s) invoked.
+[22:08:24.281] Seek(13.69s) invoked.
+[22:08:24.289] Seek(15.25s) invoked.
+[22:08:24.297] Seek(16.95s) invoked.
+[22:08:24.305] Seek(18.70s) invoked.
+[22:08:24.314] Seek(20.58s) invoked.
+[22:08:24.321] Seek(22.47s) invoked.
+[22:08:24.329] Seek(24.35s) invoked.
+[22:08:24.338] Seek(26.19s) invoked.
+[22:08:24.345] Seek(28.07s) invoked.
+[22:08:24.353] Seek(29.73s) invoked.
+[22:08:24.364] Seek(31.29s) invoked.
+[22:08:24.369] Seek(32.67s) invoked.
+[22:08:24.377] Seek(33.91s) invoked.
+[22:08:24.385] Seek(35.15s) invoked.
+[22:08:24.393] Seek(36.39s) invoked.
+[22:08:24.401] Seek(37.45s) invoked.
+[22:08:24.410] Seek(38.50s) invoked.
+[22:08:24.417] Seek(39.56s) invoked.
+[22:08:24.425] Seek(40.48s) invoked.
+[22:08:24.433] Seek(41.26s) invoked.
+[22:08:24.441] Seek(42.04s) invoked.
+[22:08:24.449] Seek(42.82s) invoked.
+[22:08:24.457] Seek(43.61s) invoked.
+[22:08:24.465] Seek(44.39s) invoked.
+[22:08:24.473] Seek(45.08s) invoked.
+[22:08:24.481] Seek(45.76s) invoked.
+[22:08:24.489] Seek(46.41s) invoked.
+[22:08:24.497] Seek(46.96s) invoked.
+[22:08:24.505] Seek(47.51s) invoked.
+[22:08:24.513] Seek(47.92s) invoked.
+[22:08:24.521] Seek(48.29s) invoked.
+[22:08:24.529] Seek(48.61s) invoked.
+[22:08:24.538] Seek(48.80s) invoked.
+[22:08:24.545] Seek(48.94s) invoked.
+[22:08:24.553] Seek(48.98s) invoked.
+[22:08:24.569] Seek(49.03s) invoked.
+[22:08:24.577] Seek(49.07s) invoked.
+[22:08:24.601] Seek(49.12s) invoked.
+[22:08:24.617] Seek(49.16s) invoked.
+[22:08:24.633] Seek(49.21s) invoked.
+[22:08:24.638] Seek(49.21s) invoked.
+[22:08:24.649] Seek(49.21s) invoked.
+[22:08:24.665] Seek(49.26s) invoked.
+[22:08:24.673] Seek(49.30s) invoked.
+[22:08:24.681] Seek(49.30s) invoked.
+[22:08:24.689] Seek(49.39s) invoked.
+[22:08:24.697] Seek(49.44s) invoked.
+[22:08:24.706] Seek(49.44s) invoked.
+[22:08:24.717] Seek(49.49s) invoked.
+[22:08:24.722] Seek(49.53s) invoked.
+[22:08:24.738] Seek(49.58s) invoked.
+[22:08:24.745] Seek(49.62s) invoked.
+[22:08:24.753] Seek(49.67s) invoked.
+[22:08:24.769] Seek(49.72s) invoked.
+[22:08:24.785] Seek(49.76s) invoked.
+[22:08:24.889] Seek(49.81s) invoked.
+[22:08:24.913] Seek(49.85s) invoked.
+[22:08:24.921] Seek(49.90s) invoked.
+[22:08:24.938] Seek(49.95s) invoked.
+[22:08:24.945] Seek(50.04s) invoked.
+[22:08:24.953] Seek(50.08s) invoked.
+[22:08:24.961] Seek(50.22s) invoked.
+[22:08:24.969] Seek(50.31s) invoked.
+[22:08:24.977] Seek(50.41s) invoked.
+[22:08:24.985] Seek(50.54s) invoked.
+[22:08:24.993] Seek(50.68s) invoked.
+[22:08:25.001] Seek(50.77s) invoked.
+[22:08:25.009] Seek(50.91s) invoked.
+[22:08:25.017] Seek(51.05s) invoked.
+[22:08:25.025] Seek(51.19s) invoked.
+[22:08:25.033] Seek(51.28s) invoked.
+[22:08:25.041] Seek(51.42s) invoked.
+[22:08:25.049] Seek(51.60s) invoked.
+[22:08:25.057] Seek(51.78s) invoked.
+[22:08:25.065] Seek(51.88s) invoked.
+[22:08:25.073] Seek(52.01s) invoked.
+[22:08:25.081] Seek(52.15s) invoked.
+[22:08:25.089] Seek(52.29s) invoked.
+[22:08:25.097] Seek(52.38s) invoked.
+[22:08:25.106] Seek(52.47s) invoked.
+[22:08:25.113] Seek(52.57s) invoked.
+[22:08:25.121] Seek(52.61s) invoked.
+[22:08:25.129] Seek(52.70s) invoked.
+[22:08:25.138] Seek(52.70s) invoked.
+[22:08:25.140] Seek(52.79s) invoked.
+[22:08:25.147] Seek(52.84s) invoked.
+[22:08:25.153] Seek(52.93s) invoked.
+[22:08:25.161] Seek(52.98s) invoked.
+[22:08:25.169] Seek(53.12s) invoked.
+[22:08:25.177] Seek(53.25s) invoked.
+[22:08:25.185] Seek(53.39s) invoked.
+[22:08:25.193] Seek(53.48s) invoked.
+[22:08:25.201] Seek(53.62s) invoked.
+[22:08:25.209] Seek(53.76s) invoked.
+[22:08:25.217] Seek(53.85s) invoked.
+[22:08:25.225] Seek(53.99s) invoked.
+[22:08:25.233] Seek(54.13s) invoked.
+[22:08:25.241] Seek(54.22s) invoked.
+[22:08:25.249] Seek(54.40s) invoked.
+[22:08:25.257] Seek(54.59s) invoked.
+[22:08:25.265] Seek(54.82s) invoked.
+[22:08:25.273] Seek(55.14s) invoked.
+[22:08:25.281] Seek(55.55s) invoked.
+[22:08:25.289] Seek(56.01s) invoked.
+[22:08:25.297] Seek(56.70s) invoked.
+[22:08:25.305] Seek(57.57s) invoked.
+[22:08:25.313] Seek(58.45s) invoked.
+[22:08:25.321] Seek(59.37s) invoked.
+[22:08:25.329] Seek(60.24s) invoked.
+[22:08:25.338] Seek(61.07s) invoked.
+[22:08:25.345] Seek(61.89s) invoked.
+[22:08:25.353] Seek(62.67s) invoked.
+[22:08:25.361] Seek(63.45s) invoked.
+[22:08:25.369] Seek(64.05s) invoked.
+[22:08:25.377] Seek(64.05s) invoked.
+[22:08:25.385] Seek(64.05s) invoked.
+[22:08:25.393] Seek(64.05s) invoked.
+[22:08:25.401] Seek(64.05s) invoked.
+[22:08:25.409] Seek(64.05s) invoked.
+[22:08:25.417] Seek(64.05s) invoked.
+[22:08:25.425] Seek(64.05s) invoked.
+[22:08:25.441] Seek(64.05s) invoked.
+[22:08:25.457] Seek(64.05s) invoked.
+[22:08:25.601] Seek(64.05s) invoked.
+[22:08:25.617] Seek(64.05s) invoked.
+[22:08:25.625] Seek(64.05s) invoked.
+[22:08:25.633] Seek(64.05s) invoked.
+[22:08:25.637] Seek(64.05s) invoked.
+[22:08:25.641] Seek(64.05s) invoked.
+[22:08:25.649] Seek(64.05s) invoked.
+[22:08:25.657] Seek(64.05s) invoked.
+[22:08:25.665] Seek(64.05s) invoked.
+[22:08:25.673] Seek(64.05s) invoked.
+[22:08:25.681] Seek(64.05s) invoked.
+[22:08:25.689] Seek(63.59s) invoked.
+[22:08:25.697] Seek(62.03s) invoked.
+[22:08:25.705] Seek(60.28s) invoked.
+[22:08:25.713] Seek(58.26s) invoked.
+[22:08:25.722] Seek(56.24s) invoked.
+[22:08:25.729] Seek(53.85s) invoked.
+[22:08:25.738] Seek(51.55s) invoked.
+[22:08:25.746] Seek(49.35s) invoked.
+[22:08:25.753] Seek(47.19s) invoked.
+[22:08:25.761] Seek(45.12s) invoked.
+[22:08:25.769] Seek(42.92s) invoked.
+[22:08:25.777] Seek(40.89s) invoked.
+[22:08:25.785] Seek(38.69s) invoked.
+[22:08:25.793] Seek(36.67s) invoked.
+[22:08:25.803] Seek(34.65s) invoked.
+[22:08:25.809] Seek(32.62s) invoked.
+[22:08:25.817] Seek(30.74s) invoked.
+[22:08:25.825] Seek(28.99s) invoked.
+[22:08:25.833] Seek(27.25s) invoked.
+[22:08:25.841] Seek(25.50s) invoked.
+[22:08:25.850] Seek(23.76s) invoked.
+[22:08:25.857] Seek(21.96s) invoked.
+[22:08:25.865] Seek(20.03s) invoked.
+[22:08:25.873] Seek(18.10s) invoked.
+[22:08:25.881] Seek(15.99s) invoked.
+[22:08:25.889] Seek(13.92s) invoked.
+[22:08:25.897] Seek(11.67s) invoked.
+[22:08:25.905] Seek(9.56s) invoked.
+[22:08:25.913] Seek(7.49s) invoked.
+[22:08:25.921] Seek(5.38s) invoked.
+[22:08:25.929] Seek(3.58s) invoked.
+[22:08:25.938] Seek(1.98s) invoked.
+[22:08:25.947] Seek(0.46s) invoked.
+[22:08:25.953] Seek(0.00s) invoked.
+[22:08:25.961] Seek(0.00s) invoked.
+[22:08:25.969] Seek(0.00s) invoked.
+[22:08:25.977] Seek(0.00s) invoked.
+[22:08:26.139] Seek(0.00s) invoked.
+[23:34:31.805] Load() started for: C:\Users\sayan\Downloads\Naam Reh Jayegaa - Watch FULL Episode 6 - Arijit's Perfect tribute to Lata Mangeshkar.mp4
+[23:34:31.972] _reader created: SampleRate=44100, Ch=2, TotalTime=00:43:31.4859977
+[23:34:32.146] WaveOutEvent initialized successfully: Wave Mapper (System Default), PlaybackState=Stopped
+[23:34:32.148] Load() finished successfully. HasAudioTrack=True
+[23:34:32.154] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:32.155] MainWindow.LoadFileAsync: HasAudioTrack=True, Device=Wave Mapper (System Default), _userMuted=False
+[23:34:32.163] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:32.165] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:34.172] Seek(535.79s) invoked.
+[23:34:34.187] Seek(535.79s) invoked.
+[23:34:35.916] MainWindow.PlaybackButton_Click: session.State=Paused, Pos=535.79, HasAudioTrack=True, EngineIsPlaying=False
+[23:34:35.916] Seek(535.79s) invoked.
+[23:34:35.919] Play() invoked. OutputDevice=Wave Mapper (System Default), PlaybackState=Stopped, Volume=1, IsMuted=False
+[23:34:35.921] _outputDevice.Play() executed. New state=Playing
+[23:34:35.983] Read #1: requested=3000, read=3000, maxSample=0.208710
+[23:34:35.985] Read #2: requested=3000, read=3000, maxSample=0.211914
+[23:34:35.987] Read #3: requested=3000, read=3000, maxSample=0.170837
+[23:34:36.049] Read #4: requested=3000, read=3000, maxSample=0.164337
+[23:34:36.072] Read #5: requested=3000, read=3000, maxSample=0.197540
+[23:34:36.112] Read #6: requested=3000, read=3000, maxSample=0.170471
+[23:34:36.142] Read #7: requested=3000, read=3000, maxSample=0.144043
+[23:34:36.172] Read #8: requested=3000, read=3000, maxSample=0.145050
+[23:34:36.212] Read #9: requested=3000, read=3000, maxSample=0.208984
+[23:34:36.242] Read #10: requested=3000, read=3000, maxSample=0.160675
+[23:34:37.602] Read #50: requested=3000, read=3000, maxSample=0.211670
+[23:34:37.926] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:39.302] Read #100: requested=3000, read=3000, maxSample=0.215881
+[23:34:41.002] Read #150: requested=3000, read=3000, maxSample=0.126709
+[23:34:42.712] Read #200: requested=3000, read=3000, maxSample=0.069550
+[23:34:42.929] Seek(520.80s) invoked.
+[23:34:44.412] Read #250: requested=3000, read=3000, maxSample=0.166504
+[23:34:46.112] Read #300: requested=3000, read=3000, maxSample=0.129028
+[23:34:47.812] Read #350: requested=3000, read=3000, maxSample=0.248627
+[23:34:49.512] Read #400: requested=3000, read=3000, maxSample=0.158844
+[23:34:51.065] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.091] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.113] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.122] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.136] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.145] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.153] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.160] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.169] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.185] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.193] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.200] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.208] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.212] Read #450: requested=3000, read=3000, maxSample=0.221588
+[23:34:51.233] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.249] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.265] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.280] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.306] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.313] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.329] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.344] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.353] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.360] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.376] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.408] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.424] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:51.440] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:52.056] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:52.074] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:52.090] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:52.097] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:52.106] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:52.113] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:52.121] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:52.128] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:52.138] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:52.145] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:52.153] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:52.160] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:52.169] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:52.912] Read #500: requested=3000, read=3000, maxSample=0.205444
+[23:34:53.265] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.281] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.290] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.297] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.307] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.313] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.321] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.328] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.338] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.344] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.360] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.369] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.384] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.400] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.408] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.417] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.424] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.433] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.441] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.449] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.457] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.465] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.475] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.481] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.492] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.508] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.513] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.538] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.561] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.608] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.664] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:53.706] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:54.612] Read #550: requested=3000, read=3000, maxSample=0.178253
+[23:34:55.544] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:55.584] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:55.632] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:55.736] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:55.792] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:55.832] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:55.880] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:55.968] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.016] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.096] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.312] Read #600: requested=3000, read=3000, maxSample=0.122345
+[23:34:56.592] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.616] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.640] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.664] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.680] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.706] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.721] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.737] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.753] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.769] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.785] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.808] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.833] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.880] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:56.960] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:57.016] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:57.089] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:57.424] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:57.491] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:57.608] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:34:58.012] Read #650: requested=3000, read=3000, maxSample=0.170837
+[23:34:59.712] Read #700: requested=3000, read=3000, maxSample=0.119934
+[23:35:00.875] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:01.005] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:01.049] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:01.073] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:01.097] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:01.121] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:01.152] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:03.013] Read #750: requested=16382, read=16382, maxSample=0.104980
+[23:35:03.041] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:03.065] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:03.090] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:03.107] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:03.128] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:03.160] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:03.185] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:03.208] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:03.388] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:04.912] Seek(961.04s) invoked.
+[23:35:07.769] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:07.792] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:07.808] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:07.825] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:07.849] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:07.880] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:07.928] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:07.952] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:07.984] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.024] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.473] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.496] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.521] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.536] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.552] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.568] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.576] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.592] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.601] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.608] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.616] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.626] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.632] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.640] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.649] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.657] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.675] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:08.690] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:09.224] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:12.113] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:12.137] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:12.153] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:12.169] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:12.194] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:12.209] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:12.233] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:12.290] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:13.223] Read #800: requested=16382, read=16382, maxSample=0.247009
+[23:35:13.241] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:14.912] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:14.937] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:14.960] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:14.969] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:14.977] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:14.993] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.001] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.009] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.016] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.024] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.033] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.041] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.049] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.073] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.664] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.689] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.697] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.713] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.721] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.728] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.737] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.744] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.753] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.769] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.776] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.792] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.816] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.840] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.864] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:15.880] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.048] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.112] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.128] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.144] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.160] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.185] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.200] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.216] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.232] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.241] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.257] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.264] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.274] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.290] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.297] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.307] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.313] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.337] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.360] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.424] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.496] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.521] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.537] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.544] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.553] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.560] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.576] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.585] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.593] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.601] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.616] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:18.632] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:22.234] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:22.234] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:22.235] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:22.235] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:22.236] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:22.236] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:23.563] Read #850: requested=16382, read=16382, maxSample=0.148163
+[23:35:27.481] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:27.497] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:27.513] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:27.521] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:27.528] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:27.545] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:27.552] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:27.560] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:27.568] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:27.576] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:27.584] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:27.601] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:28.829] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:28.906] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:28.921] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:28.928] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:28.938] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:28.944] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:28.954] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:28.960] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:28.969] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:28.976] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:28.985] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:28.992] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.001] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.008] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.018] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.024] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.034] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.041] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.049] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.057] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.528] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.544] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.554] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.560] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.569] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.577] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.585] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.601] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.617] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.624] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.634] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.640] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.650] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.657] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.665] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.674] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.681] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.692] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.698] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.707] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.714] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.723] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.737] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.753] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.792] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.817] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.840] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.861] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.880] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.897] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.912] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:29.944] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.049] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.057] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.073] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.082] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.092] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.098] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.107] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.281] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.297] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.307] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.313] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.323] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.328] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.338] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:30.353] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:31.145] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:31.154] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:31.169] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:31.176] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:31.185] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:31.192] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:31.202] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:31.208] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:31.696] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:31.880] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:33.000] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:33.024] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:33.863] Read #900: requested=16382, read=16382, maxSample=0.227814
+[23:35:34.832] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:34.849] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:34.857] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:34.865] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:34.873] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:34.880] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:34.891] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:34.897] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:34.921] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:34.954] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:34.960] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:34.969] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:34.976] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:34.985] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:34.992] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.001] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.008] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.017] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.024] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.040] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.308] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.328] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.337] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.353] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.361] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.377] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.385] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.512] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.608] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.744] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.776] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.800] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.824] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:35.848] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:44.173] Read #950: requested=16382, read=16382, maxSample=0.227417
+[23:35:45.306] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.328] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.345] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.353] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.360] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.376] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.385] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.400] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.417] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.440] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.473] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.506] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.536] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.568] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.601] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.624] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:45.690] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:46.105] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:52.272] Seek(1006.00s) invoked.
+[23:35:54.343] Read #1000: requested=16382, read=16382, maxSample=0.245239
+[23:35:55.137] Seek(1024.74s) invoked.
+[23:35:57.465] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.560] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.593] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.608] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.618] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.633] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.641] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.650] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.658] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.666] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.677] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.683] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.691] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.698] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.708] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.715] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:57.725] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:58.545] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:58.555] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:58.561] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:58.570] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:58.576] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:58.586] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:58.592] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:58.601] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:58.608] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:58.618] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:58.624] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:58.634] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:35:58.642] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:00.400] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:03.840] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:03.937] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.032] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.653] Read #1050: requested=16382, read=16382, maxSample=0.243042
+[23:36:04.656] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.680] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.690] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.697] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.706] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.713] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.721] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.728] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.738] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.744] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.753] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.760] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.769] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.776] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:04.808] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.304] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.321] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.328] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.337] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.344] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.353] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.360] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.369] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.376] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.385] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.392] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.401] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.408] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.417] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.425] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.433] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1
+[23:36:05.440] SetVolume(1.00, isMuted=False) -> VolumeProvider.Volume=1

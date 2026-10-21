@@ -1,7 +1,61 @@
 # Changelog
 
-## 0.8
+## 0.9
 
+- **Studio-style Intermediate Cuts**:
+  - Added **"New cut"** (Split at playhead) and **"Delete cut"** controls to the Trim toolbar with Segoe Fluent icons (`\uE8C0` scissors, `\uE74D` trash), allowing users to cut out multiple arbitrary middle/intermediate sections from video and audio files.
+  - **Interactive Timeline Cuts**: rendered with high-contrast semi-transparent red overlays, top and bottom red guide borders, draggable red boundary handles, and floating pill badges showing exact cut durations (e.g., `-00:04.2`) with an instant '✕' delete button right on the timeline.
+  - **Interactive Cut Manipulation**: drag left and right cut handles to adjust start and end points, drag the cut body to reposition along the timeline, and click any cut to select, inspect, or delete it.
+  - **Real-time Live Cut Skipping**: during live playback, the playhead and audio engine automatically and instantaneously jump across cut intervals when reached, providing seamless YouTube Studio-style preview of edited results without waiting for offline rendering.
+  - **Synchronized Waveform View**: cut regions are visibly overlaid on both the timeline track and the dedicated full-size audio waveform viewport with cut-dimmed bar coloring.
+  - **Multi-Segment FFmpeg Filter Complex Export**: upgraded `MediaExportService` with frame-accurate multi-segment `trim`/`atrim` and `concat` filtergraph pipelines that strip all cut sections and stitch kept segments together seamlessly while applying all video adjustments (crop, color grading, exposure, vibrance, speed) and audio DSP filters (pitch shift, 6-band EQ, reverb, boost, loudness normalization).
+  - **Undo/Redo & Reset Integration**: adding, modifying, or removing cuts is fully integrated with `Undo trim & cuts` and `Reset trim & cuts`.
+  - **Dynamic Cut Duration Metrics**: duration readout updates dynamically with kept output time, cut count, and total cut duration (e.g. `01:15.2 selected (2 cuts: -00:14.8) / 02:00.0`).
+- **Fixed Playhead Hit-Testing Over Trim and Cut Handles**:
+  - Prioritized the red playhead knob and top ruler area during pointer clicks and drags on `TimelineCanvas`. Clicking the red circular knob or clicking anywhere in the top time ruler now always scrubs the playhead rather than incorrectly capturing trim start/end or cut boundary handles when overlapping (such as at `00:00.0`).
+  - Constrained trim and cut handle hitboxes strictly to the waveform track area (`Y >= trackTop - 5` to `trackTop + trackHeight + 6`), allowing users to grab the trim handle in the track body while grabbing the playhead knob at the top edge.
+- **Video Text & Image Overlays**:
+  - **Overlays Tab & Layer Manager**: added a third tab to the adjustments panel with live count pill badge, featuring "+ Add text" and "+ Add image" buttons, an interactive layer list showing layer type, preview summary, selection state, and quick delete buttons.
+  - **Interactive Direct Drag, Viewport Resize & Alignment Presets**: click and drag text or image overlays directly across the video preview surface in real-time. Image overlays feature 4 interactive corner resize handles directly in the viewport for intuitive click-and-drag scaling while preserving aspect ratio and frame boundaries, automatically synchronizing with the inspector size slider. Includes a 3x3 alignment preset grid (`TL`, `TC`, `TR`, `CL`, `Center`, `CR`, `BL`, `BC`, `BR`) for instantaneous snapping to corners, edges, or center watermark positions.
+  - **Zero-Flicker In-Place Rendering & Bitmap Caching**: eliminated all visual flickering when moving, resizing, or changing sides by introducing in-memory `BitmapImage` caching and persistent XAML visual tree element reuse, updating layout transforms and bounds in-place without rebuilding or re-decoding elements.
+  - **Rich Text Customization**: customizable text content, font size slider (12-120px), font color picker with curated palette swatches (White, Yellow, Red, Green, Cyan, Blue, Magenta, Black), optional background banner box with customizable box opacity, and overall layer opacity slider.
+  - **Image Watermarks & Logos**: supports PNG, JPG, JPEG, WEBP, and BMP images with automatic dimension probing, customizable relative size slider (5%-80% frame width), change image button, and alpha opacity blending.
+  - **Selective Display Timing**: choose between displaying the overlay throughout the entire video or restricting it to custom start and end timestamps (with handy "At playhead" convenience buttons for setting start or end to current playback position). Overlays dynamically appear and disappear during live video playback and timeline scrubbing according to their active time ranges.
+  - **FFmpeg High-Performance Render Export**: integrated into both single-segment and multi-segment concat export pipelines using hardware/software accelerated `drawtext` with Windows fontfile resolution, special character escaping, proportional text scaling, and alpha-blended `overlay` filter graphs for crisp exported output.
+  - **Refined Tab Title Layout & Checkbox Alignment**: widened sidebar layout column and tightened button padding so the "Overlays" tab title and count pill badge never clip or truncate, added contrasting frosted pill background to the count badge when the tab is selected, and geometrically centered checkbox label baselines with the checkbox glyph squares (`VerticalContentAlignment="Center"`, `MinHeight="0"`, `Padding="8,0,0,0"`).
+  - **Intelligent Magnetic Snapping & Visual Guidelines**: moving or resizing text and image overlays automatically snaps to frame center axes (Center X, Center Y) and frame outer boundaries (Left, Right, Top, Bottom) within a 9px threshold. Dynamically renders high-contrast amber dashed guidelines and floating indicator badges ("Center X", "Center Y", "Left", "Right", "Top", "Bottom") during active drag operations for precision alignment.
+  - **Undo/Redo Support**: overlay modifications are fully tracked in the unified undo stack.
+- **Enhanced Video Crop & Aspect Ratio Switching**:
+  - **Horizontal Scrolling Ratio Cards with Aspect Diagrams**: replaced the tall vertical dropdown menu with a sleek, side-by-side horizontal scrolling card selector (`CropRatiosScrollViewer`). Each card features a miniature proportional aspect ratio diagram box above its label (e.g. 16:9 wide rectangle, 9:16 vertical phone box, 1:1 square, 21:9 ultrawide bar, 4:5 portrait, and dashed freeform box).
+  - **Smooth Mouse Wheel & Touch Scrolling**: added horizontal mouse wheel navigation (`CropRatiosScrollViewer_PointerWheelChanged`) allowing effortless scrolling through ratio cards with the mouse wheel or touch gestures without cluttering the UI.
+  - **One-Click Instant Viewport Switching**: clicking any ratio card automatically activates crop mode if not already active and immediately recalculates, reshapes, and centers the crop box in the viewport with active accent border and glow styling.
+  - **Instant Interactive Crop Points & Handles**: entering Crop Mode ("Crop video") immediately displays all 8 interactive resize handles (4 corners + 4 edge midpoints) along with the active crop outline, enabling immediate adjustment, moving, or resizing without needing to drag to select first.
+  - **12 Comprehensive Aspect Ratio Presets**:
+    - `Free`: Unconstrained freeform crop (dashed icon)
+    - `16:9`: Landscape / YouTube / TV (`1.7777778`)
+    - `9:16`: Vertical / Shorts / Reels / TikTok (`0.5625`)
+    - `1:1`: Square / Instagram Post (`1.0`)
+    - `4:5`: Portrait / Instagram Feed (`0.8`)
+    - `5:4`: Large Format (`1.25`)
+    - `4:3`: Standard TV / Tablet (`1.3333333`)
+    - `3:4`: Portrait SD (`0.75`)
+    - `21:9`: Ultrawide / CinemaScope (`2.3333333`)
+    - `2:1`: Univisium / Modern Streaming (`2.0`)
+    - `3:2`: Classic 35mm Photography (`1.5`)
+    - `2:3`: Portrait 35mm Photography (`0.6666667`)
+  - **Hardened Bounds Math & Crash Prevention**: fixed `ArgumentException` crash caused by floating-point precision overshoots where `min > max` in `Math.Clamp` during handle resizing and full-edge ratio clamping. Introduced `SafeClamp` and robust `try/catch` guards across all pointer event handlers and Win2D rendering callbacks to guarantee 100% crash resilience during active crop editing.
+- **Interactive Timeline Zoom & Horizontal Panning**:
+  - **Trim Toolbar Zoom Controls**: added dedicated zoom controls in the Trim toolbar with Segoe Fluent icons: Zoom Out (`\uE71F`), continuous Zoom Slider (`1.0x` to `10.0x` in 0.25x increments), Zoom In (`\uE71E`), and a 1-click Reset/Fit button (`\uE895`) displaying a live magnification percentage readout (`100%` - `1000%`).
+  - **Smooth Horizontal Canvas Scrolling**: wrapped `TimelineCanvas` in a smooth horizontal `ScrollViewer` (`TimelineScrollViewer`), scaling track layout width up to 10x while preserving exact frame and millisecond precision for trims and cuts.
+  - **Mouse Wheel & Trackpad Gestures**: zoom in/out anywhere over the timeline canvas using `Ctrl + MouseWheel` centered around the mouse cursor or playhead, with standard mouse wheel and trackpad horizontal scrolling enabled when zoomed in.
+  - **Dynamic Ruler Ticks & Timestamps**: dynamically scales ruler tick density and major timestamp labels (`00:00.0`) based on zoom level to ensure ruler markings remain sharp, legible, and uncluttered from high-level overviews down to fine sub-second edits.
+  - **Live Playhead Auto-Following**: during video and audio playback, the timeline viewport automatically scrolls to keep the red playhead centered and visible when zoomed in.
+  - **Performance-Optimized Waveform Rendering**: capped real-time audio waveform bar generation to 1200 adaptive bars, ensuring fluid 60 FPS timeline scrubbing and zooming without UI freezes or memory overhead.
+  - **Interactive Horizontal Scrollbar When Zoomed**: enabled fluent horizontal scrollbar visibility (`HorizontalScrollBarVisibility="Auto"`) on `TimelineScrollViewer` whenever the timeline is magnified beyond 100%. The scrollbar thumb can be directly dragged with the mouse or clicked along the track for quick scrubbing across long zoomed files, seamlessly hides when fit to 100% or reset, and has dedicated bottom clearance (`Height="76"`, `CornerRadius="8"`) to avoid overlapping trim handles or playback markers.
+  - **Refined Toolbar Sliders Layout & Responsive Fit**: redesigned both the Volume and Timeline Zoom slider pills in the trim toolbar to ensure they never clip or get cut off. Switched both pill columns to `Width="Auto"` with an elastic spacer before duration metrics, eliminated oversized slider track padding (`Padding="0"` with clean `Height="24"` and `MinHeight="0"`), and added direct mouse wheel scroll support to both pills (`VolumeControl_PointerWheelChanged` and `TimelineZoomControl_PointerWheelChanged`) for instant volume and zoom adjustments on hover.
+  - **Sub-Pixel Trim & Cut Precision**: all trim start/end brackets, intermediate cut intervals, draggable cut handles, floating duration pill badges, and delete buttons scale with sub-pixel accuracy at all zoom levels.
+
+## 0.8
 - Fixed window movement and dragging: replaced manual `PointerPressed` message dispatch with native `WM_NCHITTEST` subclassing and `AppWindow.TitleBar.SetDragRectangles`, restoring seamless single-motion title bar dragging without requiring a prior click to activate or focus the window, while keeping all interactive title bar controls fully responsive.
 - Cleaned preview status bar text: removed audio output device diagnostic label (`Wave Mapper (System Default)`), displaying a clean and uncluttered `"Preview ready"` message.
 - Added vertical and horizontal axis snapping for video crop: moving, resizing, and drawing crop boxes now automatically snaps to the frame's vertical and horizontal center axes as well as outer boundaries, rendering high-contrast amber alignment guidelines and pill badges ("Center X", "Center Y", "Left", "Right", "Top", "Bottom") during active drag operations for precision centering and alignment.

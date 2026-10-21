@@ -122,7 +122,7 @@
         <Grid Grid.Row="1" Padding="20" ColumnSpacing="16">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" MinWidth="420" />
-                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="325" />
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0" RowSpacing="12">
@@ -134,6 +134,17 @@
                     <Grid>
                         <media:MediaPlayerElement x:Name="Preview" AutoPlay="False" AreTransportControlsEnabled="False" Stretch="Uniform" />
                         <canvas:CanvasControl x:Name="VideoCanvas" Draw="VideoCanvas_Draw" Visibility="Collapsed" IsHitTestVisible="False" />
+                        <Canvas x:Name="OverlayCanvas"
+                            Background="Transparent"
+                            Visibility="Visible"
+                            IsHitTestVisible="True"
+                            PointerPressed="OverlayCanvas_PointerPressed"
+                            PointerMoved="OverlayCanvas_PointerMoved"
+                            PointerReleased="OverlayCanvas_PointerReleased"
+                            PointerCanceled="OverlayCanvas_PointerCanceled"
+                            PointerCaptureLost="OverlayCanvas_PointerCaptureLost"
+                            PointerExited="OverlayCanvas_PointerExited"
+                            SizeChanged="OverlayCanvas_SizeChanged" />
                         <Canvas x:Name="CropOverlay"
                             Background="Transparent"
                                 Visibility="Collapsed"
@@ -156,40 +167,85 @@
                 </Border>
                 <Border Grid.Row="1" Background="{ThemeResource PanelBrush}" CornerRadius="8" Padding="12,8">
                     <StackPanel Spacing="6">
-                        <Grid Height="36" ColumnSpacing="8">
+                        <Grid Height="36" ColumnSpacing="6">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="TRIM" FontSize="10" FontWeight="SemiBold" CharacterSpacing="1" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" />
-                            <Button x:Name="PlaybackButton" Grid.Column="1" Width="36" Height="32" Padding="0" Click="PlaybackButton_Click" IsEnabled="False" AutomationProperties.Name="Play" ToolTipService.ToolTip="Play" Background="{ThemeResource AccentBrush}" Foreground="{ThemeResource AccentForegroundBrush}" BorderThickness="0" VerticalAlignment="Center">
-                                <FontIcon x:Name="PlaybackGlyph" Glyph="&#xE768;" FontSize="14" />
+                            <TextBlock Text="TRIM &amp; CUT" FontSize="10" FontWeight="SemiBold" CharacterSpacing="1" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" Margin="0,0,2,0" />
+                            <Button x:Name="PlaybackButton" Grid.Column="1" Width="36" Height="32" Padding="0" Click="PlaybackButton_Click" IsEnabled="False" AutomationProperties.Name="Play" ToolTipService.ToolTip="Play / Pause (Space)" Background="{ThemeResource AccentBrush}" Foreground="{ThemeResource AccentForegroundBrush}" BorderThickness="0" CornerRadius="6" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                                <FontIcon x:Name="PlaybackGlyph" Glyph="&#xE768;" FontSize="13" />
                             </Button>
-                            <Button x:Name="PreviewTrimButton" Grid.Column="2" Content="Preview edits" Click="PreviewTrimButton_Click" IsEnabled="False" Height="32" Padding="10,0" Background="{ThemeResource PanelBrush}" Foreground="{ThemeResource InkBrush}" BorderBrush="{ThemeResource LineBrush}" BorderThickness="1" VerticalAlignment="Center" />
-                            <Border Grid.Column="3" Height="32" Padding="8,0,8,0" Background="{ThemeResource CanvasBrush}" CornerRadius="6" VerticalAlignment="Center">
-                                <StackPanel Orientation="Horizontal" Height="32" Spacing="4" VerticalAlignment="Center">
-                                    <Button x:Name="VolumeMuteButton" Width="20" Height="32" Padding="0" Click="VolumeMuteButton_Click" AutomationProperties.Name="Mute" ToolTipService.ToolTip="Mute" Background="Transparent" BorderThickness="0" VerticalAlignment="Center">
-                                        <FontIcon x:Name="VolumeGlyph" Glyph="&#xE767;" FontSize="13" Foreground="{ThemeResource MutedBrush}" />
+                            <Button x:Name="NewCutButton" Grid.Column="2" Click="NewCutButton_Click" IsEnabled="False" Height="32" Padding="8,0" Background="{ThemeResource PanelBrush}" Foreground="{ThemeResource InkBrush}" BorderBrush="{ThemeResource LineBrush}" BorderThickness="1" CornerRadius="6" VerticalAlignment="Center" VerticalContentAlignment="Center" AutomationProperties.Name="New cut" ToolTipService.ToolTip="New cut at playhead (Split)">
+                                <StackPanel Orientation="Horizontal" Spacing="5" VerticalAlignment="Center">
+                                    <FontIcon Glyph="&#xE8C0;" FontSize="12" Foreground="{ThemeResource AccentBrush}" VerticalAlignment="Center" />
+                                    <TextBlock Text="New cut" FontSize="11.5" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="DeleteCutButton" Grid.Column="3" Click="DeleteCutButton_Click" IsEnabled="False" Visibility="Collapsed" Height="32" Padding="8,0" Background="{ThemeResource PanelBrush}" Foreground="{ThemeResource InkBrush}" BorderBrush="{ThemeResource LineBrush}" BorderThickness="1" CornerRadius="6" VerticalAlignment="Center" VerticalContentAlignment="Center" AutomationProperties.Name="Delete cut" ToolTipService.ToolTip="Remove selected cut">
+                                <StackPanel Orientation="Horizontal" Spacing="5" VerticalAlignment="Center">
+                                    <FontIcon Glyph="&#xE74D;" FontSize="12" Foreground="{ThemeResource TimelinePlayheadBrush}" VerticalAlignment="Center" />
+                                    <TextBlock Text="Delete cut" FontSize="11.5" Foreground="{ThemeResource TimelinePlayheadBrush}" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="PreviewTrimButton" Grid.Column="4" Content="Preview edits" Click="PreviewTrimButton_Click" IsEnabled="False" Height="32" Padding="8,0" FontSize="11.5" Background="{ThemeResource PanelBrush}" Foreground="{ThemeResource InkBrush}" BorderBrush="{ThemeResource LineBrush}" BorderThickness="1" CornerRadius="6" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+
+                            <!-- Volume Pill (Left Group) -->
+                            <Border Grid.Column="5" Height="32" Padding="6,0,8,0" Background="{ThemeResource CanvasBrush}" CornerRadius="6" VerticalAlignment="Center" PointerWheelChanged="VolumeControl_PointerWheelChanged">
+                                <StackPanel Orientation="Horizontal" Spacing="4" VerticalAlignment="Center">
+                                    <Button x:Name="VolumeMuteButton" Width="26" Height="26" Padding="0" Click="VolumeMuteButton_Click" AutomationProperties.Name="Mute" ToolTipService.ToolTip="Mute / Unmute" Background="Transparent" BorderThickness="0" CornerRadius="4" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                                        <FontIcon x:Name="VolumeGlyph" Glyph="&#xE767;" FontSize="13" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                     </Button>
-                                    <Slider x:Name="VolumeSlider" Width="92" Height="32" Padding="10,0,10,0" Minimum="0" Maximum="1" Value="1" StepFrequency="0.01" IsThumbToolTipEnabled="False" AutomationProperties.Name="Volume" Foreground="{ThemeResource AccentBrush}" VerticalAlignment="Center" Margin="2,0,6,0" />
-                                    <TextBlock x:Name="VolumePercentText" Text="100%" MinWidth="34" FontSize="10" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" TextAlignment="Right" />
+                                    <Slider x:Name="VolumeSlider" Width="82" Height="32" MinHeight="0" Padding="10,0,10,0" Minimum="0" Maximum="1" Value="1" StepFrequency="0.01" IsThumbToolTipEnabled="False" AutomationProperties.Name="Volume" ToolTipService.ToolTip="Volume (scroll to adjust)" Foreground="{ThemeResource AccentBrush}" VerticalAlignment="Center" Margin="0,-3,0,0" />
+                                    <TextBlock x:Name="VolumePercentText" Text="100%" MinWidth="28" FontSize="10.5" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" TextAlignment="Right" Margin="0,-1,0,0" />
                                 </StackPanel>
                             </Border>
-                            <TextBlock x:Name="DurationText" Grid.Column="5" Text="00:00.0 selected / 00:00.0" HorizontalAlignment="Right" FontSize="11" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" Margin="12,0,0,0" />
+
+                            <!-- Flexible spacer (Column 6) pushes timeline zoom & duration to the right -->
+
+                            <!-- Timeline Zoom Pill (Right Group, near Timestamp) -->
+                            <Border Grid.Column="7" Height="32" Padding="4,0,6,0" Background="{ThemeResource CanvasBrush}" CornerRadius="6" VerticalAlignment="Center" PointerWheelChanged="TimelineZoomControl_PointerWheelChanged">
+                                <StackPanel Orientation="Horizontal" Spacing="2" VerticalAlignment="Center">
+                                    <Button x:Name="TimelineZoomOutButton" Width="24" Height="26" Padding="0" AutomationProperties.Name="Zoom out timeline" ToolTipService.ToolTip="Zoom out (Ctrl + Mouse wheel down)" Background="Transparent" BorderThickness="0" CornerRadius="4" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False">
+                                        <FontIcon Glyph="&#xE71F;" FontSize="11" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                    </Button>
+                                    <Slider x:Name="TimelineZoomSlider" Width="76" Height="32" MinHeight="0" Padding="10,0,10,0" Minimum="1" Maximum="10" Value="1" StepFrequency="0.25" IsThumbToolTipEnabled="False" AutomationProperties.Name="Timeline zoom" ToolTipService.ToolTip="Timeline zoom (scroll to adjust)" Foreground="{ThemeResource AccentBrush}" VerticalAlignment="Center" Margin="0,-3,0,0" IsEnabled="False" />
+                                    <Button x:Name="TimelineZoomInButton" Width="24" Height="26" Padding="0" AutomationProperties.Name="Zoom in timeline" ToolTipService.ToolTip="Zoom in (Ctrl + Mouse wheel up)" Background="Transparent" BorderThickness="0" CornerRadius="4" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False">
+                                        <FontIcon Glyph="&#xE71E;" FontSize="11" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                    </Button>
+                                    <Button x:Name="TimelineZoomResetButton" Height="24" Padding="4,0" AutomationProperties.Name="Reset timeline zoom" ToolTipService.ToolTip="Reset zoom (100% / Fit)" Background="Transparent" BorderThickness="0" CornerRadius="4" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False">
+                                        <TextBlock x:Name="TimelineZoomPercentText" Text="100%" MinWidth="26" FontSize="10.5" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" TextAlignment="Center" Margin="0,-1,0,0" />
+                                    </Button>
+                                </StackPanel>
+                            </Border>
+
+                            <TextBlock x:Name="DurationText" Grid.Column="8" Text="00:00.0 selected / 00:00.0" HorizontalAlignment="Right" FontSize="11" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" Margin="6,0,0,0" TextTrimming="CharacterEllipsis" />
                         </Grid>
                         <Border Background="{ThemeResource TimelineBrush}" CornerRadius="8">
-                            <Canvas x:Name="TimelineCanvas"
-                                Height="72"
-                                Background="Transparent"
-                                PointerPressed="TimelineCanvas_PointerPressed"
-                                PointerMoved="TimelineCanvas_PointerMoved"
-                                PointerReleased="TimelineCanvas_PointerReleased"
-                                PointerCanceled="TimelineCanvas_PointerCanceled"
-                                SizeChanged="TimelineCanvas_SizeChanged" />
+                            <ScrollViewer x:Name="TimelineScrollViewer"
+                                Height="76"
+                                CornerRadius="8"
+                                HorizontalScrollBarVisibility="Auto"
+                                VerticalScrollBarVisibility="Disabled"
+                                HorizontalScrollMode="Enabled"
+                                VerticalScrollMode="Disabled">
+                                <Canvas x:Name="TimelineCanvas"
+                                    Height="76"
+                                    HorizontalAlignment="Left"
+                                    Background="Transparent"
+                                    PointerPressed="TimelineCanvas_PointerPressed"
+                                    PointerMoved="TimelineCanvas_PointerMoved"
+                                    PointerReleased="TimelineCanvas_PointerReleased"
+                                    PointerCanceled="TimelineCanvas_PointerCanceled"
+                                    SizeChanged="TimelineCanvas_SizeChanged" />
+                            </ScrollViewer>
                         </Border>
                         <Grid ColumnSpacing="10">
                             <Grid.ColumnDefinitions>
@@ -222,17 +278,26 @@
                         <TextBlock x:Name="MetadataText" Text="Open a video or audio file to see its details." TextWrapping="Wrap" FontSize="12" Foreground="{ThemeResource MutedBrush}" />
                     </StackPanel>
 
-                    <!-- Mode Tabs: Video & Audio -->
-                    <Grid x:Name="AdjustmentTabsGrid" ColumnSpacing="8" Visibility="Collapsed">
+                    <!-- Mode Tabs: Video, Audio, Overlays -->
+                    <Grid x:Name="AdjustmentTabsGrid" ColumnSpacing="4" Visibility="Collapsed">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="VideoTabButton" Content="Video" Click="VideoTabButton_Click" HorizontalAlignment="Stretch" Style="{ThemeResource AccentButtonStyle}" />
-                        <Button x:Name="AudioTabButton" Grid.Column="1" Click="AudioTabButton_Click" HorizontalAlignment="Stretch">
-                            <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center">
-                                <TextBlock Text="Audio" />
+                        <Button x:Name="VideoTabButton" Content="Video" Click="VideoTabButton_Click" HorizontalAlignment="Stretch" Padding="2,5" FontSize="12" Style="{ThemeResource AccentButtonStyle}" />
+                        <Button x:Name="AudioTabButton" Grid.Column="1" Click="AudioTabButton_Click" HorizontalAlignment="Stretch" Padding="2,5">
+                            <StackPanel Orientation="Horizontal" Spacing="4" HorizontalAlignment="Center">
+                                <TextBlock Text="Audio" FontSize="12" VerticalAlignment="Center" />
                                 <Ellipse x:Name="AudioActiveBadge" Width="6" Height="6" Fill="{ThemeResource AccentBrush}" Visibility="Collapsed" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="OverlaysTabButton" Grid.Column="2" Click="OverlaysTabButton_Click" HorizontalAlignment="Stretch" Padding="2,5">
+                            <StackPanel Orientation="Horizontal" Spacing="4" HorizontalAlignment="Center">
+                                <TextBlock x:Name="OverlaysTabLabel" Text="Overlays" FontSize="12" VerticalAlignment="Center" />
+                                <Border x:Name="OverlaysCountBadge" Background="{ThemeResource AccentBrush}" CornerRadius="7" MinWidth="16" Height="16" Padding="4,0" Visibility="Collapsed" VerticalAlignment="Center">
+                                    <TextBlock x:Name="OverlaysCountText" Text="0" FontSize="9.5" Foreground="White" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
                             </StackPanel>
                         </Button>
                     </Grid>
@@ -240,19 +305,133 @@
                     <!-- Video Adjustments: Permanent section without expander/dropdown -->
                     <StackPanel x:Name="VideoAdjustments" Spacing="12" Visibility="Collapsed">
                         <Rectangle Height="1" Fill="{ThemeResource LineBrush}" />
-                        <StackPanel Spacing="8">
-                            <TextBlock Text="Crop" FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource InkBrush}" />
-                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                <Button x:Name="CropModeButton" Content="Crop video" Click="CropModeButton_Click" />
-                                <Button x:Name="ResetCropButton" Content="Reset" Click="ResetCropButton_Click" Visibility="Collapsed" />
-                                <ComboBox x:Name="CropPresetComboBox" Width="100" SelectedIndex="0" SelectionChanged="CropPresetComboBox_SelectionChanged">
-                                    <ComboBoxItem Content="Free" Tag="free" />
-                                    <ComboBoxItem Content="16:9" Tag="1.7777778" />
-                                    <ComboBoxItem Content="1:1" Tag="1" />
-                                    <ComboBoxItem Content="4:3" Tag="1.3333333" />
-                                    <ComboBoxItem Content="9:16" Tag="0.5625" />
-                                </ComboBox>
-                            </StackPanel>
+                        <StackPanel Spacing="10">
+                            <Grid>
+                                <TextBlock Text="Crop" FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource InkBrush}" VerticalAlignment="Center" />
+                                <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Right">
+                                    <Button x:Name="CropModeButton" Content="Crop video" Click="CropModeButton_Click" Height="28" Padding="12,0" />
+                                    <Button x:Name="ResetCropButton" Content="Reset" Click="ResetCropButton_Click" Visibility="Collapsed" Height="28" Padding="10,0" />
+                                </StackPanel>
+                            </Grid>
+
+                            <!-- Horizontal scrolling side-by-side ratio row with aspect diagrams -->
+                            <ScrollViewer x:Name="CropRatiosScrollViewer"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Disabled"
+                                          HorizontalScrollMode="Enabled"
+                                          VerticalScrollMode="Disabled"
+                                          PointerWheelChanged="CropRatiosScrollViewer_PointerWheelChanged">
+                                <StackPanel x:Name="CropRatiosPanel" Orientation="Horizontal" Spacing="6" Padding="1,2,1,2">
+                                    <Button Style="{ThemeResource DefaultButtonStyle}" Tag="free" Click="CropRatioButton_Click" Width="58" Height="62" Padding="4,6,4,4" CornerRadius="8" ToolTipService.ToolTip="Freeform crop">
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                                            <Grid Width="28" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Rectangle Width="20" Height="20" Stroke="{ThemeResource InkBrush}" StrokeThickness="1.5" StrokeDashArray="2,2" RadiusX="3" RadiusY="3" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                            <TextBlock Text="Free" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource InkBrush}" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Style="{ThemeResource DefaultButtonStyle}" Tag="1.7777778" Click="CropRatioButton_Click" Width="58" Height="62" Padding="4,6,4,4" CornerRadius="8" ToolTipService.ToolTip="16:9 Landscape (YouTube, TV)">
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                                            <Grid Width="28" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Rectangle Width="25" Height="14" Stroke="{ThemeResource InkBrush}" StrokeThickness="1.5" RadiusX="2" RadiusY="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                            <TextBlock Text="16:9" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource InkBrush}" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Style="{ThemeResource DefaultButtonStyle}" Tag="0.5625" Click="CropRatioButton_Click" Width="58" Height="62" Padding="4,6,4,4" CornerRadius="8" ToolTipService.ToolTip="9:16 Vertical (Shorts, Reels, TikTok)">
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                                            <Grid Width="28" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Rectangle Width="14" Height="25" Stroke="{ThemeResource InkBrush}" StrokeThickness="1.5" RadiusX="2" RadiusY="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                            <TextBlock Text="9:16" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource InkBrush}" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Style="{ThemeResource DefaultButtonStyle}" Tag="1" Click="CropRatioButton_Click" Width="58" Height="62" Padding="4,6,4,4" CornerRadius="8" ToolTipService.ToolTip="1:1 Square (Instagram)">
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                                            <Grid Width="28" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Rectangle Width="20" Height="20" Stroke="{ThemeResource InkBrush}" StrokeThickness="1.5" RadiusX="2" RadiusY="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                            <TextBlock Text="1:1" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource InkBrush}" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Style="{ThemeResource DefaultButtonStyle}" Tag="0.8" Click="CropRatioButton_Click" Width="58" Height="62" Padding="4,6,4,4" CornerRadius="8" ToolTipService.ToolTip="4:5 Portrait (Instagram)">
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                                            <Grid Width="28" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Rectangle Width="16" Height="20" Stroke="{ThemeResource InkBrush}" StrokeThickness="1.5" RadiusX="2" RadiusY="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                            <TextBlock Text="4:5" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource InkBrush}" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Style="{ThemeResource DefaultButtonStyle}" Tag="1.25" Click="CropRatioButton_Click" Width="58" Height="62" Padding="4,6,4,4" CornerRadius="8" ToolTipService.ToolTip="5:4 Large format">
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                                            <Grid Width="28" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Rectangle Width="20" Height="16" Stroke="{ThemeResource InkBrush}" StrokeThickness="1.5" RadiusX="2" RadiusY="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                            <TextBlock Text="5:4" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource InkBrush}" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Style="{ThemeResource DefaultButtonStyle}" Tag="1.3333333" Click="CropRatioButton_Click" Width="58" Height="62" Padding="4,6,4,4" CornerRadius="8" ToolTipService.ToolTip="4:3 Standard TV">
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                                            <Grid Width="28" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Rectangle Width="22" Height="16.5" Stroke="{ThemeResource InkBrush}" StrokeThickness="1.5" RadiusX="2" RadiusY="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                            <TextBlock Text="4:3" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource InkBrush}" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Style="{ThemeResource DefaultButtonStyle}" Tag="0.75" Click="CropRatioButton_Click" Width="58" Height="62" Padding="4,6,4,4" CornerRadius="8" ToolTipService.ToolTip="3:4 Portrait SD">
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                                            <Grid Width="28" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Rectangle Width="16.5" Height="22" Stroke="{ThemeResource InkBrush}" StrokeThickness="1.5" RadiusX="2" RadiusY="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                            <TextBlock Text="3:4" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource InkBrush}" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Style="{ThemeResource DefaultButtonStyle}" Tag="2.3333333" Click="CropRatioButton_Click" Width="58" Height="62" Padding="4,6,4,4" CornerRadius="8" ToolTipService.ToolTip="21:9 Ultrawide / CinemaScope">
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                                            <Grid Width="28" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Rectangle Width="26" Height="11" Stroke="{ThemeResource InkBrush}" StrokeThickness="1.5" RadiusX="2" RadiusY="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                            <TextBlock Text="21:9" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource InkBrush}" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Style="{ThemeResource DefaultButtonStyle}" Tag="2" Click="CropRatioButton_Click" Width="58" Height="62" Padding="4,6,4,4" CornerRadius="8" ToolTipService.ToolTip="2:1 Univisium">
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                                            <Grid Width="28" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Rectangle Width="24" Height="12" Stroke="{ThemeResource InkBrush}" StrokeThickness="1.5" RadiusX="2" RadiusY="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                            <TextBlock Text="2:1" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource InkBrush}" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Style="{ThemeResource DefaultButtonStyle}" Tag="1.5" Click="CropRatioButton_Click" Width="58" Height="62" Padding="4,6,4,4" CornerRadius="8" ToolTipService.ToolTip="3:2 Classic 35mm">
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                                            <Grid Width="28" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Rectangle Width="22" Height="14.5" Stroke="{ThemeResource InkBrush}" StrokeThickness="1.5" RadiusX="2" RadiusY="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                            <TextBlock Text="3:2" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource InkBrush}" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Style="{ThemeResource DefaultButtonStyle}" Tag="0.6666667" Click="CropRatioButton_Click" Width="58" Height="62" Padding="4,6,4,4" CornerRadius="8" ToolTipService.ToolTip="2:3 Portrait 35mm">
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                                            <Grid Width="28" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Rectangle Width="14.5" Height="22" Stroke="{ThemeResource InkBrush}" StrokeThickness="1.5" RadiusX="2" RadiusY="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                            <TextBlock Text="2:3" FontSize="11" HorizontalAlignment="Center" Foreground="{ThemeResource InkBrush}" />
+                                        </StackPanel>
+                                    </Button>
+                                </StackPanel>
+                            </ScrollViewer>
+
                             <TextBlock x:Name="CropHintText" Text="Choose a ratio, then drag over the video." FontSize="11" Foreground="{ThemeResource MutedBrush}" TextWrapping="Wrap" />
                         </StackPanel>
 
@@ -375,7 +554,9 @@
                             </Grid>
                             <Slider x:Name="VolumeBoostSlider" Minimum="100" Maximum="300" Value="100" StepFrequency="5" ValueChanged="AudioAdjustment_ValueChanged" Foreground="{ThemeResource AccentBrush}" />
                             
-                            <CheckBox x:Name="NormalizeCheckBox" Content="Normalize audio" FontSize="12" Checked="AudioAdjustment_CheckChanged" Unchecked="AudioAdjustment_CheckChanged" />
+                            <CheckBox x:Name="NormalizeCheckBox" MinHeight="0" Padding="8,0,0,0" VerticalContentAlignment="Center" Checked="AudioAdjustment_CheckChanged" Unchecked="AudioAdjustment_CheckChanged">
+                                <TextBlock Text="Normalize audio" FontSize="12" VerticalAlignment="Center" Margin="0,-1,0,0" />
+                            </CheckBox>
                             <Button x:Name="AutoNormalizeButton" Content="Auto-calibrate peak" Click="AutoNormalizeButton_Click" HorizontalAlignment="Left" FontSize="11" />
                         </StackPanel>
 
@@ -453,6 +634,150 @@
 
                         <Button Content="Reset all audio" Click="ResetAudioAdjustments_Click" HorizontalAlignment="Left" Margin="0,4,0,0" />
                     </StackPanel>
+
+                    <!-- Overlays Panel (Text & Image) -->
+                    <StackPanel x:Name="OverlaysPanel" Spacing="14" Visibility="Collapsed">
+                        <Rectangle Height="1" Fill="{ThemeResource LineBrush}" />
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="Text &amp; Image Overlays" FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource InkBrush}" />
+                            <TextBlock Text="Add custom text captions, watermarks, or images over your video." FontSize="11" Foreground="{ThemeResource MutedBrush}" TextWrapping="Wrap" />
+                            <Grid ColumnSpacing="8" Margin="0,4,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="AddTextOverlayButton" Click="AddTextOverlayButton_Click" HorizontalAlignment="Stretch">
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <FontIcon Glyph="&#xE8D2;" FontSize="12" Foreground="{ThemeResource AccentBrush}" />
+                                        <TextBlock Text="Add text" />
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="AddImageOverlayButton" Grid.Column="1" Click="AddImageOverlayButton_Click" HorizontalAlignment="Stretch">
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <FontIcon Glyph="&#xEB9F;" FontSize="12" Foreground="{ThemeResource AccentBrush}" />
+                                        <TextBlock Text="Add image" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+
+                        <!-- Layers List -->
+                        <StackPanel Spacing="6">
+                            <TextBlock x:Name="NoOverlaysHint" Text="No overlays added yet. Click above to add text or an image." FontSize="11" Foreground="{ThemeResource MutedBrush}" FontStyle="Italic" Margin="0,2" />
+                            <StackPanel x:Name="OverlaysListPanel" Spacing="4" />
+                        </StackPanel>
+
+                        <!-- Selected Overlay Inspector -->
+                        <StackPanel x:Name="SelectedOverlayInspector" Spacing="12" Visibility="Collapsed">
+                            <Rectangle Height="1" Fill="{ThemeResource LineBrush}" />
+                            <Grid>
+                                <TextBlock x:Name="InspectorTitleText" Text="Edit Text Overlay" FontSize="12" FontWeight="SemiBold" Foreground="{ThemeResource AccentBrush}" VerticalAlignment="Center" />
+                                <Button x:Name="DeleteOverlayButton" Click="DeleteOverlayButton_Click" Padding="4" Background="Transparent" BorderThickness="0" HorizontalAlignment="Right" ToolTipService.ToolTip="Delete this overlay">
+                                    <FontIcon Glyph="&#xE74D;" FontSize="12" Foreground="#FF3B30" />
+                                </Button>
+                            </Grid>
+
+                            <!-- TEXT SETTINGS -->
+                            <StackPanel x:Name="TextSettingsPanel" Spacing="8">
+                                <TextBox x:Name="OverlayTextBox" Header="Text content" PlaceholderText="Enter caption..." TextChanged="OverlayText_TextChanged" TextWrapping="Wrap" AcceptsReturn="True" MaxHeight="72" />
+                                
+                                <Grid>
+                                    <TextBlock Text="Font size" FontSize="12" Foreground="{ThemeResource InkBrush}" />
+                                    <TextBlock x:Name="OverlayFontSizeText" Text="32 pt" FontSize="12" Foreground="{ThemeResource MutedBrush}" HorizontalAlignment="Right" />
+                                </Grid>
+                                <Slider x:Name="OverlayFontSizeSlider" Minimum="14" Maximum="96" Value="32" StepFrequency="2" ValueChanged="OverlayFontSizeSlider_ValueChanged" Foreground="{ThemeResource AccentBrush}" />
+
+                                <TextBlock Text="Text color" FontSize="12" Foreground="{ThemeResource InkBrush}" />
+                                <StackPanel x:Name="TextColorPalette" Orientation="Horizontal" Spacing="8" Margin="0,2,0,4" />
+
+                                <CheckBox x:Name="OverlayHasBgCheckBox" MinHeight="0" Padding="8,0,0,0" VerticalContentAlignment="Center" Checked="OverlayBg_Changed" Unchecked="OverlayBg_Changed">
+                                    <TextBlock Text="Background banner box" FontSize="12" VerticalAlignment="Center" Margin="0,-1,0,0" />
+                                </CheckBox>
+                                <StackPanel x:Name="OverlayBgOpacityGroup" Spacing="4" Visibility="Collapsed">
+                                    <Grid>
+                                        <TextBlock Text="Box opacity" FontSize="11" Foreground="{ThemeResource MutedBrush}" />
+                                        <TextBlock x:Name="OverlayBgOpacityText" Text="60%" FontSize="11" Foreground="{ThemeResource MutedBrush}" HorizontalAlignment="Right" />
+                                    </Grid>
+                                    <Slider x:Name="OverlayBgOpacitySlider" Minimum="10" Maximum="100" Value="60" StepFrequency="5" ValueChanged="OverlayBgOpacitySlider_ValueChanged" Foreground="{ThemeResource AccentBrush}" />
+                                </StackPanel>
+                            </StackPanel>
+
+                            <!-- IMAGE SETTINGS -->
+                            <StackPanel x:Name="ImageSettingsPanel" Spacing="8" Visibility="Collapsed">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <Button x:Name="ChangeImageButton" Content="Change image..." Click="ChangeImageButton_Click" />
+                                    <TextBlock x:Name="ImageFileNameText" Text="image.png" FontSize="11" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" MaxWidth="150" />
+                                </StackPanel>
+
+                                <Grid>
+                                    <TextBlock Text="Image width" FontSize="12" Foreground="{ThemeResource InkBrush}" />
+                                    <TextBlock x:Name="OverlayImageSizeText" Text="25%" FontSize="12" Foreground="{ThemeResource MutedBrush}" HorizontalAlignment="Right" />
+                                </Grid>
+                                <Slider x:Name="OverlayImageSizeSlider" Minimum="5" Maximum="80" Value="25" StepFrequency="1" ValueChanged="OverlayImageSizeSlider_ValueChanged" Foreground="{ThemeResource AccentBrush}" />
+                            </StackPanel>
+
+                            <!-- COMMON: Opacity -->
+                            <Grid>
+                                <TextBlock Text="Overall opacity" FontSize="12" Foreground="{ThemeResource InkBrush}" />
+                                <TextBlock x:Name="OverlayOpacityText" Text="100%" FontSize="12" Foreground="{ThemeResource MutedBrush}" HorizontalAlignment="Right" />
+                            </Grid>
+                            <Slider x:Name="OverlayOpacitySlider" Minimum="10" Maximum="100" Value="100" StepFrequency="5" ValueChanged="OverlayOpacitySlider_ValueChanged" Foreground="{ThemeResource AccentBrush}" />
+
+                            <!-- POSITION & ALIGNMENT -->
+                            <StackPanel Spacing="6">
+                                <TextBlock Text="Position &amp; Alignment" FontSize="12" FontWeight="Medium" Foreground="{ThemeResource InkBrush}" />
+                                <TextBlock Text="💡 Drag directly on the video preview, or use presets:" FontSize="10.5" Foreground="{ThemeResource MutedBrush}" />
+                                
+                                <Grid RowSpacing="4" ColumnSpacing="4" HorizontalAlignment="Center" Margin="0,2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="26" />
+                                        <RowDefinition Height="26" />
+                                        <RowDefinition Height="26" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="38" />
+                                        <ColumnDefinition Width="38" />
+                                        <ColumnDefinition Width="38" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="AlignTL" Grid.Row="0" Grid.Column="0" Content="TL" FontSize="10" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlignButton_Click" Tag="TL" ToolTipService.ToolTip="Top-Left" />
+                                    <Button x:Name="AlignTC" Grid.Row="0" Grid.Column="1" Content="TC" FontSize="10" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlignButton_Click" Tag="TC" ToolTipService.ToolTip="Top-Center" />
+                                    <Button x:Name="AlignTR" Grid.Row="0" Grid.Column="2" Content="TR" FontSize="10" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlignButton_Click" Tag="TR" ToolTipService.ToolTip="Top-Right" />
+                                    <Button x:Name="AlignCL" Grid.Row="1" Grid.Column="0" Content="CL" FontSize="10" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlignButton_Click" Tag="CL" ToolTipService.ToolTip="Center-Left" />
+                                    <Button x:Name="AlignCC" Grid.Row="1" Grid.Column="1" Content="C" FontSize="10" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlignButton_Click" Tag="CC" ToolTipService.ToolTip="Center" />
+                                    <Button x:Name="AlignCR" Grid.Row="1" Grid.Column="2" Content="CR" FontSize="10" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlignButton_Click" Tag="CR" ToolTipService.ToolTip="Center-Right" />
+                                    <Button x:Name="AlignBL" Grid.Row="2" Grid.Column="0" Content="BL" FontSize="10" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlignButton_Click" Tag="BL" ToolTipService.ToolTip="Bottom-Left" />
+                                    <Button x:Name="AlignBC" Grid.Row="2" Grid.Column="1" Content="BC" FontSize="10" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlignButton_Click" Tag="BC" ToolTipService.ToolTip="Bottom-Center (Captions)" />
+                                    <Button x:Name="AlignBR" Grid.Row="2" Grid.Column="2" Content="BR" FontSize="10" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="AlignButton_Click" Tag="BR" ToolTipService.ToolTip="Bottom-Right (Watermark)" />
+                                </Grid>
+                            </StackPanel>
+
+                            <!-- TIMING -->
+                            <StackPanel Spacing="6">
+                                <TextBlock Text="Display Timing" FontSize="12" FontWeight="Medium" Foreground="{ThemeResource InkBrush}" />
+                                <CheckBox x:Name="OverlayEntireVideoCheckBox" MinHeight="0" Padding="8,0,0,0" VerticalContentAlignment="Center" IsChecked="True" Checked="OverlayTiming_Changed" Unchecked="OverlayTiming_Changed">
+                                    <TextBlock Text="Show throughout entire video" FontSize="12" VerticalAlignment="Center" Margin="0,-1,0,0" />
+                                </CheckBox>
+                                <StackPanel x:Name="OverlayCustomTimingGroup" Spacing="6" Visibility="Collapsed">
+                                    <Grid ColumnSpacing="8">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Spacing="2">
+                                            <TextBlock Text="Start time" FontSize="11" Foreground="{ThemeResource MutedBrush}" />
+                                            <TextBox x:Name="OverlayStartTimeBox" Text="00:00.0" TextChanged="OverlayTimeBox_TextChanged" />
+                                            <Button Content="At playhead" FontSize="10" Padding="6,2" Click="SetOverlayStartToPlayhead_Click" HorizontalAlignment="Stretch" Margin="0,2,0,0" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Spacing="2">
+                                            <TextBlock Text="End time" FontSize="11" Foreground="{ThemeResource MutedBrush}" />
+                                            <TextBox x:Name="OverlayEndTimeBox" Text="00:05.0" TextChanged="OverlayTimeBox_TextChanged" />
+                                            <Button Content="At playhead" FontSize="10" Padding="6,2" Click="SetOverlayEndToPlayhead_Click" HorizontalAlignment="Stretch" Margin="0,2,0,0" />
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
                     <Rectangle Height="1" Fill="{ThemeResource LineBrush}" />
                     <StackPanel Spacing="8">
                         <TextBlock Text="Export" FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource InkBrush}" />
@@ -461,10 +786,10 @@
                         <TextBlock x:Name="StatusText" Text="Ready when you are" FontSize="12" Foreground="{ThemeResource MutedBrush}" TextWrapping="Wrap" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Spacing="8">
-                        <Button x:Name="UndoButton" Click="UndoButton_Click" IsEnabled="False" AutomationProperties.Name="Undo trim" ToolTipService.ToolTip="Undo trim">
+                        <Button x:Name="UndoButton" Click="UndoButton_Click" IsEnabled="False" AutomationProperties.Name="Undo trim &amp; cuts" ToolTipService.ToolTip="Undo trim &amp; cuts">
                             <FontIcon Glyph="&#xE7A7;" />
                         </Button>
-                        <Button x:Name="ResetButton" Content="Reset trim" Click="ResetButton_Click" />
+                        <Button x:Name="ResetButton" Content="Reset trim &amp; cuts" Click="ResetButton_Click" />
                         <Button x:Name="CancelExportButton" Content="Cancel" Click="CancelExportButton_Click" Visibility="Collapsed" />
                     </StackPanel>
                 </StackPanel>
