@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Globalization;
+using System.Text.Json;
 
 namespace QuickEditor;
 
@@ -258,6 +259,346 @@ public sealed class MediaExportService
                 File.Delete(temporaryPath);
             }
         }
+    }
+
+    public async Task ExportVideosAsync(
+        IReadOnlyList<(string Path, double Duration)> clips,
+        string outputPath,
+        IReadOnlyList<(double Start, double End)> keptSegments,
+        MediaAdjustments adjustments,
+        IProgress<double>? progress,
+        CancellationToken cancellationToken)
+    {
+        if (clips.Count < 2)
+        {
+            throw new InvalidOperationException("Add at least two videos to merge.");
+        }
+
+        foreach (var clip in clips)
+        {
+            if (!File.Exists(clip.Path))
+            {
+                throw new FileNotFoundException("A video in the timeline could not be found.", clip.Path);
+            }
+
+            if (!double.IsFinite(clip.Duration) || clip.Duration <= 0)
+            {
+                throw new InvalidOperationException($"The duration for '{Path.GetFileName(clip.Path)}' is invalid.");
+            }
+
+            if (string.Equals(Path.GetFullPath(clip.Path), Path.GetFullPath(outputPath), StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidOperationException("Choose a new file name so the original videos stay untouched.");
+            }
+        }
+
+        var totalDuration = keptSegments.Sum(segment => Math.Max(0, segment.End - segment.Start));
+        if (totalDuration <= 0)
+        {
+            throw new InvalidOperationException("Choose a trim range longer than zero seconds.");
+        }
+
+        var ffmpeg = FindExecutable("ffmpeg.exe");
+        if (ffmpeg is null)
+        {
+            throw new InvalidOperationException("FFmpeg was not found. Install FFmpeg and add ffmpeg.exe to your PATH, then restart Quick Editor.");
+        }
+
+        var ffprobe = FindExecutable("ffprobe.exe");
+        if (ffprobe is null)
+        {
+            throw new InvalidOperationException("FFprobe was not found. Install the standard FFmpeg package, which includes ffprobe.exe, and add it to your PATH.");
+        }
+
+        var audioTracks = new bool[clips.Count];
+        for (var i = 0; i < clips.Count; i++)
+        {
+            audioTracks[i] = await ProbeHasAudioTrackAsync(ffprobe, clips[i].Path, cancellationToken);
+        }
+
+        var hasAudio = audioTracks.Any(hasTrack => hasTrack);
+        adjustments = adjustments with { HasAudioTrack = hasAudio };
+        var activeOverlays = adjustments.Overlays?
+            .Where(overlay => overlay.IsVisible &&
+                (overlay.Type == OverlayType.Text
+                    ? !string.IsNullOrWhiteSpace(overlay.Text)
+                    : !string.IsNullOrWhiteSpace(overlay.ImagePath) && File.Exists(overlay.ImagePath)))
+            .ToList() ?? [];
+        var imageOverlays = activeOverlays
+            .Where(overlay => overlay.Type == OverlayType.Image && File.Exists(overlay.ImagePath))
+            .ToList();
+
+        var extension = Path.GetExtension(outputPath);
+        var outputDirectory = Path.GetDirectoryName(Path.GetFullPath(outputPath))!;
+        var playbackSpeed = Math.Clamp(adjustments.PlaybackSpeed, 0.5, 2.0);
+        var outputDuration = totalDuration / playbackSpeed;
+        var temporaryPath = Path.Combine(outputDirectory, $".{Path.GetFileNameWithoutExtension(outputPath)}-{Guid.NewGuid():N}.tmp{extension}");
+        var info = new ProcessStartInfo(ffmpeg)
+        {
+            UseShellExecute = false,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            CreateNoWindow = true
+        };
+
+        info.ArgumentList.Add("-hide_banner");
+        info.ArgumentList.Add("-y");
+        info.ArgumentList.Add("-nostats");
+        info.ArgumentList.Add("-progress");
+        info.ArgumentList.Add("pipe:1");
+        foreach (var clip in clips)
+        {
+            info.ArgumentList.Add("-i");
+            info.ArgumentList.Add(clip.Path);
+        }
+
+        foreach (var image in imageOverlays)
+        {
+            info.ArgumentList.Add("-i");
+            info.ArgumentList.Add(image.ImagePath!);
+        }
+
+        var filterGraph = BuildVideoMergeFilterGraph(clips, audioTracks, keptSegments, adjustments, playbackSpeed, activeOverlays, imageOverlays);
+        info.ArgumentList.Add("-filter_complex");
+        info.ArgumentList.Add(filterGraph.Filter);
+        info.ArgumentList.Add("-map");
+        info.ArgumentList.Add(filterGraph.VideoMap);
+        if (filterGraph.AudioMap is not null)
+        {
+            info.ArgumentList.Add("-map");
+            info.ArgumentList.Add(filterGraph.AudioMap);
+        }
+
+        AddEncodingArguments(info, extension, isVideo: true);
+        info.ArgumentList.Add(temporaryPath);
+
+        using var process = new Process { StartInfo = info, EnableRaisingEvents = true };
+        try
+        {
+            if (!process.Start())
+            {
+                throw new InvalidOperationException("FFmpeg could not be started.");
+            }
+
+            var errorTask = process.StandardError.ReadToEndAsync(cancellationToken);
+            while (await process.StandardOutput.ReadLineAsync(cancellationToken) is { } line)
+            {
+                if (line.StartsWith("out_time_ms=", StringComparison.Ordinal) &&
+                    long.TryParse(line.AsSpan("out_time_ms=".Length), NumberStyles.Integer, CultureInfo.InvariantCulture, out var elapsed))
+                {
+                    progress?.Report(Math.Clamp(elapsed / (outputDuration * 1_000_000d) * 100, 0, 99));
+                }
+            }
+
+            await process.WaitForExitAsync(cancellationToken);
+            var error = await errorTask;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (process.ExitCode != 0)
+            {
+                throw new InvalidOperationException(string.IsNullOrWhiteSpace(error) ? "FFmpeg couldn't merge these videos." : error.Trim());
+            }
+
+            File.Move(temporaryPath, outputPath, true);
+            progress?.Report(100);
+        }
+        catch (OperationCanceledException)
+        {
+            if (!process.HasExited)
+            {
+                process.Kill(true);
+                await process.WaitForExitAsync(CancellationToken.None);
+            }
+
+            throw;
+        }
+        finally
+        {
+            if (File.Exists(temporaryPath))
+            {
+                File.Delete(temporaryPath);
+            }
+        }
+    }
+
+    private static async Task<bool> ProbeHasAudioTrackAsync(string ffprobe, string path, CancellationToken cancellationToken)
+    {
+        var info = new ProcessStartInfo(ffprobe)
+        {
+            UseShellExecute = false,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            CreateNoWindow = true
+        };
+        info.ArgumentList.Add("-v");
+        info.ArgumentList.Add("error");
+        info.ArgumentList.Add("-select_streams");
+        info.ArgumentList.Add("a:0");
+        info.ArgumentList.Add("-show_entries");
+        info.ArgumentList.Add("stream=codec_type");
+        info.ArgumentList.Add("-of");
+        info.ArgumentList.Add("json");
+        info.ArgumentList.Add(path);
+
+        using var process = new Process { StartInfo = info };
+        if (!process.Start())
+        {
+            throw new InvalidOperationException("FFprobe could not be started.");
+        }
+
+        try
+        {
+            var outputTask = process.StandardOutput.ReadToEndAsync(cancellationToken);
+            var errorTask = process.StandardError.ReadToEndAsync(cancellationToken);
+            await process.WaitForExitAsync(cancellationToken);
+            var output = await outputTask;
+            var error = await errorTask;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (process.ExitCode != 0)
+            {
+                throw new InvalidOperationException(string.IsNullOrWhiteSpace(error)
+                    ? $"FFprobe couldn't inspect '{Path.GetFileName(path)}'."
+                    : error.Trim());
+            }
+
+            using var document = JsonDocument.Parse(output);
+            return document.RootElement.TryGetProperty("streams", out var streams) && streams.GetArrayLength() > 0;
+        }
+        catch (OperationCanceledException)
+        {
+            if (!process.HasExited)
+            {
+                process.Kill(true);
+                await process.WaitForExitAsync(CancellationToken.None);
+            }
+
+            throw;
+        }
+    }
+
+    private static (string Filter, string VideoMap, string? AudioMap) BuildVideoMergeFilterGraph(
+        IReadOnlyList<(string Path, double Duration)> clips,
+        IReadOnlyList<bool> audioTracks,
+        IReadOnlyList<(double Start, double End)> keptSegments,
+        MediaAdjustments adjustments,
+        double playbackSpeed,
+        List<MediaOverlay> activeOverlays,
+        List<MediaOverlay> imageOverlays)
+    {
+        var filterParts = new List<string>();
+        var segmentLabels = new List<(string Video, string? Audio)>();
+        var clipStart = 0d;
+        var segmentIndex = 0;
+        var hasAudio = audioTracks.Any(track => track);
+        var width = Math.Max(2, adjustments.VideoNaturalWidth / 2 * 2);
+        var height = Math.Max(2, adjustments.VideoNaturalHeight / 2 * 2);
+
+        for (var clipIndex = 0; clipIndex < clips.Count; clipIndex++)
+        {
+            var clipEnd = clipStart + clips[clipIndex].Duration;
+            foreach (var kept in keptSegments)
+            {
+                var overlapStart = Math.Max(clipStart, kept.Start);
+                var overlapEnd = Math.Min(clipEnd, kept.End);
+                if (overlapEnd <= overlapStart + 0.001)
+                {
+                    continue;
+                }
+
+                var localStart = (overlapStart - clipStart).ToString("0.###", CultureInfo.InvariantCulture);
+                var localEnd = (overlapEnd - clipStart).ToString("0.###", CultureInfo.InvariantCulture);
+                var duration = (overlapEnd - overlapStart).ToString("0.###", CultureInfo.InvariantCulture);
+                var videoLabel = $"mv{segmentIndex}";
+                filterParts.Add($"[{clipIndex}:v:0]trim=start={localStart}:end={localEnd},setpts=PTS-STARTPTS,scale={width}:{height}:force_original_aspect_ratio=decrease,pad={width}:{height}:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30,format=yuv420p[{videoLabel}]");
+
+                string? audioLabel = null;
+                if (hasAudio)
+                {
+                    audioLabel = $"ma{segmentIndex}";
+                    if (audioTracks[clipIndex])
+                    {
+                        filterParts.Add($"[{clipIndex}:a:0]atrim=start={localStart}:end={localEnd},asetpts=PTS-STARTPTS,aformat=sample_rates=48000:channel_layouts=stereo[{audioLabel}]");
+                    }
+                    else
+                    {
+                        filterParts.Add($"anullsrc=r=48000:cl=stereo,atrim=duration={duration},asetpts=PTS-STARTPTS[{audioLabel}]");
+                    }
+                }
+
+                segmentLabels.Add((videoLabel, audioLabel));
+                segmentIndex++;
+            }
+
+            clipStart = clipEnd;
+        }
+
+        if (segmentLabels.Count == 0)
+        {
+            throw new InvalidOperationException("The selected timeline range does not overlap any video clips.");
+        }
+
+        var concatInputs = string.Concat(segmentLabels.Select(labels =>
+            labels.Audio is null ? $"[{labels.Video}]" : $"[{labels.Video}][{labels.Audio}]"));
+        var videoMap = "[vmerge]";
+        if (hasAudio)
+        {
+            filterParts.Add($"{concatInputs}concat=n={segmentLabels.Count}:v=1:a=1[vmerge][amerge]");
+        }
+        else
+        {
+            filterParts.Add($"{concatInputs}concat=n={segmentLabels.Count}:v=1:a=0[vmerge]");
+        }
+
+        var baseVideoFilters = BuildBaseVideoFilters(adjustments, playbackSpeed);
+        if (baseVideoFilters.Count > 0)
+        {
+            filterParts.Add($"[vmerge]{string.Join(',', baseVideoFilters)}[vadj]");
+            videoMap = "[vadj]";
+        }
+
+        if (activeOverlays.Count > 0)
+        {
+            var currentVideoMap = videoMap;
+            for (var i = 0; i < activeOverlays.Count; i++)
+            {
+                var overlay = activeOverlays[i];
+                var nextMap = $"[vmerge_overlay_{i}]";
+                if (overlay.Type == OverlayType.Text)
+                {
+                    filterParts.Add($"{currentVideoMap}{BuildDrawTextFilter(overlay, adjustments.VideoNaturalHeight)}{nextMap}");
+                    currentVideoMap = nextMap;
+                }
+                else if (overlay.Type == OverlayType.Image && !string.IsNullOrWhiteSpace(overlay.ImagePath) && File.Exists(overlay.ImagePath))
+                {
+                    var imageIndex = clips.Count + imageOverlays.IndexOf(overlay);
+                    var targetWidth = Math.Max(16, (int)Math.Round(adjustments.VideoNaturalWidth * (overlay.ImageWidthPercent / 100.0) / 2.0) * 2);
+                    var opacity = Math.Clamp(overlay.Opacity, 0.05, 1.0).ToString("0.##", CultureInfo.InvariantCulture);
+                    var normX = Math.Clamp(overlay.NormalizedX, 0, 1).ToString("0.###", CultureInfo.InvariantCulture);
+                    var normY = Math.Clamp(overlay.NormalizedY, 0, 1).ToString("0.###", CultureInfo.InvariantCulture);
+                    filterParts.Add($"[{imageIndex}:v]scale={targetWidth}:-1,format=rgba,colorchannelmixer=aa={opacity}[merge_img_{i}]");
+                    var enable = overlay.ShowEntireVideo
+                        ? string.Empty
+                        : $":enable='between(t,{overlay.StartSeconds.ToString("0.###", CultureInfo.InvariantCulture)},{overlay.EndSeconds.ToString("0.###", CultureInfo.InvariantCulture)})'";
+                    filterParts.Add($"{currentVideoMap}[merge_img_{i}]overlay=x=(W-w)*{normX}:y=(H-h)*{normY}{enable}{nextMap}");
+                    currentVideoMap = nextMap;
+                }
+            }
+
+            videoMap = currentVideoMap;
+        }
+
+        string? audioMap = null;
+        if (hasAudio)
+        {
+            audioMap = "[amerge]";
+            var audioFilters = BuildAudioFilters(adjustments, playbackSpeed);
+            if (audioFilters.Count > 0)
+            {
+                filterParts.Add($"[amerge]{string.Join(',', audioFilters)}[aout]");
+                audioMap = "[aout]";
+            }
+        }
+
+        return (string.Join(';', filterParts), videoMap, audioMap);
     }
 
     private static void AddSingleSegmentOverlayComplexFilter(

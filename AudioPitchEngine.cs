@@ -689,7 +689,6 @@ public sealed class ThreadSafeSampleProvider : ISampleProvider
 {
     private readonly ISampleProvider _source;
     private readonly object _syncLock;
-    private int _readCount;
 
     public ThreadSafeSampleProvider(ISampleProvider source, object syncLock)
     {
@@ -703,18 +702,7 @@ public sealed class ThreadSafeSampleProvider : ISampleProvider
     {
         lock (_syncLock)
         {
-            int read = _source.Read(buffer, offset, count);
-            if (++_readCount <= 10 || _readCount % 50 == 0)
-            {
-                float max = 0f;
-                for (int i = 0; i < read; i++)
-                {
-                    float a = Math.Abs(buffer[offset + i]);
-                    if (a > max) max = a;
-                }
-                AudioPitchEngine.LogAudio($"Read #{_readCount}: requested={count}, read={read}, maxSample={max:F6}");
-            }
-            return read;
+            return _source.Read(buffer, offset, count);
         }
     }
 }
@@ -723,12 +711,7 @@ public sealed class AudioPitchEngine : IDisposable
 {
     public static void LogAudio(string message)
     {
-        try
-        {
-            var logPath = @"c:\Users\sayan\Documents\GitHub\Quick Editor\audio_debug.log";
-            File.AppendAllText(logPath, $"[{DateTime.Now:HH:mm:ss.fff}] {message}\r\n");
-        }
-        catch { }
+        System.Diagnostics.Debug.WriteLine($"[AudioPitchEngine] {message}");
     }
 
     private WaveStream? _reader;
@@ -740,7 +723,8 @@ public sealed class AudioPitchEngine : IDisposable
     private VolumeSampleProvider? _volumeProvider;
     private IWavePlayer? _outputDevice;
     private MediaFoundationResampler? _resampler;
-    private readonly object _lock = new();
+    private readonly object _streamLock = new();
+    private readonly object _stateLock = new();
     private readonly Stopwatch _stopwatch = new();
     private TimeSpan _lastSeekPosition = TimeSpan.Zero;
     private string? _tempCachedWav;
@@ -764,16 +748,12 @@ public sealed class AudioPitchEngine : IDisposable
     {
         get
         {
-            lock (_lock)
+            lock (_stateLock)
             {
                 if (_outputDevice?.PlaybackState == PlaybackState.Playing && _stopwatch.IsRunning)
                 {
                     var elapsed = TimeSpan.FromSeconds(_stopwatch.Elapsed.TotalSeconds * _currentSpeed);
                     var pos = _lastSeekPosition + elapsed;
-                    if (_reader is not null && pos > _reader.TotalTime)
-                    {
-                        pos = _reader.TotalTime;
-                    }
                     return pos;
                 }
                 return _lastSeekPosition;
@@ -785,7 +765,7 @@ public sealed class AudioPitchEngine : IDisposable
     {
         get
         {
-            lock (_lock)
+            lock (_stateLock)
             {
                 if (Math.Abs(_currentSemitones) > 0.01) return true;
                 if (Math.Abs(_currentSpeed - 1.0) > 0.01) return true;
@@ -813,128 +793,145 @@ public sealed class AudioPitchEngine : IDisposable
 
         try
         {
-            lock (_lock)
+            string targetPath = filePath;
+            WaveStream? reader = null;
+            try
             {
-                string targetPath = filePath;
-                try
+                // Always initialize reader on an MTA ThreadPool thread to ensure COM IMFSourceReader
+                // belongs to MTA, preventing 0x80004002 (E_NOINTERFACE) and cross-apartment deadlocks.
+                reader = Task.Run(() =>
                 {
-                    _reader = new MediaFoundationReader(targetPath);
-                    if (_reader.WaveFormat.Channels == 0 || _reader.TotalTime <= TimeSpan.Zero)
+                    var ext = Path.GetExtension(targetPath).ToLowerInvariant();
+                    if (ext == ".wav")
                     {
-                        throw new InvalidOperationException("MediaFoundationReader returned 0 channels or empty duration.");
+                        return (WaveStream)new WaveFileReader(targetPath);
                     }
-                    LogAudio($"_reader created: SampleRate={_reader.WaveFormat.SampleRate}, Ch={_reader.WaveFormat.Channels}, TotalTime={_reader.TotalTime}");
-                }
-                catch (Exception ex)
+                    return new MediaFoundationReader(targetPath);
+                }).GetAwaiter().GetResult();
+
+                if (reader.WaveFormat.Channels == 0 || reader.TotalTime <= TimeSpan.Zero)
                 {
-                    LogAudio($"MediaFoundationReader failed for {filePath}: {ex.Message}. Falling back to FFmpeg decode.");
-                    _reader?.Dispose();
-                    _reader = null;
-
-                    var tempWav = Path.Combine(Path.GetTempPath(), $"qe_audio_{Guid.NewGuid():N}.wav");
-                    if (ExtractAudioToWav(filePath, tempWav))
-                    {
-                        _tempCachedWav = tempWav;
-                        targetPath = tempWav;
-                        _reader = new WaveFileReader(targetPath);
-                        LogAudio($"FFmpeg fallback decoded wav created: {tempWav}, TotalTime={_reader.TotalTime}");
-                    }
-                    else
-                    {
-                        LogAudio("FFmpeg fallback decode failed.");
-                        return false;
-                    }
+                    throw new InvalidOperationException("MediaFoundationReader returned 0 channels or empty duration.");
                 }
+                LogAudio($"_reader created: SampleRate={reader.WaveFormat.SampleRate}, Ch={reader.WaveFormat.Channels}, TotalTime={reader.TotalTime}");
+            }
+            catch (Exception ex)
+            {
+                LogAudio($"Audio reader failed for {filePath}: {ex.Message}. Falling back to FFmpeg decode.");
+                reader?.Dispose();
+                reader = null;
 
-                var sampleProvider = _reader.ToSampleProvider();
-
-                // Ensure exactly 2 channels (stereo)
-                if (sampleProvider.WaveFormat.Channels == 1)
+                var tempWav = Path.Combine(Path.GetTempPath(), $"qe_audio_{Guid.NewGuid():N}.wav");
+                if (ExtractAudioToWav(filePath, tempWav))
                 {
-                    sampleProvider = sampleProvider.ToStereo();
+                    _tempCachedWav = tempWav;
+                    targetPath = tempWav;
+                    reader = new WaveFileReader(targetPath);
+                    LogAudio($"FFmpeg fallback decoded wav created: {tempWav}, TotalTime={reader.TotalTime}");
                 }
-                else if (sampleProvider.WaveFormat.Channels > 2)
+                else
                 {
-                    sampleProvider = new StereoDownmixSampleProvider(sampleProvider);
+                    LogAudio("FFmpeg fallback decode failed.");
+                    return false;
                 }
+            }
 
-                // Synchronize sample reading with seeks to prevent COM MFSourceReader concurrency violations
-                var safeSampleProvider = new ThreadSafeSampleProvider(sampleProvider, _lock);
+            lock (_streamLock)
+            {
+                _reader = reader;
+            }
 
-                _varispeed = new VarispeedSampleProvider(safeSampleProvider);
-                // 2048 FFT size with 4x oversampling provides low ~40ms buffer latency for responsive real-time pitch shifting
-                _pitchShifter = new BypassablePitchShifterSampleProvider(_varispeed, 2048, 4);
-                _equalizer = new EqualizerSampleProvider(_pitchShifter);
-                _equalizer.SetBands(_currentEqBands);
-                _reverb = new ReverbSampleProvider(_equalizer);
-                _reverb.SetParameters(_currentReverbMix, _currentReverbRoomSize);
-                _boostAndNormalize = new VolumeBoostAndNormalizeSampleProvider(_reverb);
-                _boostAndNormalize.SetParameters(_currentVolumeBoost, _currentNormalize, _measuredPeak);
+            var sampleProvider = reader.ToSampleProvider();
 
-                _volumeProvider = new VolumeSampleProvider(_boostAndNormalize)
+            // Ensure exactly 2 channels (stereo)
+            if (sampleProvider.WaveFormat.Channels == 1)
+            {
+                sampleProvider = sampleProvider.ToStereo();
+            }
+            else if (sampleProvider.WaveFormat.Channels > 2)
+            {
+                sampleProvider = new StereoDownmixSampleProvider(sampleProvider);
+            }
+
+            // Synchronize sample reading with seeks using dedicated stream lock
+            var safeSampleProvider = new ThreadSafeSampleProvider(sampleProvider, _streamLock);
+
+            _varispeed = new VarispeedSampleProvider(safeSampleProvider);
+            // 2048 FFT size with 4x oversampling provides low ~40ms buffer latency for responsive real-time pitch shifting
+            _pitchShifter = new BypassablePitchShifterSampleProvider(_varispeed, 2048, 4);
+            _equalizer = new EqualizerSampleProvider(_pitchShifter);
+            _equalizer.SetBands(_currentEqBands);
+            _reverb = new ReverbSampleProvider(_equalizer);
+            _reverb.SetParameters(_currentReverbMix, _currentReverbRoomSize);
+            _boostAndNormalize = new VolumeBoostAndNormalizeSampleProvider(_reverb);
+            _boostAndNormalize.SetParameters(_currentVolumeBoost, _currentNormalize, _measuredPeak);
+
+            _volumeProvider = new VolumeSampleProvider(_boostAndNormalize)
+            {
+                Volume = _isMuted ? 0f : _volume
+            };
+
+            var waveProvider = _volumeProvider.ToWaveProvider16();
+            try
+            {
+                // Primary: WaveOutEvent with WAVE_MAPPER (-1) dynamically routes to whatever playback device
+                // Windows is actively using (speakers, headphones, HDMI monitor, USB DAC, Bluetooth) without format mismatch.
+                var waveOut = new WaveOutEvent
                 {
-                    Volume = _isMuted ? 0f : _volume
+                    DeviceNumber = -1,
+                    DesiredLatency = 100,
+                    NumberOfBuffers = 3
                 };
-
-                var waveProvider = _volumeProvider.ToWaveProvider16();
+                waveOut.Init(waveProvider);
+                waveOut.PlaybackStopped += OutputDevice_PlaybackStopped;
+                _outputDevice = waveOut;
+                OutputDeviceName = "Wave Mapper (System Default)";
+                LogAudio($"WaveOutEvent initialized successfully: {OutputDeviceName}, PlaybackState={_outputDevice.PlaybackState}");
+            }
+            catch (Exception exWaveOut)
+            {
+                LogAudio($"WaveOutEvent Init failed: {exWaveOut.Message}. Falling back to WasapiOut.");
                 try
                 {
-                    // Primary: WaveOutEvent with WAVE_MAPPER (-1) dynamically routes to whatever playback device
-                    // Windows is actively using (speakers, headphones, HDMI monitor, USB DAC, Bluetooth) without format mismatch.
-                    var waveOut = new WaveOutEvent
-                    {
-                        DeviceNumber = -1,
-                        DesiredLatency = 100,
-                        NumberOfBuffers = 3
-                    };
-                    waveOut.Init(waveProvider);
-                    waveOut.PlaybackStopped += OutputDevice_PlaybackStopped;
-                    _outputDevice = waveOut;
-                    OutputDeviceName = "Wave Mapper (System Default)";
-                    LogAudio($"WaveOutEvent initialized successfully: {OutputDeviceName}, PlaybackState={_outputDevice.PlaybackState}");
-                }
-                catch (Exception exWaveOut)
-                {
-                    LogAudio($"WaveOutEvent Init failed: {exWaveOut.Message}. Falling back to WasapiOut.");
-                    try
-                    {
-                        var enumerator = new NAudio.CoreAudioApi.MMDeviceEnumerator();
-                        var defaultDevice = enumerator.GetDefaultAudioEndpoint(NAudio.CoreAudioApi.DataFlow.Render, NAudio.CoreAudioApi.Role.Multimedia);
-                        var mixFormat = defaultDevice.AudioClient.MixFormat;
-                        var wasapi = new WasapiOut(defaultDevice, NAudio.CoreAudioApi.AudioClientShareMode.Shared, true, 100);
+                    var enumerator = new NAudio.CoreAudioApi.MMDeviceEnumerator();
+                    var defaultDevice = enumerator.GetDefaultAudioEndpoint(NAudio.CoreAudioApi.DataFlow.Render, NAudio.CoreAudioApi.Role.Multimedia);
+                    var mixFormat = defaultDevice.AudioClient.MixFormat;
+                    var wasapi = new WasapiOut(defaultDevice, NAudio.CoreAudioApi.AudioClientShareMode.Shared, true, 100);
 
-                        IWaveProvider providerToPlay = waveProvider;
-                        if (waveProvider.WaveFormat.SampleRate != mixFormat.SampleRate)
+                    IWaveProvider providerToPlay = waveProvider;
+                    if (waveProvider.WaveFormat.SampleRate != mixFormat.SampleRate)
+                    {
+                        var resampler = new MediaFoundationResampler(waveProvider, new WaveFormat(mixFormat.SampleRate, 2))
                         {
-                            var resampler = new MediaFoundationResampler(waveProvider, new WaveFormat(mixFormat.SampleRate, 2))
-                            {
-                                ResamplerQuality = 60
-                            };
-                            providerToPlay = resampler;
-                            _resampler = resampler;
-                        }
+                            ResamplerQuality = 60
+                        };
+                        providerToPlay = resampler;
+                        _resampler = resampler;
+                    }
 
-                        wasapi.Init(providerToPlay);
-                        wasapi.PlaybackStopped += OutputDevice_PlaybackStopped;
-                        _outputDevice = wasapi;
-                        OutputDeviceName = defaultDevice.FriendlyName;
-                        LogAudio($"WasapiOut fallback initialized: {OutputDeviceName}");
-                    }
-                    catch (Exception exWasapi)
-                    {
-                        LogAudio($"WasapiOut Init failed: {exWasapi.Message}");
-                        _outputDevice = null;
-                        OutputDeviceName = "None";
-                        return false;
-                    }
+                    wasapi.Init(providerToPlay);
+                    wasapi.PlaybackStopped += OutputDevice_PlaybackStopped;
+                    _outputDevice = wasapi;
+                    OutputDeviceName = defaultDevice.FriendlyName;
+                    LogAudio($"WasapiOut fallback initialized: {OutputDeviceName}");
                 }
+                catch (Exception exWasapi)
+                {
+                    LogAudio($"WasapiOut Init failed: {exWasapi.Message}");
+                    _outputDevice = null;
+                    OutputDeviceName = "None";
+                    return false;
+                }
+            }
 
+            lock (_stateLock)
+            {
                 _lastSeekPosition = TimeSpan.Zero;
                 _stopwatch.Reset();
                 ApplyPitchAndSpeedInternal();
-                LogAudio($"Load() finished successfully. HasAudioTrack={HasAudioTrack}");
-                return true;
             }
+            LogAudio($"Load() finished successfully. HasAudioTrack={HasAudioTrack}");
+            return true;
         }
         catch (Exception ex)
         {
@@ -942,6 +939,11 @@ public sealed class AudioPitchEngine : IDisposable
             DisposeEngine();
             return false;
         }
+    }
+
+    public async Task<bool> LoadAsync(string filePath)
+    {
+        return await Task.Run(() => Load(filePath));
     }
 
     private static bool ExtractAudioToWav(string inputPath, string outputPath)
@@ -998,7 +1000,7 @@ public sealed class AudioPitchEngine : IDisposable
 
     public void SetPitchAndSpeed(double semitones, double speed)
     {
-        lock (_lock)
+        lock (_stateLock)
         {
             if (_stopwatch.IsRunning)
             {
@@ -1013,7 +1015,7 @@ public sealed class AudioPitchEngine : IDisposable
 
     public void SetEqualizer(double[] bands)
     {
-        lock (_lock)
+        lock (_stateLock)
         {
             if (bands is not null)
             {
@@ -1025,7 +1027,7 @@ public sealed class AudioPitchEngine : IDisposable
 
     public void SetReverb(double mix, double roomSize)
     {
-        lock (_lock)
+        lock (_stateLock)
         {
             _currentReverbMix = mix;
             _currentReverbRoomSize = roomSize;
@@ -1035,7 +1037,7 @@ public sealed class AudioPitchEngine : IDisposable
 
     public void SetVolumeBoostAndNormalize(double boost, bool normalize, double measuredPeak = 1.0)
     {
-        lock (_lock)
+        lock (_stateLock)
         {
             _currentVolumeBoost = boost;
             _currentNormalize = normalize;
@@ -1059,7 +1061,7 @@ public sealed class AudioPitchEngine : IDisposable
 
     public void Play()
     {
-        lock (_lock)
+        lock (_stateLock)
         {
             LogAudio($"Play() invoked. OutputDevice={OutputDeviceName}, PlaybackState={_outputDevice?.PlaybackState}, Volume={_volume}, IsMuted={_isMuted}");
             if (_outputDevice is null || _isDisposed)
@@ -1085,7 +1087,7 @@ public sealed class AudioPitchEngine : IDisposable
 
     public void Pause()
     {
-        lock (_lock)
+        lock (_stateLock)
         {
             LogAudio($"Pause() invoked. Current state={_outputDevice?.PlaybackState}");
             if (_outputDevice is null || _isDisposed) return;
@@ -1108,7 +1110,7 @@ public sealed class AudioPitchEngine : IDisposable
 
     public void Stop()
     {
-        lock (_lock)
+        lock (_stateLock)
         {
             LogAudio("Stop() invoked.");
             if (_outputDevice is null || _isDisposed) return;
@@ -1124,7 +1126,7 @@ public sealed class AudioPitchEngine : IDisposable
 
     public void Seek(TimeSpan position)
     {
-        lock (_lock)
+        lock (_streamLock)
         {
             LogAudio($"Seek({position.TotalSeconds:F2}s) invoked.");
             if (_reader is null) return;
@@ -1133,17 +1135,19 @@ public sealed class AudioPitchEngine : IDisposable
                 if (position < TimeSpan.Zero) position = TimeSpan.Zero;
                 if (position > _reader.TotalTime) position = _reader.TotalTime;
                 _reader.CurrentTime = position;
-                _lastSeekPosition = position;
-                if (IsPlaying)
+                lock (_stateLock)
                 {
-                    _stopwatch.Restart();
-                }
-                else
-                {
-                    _stopwatch.Reset();
+                    _lastSeekPosition = position;
+                    if (IsPlaying)
+                    {
+                        _stopwatch.Restart();
+                    }
+                    else
+                    {
+                        _stopwatch.Reset();
+                    }
                 }
                 _varispeed?.Reset();
-                _pitchShifter?.Reset();
                 _equalizer?.Reset();
                 _reverb?.Reset();
             }
@@ -1156,7 +1160,7 @@ public sealed class AudioPitchEngine : IDisposable
 
     public void SetVolume(double volume, bool isMuted)
     {
-        lock (_lock)
+        lock (_stateLock)
         {
             _volume = (float)Math.Clamp(volume, 0.0, 1.0);
             _isMuted = isMuted;
@@ -1178,20 +1182,20 @@ public sealed class AudioPitchEngine : IDisposable
 
     private void DisposeEngine()
     {
-        lock (_lock)
+        try
         {
-            try
+            if (_outputDevice is not null)
             {
-                if (_outputDevice is not null)
-                {
-                    _outputDevice.PlaybackStopped -= OutputDevice_PlaybackStopped;
-                    _outputDevice.Stop();
-                    _outputDevice.Dispose();
-                }
+                _outputDevice.PlaybackStopped -= OutputDevice_PlaybackStopped;
+                _outputDevice.Stop();
+                _outputDevice.Dispose();
             }
-            catch { }
-            _outputDevice = null;
+        }
+        catch { }
+        _outputDevice = null;
 
+        lock (_streamLock)
+        {
             try
             {
                 _resampler?.Dispose();
@@ -1211,7 +1215,10 @@ public sealed class AudioPitchEngine : IDisposable
                 try { File.Delete(_tempCachedWav); } catch { }
                 _tempCachedWav = null;
             }
+        }
 
+        lock (_stateLock)
+        {
             _varispeed = null;
             _pitchShifter = null;
             _equalizer = null;

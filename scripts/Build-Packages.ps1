@@ -12,14 +12,28 @@ Set-Location $ProjectDir
 # 1. Kill any running QuickEditor instances
 Get-Process -Name "QuickEditor" -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
 
-# 2. Get current version from Package.appxmanifest
+# 2. Get the application version from the project and verify package metadata
 $ManifestFile = Join-Path $ProjectDir "Package.appxmanifest"
-$Version = "0.8.0.0"
-if (Test-Path $ManifestFile) {
-    $content = Get-Content $ManifestFile -Raw -Encoding utf8
-    if ($content -match '<Identity\s+[^>]*Version="([0-9\.]+)"') {
-        $Version = $Matches[1]
-    }
+$CsprojFile = Join-Path $ProjectDir "QuickEditor.csproj"
+if (-not (Test-Path $CsprojFile)) {
+    throw "Project file not found: $CsprojFile"
+}
+
+$projectContent = Get-Content $CsprojFile -Raw -Encoding utf8
+if ($projectContent -notmatch '<Version>([^<]+)</Version>') {
+    throw "Application version is missing from QuickEditor.csproj."
+}
+$Version = $Matches[1]
+
+if (-not (Test-Path $ManifestFile)) {
+    throw "Package manifest not found: $ManifestFile"
+}
+$manifestContent = Get-Content $ManifestFile -Raw -Encoding utf8
+if ($manifestContent -notmatch '<Identity\s+[^>]*Version="([0-9\.]+)"') {
+    throw "Package version is missing from Package.appxmanifest."
+}
+if ($Matches[1] -ne $Version) {
+    throw "Version mismatch: QuickEditor.csproj is $Version but Package.appxmanifest is $($Matches[1]). Run ChangeVersion.bat to synchronize versions."
 }
 
 # 3. Interactive prompt if no target specified

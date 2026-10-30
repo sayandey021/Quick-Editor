@@ -26,6 +26,9 @@ namespace QuickEditor;
 
 public sealed partial class MainWindow : Window
 {
+    private sealed record TimelineVideoClip(string Path, double Duration);
+    private sealed record VideoListEntry(string Title, string Duration);
+
     private sealed class AudioWaveformBar
     {
         public required Microsoft.UI.Xaml.Shapes.Rectangle Shape { get; init; }
@@ -78,10 +81,14 @@ public sealed partial class MainWindow : Window
     private readonly MediaExportService _exportService = new();
     private readonly WaveformService _waveformService = new();
     private readonly List<string> _previewFiles = [];
+    private readonly List<TimelineVideoClip> _videoClips = [];
     private readonly List<AudioWaveformBar> _audioWaveformBars = [];
     private IReadOnlyList<float> _waveformPeaks = Array.Empty<float>();
     private Microsoft.UI.Xaml.Shapes.Rectangle? _audioWaveformPlayhead;
     private string? _sourcePath;
+    private MediaPlaybackList? _videoPlaylist;
+    private int _activeVideoClipIndex;
+    private (int ClipIndex, double LocalTime)? _pendingVideoSeek;
     private bool _showingEditedPreview;
     private bool _startPreviewWhenReady;
     private bool _isDarkTheme;
@@ -114,13 +121,24 @@ public sealed partial class MainWindow : Window
     private double? _snapGuideVerticalX;
     private double? _snapGuideHorizontalY;
     private TimelineDragMode _timelineDragMode;
+    private bool _wasPlayingBeforeDrag;
+    private DateTime _lastScrubSeekTime = DateTime.MinValue;
+    private Guid? _lastJumpedCutId;
+    private int _frameInvalidationPending;
     private double _timelineZoom = 1.0;
     private bool _isUpdatingZoomUi;
+    private double _pendingTimelineZoom = 1.0;
+    private DispatcherTimer? _timelineZoomUpdateTimer;
+    private bool _isVolumeSliderHovered;
+    private bool _isVolumeSliderPressed;
+    private bool _isTimelineZoomSliderHovered;
+    private bool _isTimelineZoomSliderPressed;
     private CancellationTokenSource? _exportCancellation;
     private CancellationTokenSource? _waveformCancellation;
     private Grid? _playheadMarker;
     private CanvasRenderTarget? _renderTarget;
     private bool _isReady;
+    private bool _isUpdatingVideoList;
     private AudioPitchEngine? _audioEngine;
     private bool _userMuted;
     private readonly List<MediaOverlay> _overlays = [];
@@ -191,6 +209,12 @@ public sealed partial class MainWindow : Window
         }
 
         Title = "Quick Editor";
+        var version = typeof(MainWindow).Assembly.GetName().Version;
+        if (version is not null)
+        {
+            VersionText.Text = $"v{version}";
+            SettingsAboutVersionText.Text = $"v{version}";
+        }
         SetAppIcon();
         Preview.SetMediaPlayer(_player);
         _player.Volume = VolumeSlider.Value;
@@ -210,6 +234,12 @@ public sealed partial class MainWindow : Window
         TimelineZoomInButton.Click += TimelineZoomInButton_Click;
         TimelineZoomResetButton.Click += TimelineZoomResetButton_Click;
         TimelineZoomSlider.ValueChanged += TimelineZoomSlider_ValueChanged;
+        _timelineZoomUpdateTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(16) };
+        _timelineZoomUpdateTimer.Tick += (_, _) =>
+        {
+            _timelineZoomUpdateTimer.Stop();
+            SetTimelineZoom(_pendingTimelineZoom);
+        };
         TimelineScrollViewer.SizeChanged += TimelineScrollViewer_SizeChanged;
         TimelineScrollViewer.PointerWheelChanged += TimelineScrollViewer_PointerWheelChanged;
         TimelineCanvas.PointerWheelChanged += TimelineScrollViewer_PointerWheelChanged;
@@ -278,6 +308,10 @@ public sealed partial class MainWindow : Window
         DrawTimeline();
         DrawAudioWaveformViewport();
         UpdateCropRatioButtonsUI();
+        if (SettingsPage.Visibility == Visibility.Visible)
+        {
+            ShowSettingsSection(SettingsAboutPanel.Visibility == Visibility.Visible);
+        }
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Winapi)]
@@ -357,6 +391,8 @@ public sealed partial class MainWindow : Window
         var buttons = new FrameworkElement?[]
         {
             ThemeToggleButton,
+            SettingsButton,
+            SettingsBackButton,
             OpenButton,
             ExportButton,
             MinimizeButton,
@@ -395,11 +431,24 @@ public sealed partial class MainWindow : Window
         {
             int titleBarHeight = (int)Math.Round(AppTitleBar.ActualHeight * scale);
             if (titleBarHeight <= 0) titleBarHeight = (int)Math.Round(48.0 * scale);
-            int dragWidth = list.Count > 0 ? list[0].Left : (int)Math.Round(AppTitleBar.ActualWidth * scale);
-            if (dragWidth > 0)
+            int titleBarWidth = (int)Math.Round(AppTitleBar.ActualWidth * scale);
+            var dragRegions = new List<Windows.Graphics.RectInt32>();
+            int cursor = 0;
+            foreach (var button in list.OrderBy(rect => rect.Left))
             {
-                AppWindow.TitleBar.SetDragRectangles([new Windows.Graphics.RectInt32(0, 0, dragWidth, titleBarHeight)]);
+                int buttonLeft = Math.Clamp(button.Left, 0, titleBarWidth);
+                int buttonRight = Math.Clamp(button.Right, buttonLeft, titleBarWidth);
+                if (buttonLeft > cursor)
+                {
+                    dragRegions.Add(new Windows.Graphics.RectInt32(cursor, 0, buttonLeft - cursor, titleBarHeight));
+                }
+                cursor = Math.Max(cursor, buttonRight);
             }
+            if (titleBarWidth > cursor)
+            {
+                dragRegions.Add(new Windows.Graphics.RectInt32(cursor, 0, titleBarWidth - cursor, titleBarHeight));
+            }
+            AppWindow.TitleBar.SetDragRectangles(dragRegions.ToArray());
         }
         catch { }
     }
@@ -500,6 +549,81 @@ public sealed partial class MainWindow : Window
         AnimateThemeToggle();
     }
 
+    private void SettingsButton_Click(object sender, RoutedEventArgs e)
+    {
+        SetSettingsVisible(true);
+        ShowSettingsSection(showAbout: false);
+    }
+
+    private void SettingsBackButton_Click(object sender, RoutedEventArgs e)
+    {
+        SetSettingsVisible(false);
+    }
+
+    private void SetSettingsVisible(bool visible)
+    {
+        var visibility = visible ? Visibility.Visible : Visibility.Collapsed;
+        SettingsPage.Visibility = visibility;
+        SettingsTitleBarContent.Visibility = visibility;
+        TitleBrand.Visibility = visible ? Visibility.Collapsed : Visibility.Visible;
+        FileNameText.Visibility = visible ? Visibility.Collapsed : Visibility.Visible;
+        ThemeToggleButton.Visibility = visible ? Visibility.Collapsed : Visibility.Visible;
+        SettingsButton.Visibility = visible ? Visibility.Collapsed : Visibility.Visible;
+        OpenButton.Visibility = visible ? Visibility.Collapsed : Visibility.Visible;
+        ExportButton.Visibility = visible ? Visibility.Collapsed : Visibility.Visible;
+        DispatcherQueue.TryEnqueue(UpdateTitleBarRegions);
+    }
+
+    private void SettingsShortcutsButton_Click(object sender, RoutedEventArgs e) =>
+        ShowSettingsSection(showAbout: false);
+
+    private void SettingsAboutButton_Click(object sender, RoutedEventArgs e) =>
+        ShowSettingsSection(showAbout: true);
+
+    private void ShowSettingsSection(bool showAbout)
+    {
+        SettingsShortcutsPanel.Visibility = showAbout ? Visibility.Collapsed : Visibility.Visible;
+        SettingsAboutPanel.Visibility = showAbout ? Visibility.Visible : Visibility.Collapsed;
+
+        var accentBrush = ThemeBrush(
+            Windows.UI.Color.FromArgb(255, 0, 103, 192),
+            Windows.UI.Color.FromArgb(255, 96, 205, 255));
+        var accentForegroundBrush = ThemeBrush(
+            Windows.UI.Color.FromArgb(255, 255, 255, 255),
+            Windows.UI.Color.FromArgb(255, 0, 50, 77));
+        var panelBrush = ThemeBrush(
+            Windows.UI.Color.FromArgb(255, 255, 255, 255),
+            Windows.UI.Color.FromArgb(255, 43, 43, 43));
+        var inkBrush = ThemeBrush(
+            Windows.UI.Color.FromArgb(255, 26, 26, 26),
+            Windows.UI.Color.FromArgb(255, 245, 245, 245));
+        var lineBrush = ThemeBrush(
+            Windows.UI.Color.FromArgb(255, 229, 229, 229),
+            Windows.UI.Color.FromArgb(255, 60, 60, 60));
+
+        SettingsShortcutsButton.Background = showAbout ? panelBrush : accentBrush;
+        SettingsShortcutsButton.Foreground = showAbout ? inkBrush : accentForegroundBrush;
+        SettingsShortcutsButton.BorderBrush = showAbout ? lineBrush : accentBrush;
+        SettingsAboutButton.Background = showAbout ? accentBrush : panelBrush;
+        SettingsAboutButton.Foreground = showAbout ? accentForegroundBrush : inkBrush;
+        SettingsAboutButton.BorderBrush = showAbout ? accentBrush : lineBrush;
+    }
+
+    private void RootLayout_KeyDown(object sender, KeyRoutedEventArgs e)
+    {
+        if (e.Key != Windows.System.VirtualKey.Space ||
+            SettingsPage.Visibility == Visibility.Visible ||
+            e.OriginalSource is TextBox or PasswordBox or RichEditBox or AutoSuggestBox ||
+            e.OriginalSource is ButtonBase ||
+            !PlaybackButton.IsEnabled)
+        {
+            return;
+        }
+
+        PlaybackButton_Click(PlaybackButton, new RoutedEventArgs());
+        e.Handled = true;
+    }
+
     private void AnimateThemeToggle()
     {
         if (_isThemeAnimating) return;
@@ -579,6 +703,339 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    private async void AddVideoButton_Click(object sender, RoutedEventArgs e)
+    {
+        var picker = new FileOpenPicker();
+        foreach (var extension in VideoExtensions)
+        {
+            picker.FileTypeFilter.Add(extension);
+        }
+
+        InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
+        var files = await picker.PickMultipleFilesAsync();
+        if (files is null || files.Count == 0)
+        {
+            return;
+        }
+
+        AddVideoButton.IsEnabled = false;
+        OpenButton.IsEnabled = false;
+        ExportButton.IsEnabled = false;
+        ExportSelectedVideoButton.IsEnabled = false;
+        RemoveVideoButton.IsEnabled = false;
+        VideoListView.IsEnabled = false;
+        PreviewTrimButton.IsEnabled = false;
+        var existingClipCount = _videoClips.Count;
+        var newClips = new List<TimelineVideoClip>();
+        try
+        {
+            foreach (var file in files)
+            {
+                var duration = await ProbeVideoDurationAsync(file.Path);
+                newClips.Add(new TimelineVideoClip(file.Path, duration));
+            }
+
+            var originalPlayhead = _playheadSeconds;
+            var resumePlayback = _player.PlaybackSession.PlaybackState == MediaPlaybackState.Playing;
+            _videoClips.AddRange(newClips);
+            _durationSeconds = _videoClips.Sum(clip => clip.Duration);
+            _trimEndSeconds = _durationSeconds;
+            _waveformCancellation?.Cancel();
+            _waveformCancellation = null;
+            _waveformPeaks = Array.Empty<float>();
+            _waveformReady = true;
+
+            await SetVideoPlaylistAsync(originalPlayhead);
+            _audioEngine?.Dispose();
+            _audioEngine = null;
+            _player.IsMuted = _userMuted;
+            _player.Volume = _userMuted ? 0 : (VolumeSlider?.Value ?? 1.0);
+            if (resumePlayback)
+            {
+                _player.Play();
+            }
+
+            AddVideoButton.Visibility = Visibility.Visible;
+            FileNameText.Text = $"{_videoClips.Count} videos";
+            MetadataText.Text = $"{_videoClips.Count} video clips\n{FormatTime(_durationSeconds)} total";
+            FooterText.Text = $"{_videoClips.Count} videos in the timeline";
+            UpdateVideoList();
+            _playheadSeconds = originalPlayhead;
+            _trimEndSeconds = _durationSeconds;
+            ExportButton.IsEnabled = true;
+            PlaybackButton.IsEnabled = true;
+            PreviewTrimButton.IsEnabled = true;
+            TimelineCanvas.IsHitTestVisible = true;
+            CropModeButton.IsEnabled = true;
+            SetTimelineZoom(1.0);
+            SetTimelineZoomEnabled(true);
+            UpdateTrimLabels();
+            DrawTimeline();
+            DrawCropOverlay();
+            DrawOverlays();
+            StatusText.Text = $"Added {newClips.Count} video{(newClips.Count == 1 ? string.Empty : "s")} to the timeline.";
+        }
+        catch (Exception ex)
+        {
+            if (_videoClips.Count > existingClipCount)
+            {
+                _videoClips.RemoveRange(existingClipCount, _videoClips.Count - existingClipCount);
+                _durationSeconds = _videoClips.Sum(clip => clip.Duration);
+                _trimEndSeconds = _durationSeconds;
+                UpdateVideoList();
+            }
+
+            StatusText.Text = $"Couldn't add video: {ex.Message}";
+        }
+        finally
+        {
+            AddVideoButton.IsEnabled = _durationSeconds > 0 && _exportCancellation is null;
+            OpenButton.IsEnabled = _exportCancellation is null;
+            ExportButton.IsEnabled = _durationSeconds > 0 && _exportCancellation is null;
+            ExportSelectedVideoButton.IsEnabled = _videoClips.Count > 1 && _exportCancellation is null;
+            RemoveVideoButton.IsEnabled = _videoClips.Count > 1 && _exportCancellation is null;
+            VideoListView.IsEnabled = _exportCancellation is null;
+            PreviewTrimButton.IsEnabled = _durationSeconds > 0 && _exportCancellation is null;
+        }
+    }
+
+    private void UpdateVideoList()
+    {
+        if (VideoListView is null)
+        {
+            return;
+        }
+
+        _isUpdatingVideoList = true;
+        try
+        {
+            VideoListView.ItemsSource = _videoClips
+                .Select(clip => new VideoListEntry(Path.GetFileName(clip.Path), FormatTime(clip.Duration)))
+                .ToList();
+            VideoListView.SelectedIndex = _videoClips.Count == 0
+                ? -1
+                : Math.Clamp(_activeVideoClipIndex, 0, _videoClips.Count - 1);
+            VideoListSection.Visibility = _videoClips.Count > 1 ? Visibility.Visible : Visibility.Collapsed;
+            ExportSelectedVideoButton.IsEnabled = _videoClips.Count > 1 && _exportCancellation is null;
+            RemoveVideoButton.IsEnabled = _videoClips.Count > 1 && _exportCancellation is null;
+        }
+        finally
+        {
+            _isUpdatingVideoList = false;
+        }
+    }
+
+    private void SelectVideoInList(int clipIndex)
+    {
+        if (VideoListView is null || clipIndex < 0 || clipIndex >= _videoClips.Count)
+        {
+            return;
+        }
+
+        _isUpdatingVideoList = true;
+        try
+        {
+            VideoListView.SelectedIndex = clipIndex;
+        }
+        finally
+        {
+            _isUpdatingVideoList = false;
+        }
+    }
+
+    private void VideoListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        var clipIndex = VideoListView.SelectedIndex;
+        if (_isUpdatingVideoList || _exportCancellation is not null ||
+            clipIndex < 0 || clipIndex >= _videoClips.Count)
+        {
+            return;
+        }
+
+        if (_showingEditedPreview)
+        {
+            SelectVideoInList(_activeVideoClipIndex);
+            return;
+        }
+
+        var timelinePosition = 0d;
+        for (var i = 0; i < clipIndex; i++)
+        {
+            timelinePosition += _videoClips[i].Duration;
+        }
+
+        _playheadSeconds = timelinePosition;
+        SeekTimeline(timelinePosition);
+        UpdateTrimLabels();
+        UpdatePlayheadMarker();
+        UpdateAudioWaveformPlayhead();
+        StatusText.Text = $"Selected {Path.GetFileName(_videoClips[clipIndex].Path)}";
+    }
+
+    private async void RemoveVideoButton_Click(object sender, RoutedEventArgs e)
+    {
+        var removedIndex = VideoListView.SelectedIndex;
+        if (_exportCancellation is not null || _showingEditedPreview ||
+            _videoClips.Count <= 1 || removedIndex < 0 || removedIndex >= _videoClips.Count)
+        {
+            return;
+        }
+
+        var removedClip = _videoClips[removedIndex];
+        var removedStart = _videoClips.Take(removedIndex).Sum(clip => clip.Duration);
+        var removedEnd = removedStart + removedClip.Duration;
+        var oldPosition = _player.PlaybackSession.PlaybackState == MediaPlaybackState.Playing
+            ? GetTimelinePlaybackPosition()
+            : _playheadSeconds;
+        var resumePlayback = _player.PlaybackSession.PlaybackState == MediaPlaybackState.Playing;
+
+        RemoveVideoButton.IsEnabled = false;
+        VideoListView.IsEnabled = false;
+        try
+        {
+            _videoClips.RemoveAt(removedIndex);
+            _sourcePath = _videoClips[0].Path;
+            _durationSeconds = _videoClips.Sum(clip => clip.Duration);
+            _trimStartSeconds = 0;
+            _trimEndSeconds = _durationSeconds;
+            _cutRegions.Clear();
+            _selectedCutId = null;
+            _hasUndo = false;
+            _undoCuts = [];
+            UndoButton.IsEnabled = false;
+            UpdateCutButtonStates();
+
+            var newPosition = oldPosition >= removedEnd
+                ? oldPosition - removedClip.Duration
+                : Math.Min(oldPosition, removedStart);
+            _playheadSeconds = Math.Clamp(newPosition, 0, _durationSeconds);
+            await SetVideoPlaylistAsync(_playheadSeconds);
+            _player.IsMuted = _userMuted;
+            _player.Volume = _userMuted ? 0 : (VolumeSlider?.Value ?? 1.0);
+            if (resumePlayback)
+            {
+                _player.Play();
+            }
+
+            FileNameText.Text = _videoClips.Count == 1
+                ? Path.GetFileName(_sourcePath)
+                : $"{_videoClips.Count} videos";
+            MetadataText.Text = $"{_videoClips.Count} video clip{(_videoClips.Count == 1 ? string.Empty : "s")}\n{FormatTime(_durationSeconds)} total";
+            FooterText.Text = _videoClips.Count == 1
+                ? _sourcePath
+                : $"{_videoClips.Count} videos in the timeline";
+            UpdateVideoList();
+            AddVideoButton.Visibility = Visibility.Visible;
+            UpdateTrimLabels();
+            DrawTimeline();
+            DrawCropOverlay();
+            DrawOverlays();
+            StatusText.Text = $"Removed {Path.GetFileName(removedClip.Path)}. Trim and cuts were reset for the updated timeline.";
+        }
+        catch (Exception ex)
+        {
+            StatusText.Text = $"Couldn't remove video: {ex.Message}";
+        }
+        finally
+        {
+            RemoveVideoButton.IsEnabled = _videoClips.Count > 1 && _exportCancellation is null;
+            VideoListView.IsEnabled = _exportCancellation is null;
+        }
+    }
+
+    private async Task<double> ProbeVideoDurationAsync(string path)
+    {
+        using var probePlayer = new MediaPlayer();
+        var durationSource = new TaskCompletionSource<double>(TaskCreationOptions.RunContinuationsAsynchronously);
+
+        void CompleteProbe()
+        {
+            var duration = probePlayer.PlaybackSession.NaturalDuration.TotalSeconds;
+            if (double.IsFinite(duration) && duration > 0)
+            {
+                durationSource.TrySetResult(duration);
+            }
+        }
+
+        void OnMediaFailed(MediaPlayer sender, MediaPlayerFailedEventArgs args) =>
+            durationSource.TrySetException(new InvalidOperationException(
+                string.IsNullOrWhiteSpace(args.ErrorMessage) ? "Windows couldn't read the video's duration." : args.ErrorMessage));
+
+        probePlayer.MediaOpened += OnMediaOpened;
+        probePlayer.PlaybackSession.NaturalDurationChanged += OnNaturalDurationChanged;
+        probePlayer.MediaFailed += OnMediaFailed;
+        try
+        {
+            var file = await StorageFile.GetFileFromPathAsync(path);
+            probePlayer.Source = MediaSource.CreateFromStorageFile(file);
+            return await durationSource.Task.WaitAsync(TimeSpan.FromSeconds(30));
+        }
+        finally
+        {
+            probePlayer.MediaOpened -= OnMediaOpened;
+            probePlayer.PlaybackSession.NaturalDurationChanged -= OnNaturalDurationChanged;
+            probePlayer.MediaFailed -= OnMediaFailed;
+            probePlayer.Source = null;
+        }
+
+        void OnMediaOpened(MediaPlayer sender, object args) => CompleteProbe();
+        void OnNaturalDurationChanged(MediaPlaybackSession sender, object args) => CompleteProbe();
+    }
+
+    private async Task SetVideoPlaylistAsync(double timelinePosition)
+    {
+        var playlist = new MediaPlaybackList { AutoRepeatEnabled = false };
+        foreach (var clip in _videoClips)
+        {
+            var file = await StorageFile.GetFileFromPathAsync(clip.Path);
+            playlist.Items.Add(new MediaPlaybackItem(MediaSource.CreateFromStorageFile(file)));
+        }
+
+        playlist.CurrentItemChanged += VideoPlaylist_CurrentItemChanged;
+        _player.Pause();
+        _player.Source = null;
+        _videoPlaylist = playlist;
+        _activeVideoClipIndex = 0;
+        _player.IsVideoFrameServerEnabled = true;
+        _player.Source = playlist;
+        SeekTimeline(timelinePosition);
+    }
+
+    private void VideoPlaylist_CurrentItemChanged(MediaPlaybackList sender, object args)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            if (!ReferenceEquals(sender, _videoPlaylist))
+            {
+                return;
+            }
+
+            var item = sender.CurrentItem;
+            var index = -1;
+            for (var i = 0; i < sender.Items.Count; i++)
+            {
+                if (ReferenceEquals(sender.Items[i], item))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index < 0)
+            {
+                return;
+            }
+
+            _activeVideoClipIndex = index;
+            SelectVideoInList(index);
+            if (_pendingVideoSeek is { } pending && pending.ClipIndex == index)
+            {
+                _pendingVideoSeek = null;
+                _player.PlaybackSession.Position = TimeSpan.FromSeconds(pending.LocalTime);
+            }
+        });
+    }
+
     private async Task LoadFileAsync(string path)
     {
         try
@@ -586,6 +1043,12 @@ public sealed partial class MainWindow : Window
             _player.Pause();
             Preview.Source = null;
             _player.Source = null;
+            _videoPlaylist = null;
+            _videoClips.Clear();
+            _activeVideoClipIndex = 0;
+            _pendingVideoSeek = null;
+            UpdateVideoList();
+            AddVideoButton.Visibility = Visibility.Collapsed;
             _showingEditedPreview = false;
             _startPreviewWhenReady = false;
             _waveformCancellation?.Cancel();
@@ -638,7 +1101,7 @@ public sealed partial class MainWindow : Window
             _audioEngine?.Dispose();
             _audioEngine = new AudioPitchEngine();
             _audioEngine.PlaybackStopped += AudioEngine_PlaybackStopped;
-            _audioEngine.Load(path);
+            await _audioEngine.LoadAsync(path);
             _audioEngine.SetVolume(VolumeSlider?.Value ?? 1.0, _userMuted);
             AudioPitchEngine.LogAudio($"MainWindow.LoadFileAsync: HasAudioTrack={_audioEngine.HasAudioTrack}, Device={_audioEngine.OutputDeviceName}, _userMuted={_userMuted}");
             if (_audioEngine.HasAudioTrack)
@@ -719,6 +1182,21 @@ public sealed partial class MainWindow : Window
                 return;
             }
 
+            if (_videoPlaylist is not null)
+            {
+                var activeWidth = sender.PlaybackSession.NaturalVideoWidth;
+                var activeHeight = sender.PlaybackSession.NaturalVideoHeight;
+                if (activeWidth > 0 && activeHeight > 0)
+                {
+                    _videoAspectRatio = (double)activeWidth / activeHeight;
+                    _videoNaturalWidth = (int)activeWidth;
+                    _videoNaturalHeight = (int)activeHeight;
+                }
+
+                RequestFrameRender();
+                return;
+            }
+
             var duration = sender.PlaybackSession.NaturalDuration.TotalSeconds;
             if (double.IsNaN(duration) || double.IsInfinity(duration) || duration <= 0)
             {
@@ -731,6 +1209,12 @@ public sealed partial class MainWindow : Window
             }
 
             _durationSeconds = duration;
+            var isVideo = VideoExtensions.Contains(Path.GetExtension(_sourcePath ?? string.Empty));
+            if (isVideo && _sourcePath is not null && _videoClips.Count == 0)
+            {
+                _videoClips.Add(new TimelineVideoClip(_sourcePath, duration));
+            }
+            UpdateVideoList();
 
             var naturalWidth = sender.PlaybackSession.NaturalVideoWidth;
             var naturalHeight = sender.PlaybackSession.NaturalVideoHeight;
@@ -751,8 +1235,8 @@ public sealed partial class MainWindow : Window
             SetTimelineZoom(1.0);
             SetTimelineZoomEnabled(true);
             UpdateCutButtonStates();
-            var isVideo = VideoExtensions.Contains(Path.GetExtension(_sourcePath ?? string.Empty));
             CropModeButton.IsEnabled = isVideo;
+            AddVideoButton.Visibility = isVideo ? Visibility.Visible : Visibility.Collapsed;
             AdjustmentTabsGrid.Visibility = isVideo ? Visibility.Visible : Visibility.Collapsed;
             SelectAdjustmentTab(!isVideo ? AdjustmentTab.Audio : _selectedAdjustmentTab);
             MetadataText.Text = $"{(isVideo ? "Video" : "Audio")}\n{FormatTime(_durationSeconds)} long";
@@ -988,9 +1472,15 @@ public sealed partial class MainWindow : Window
     {
         if (CropRatiosPanel is null) return;
 
-        var accentBrush = (Brush)Application.Current.Resources["AccentBrush"];
-        var inkBrush = (Brush)Application.Current.Resources["InkBrush"];
-        var lineBrush = (Brush)Application.Current.Resources["LineBrush"];
+        var accentBrush = ThemeBrush(
+            Windows.UI.Color.FromArgb(255, 0, 103, 192),
+            Windows.UI.Color.FromArgb(255, 96, 205, 255));
+        var inkBrush = ThemeBrush(
+            Windows.UI.Color.FromArgb(255, 26, 26, 26),
+            Windows.UI.Color.FromArgb(255, 245, 245, 245));
+        var lineBrush = ThemeBrush(
+            Windows.UI.Color.FromArgb(255, 229, 229, 229),
+            Windows.UI.Color.FromArgb(255, 60, 60, 60));
         var selectedBg = ThemeBrush(
             Windows.UI.Color.FromArgb(40, 0, 103, 192),
             Windows.UI.Color.FromArgb(60, 96, 205, 255));
@@ -1843,25 +2333,37 @@ public sealed partial class MainWindow : Window
         else
         {
             var playbackEnd = _showingEditedPreview ? _previewPlaybackDuration : _trimEndSeconds;
-            if (session.Position.TotalSeconds >= playbackEnd ||
-                (!_showingEditedPreview && session.Position.TotalSeconds < _trimStartSeconds))
+            var currentPosition = _showingEditedPreview ? session.Position.TotalSeconds : GetTimelinePlaybackPosition();
+            if (currentPosition >= playbackEnd ||
+                (!_showingEditedPreview && currentPosition < _trimStartSeconds))
             {
-                session.Position = TimeSpan.FromSeconds(_showingEditedPreview ? 0 : _trimStartSeconds);
-                _audioEngine?.Seek(session.Position);
+                if (_showingEditedPreview)
+                {
+                    session.Position = TimeSpan.Zero;
+                }
+                else
+                {
+                    SeekTimeline(_trimStartSeconds);
+                }
             }
             else if (!_showingEditedPreview && _cutRegions.Count > 0)
             {
-                var insideCut = _cutRegions.FirstOrDefault(c => session.Position.TotalSeconds >= c.Start && session.Position.TotalSeconds < c.End - 0.04);
+                var insideCut = _cutRegions.FirstOrDefault(c => currentPosition >= c.Start && currentPosition < c.End - 0.04);
                 if (insideCut is not null)
                 {
-                    session.Position = TimeSpan.FromSeconds(insideCut.End);
-                    _audioEngine?.Seek(session.Position);
+                    SeekTimeline(insideCut.End);
                 }
             }
 
             if (_showingEditedPreview)
             {
                 _audioEngine?.Stop();
+                _player.IsMuted = _userMuted;
+                _player.Volume = _userMuted ? 0 : (VolumeSlider?.Value ?? 1.0);
+                _player.Play();
+            }
+            else if (_videoPlaylist is not null)
+            {
                 _player.IsMuted = _userMuted;
                 _player.Volume = _userMuted ? 0 : (VolumeSlider?.Value ?? 1.0);
                 _player.Play();
@@ -1966,6 +2468,12 @@ public sealed partial class MainWindow : Window
             _timelineDragMode = TimelineDragMode.Playhead;
             _selectedCutId = null;
             _draggingCut = null;
+            _wasPlayingBeforeDrag = _player.PlaybackSession.PlaybackState == MediaPlaybackState.Playing;
+            if (_wasPlayingBeforeDrag)
+            {
+                _player.Pause();
+                _audioEngine?.Pause();
+            }
             SetPlayheadFromTimelineX(point.X);
         }
         else if (hitCutBadge is not null)
@@ -1981,6 +2489,12 @@ public sealed partial class MainWindow : Window
             _timelineDragMode = TimelineDragMode.Playhead;
             _selectedCutId = null;
             _draggingCut = null;
+            _wasPlayingBeforeDrag = _player.PlaybackSession.PlaybackState == MediaPlaybackState.Playing;
+            if (_wasPlayingBeforeDrag)
+            {
+                _player.Pause();
+                _audioEngine?.Pause();
+            }
             SetPlayheadFromTimelineX(point.X);
         }
         else if (hitCutStart is not null)
@@ -2017,6 +2531,12 @@ public sealed partial class MainWindow : Window
             _timelineDragMode = TimelineDragMode.Playhead;
             _selectedCutId = null;
             _draggingCut = null;
+            _wasPlayingBeforeDrag = _player.PlaybackSession.PlaybackState == MediaPlaybackState.Playing;
+            if (_wasPlayingBeforeDrag)
+            {
+                _player.Pause();
+                _audioEngine?.Pause();
+            }
             SetPlayheadFromTimelineX(point.X);
         }
         else if (hitCutBody is not null)
@@ -2033,6 +2553,12 @@ public sealed partial class MainWindow : Window
             _timelineDragMode = TimelineDragMode.Playhead;
             _selectedCutId = null;
             _draggingCut = null;
+            _wasPlayingBeforeDrag = _player.PlaybackSession.PlaybackState == MediaPlaybackState.Playing;
+            if (_wasPlayingBeforeDrag)
+            {
+                _player.Pause();
+                _audioEngine?.Pause();
+            }
             SetPlayheadFromTimelineX(point.X);
         }
 
@@ -2150,7 +2676,21 @@ public sealed partial class MainWindow : Window
                 break;
 
             case TimelineDragMode.Playhead:
-                SetPlayheadFromTimelineX(x);
+                _playheadSeconds = TimelineXToTime(x);
+                if (_showingEditedPreview)
+                {
+                    ExitEditedPreview();
+                }
+                EnsurePlayheadVisible(smooth: false);
+                if (_overlays.Any(o => !o.ShowEntireVideo))
+                {
+                    DrawOverlays();
+                }
+                if (_sourcePath is not null && (DateTime.UtcNow - _lastScrubSeekTime).TotalMilliseconds >= 35)
+                {
+                    _lastScrubSeekTime = DateTime.UtcNow;
+                    SeekTimeline(_playheadSeconds);
+                }
                 break;
         }
 
@@ -2219,8 +2759,74 @@ public sealed partial class MainWindow : Window
 
     private void TimelineZoomSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
     {
+        UpdateTimelineZoomSliderVisual(e.NewValue);
         if (_isUpdatingZoomUi) return;
-        SetTimelineZoom(e.NewValue);
+        _pendingTimelineZoom = SliderValueToTimelineZoom(e.NewValue);
+        if (!_timelineZoomUpdateTimer!.IsEnabled)
+        {
+            _timelineZoomUpdateTimer.Start();
+        }
+    }
+
+    private void TimelineZoomSliderLayout_SizeChanged(object sender, SizeChangedEventArgs e) => UpdateTimelineZoomSliderVisual();
+
+    private void TimelineZoomSliderLayout_PointerEntered(object sender, PointerRoutedEventArgs e)
+    {
+        _isTimelineZoomSliderHovered = true;
+        UpdateTimelineZoomSliderThumbState();
+    }
+
+    private void TimelineZoomSliderLayout_PointerExited(object sender, PointerRoutedEventArgs e)
+    {
+        _isTimelineZoomSliderHovered = false;
+        UpdateTimelineZoomSliderThumbState();
+    }
+
+    private void TimelineZoomSliderLayout_PointerPressed(object sender, PointerRoutedEventArgs e)
+    {
+        _isTimelineZoomSliderPressed = true;
+        UpdateTimelineZoomSliderThumbState();
+    }
+
+    private void TimelineZoomSliderLayout_PointerReleased(object sender, PointerRoutedEventArgs e)
+    {
+        _isTimelineZoomSliderPressed = false;
+        UpdateTimelineZoomSliderThumbState();
+    }
+
+    private void TimelineZoomSliderLayout_PointerCanceled(object sender, PointerRoutedEventArgs e)
+    {
+        _isTimelineZoomSliderPressed = false;
+        _isTimelineZoomSliderHovered = false;
+        UpdateTimelineZoomSliderThumbState();
+    }
+
+    private void UpdateTimelineZoomSliderThumbState()
+    {
+        var size = _isTimelineZoomSliderPressed ? 10 : _isTimelineZoomSliderHovered ? 16 : 12;
+        TimelineZoomSliderThumbInner.Width = size;
+        TimelineZoomSliderThumbInner.Height = size;
+    }
+
+    private void UpdateTimelineZoomSliderVisual(double? sliderValue = null)
+    {
+        var width = TimelineZoomSliderLayout.ActualWidth;
+        if (width <= 0)
+        {
+            return;
+        }
+
+        const double thumbCenterInset = 14;
+        const double thumbSize = 24;
+        var trackWidth = Math.Max(0, width - (thumbCenterInset * 2));
+        var value = Math.Clamp(((sliderValue ?? TimelineZoomSlider.Value) - TimelineZoomSlider.Minimum) /
+            (TimelineZoomSlider.Maximum - TimelineZoomSlider.Minimum), 0, 1);
+
+        TimelineZoomSliderTrack.Width = trackWidth;
+        TimelineZoomSliderFill.Width = trackWidth * value;
+        Canvas.SetLeft(TimelineZoomSliderTrack, thumbCenterInset);
+        Canvas.SetLeft(TimelineZoomSliderFill, thumbCenterInset);
+        Canvas.SetLeft(TimelineZoomSliderThumb, thumbCenterInset + (trackWidth * value) - (thumbSize / 2));
     }
 
     private void TimelineZoomControl_PointerWheelChanged(object sender, PointerRoutedEventArgs e)
@@ -2265,6 +2871,7 @@ public sealed partial class MainWindow : Window
 
     private void SetTimelineZoom(double zoom, double? pivotTime = null, double? viewportPivotX = null)
     {
+        _timelineZoomUpdateTimer?.Stop();
         zoom = Math.Clamp(Math.Round(zoom, 2), 1.0, 10.0);
         if (Math.Abs(_timelineZoom - zoom) < 0.01)
         {
@@ -2283,11 +2890,12 @@ public sealed partial class MainWindow : Window
         {
             if (TimelineZoomSlider is not null)
             {
-                TimelineZoomSlider.Value = _timelineZoom;
+                TimelineZoomSlider.Value = TimelineZoomToSliderValue(_timelineZoom);
             }
+            UpdateTimelineZoomSliderVisual(TimelineZoomToSliderValue(_timelineZoom));
             if (TimelineZoomPercentText is not null)
             {
-                TimelineZoomPercentText.Text = $"{Math.Round(_timelineZoom * 100)}%";
+                TimelineZoomPercentText.Text = $"{Math.Round(TimelineZoomToSliderValue(_timelineZoom)):0}%";
             }
         }
         finally
@@ -2295,6 +2903,10 @@ public sealed partial class MainWindow : Window
             _isUpdatingZoomUi = false;
         }
     }
+
+    private static double SliderValueToTimelineZoom(double value) => 1.0 + Math.Clamp(value, 0, 100) * 0.09;
+
+    private static double TimelineZoomToSliderValue(double zoom) => (Math.Clamp(zoom, 1.0, 10.0) - 1.0) / 0.09;
 
     private void UpdateTimelineZoomLayout(double? pivotTime = null, double? viewportPivotX = null)
     {
@@ -2360,6 +2972,7 @@ public sealed partial class MainWindow : Window
 
     private void EndTimelineDrag()
     {
+        var wasPlayheadDrag = _timelineDragMode == TimelineDragMode.Playhead;
         _timelineDragMode = TimelineDragMode.None;
         _draggingCut = null;
         try
@@ -2367,6 +2980,17 @@ public sealed partial class MainWindow : Window
             TimelineCanvas?.ReleasePointerCaptures();
         }
         catch { }
+
+        if (wasPlayheadDrag && _sourcePath is not null)
+        {
+            SeekTimeline(_playheadSeconds);
+            if (_wasPlayingBeforeDrag)
+            {
+                _wasPlayingBeforeDrag = false;
+                _player.Play();
+                _audioEngine?.Play();
+            }
+        }
     }
 
     private void SetPlayheadFromTimelineX(double x)
@@ -2379,8 +3003,7 @@ public sealed partial class MainWindow : Window
 
         if (_sourcePath is not null)
         {
-            _player.PlaybackSession.Position = TimeSpan.FromSeconds(_playheadSeconds);
-            _audioEngine?.Seek(TimeSpan.FromSeconds(_playheadSeconds));
+            SeekTimeline(_playheadSeconds);
         }
 
         UpdateTrimLabels();
@@ -2398,6 +3021,65 @@ public sealed partial class MainWindow : Window
     {
         var width = Math.Max(1, TimelineCanvas.ActualWidth - 16);
         return 8 + Math.Clamp(time / Math.Max(0.001, _durationSeconds), 0, 1) * width;
+    }
+
+    private double GetTimelinePlaybackPosition()
+    {
+        var localPosition = _player.PlaybackSession.Position.TotalSeconds;
+        if (_showingEditedPreview || _videoPlaylist is null || _videoClips.Count <= 1)
+        {
+            return localPosition;
+        }
+
+        var clipStart = 0d;
+        for (var i = 0; i < Math.Min(_activeVideoClipIndex, _videoClips.Count); i++)
+        {
+            clipStart += _videoClips[i].Duration;
+        }
+
+        return Math.Clamp(clipStart + localPosition, 0, _durationSeconds);
+    }
+
+    private (int ClipIndex, double LocalTime) GetVideoClipPosition(double timelinePosition)
+    {
+        var remaining = Math.Clamp(timelinePosition, 0, _durationSeconds);
+        for (var i = 0; i < _videoClips.Count; i++)
+        {
+            var duration = _videoClips[i].Duration;
+            if (remaining < duration || i == _videoClips.Count - 1)
+            {
+                return (i, Math.Clamp(remaining, 0, duration));
+            }
+
+            remaining -= duration;
+        }
+
+        return (0, 0);
+    }
+
+    private void SeekTimeline(double timelinePosition)
+    {
+        timelinePosition = Math.Clamp(timelinePosition, 0, _durationSeconds);
+        if (_showingEditedPreview || _videoPlaylist is null || _videoClips.Count <= 1)
+        {
+            _player.PlaybackSession.Position = TimeSpan.FromSeconds(timelinePosition);
+            _audioEngine?.Seek(TimeSpan.FromSeconds(timelinePosition));
+            return;
+        }
+
+        var target = GetVideoClipPosition(timelinePosition);
+        var targetItem = _videoPlaylist.Items[target.ClipIndex];
+        if (ReferenceEquals(_videoPlaylist.CurrentItem, targetItem))
+        {
+            _activeVideoClipIndex = target.ClipIndex;
+            _pendingVideoSeek = null;
+            _player.PlaybackSession.Position = TimeSpan.FromSeconds(target.LocalTime);
+        }
+        else
+        {
+            _pendingVideoSeek = target;
+            _videoPlaylist.MoveTo((uint)target.ClipIndex);
+        }
     }
 
     private void DrawTimeline()
@@ -2569,6 +3251,43 @@ public sealed partial class MainWindow : Window
                 var badgeLeft = Math.Clamp(badgeCenter - 34, trackLeft, trackLeft + trackWidth - 68);
                 Canvas.SetLeft(badge, badgeLeft);
                 Canvas.SetTop(badge, 6);
+            }
+
+            if (_videoClips.Count > 1)
+            {
+                var clipStart = 0d;
+                for (var i = 0; i < _videoClips.Count; i++)
+                {
+                    var clip = _videoClips[i];
+                    var clipStartX = TimeToTimelineX(clipStart);
+                    var clipEndX = TimeToTimelineX(clipStart + clip.Duration);
+                    if (i > 0)
+                    {
+                        AddTimelineLine(clipStartX, trackTop - 2, clipStartX, trackTop + trackHeight + 2,
+                            new SolidColorBrush(Microsoft.UI.Colors.White), 2);
+                    }
+
+                    var labelWidth = clipEndX - clipStartX - 8;
+                    if (labelWidth >= 48)
+                    {
+                        var clipLabel = new TextBlock
+                        {
+                            Text = Path.GetFileNameWithoutExtension(clip.Path),
+                            Width = labelWidth,
+                            FontSize = 9,
+                            FontWeight = Microsoft.UI.Text.FontWeights.SemiBold,
+                            Foreground = ThemeBrush(Color.FromArgb(230, 26, 26, 26), Color.FromArgb(235, 245, 245, 245)),
+                            TextTrimming = TextTrimming.CharacterEllipsis,
+                            TextAlignment = TextAlignment.Center
+                        };
+                        ToolTipService.SetToolTip(clipLabel, Path.GetFileName(clip.Path));
+                        TimelineCanvas.Children.Add(clipLabel);
+                        Canvas.SetLeft(clipLabel, clipStartX + 4);
+                        Canvas.SetTop(clipLabel, trackTop + 7);
+                    }
+
+                    clipStart += clip.Duration;
+                }
             }
 
             AddTimelineHandle(startX, trackTop, trackHeight);
@@ -3198,6 +3917,7 @@ public sealed partial class MainWindow : Window
 
         _showingEditedPreview = false;
         _startPreviewWhenReady = false;
+        RemoveVideoButton.IsEnabled = _videoClips.Count > 1 && _exportCancellation is null;
         if (PreviewTrimButton is not null)
         {
             PreviewTrimButton.Content = "Preview edits";
@@ -3211,21 +3931,27 @@ public sealed partial class MainWindow : Window
         if (VideoCanvas is not null) VideoCanvas.Visibility = isVideo ? Visibility.Visible : Visibility.Collapsed;
         if (Preview is not null) Preview.Visibility = Visibility.Collapsed;
 
-        MediaSource mediaSource;
-        try
+        if (_videoPlaylist is not null)
         {
-            var file = await StorageFile.GetFileFromPathAsync(_sourcePath);
-            mediaSource = MediaSource.CreateFromStorageFile(file);
+            _player.Source = _videoPlaylist;
         }
-        catch
+        else
         {
-            mediaSource = MediaSource.CreateFromUri(new Uri(Path.GetFullPath(_sourcePath)));
+            MediaSource mediaSource;
+            try
+            {
+                var file = await StorageFile.GetFileFromPathAsync(_sourcePath);
+                mediaSource = MediaSource.CreateFromStorageFile(file);
+            }
+            catch
+            {
+                mediaSource = MediaSource.CreateFromUri(new Uri(Path.GetFullPath(_sourcePath)));
+            }
+
+            _player.Source = mediaSource;
         }
 
-        _player.Source = mediaSource;
-
-        _player.PlaybackSession.Position = TimeSpan.FromSeconds(_playheadSeconds);
-        _audioEngine?.Seek(TimeSpan.FromSeconds(_playheadSeconds));
+        SeekTimeline(_playheadSeconds);
 
         StatusText.Text = "Live editing mode";
         UpdateTrimLabels();
@@ -3261,14 +3987,27 @@ public sealed partial class MainWindow : Window
             var isVideo = VideoExtensions.Contains(Path.GetExtension(_sourcePath));
             var keptSegments = GetKeptSegments();
             var keptDuration = keptSegments.Sum(s => Math.Max(0, s.End - s.Start));
-            await _exportService.ExportTrimAsync(
-                _sourcePath,
-                previewPath,
-                keptSegments,
-                isVideo,
-                GetAdjustments(),
-                progress,
-                _exportCancellation.Token);
+            if (_videoClips.Count > 1)
+            {
+                await _exportService.ExportVideosAsync(
+                    _videoClips.Select(clip => (clip.Path, clip.Duration)).ToList(),
+                    previewPath,
+                    keptSegments,
+                    GetAdjustments(),
+                    progress,
+                    _exportCancellation.Token);
+            }
+            else
+            {
+                await _exportService.ExportTrimAsync(
+                    _sourcePath,
+                    previewPath,
+                    keptSegments,
+                    isVideo,
+                    GetAdjustments(),
+                    progress,
+                    _exportCancellation.Token);
+            }
 
             _player.Pause();
             _audioEngine?.Stop();
@@ -3319,19 +4058,45 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    private async void ExportButton_Click(object sender, RoutedEventArgs e)
+    private async void ExportButton_Click(object sender, RoutedEventArgs e) => await ExportVideosToFileAsync(selectedVideoOnly: false);
+
+    private async void ExportSelectedVideoButton_Click(object sender, RoutedEventArgs e) => await ExportVideosToFileAsync(selectedVideoOnly: true);
+
+    private async Task ExportVideosToFileAsync(bool selectedVideoOnly)
     {
         if (_sourcePath is null || _durationSeconds <= 0)
         {
             return;
         }
 
+        var exportSingleClip = selectedVideoOnly && _videoClips.Count > 1;
+        var selectedClipIndex = exportSingleClip
+            ? Math.Clamp(VideoListView.SelectedIndex, 0, _videoClips.Count - 1)
+            : 0;
+        var exportSourcePath = exportSingleClip ? _videoClips[selectedClipIndex].Path : _sourcePath;
+        var outputSegments = GetKeptSegments();
+        if (exportSingleClip)
+        {
+            var clipStart = _videoClips.Take(selectedClipIndex).Sum(clip => clip.Duration);
+            var clipEnd = clipStart + _videoClips[selectedClipIndex].Duration;
+            outputSegments = outputSegments
+                .Select(segment => (Start: Math.Max(segment.Start, clipStart), End: Math.Min(segment.End, clipEnd)))
+                .Where(segment => segment.End > segment.Start)
+                .Select(segment => (segment.Start - clipStart, segment.End - clipStart))
+                .ToList();
+            if (outputSegments.Count == 0)
+            {
+                StatusText.Text = "The selected video has no footage left in the current trim range.";
+                return;
+            }
+        }
+
         var picker = new FileSavePicker
         {
-            SuggestedFileName = $"{Path.GetFileNameWithoutExtension(_sourcePath)}_edited"
+            SuggestedFileName = $"{Path.GetFileNameWithoutExtension(exportSourcePath)}{(!selectedVideoOnly && _videoClips.Count > 1 ? "_merged" : string.Empty)}_edited"
         };
-        picker.FileTypeChoices.Add("Keep original format", new List<string> { Path.GetExtension(_sourcePath) });
-        picker.DefaultFileExtension = Path.GetExtension(_sourcePath);
+        picker.FileTypeChoices.Add("Keep original format", new List<string> { Path.GetExtension(exportSourcePath) });
+        picker.DefaultFileExtension = Path.GetExtension(exportSourcePath);
         InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
 
         var output = await picker.PickSaveFileAsync();
@@ -3348,18 +4113,41 @@ public sealed partial class MainWindow : Window
 
         try
         {
-            var keptSegments = GetKeptSegments();
-            await _exportService.ExportTrimAsync(
-                _sourcePath,
-                output.Path,
-                keptSegments,
-                VideoExtensions.Contains(Path.GetExtension(_sourcePath)),
-                GetAdjustments(),
-                progress,
-                _exportCancellation.Token);
+            if (exportSingleClip)
+            {
+                await _exportService.ExportTrimAsync(
+                    exportSourcePath,
+                    output.Path,
+                    outputSegments,
+                    isVideo: true,
+                    GetAdjustments(),
+                    progress,
+                    _exportCancellation.Token);
+            }
+            else if (_videoClips.Count > 1)
+            {
+                await _exportService.ExportVideosAsync(
+                    _videoClips.Select(clip => (clip.Path, clip.Duration)).ToList(),
+                    output.Path,
+                    outputSegments,
+                    GetAdjustments(),
+                    progress,
+                    _exportCancellation.Token);
+            }
+            else
+            {
+                await _exportService.ExportTrimAsync(
+                    exportSourcePath,
+                    output.Path,
+                    outputSegments,
+                    VideoExtensions.Contains(Path.GetExtension(exportSourcePath)),
+                    GetAdjustments(),
+                    progress,
+                    _exportCancellation.Token);
+            }
 
             ExportProgress.Value = 100;
-            StatusText.Text = "Export complete";
+            StatusText.Text = exportSingleClip ? "Selected video export complete" : "Export complete";
             FooterText.Text = $"Saved to {output.Path}";
         }
         catch (OperationCanceledException)
@@ -3382,10 +4170,14 @@ public sealed partial class MainWindow : Window
 
     private void SetExporting(bool exporting)
     {
-        ExportProgress.Visibility = exporting ? Visibility.Visible : Visibility.Collapsed;
-        CancelExportButton.Visibility = exporting ? Visibility.Visible : Visibility.Collapsed;
+        ExportStatusCard.Visibility = exporting ? Visibility.Visible : Visibility.Collapsed;
+        ExportInfoSection.Visibility = exporting ? Visibility.Collapsed : Visibility.Visible;
         OpenButton.IsEnabled = !exporting;
+        AddVideoButton.IsEnabled = !exporting;
         ExportButton.IsEnabled = !exporting && _durationSeconds > 0;
+        ExportSelectedVideoButton.IsEnabled = !exporting && _videoClips.Count > 1;
+        RemoveVideoButton.IsEnabled = !exporting && !_showingEditedPreview && _videoClips.Count > 1;
+        VideoListView.IsEnabled = !exporting;
         TimelineCanvas.IsHitTestVisible = !exporting && _durationSeconds > 0;
         PreviewTrimButton.IsEnabled = !exporting && _durationSeconds > 0;
         PlaybackButton.IsEnabled = !exporting && _durationSeconds > 0;
@@ -3629,7 +4421,14 @@ public sealed partial class MainWindow : Window
             if (_renderTarget is not null)
             {
                 sender.CopyFrameToVideoSurface(_renderTarget);
-                DispatcherQueue.TryEnqueue(() => VideoCanvas?.Invalidate());
+                if (Interlocked.Exchange(ref _frameInvalidationPending, 1) == 0)
+                {
+                    DispatcherQueue.TryEnqueue(() =>
+                    {
+                        _frameInvalidationPending = 0;
+                        VideoCanvas?.Invalidate();
+                    });
+                }
             }
         }
         catch
@@ -3849,6 +4648,8 @@ public sealed partial class MainWindow : Window
 
     private void VolumeSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
     {
+        UpdateVolumeSliderVisual(e.NewValue);
+
         var volume = Math.Clamp(e.NewValue, 0, 1);
         _userMuted = volume <= 0;
         if (volume > 0)
@@ -3857,6 +4658,66 @@ public sealed partial class MainWindow : Window
         }
 
         SyncAudioVolume();
+    }
+
+    private void VolumeSliderLayout_SizeChanged(object sender, SizeChangedEventArgs e) => UpdateVolumeSliderVisual();
+
+    private void VolumeSliderLayout_PointerEntered(object sender, PointerRoutedEventArgs e)
+    {
+        _isVolumeSliderHovered = true;
+        UpdateVolumeSliderThumbState();
+    }
+
+    private void VolumeSliderLayout_PointerExited(object sender, PointerRoutedEventArgs e)
+    {
+        _isVolumeSliderHovered = false;
+        UpdateVolumeSliderThumbState();
+    }
+
+    private void VolumeSliderLayout_PointerPressed(object sender, PointerRoutedEventArgs e)
+    {
+        _isVolumeSliderPressed = true;
+        UpdateVolumeSliderThumbState();
+    }
+
+    private void VolumeSliderLayout_PointerReleased(object sender, PointerRoutedEventArgs e)
+    {
+        _isVolumeSliderPressed = false;
+        UpdateVolumeSliderThumbState();
+    }
+
+    private void VolumeSliderLayout_PointerCanceled(object sender, PointerRoutedEventArgs e)
+    {
+        _isVolumeSliderPressed = false;
+        _isVolumeSliderHovered = false;
+        UpdateVolumeSliderThumbState();
+    }
+
+    private void UpdateVolumeSliderThumbState()
+    {
+        var size = _isVolumeSliderPressed ? 10 : _isVolumeSliderHovered ? 16 : 12;
+        VolumeSliderThumbInner.Width = size;
+        VolumeSliderThumbInner.Height = size;
+    }
+
+    private void UpdateVolumeSliderVisual(double? sliderValue = null)
+    {
+        var width = VolumeSliderLayout.ActualWidth;
+        if (width <= 0)
+        {
+            return;
+        }
+
+        const double thumbCenterInset = 14;
+        const double thumbSize = 24;
+        var trackWidth = Math.Max(0, width - (thumbCenterInset * 2));
+        var value = Math.Clamp((sliderValue ?? VolumeSlider.Value) / (VolumeSlider.Maximum - VolumeSlider.Minimum), 0, 1);
+
+        VolumeSliderTrack.Width = trackWidth;
+        VolumeSliderFill.Width = trackWidth * value;
+        Canvas.SetLeft(VolumeSliderTrack, thumbCenterInset);
+        Canvas.SetLeft(VolumeSliderFill, thumbCenterInset);
+        Canvas.SetLeft(VolumeSliderThumb, thumbCenterInset + (trackWidth * value) - (thumbSize / 2));
     }
 
     private void VolumeMuteButton_Click(object sender, RoutedEventArgs e)
@@ -3870,6 +4731,8 @@ public sealed partial class MainWindow : Window
         {
             _lastVolume = VolumeSlider.Value;
             _userMuted = true;
+            VolumeSlider.Value = 0;
+            return;
         }
 
         SyncAudioVolume();
@@ -5287,19 +6150,32 @@ public sealed partial class MainWindow : Window
 
     private void UpdateCurrentPosition()
     {
+        if (_timelineDragMode != TimelineDragMode.None)
+        {
+            return;
+        }
+
         if (_sourcePath is not null && _player.PlaybackSession.PlaybackState == MediaPlaybackState.Playing)
         {
             var playbackEnd = _showingEditedPreview
                 ? _previewPlaybackDuration
                 : _trimEndSeconds;
-            var currentPos = _player.PlaybackSession.Position.TotalSeconds;
+            var currentPos = _showingEditedPreview
+                ? _player.PlaybackSession.Position.TotalSeconds
+                : GetTimelinePlaybackPosition();
 
             if (currentPos >= playbackEnd)
             {
                 _player.Pause();
                 _audioEngine?.Pause();
-                _player.PlaybackSession.Position = TimeSpan.FromSeconds(playbackEnd);
-                _audioEngine?.Seek(TimeSpan.FromSeconds(playbackEnd));
+                if (_showingEditedPreview)
+                {
+                    _player.PlaybackSession.Position = TimeSpan.FromSeconds(playbackEnd);
+                }
+                else
+                {
+                    SeekTimeline(playbackEnd);
+                }
             }
             else if (!_showingEditedPreview && _cutRegions.Count > 0)
             {
@@ -5307,23 +6183,29 @@ public sealed partial class MainWindow : Window
                 var activeCut = _cutRegions.FirstOrDefault(c => currentPos >= c.Start && currentPos < c.End - 0.04);
                 if (activeCut is not null)
                 {
-                    var target = activeCut.End;
-                    if (target >= _trimEndSeconds)
+                    if (_lastJumpedCutId != activeCut.Id)
                     {
-                        _player.Pause();
-                        _audioEngine?.Pause();
-                        _player.PlaybackSession.Position = TimeSpan.FromSeconds(_trimEndSeconds);
-                        _audioEngine?.Seek(TimeSpan.FromSeconds(_trimEndSeconds));
+                        _lastJumpedCutId = activeCut.Id;
+                        var target = activeCut.End;
+                        if (target >= _trimEndSeconds)
+                        {
+                            _player.Pause();
+                            _audioEngine?.Pause();
+                            SeekTimeline(_trimEndSeconds);
+                        }
+                        else
+                        {
+                            SeekTimeline(target);
+                        }
                     }
-                    else
-                    {
-                        _player.PlaybackSession.Position = TimeSpan.FromSeconds(target);
-                        _audioEngine?.Seek(TimeSpan.FromSeconds(target));
-                    }
+                }
+                else
+                {
+                    _lastJumpedCutId = null;
                 }
             }
 
-            if (!_showingEditedPreview && _audioEngine is not null && _audioEngine.IsPlaying)
+            if (!_showingEditedPreview && _videoPlaylist is null && _audioEngine is not null && _audioEngine.IsPlaying)
             {
                 var drift = Math.Abs((_player.PlaybackSession.Position - _audioEngine.CurrentPosition).TotalSeconds);
                 if (drift > 1.5 && (DateTime.UtcNow - _lastDriftCorrection).TotalSeconds > 2.0)
@@ -5335,7 +6217,7 @@ public sealed partial class MainWindow : Window
 
             _playheadSeconds = _showingEditedPreview
                 ? Math.Min(_trimEndSeconds, _trimStartSeconds + _player.PlaybackSession.Position.TotalSeconds * Math.Clamp(SpeedSlider.Value, 0.5, 2.0))
-                : _player.PlaybackSession.Position.TotalSeconds;
+                : GetTimelinePlaybackPosition();
             UpdateTrimLabels();
             UpdatePlayheadMarker();
             UpdateAudioWaveformPlayhead();

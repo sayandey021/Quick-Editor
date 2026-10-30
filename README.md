@@ -1,12 +1,12 @@
 # Quick Editor
 
-A lightweight WinUI 3 desktop editor for opening, previewing, and exporting one audio or video file. It supports trim, video crop and color adjustment, and audio pitch and speed changes. Export always writes to a separate destination; the source file is never used as the output.
+A lightweight WinUI 3 desktop editor for opening, previewing, and exporting audio or video. Video clips can be appended on a shared timeline and merged into one export. It also supports trim, video crop and color adjustment, and audio pitch and speed changes. Export always writes to a separate destination; the source files are never used as the output.
 
 ## Requirements
 
 - Windows 10 version 1809 or later
 - .NET 8 SDK
-- FFmpeg available as `ffmpeg.exe` on `PATH`, with the `libx264` encoder and `rubberband` audio filter enabled
+- FFmpeg available on `PATH`, including `ffmpeg.exe` and `ffprobe.exe`, with the `libx264` encoder and `rubberband` audio filter enabled
 
 ## Build and run
 

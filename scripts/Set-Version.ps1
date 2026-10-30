@@ -13,7 +13,7 @@ function Normalize-Version([string]$v) {
     if ($parts.Count -eq 2) { return "$($parts[0]).$($parts[1]).0.0" }
     if ($parts.Count -eq 3) { return "$($parts[0]).$($parts[1]).$($parts[2]).0" }
     if ($parts.Count -eq 4) { return "$($parts[0]).$($parts[1]).$($parts[2]).$($parts[3])" }
-    throw "Invalid version format '$v'. Expected up to 4 dot-separated integers (e.g. 0.8.0.0)."
+    throw "Invalid version format '$v'. Expected up to 4 dot-separated integers (e.g. 1.2.3.4)."
 }
 
 $ManifestFile = Join-Path $ProjectDir "Package.appxmanifest"
@@ -36,7 +36,7 @@ Write-Host $CurrentVersion -ForegroundColor Yellow
 Write-Host "==========================================================" -ForegroundColor Cyan
 
 if (-not $NewVersion) {
-    $inputVersion = Read-Host "Enter new version (e.g. 0.8.1.0 or 1.0.0.0)"
+    $inputVersion = Read-Host "Enter new version (e.g. 1.2.3.0 or 1.0.0.0)"
     if ([string]::IsNullOrWhiteSpace($inputVersion)) {
         Write-Host "No version entered. Aborted." -ForegroundColor Red
         return

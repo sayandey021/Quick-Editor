@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:media="using:Microsoft.UI.Xaml.Controls"
     xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml">
-    <Grid x:Name="RootLayout" Background="{ThemeResource CanvasBrush}">
+    <Grid x:Name="RootLayout" Background="{ThemeResource CanvasBrush}" KeyDown="RootLayout_KeyDown">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -20,13 +20,26 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="12" />
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+            <StackPanel x:Name="TitleBrand" Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
                 <Image Source="ms-appx:///Assets/AppIcon.png" Width="22" Height="22" VerticalAlignment="Center" />
                 <TextBlock Text="Quick Editor" FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource InkBrush}" VerticalAlignment="Center" />
             </StackPanel>
             <TextBlock x:Name="FileNameText" Grid.Column="2" Text="No file open" FontSize="12" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="12,0" />
+            <Grid x:Name="SettingsTitleBarContent" Grid.Column="1" Grid.ColumnSpan="2" Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+                    <Button x:Name="SettingsBackButton" Click="SettingsBackButton_Click"
+                            AutomationProperties.Name="Back to editor" ToolTipService.ToolTip="Back to editor"
+                            Width="36" Height="36" Padding="0" Background="{ThemeResource CanvasBrush}"
+                            BorderBrush="{ThemeResource LineBrush}" BorderThickness="1" CornerRadius="8">
+                        <FontIcon Glyph="&#xE72B;" FontSize="14" Foreground="{ThemeResource InkBrush}" />
+                    </Button>
+                    <TextBlock Text="Settings" FontSize="16" FontWeight="SemiBold"
+                               Foreground="{ThemeResource InkBrush}" VerticalAlignment="Center" />
+                </StackPanel>
+            </Grid>
             <Button x:Name="ThemeToggleButton" Grid.Column="3" Width="32" Height="32" Padding="0"
                     Background="Transparent" BorderBrush="Transparent" BorderThickness="0" CornerRadius="16"
                     UseSystemFocusVisuals="False"
@@ -55,11 +68,17 @@
                               HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Grid>
             </Button>
-            <Button x:Name="OpenButton" Grid.Column="4" Content="Open file" Click="OpenButton_Click" Height="32" Padding="12,0" Margin="4,0" VerticalAlignment="Center" />
-            <Button x:Name="ExportButton" Grid.Column="5" Content="Export copy" Click="ExportButton_Click" Height="32" Padding="12,0" Margin="4,0" Background="{ThemeResource AccentBrush}" Foreground="{ThemeResource AccentForegroundBrush}" VerticalAlignment="Center" IsEnabled="False" />
+            <Button x:Name="SettingsButton" Grid.Column="4" Width="32" Height="32" Padding="0"
+                    Background="Transparent" BorderBrush="Transparent" BorderThickness="0" CornerRadius="16"
+                    Click="SettingsButton_Click" AutomationProperties.Name="Settings"
+                    ToolTipService.ToolTip="Settings" VerticalAlignment="Center" Margin="3,0">
+                <FontIcon Glyph="&#xE713;" FontSize="15" Foreground="{ThemeResource InkBrush}" />
+            </Button>
+            <Button x:Name="OpenButton" Grid.Column="5" Content="Open file" Click="OpenButton_Click" Height="32" Padding="12,0" Margin="4,0" VerticalAlignment="Center" />
+            <Button x:Name="ExportButton" Grid.Column="6" Content="Export copy" Click="ExportButton_Click" Height="32" Padding="12,0" Margin="4,0" Background="{ThemeResource AccentBrush}" Foreground="{ThemeResource AccentForegroundBrush}" VerticalAlignment="Center" IsEnabled="False" />
 
             <!-- Custom Window Caption Buttons matching the app aesthetic -->
-            <StackPanel Grid.Column="6" Orientation="Horizontal" Spacing="3" VerticalAlignment="Center" Margin="6,0,0,0">
+            <StackPanel Grid.Column="7" Orientation="Horizontal" Spacing="3" VerticalAlignment="Center" Margin="6,0,0,0">
                 <Rectangle Width="1" Height="18" Fill="{ThemeResource LineBrush}" Margin="2,0,6,0" VerticalAlignment="Center" />
 
                 <!-- Minimize Button -->
@@ -203,7 +222,16 @@
                                     <Button x:Name="VolumeMuteButton" Width="26" Height="26" Padding="0" Click="VolumeMuteButton_Click" AutomationProperties.Name="Mute" ToolTipService.ToolTip="Mute / Unmute" Background="Transparent" BorderThickness="0" CornerRadius="4" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
                                         <FontIcon x:Name="VolumeGlyph" Glyph="&#xE767;" FontSize="13" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                     </Button>
-                                    <Slider x:Name="VolumeSlider" Width="82" Height="32" MinHeight="0" Padding="10,0,10,0" Minimum="0" Maximum="1" Value="1" StepFrequency="0.01" IsThumbToolTipEnabled="False" AutomationProperties.Name="Volume" ToolTipService.ToolTip="Volume (scroll to adjust)" Foreground="{ThemeResource AccentBrush}" VerticalAlignment="Center" Margin="0,-3,0,0" />
+                                    <Grid x:Name="VolumeSliderLayout" Width="114" Height="32" VerticalAlignment="Center" SizeChanged="VolumeSliderLayout_SizeChanged" PointerEntered="VolumeSliderLayout_PointerEntered" PointerExited="VolumeSliderLayout_PointerExited" PointerPressed="VolumeSliderLayout_PointerPressed" PointerReleased="VolumeSliderLayout_PointerReleased" PointerCanceled="VolumeSliderLayout_PointerCanceled">
+                                        <Canvas IsHitTestVisible="False">
+                                            <Border x:Name="VolumeSliderTrack" Height="4" Background="{ThemeResource SliderTrackBrush}" CornerRadius="2" Canvas.Top="14" />
+                                            <Border x:Name="VolumeSliderFill" Height="4" Background="{ThemeResource AccentBrush}" CornerRadius="2" Canvas.Top="14" />
+                                            <Border x:Name="VolumeSliderThumb" Width="24" Height="24" Background="{ThemeResource LineBrush}" CornerRadius="12" BorderBrush="{ThemeResource CanvasBrush}" BorderThickness="1" Canvas.Top="4">
+                                                <Ellipse x:Name="VolumeSliderThumbInner" Width="12" Height="12" Fill="{ThemeResource AccentBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                        </Canvas>
+                                        <Slider x:Name="VolumeSlider" Minimum="0" Maximum="1" Value="1" StepFrequency="0.01" IsThumbToolTipEnabled="False" AutomationProperties.Name="Volume" ToolTipService.ToolTip="Volume (scroll to adjust)" Opacity="0" />
+                                    </Grid>
                                     <TextBlock x:Name="VolumePercentText" Text="100%" MinWidth="28" FontSize="10.5" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" TextAlignment="Right" Margin="0,-1,0,0" />
                                 </StackPanel>
                             </Border>
@@ -216,12 +244,21 @@
                                     <Button x:Name="TimelineZoomOutButton" Width="24" Height="26" Padding="0" AutomationProperties.Name="Zoom out timeline" ToolTipService.ToolTip="Zoom out (Ctrl + Mouse wheel down)" Background="Transparent" BorderThickness="0" CornerRadius="4" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False">
                                         <FontIcon Glyph="&#xE71F;" FontSize="11" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                     </Button>
-                                    <Slider x:Name="TimelineZoomSlider" Width="76" Height="32" MinHeight="0" Padding="10,0,10,0" Minimum="1" Maximum="10" Value="1" StepFrequency="0.25" IsThumbToolTipEnabled="False" AutomationProperties.Name="Timeline zoom" ToolTipService.ToolTip="Timeline zoom (scroll to adjust)" Foreground="{ThemeResource AccentBrush}" VerticalAlignment="Center" Margin="0,-3,0,0" IsEnabled="False" />
+                                    <Grid x:Name="TimelineZoomSliderLayout" Width="114" Height="32" VerticalAlignment="Center" SizeChanged="TimelineZoomSliderLayout_SizeChanged" PointerEntered="TimelineZoomSliderLayout_PointerEntered" PointerExited="TimelineZoomSliderLayout_PointerExited" PointerPressed="TimelineZoomSliderLayout_PointerPressed" PointerReleased="TimelineZoomSliderLayout_PointerReleased" PointerCanceled="TimelineZoomSliderLayout_PointerCanceled">
+                                        <Canvas x:Name="TimelineZoomSliderVisual" IsHitTestVisible="False">
+                                            <Border x:Name="TimelineZoomSliderTrack" Height="4" Background="{ThemeResource SliderTrackBrush}" CornerRadius="2" Canvas.Top="14" />
+                                            <Border x:Name="TimelineZoomSliderFill" Height="4" Background="{ThemeResource AccentBrush}" CornerRadius="2" Canvas.Top="14" />
+                                            <Border x:Name="TimelineZoomSliderThumb" Width="24" Height="24" Background="{ThemeResource LineBrush}" CornerRadius="12" BorderBrush="{ThemeResource CanvasBrush}" BorderThickness="1" Canvas.Top="4">
+                                                <Ellipse x:Name="TimelineZoomSliderThumbInner" Width="12" Height="12" Fill="{ThemeResource AccentBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                        </Canvas>
+                                        <Slider x:Name="TimelineZoomSlider" Minimum="0" Maximum="100" Value="0" StepFrequency="1" IsThumbToolTipEnabled="False" AutomationProperties.Name="Timeline zoom" ToolTipService.ToolTip="Timeline zoom (scroll to adjust)" Opacity="0" IsEnabled="False" />
+                                    </Grid>
                                     <Button x:Name="TimelineZoomInButton" Width="24" Height="26" Padding="0" AutomationProperties.Name="Zoom in timeline" ToolTipService.ToolTip="Zoom in (Ctrl + Mouse wheel up)" Background="Transparent" BorderThickness="0" CornerRadius="4" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False">
-                                        <FontIcon Glyph="&#xE71E;" FontSize="11" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                        <FontIcon Glyph="&#xE8A3;" FontSize="11" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                     </Button>
-                                    <Button x:Name="TimelineZoomResetButton" Height="24" Padding="4,0" AutomationProperties.Name="Reset timeline zoom" ToolTipService.ToolTip="Reset zoom (100% / Fit)" Background="Transparent" BorderThickness="0" CornerRadius="4" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False">
-                                        <TextBlock x:Name="TimelineZoomPercentText" Text="100%" MinWidth="26" FontSize="10.5" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" TextAlignment="Center" Margin="0,-1,0,0" />
+                                    <Button x:Name="TimelineZoomResetButton" Height="24" Padding="4,0" AutomationProperties.Name="Reset timeline zoom" ToolTipService.ToolTip="Reset zoom (Fit / 0%)" Background="Transparent" BorderThickness="0" CornerRadius="4" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False">
+                                        <TextBlock x:Name="TimelineZoomPercentText" Text="0%" MinWidth="26" FontSize="10.5" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" TextAlignment="Center" Margin="0,-1,0,0" />
                                     </Button>
                                 </StackPanel>
                             </Border>
@@ -229,14 +266,19 @@
                             <TextBlock x:Name="DurationText" Grid.Column="8" Text="00:00.0 selected / 00:00.0" HorizontalAlignment="Right" FontSize="11" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" Margin="6,0,0,0" TextTrimming="CharacterEllipsis" />
                         </Grid>
                         <Border Background="{ThemeResource TimelineBrush}" CornerRadius="8">
-                            <ScrollViewer x:Name="TimelineScrollViewer"
+                            <Grid ColumnSpacing="8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <ScrollViewer x:Name="TimelineScrollViewer"
                                 Height="76"
                                 CornerRadius="8"
                                 HorizontalScrollBarVisibility="Auto"
                                 VerticalScrollBarVisibility="Disabled"
                                 HorizontalScrollMode="Enabled"
                                 VerticalScrollMode="Disabled">
-                                <Canvas x:Name="TimelineCanvas"
+                                    <Canvas x:Name="TimelineCanvas"
                                     Height="76"
                                     HorizontalAlignment="Left"
                                     Background="Transparent"
@@ -245,7 +287,17 @@
                                     PointerReleased="TimelineCanvas_PointerReleased"
                                     PointerCanceled="TimelineCanvas_PointerCanceled"
                                     SizeChanged="TimelineCanvas_SizeChanged" />
-                            </ScrollViewer>
+                                </ScrollViewer>
+                                <Button x:Name="AddVideoButton" Grid.Column="1" Width="40" Height="40"
+                                        Click="AddVideoButton_Click" Visibility="Collapsed"
+                                        AutomationProperties.Name="Add video to timeline"
+                                        ToolTipService.ToolTip="Add video to timeline"
+                                        Background="{ThemeResource PanelBrush}" Foreground="{ThemeResource AccentBrush}"
+                                        BorderBrush="{ThemeResource LineBrush}" BorderThickness="1" CornerRadius="8"
+                                        VerticalAlignment="Center" Margin="0,0,8,0">
+                                    <FontIcon Glyph="&#xE710;" FontSize="16" />
+                                </Button>
+                            </Grid>
                         </Border>
                         <Grid ColumnSpacing="10">
                             <Grid.ColumnDefinitions>
@@ -265,14 +317,69 @@
                 <Grid RowSpacing="14">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Spacing="3">
                         <TextBlock Text="Adjust" FontSize="20" FontWeight="SemiBold" Foreground="{ThemeResource InkBrush}" />
                         <TextBlock Text="Simple edits, ready to export." FontSize="12" Foreground="{ThemeResource MutedBrush}" />
                     </StackPanel>
-                    <ScrollViewer Grid.Row="1" Padding="0,0,18,0" VerticalScrollBarVisibility="Auto">
+                    <Border x:Name="ExportStatusCard" Grid.Row="1" Visibility="Collapsed"
+                            Background="{ThemeResource CanvasBrush}" BorderBrush="{ThemeResource LineBrush}"
+                            BorderThickness="1" CornerRadius="8" Padding="12">
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Export" FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource InkBrush}" />
+                            <TextBlock Text="A new copy is created. Your original stays untouched." TextWrapping="Wrap" FontSize="12" Foreground="{ThemeResource MutedBrush}" />
+                            <ProgressBar x:Name="ExportProgress" Minimum="0" Maximum="100" />
+                            <TextBlock Text="{Binding Text, ElementName=StatusText}" FontSize="12" Foreground="{ThemeResource MutedBrush}" TextWrapping="Wrap" />
+                            <Button x:Name="CancelExportButton" Content="Cancel" Click="CancelExportButton_Click"
+                                    HorizontalAlignment="Right" MinWidth="76" />
+                        </StackPanel>
+                    </Border>
+                    <ScrollViewer Grid.Row="2" Padding="0,0,18,0" VerticalScrollBarVisibility="Auto">
                     <StackPanel Spacing="18">
+                    <StackPanel x:Name="VideoListSection" Spacing="8" Visibility="Collapsed">
+                        <TextBlock Text="Videos" FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource InkBrush}" />
+                        <ListView x:Name="VideoListView" Height="140" SelectionMode="Single"
+                                  SelectionChanged="VideoListView_SelectionChanged"
+                                  Background="{ThemeResource CanvasBrush}"
+                                  BorderBrush="{ThemeResource LineBrush}" BorderThickness="1"
+                                  AutomationProperties.Name="Videos in timeline">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnSpacing="8" Padding="4,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding Title}" FontSize="12" Foreground="{ThemeResource InkBrush}"
+                                                   TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+                                        <TextBlock Grid.Column="1" Text="{Binding Duration}" FontSize="10.5"
+                                                   Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <Button x:Name="ExportSelectedVideoButton" Click="ExportSelectedVideoButton_Click"
+                                HorizontalAlignment="Stretch" Height="38" Padding="12,0"
+                                Background="{ThemeResource AccentBrush}" Foreground="{ThemeResource AccentForegroundBrush}"
+                                BorderThickness="0" CornerRadius="8" IsEnabled="False">
+                            <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
+                                <FontIcon Glyph="&#xE74E;" FontSize="13" />
+                                <TextBlock Text="Export selected video" FontSize="12" FontWeight="SemiBold" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="RemoveVideoButton" Click="RemoveVideoButton_Click"
+                                HorizontalAlignment="Stretch" Height="34" Padding="12,0"
+                                Background="Transparent" Foreground="{ThemeResource TimelinePlayheadBrush}"
+                                BorderBrush="{ThemeResource LineBrush}" BorderThickness="1" CornerRadius="8"
+                                IsEnabled="False">
+                            <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
+                                <FontIcon Glyph="&#xE74D;" FontSize="12" />
+                                <TextBlock Text="Remove selected video" FontSize="11.5" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
                     <StackPanel Spacing="8">
                         <TextBlock Text="Your clip" FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource InkBrush}" />
                         <TextBlock x:Name="MetadataText" Text="Open a video or audio file to see its details." TextWrapping="Wrap" FontSize="12" Foreground="{ThemeResource MutedBrush}" />
@@ -779,10 +886,9 @@
                         </StackPanel>
                     </StackPanel>
                     <Rectangle Height="1" Fill="{ThemeResource LineBrush}" />
-                    <StackPanel Spacing="8">
+                    <StackPanel x:Name="ExportInfoSection" Spacing="8">
                         <TextBlock Text="Export" FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource InkBrush}" />
                         <TextBlock Text="A new copy is created. Your original stays untouched." TextWrapping="Wrap" FontSize="12" Foreground="{ThemeResource MutedBrush}" />
-                        <ProgressBar x:Name="ExportProgress" Minimum="0" Maximum="100" Visibility="Collapsed" />
                         <TextBlock x:Name="StatusText" Text="Ready when you are" FontSize="12" Foreground="{ThemeResource MutedBrush}" TextWrapping="Wrap" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Spacing="8">
@@ -790,7 +896,6 @@
                             <FontIcon Glyph="&#xE7A7;" />
                         </Button>
                         <Button x:Name="ResetButton" Content="Reset trim &amp; cuts" Click="ResetButton_Click" />
-                        <Button x:Name="CancelExportButton" Content="Cancel" Click="CancelExportButton_Click" Visibility="Collapsed" />
                     </StackPanel>
                 </StackPanel>
                 </ScrollViewer>
@@ -799,8 +904,155 @@
         </Grid>
 
         <Grid Grid.Row="2" Padding="20,0" Background="{ThemeResource PanelBrush}">
-            <TextBlock Text="QUICK EDITOR" FontSize="10" CharacterSpacing="1" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" />
+            <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                <TextBlock Text="QUICK EDITOR" FontSize="10" CharacterSpacing="1" Foreground="{ThemeResource MutedBrush}" />
+                <TextBlock x:Name="VersionText" FontSize="10" Foreground="{ThemeResource MutedBrush}" />
+            </StackPanel>
             <TextBlock x:Name="FooterText" Text="Open a video or audio file to begin" FontSize="11" Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+        </Grid>
+
+        <Grid x:Name="SettingsPage" Grid.Row="1" Grid.RowSpan="2" Background="{ThemeResource CanvasBrush}" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="36" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Padding="24" ColumnSpacing="24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Spacing="8">
+                    <Button x:Name="SettingsShortcutsButton" Click="SettingsShortcutsButton_Click"
+                            HorizontalContentAlignment="Left" Height="42" Padding="12,0"
+                            Background="{ThemeResource AccentBrush}" Foreground="{ThemeResource AccentForegroundBrush}"
+                            BorderThickness="0" CornerRadius="8">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <FontIcon Glyph="&#xE765;" FontSize="15" />
+                            <TextBlock Text="Shortcuts" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SettingsAboutButton" Click="SettingsAboutButton_Click"
+                            HorizontalContentAlignment="Left" Height="42" Padding="12,0"
+                            Background="{ThemeResource PanelBrush}" Foreground="{ThemeResource InkBrush}"
+                            BorderBrush="{ThemeResource LineBrush}" BorderThickness="1" CornerRadius="8">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <FontIcon Glyph="&#xE946;" FontSize="15" />
+                            <TextBlock Text="About" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <StackPanel x:Name="SettingsShortcutsPanel" Spacing="14">
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Keyboard &amp; mouse shortcuts" FontSize="22" FontWeight="SemiBold"
+                                           Foreground="{ThemeResource InkBrush}" />
+                                <TextBlock Text="Quick ways to control playback, the timeline, and volume."
+                                           FontSize="13" Foreground="{ThemeResource MutedBrush}" />
+                            </StackPanel>
+                            <Border Background="{ThemeResource PanelBrush}" BorderBrush="{ThemeResource LineBrush}"
+                                    BorderThickness="1" CornerRadius="10" Padding="16">
+                                <StackPanel Spacing="12">
+                                    <Grid ColumnSpacing="16">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Play / pause" Foreground="{ThemeResource InkBrush}" VerticalAlignment="Center" />
+                                        <Border Grid.Column="1" Background="{ThemeResource CanvasBrush}" BorderBrush="{ThemeResource LineBrush}"
+                                                BorderThickness="1" CornerRadius="5" Padding="9,4">
+                                            <TextBlock Text="Space" FontSize="12" Foreground="{ThemeResource InkBrush}" />
+                                        </Border>
+                                    </Grid>
+                                    <Rectangle Height="1" Fill="{ThemeResource LineBrush}" />
+                                    <Grid ColumnSpacing="16">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Zoom timeline at pointer" Foreground="{ThemeResource InkBrush}" VerticalAlignment="Center" />
+                                        <Border Grid.Column="1" Background="{ThemeResource CanvasBrush}" BorderBrush="{ThemeResource LineBrush}"
+                                                BorderThickness="1" CornerRadius="5" Padding="9,4">
+                                            <TextBlock Text="Ctrl + mouse wheel" FontSize="12" Foreground="{ThemeResource InkBrush}" />
+                                        </Border>
+                                    </Grid>
+                                    <Rectangle Height="1" Fill="{ThemeResource LineBrush}" />
+                                    <Grid ColumnSpacing="16">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Scroll along a zoomed timeline" Foreground="{ThemeResource InkBrush}" VerticalAlignment="Center" />
+                                        <Border Grid.Column="1" Background="{ThemeResource CanvasBrush}" BorderBrush="{ThemeResource LineBrush}"
+                                                BorderThickness="1" CornerRadius="5" Padding="9,4">
+                                            <TextBlock Text="Mouse wheel over timeline" FontSize="12" Foreground="{ThemeResource InkBrush}" />
+                                        </Border>
+                                    </Grid>
+                                    <Rectangle Height="1" Fill="{ThemeResource LineBrush}" />
+                                    <Grid ColumnSpacing="16">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Adjust playback volume" Foreground="{ThemeResource InkBrush}" VerticalAlignment="Center" />
+                                        <Border Grid.Column="1" Background="{ThemeResource CanvasBrush}" BorderBrush="{ThemeResource LineBrush}"
+                                                BorderThickness="1" CornerRadius="5" Padding="9,4">
+                                            <TextBlock Text="Mouse wheel over volume" FontSize="12" Foreground="{ThemeResource InkBrush}" />
+                                        </Border>
+                                    </Grid>
+                                    <Rectangle Height="1" Fill="{ThemeResource LineBrush}" />
+                                    <Grid ColumnSpacing="16">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Browse crop aspect ratios" Foreground="{ThemeResource InkBrush}" VerticalAlignment="Center" />
+                                        <Border Grid.Column="1" Background="{ThemeResource CanvasBrush}" BorderBrush="{ThemeResource LineBrush}"
+                                                BorderThickness="1" CornerRadius="5" Padding="9,4">
+                                            <TextBlock Text="Mouse wheel over ratios" FontSize="12" Foreground="{ThemeResource InkBrush}" />
+                                        </Border>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel x:Name="SettingsAboutPanel" Spacing="10" HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" MaxWidth="560" Visibility="Collapsed">
+                            <Image Source="ms-appx:///Assets/AppIcon.png" Width="96" Height="96"
+                                   HorizontalAlignment="Center" Margin="0,0,0,4" />
+                            <TextBlock Text="Quick Editor" FontSize="28" FontWeight="Bold"
+                                       Foreground="{ThemeResource InkBrush}" HorizontalAlignment="Center" />
+                            <TextBlock x:Name="SettingsAboutVersionText" FontSize="14"
+                                       Foreground="{ThemeResource MutedBrush}" HorizontalAlignment="Center" />
+                            <TextBlock Text="A lightweight editor for trimming and refining audio and video."
+                                       FontSize="15" Foreground="{ThemeResource MutedBrush}"
+                                       TextAlignment="Center" TextWrapping="Wrap" Margin="0,2,0,0" />
+                            <TextBlock Text="Trim clips, fine-tune audio, crop video, and export a polished copy."
+                                       FontSize="14" Foreground="{ThemeResource MutedBrush}"
+                                       TextAlignment="Center" TextWrapping="Wrap" Margin="0,0,0,12" />
+                            <Rectangle Height="1" Width="140" Fill="{ThemeResource LineBrush}"
+                                       HorizontalAlignment="Center" Margin="0,0,0,10" />
+                            <TextBlock Text="Published by" FontSize="14" Foreground="{ThemeResource MutedBrush}"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Text="SaayanSoft" FontSize="19" FontWeight="SemiBold"
+                                       Foreground="{ThemeResource InkBrush}" HorizontalAlignment="Center" />
+                            <HyperlinkButton Content="github.com/sayandey021/Quick-Editor"
+                                             NavigateUri="https://github.com/sayandey021/Quick-Editor"
+                                             FontSize="14" HorizontalAlignment="Center" Margin="0,8,0,0" />
+                            <HyperlinkButton Content="linkedin.com/in/sayan-dey021"
+                                             NavigateUri="https://www.linkedin.com/in/sayan-dey021/"
+                                             FontSize="14" HorizontalAlignment="Center" Margin="0,4,0,0" />
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </Grid>
+
+            <Border Grid.Row="1" Background="{ThemeResource PanelBrush}" BorderBrush="{ThemeResource LineBrush}" BorderThickness="0,1,0,0">
+                <TextBlock Text="QUICK EDITOR" FontSize="10" CharacterSpacing="1"
+                           Foreground="{ThemeResource MutedBrush}" VerticalAlignment="Center" Margin="20,0" />
+            </Border>
         </Grid>
     </Grid>
 </Window>

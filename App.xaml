@@ -18,6 +18,7 @@
                     <SolidColorBrush x:Key="InkBrush" Color="#1A1A1A" />
                     <SolidColorBrush x:Key="MutedBrush" Color="#5D5D5D" />
                     <SolidColorBrush x:Key="LineBrush" Color="#E5E5E5" />
+                    <SolidColorBrush x:Key="SliderTrackBrush" Color="#858585" />
                     <SolidColorBrush x:Key="PreviewBrush" Color="#121212" />
                     <SolidColorBrush x:Key="PreviewMutedBrush" Color="#D6D6D6" />
                     <SolidColorBrush x:Key="TimelineBrush" Color="#F3F3F3" />
@@ -37,6 +38,7 @@
                     <SolidColorBrush x:Key="InkBrush" Color="#F5F5F5" />
                     <SolidColorBrush x:Key="MutedBrush" Color="#B5B5B5" />
                     <SolidColorBrush x:Key="LineBrush" Color="#3C3C3C" />
+                    <SolidColorBrush x:Key="SliderTrackBrush" Color="#5A5A5A" />
                     <SolidColorBrush x:Key="PreviewBrush" Color="#0C0C0C" />
                     <SolidColorBrush x:Key="PreviewMutedBrush" Color="#D0D0D0" />
                     <SolidColorBrush x:Key="TimelineBrush" Color="#1B1B1B" />
@@ -56,6 +58,7 @@
                     <SolidColorBrush x:Key="InkBrush" Color="#1A1A1A" />
                     <SolidColorBrush x:Key="MutedBrush" Color="#5D5D5D" />
                     <SolidColorBrush x:Key="LineBrush" Color="#E5E5E5" />
+                    <SolidColorBrush x:Key="SliderTrackBrush" Color="#858585" />
                     <SolidColorBrush x:Key="PreviewBrush" Color="#121212" />
                     <SolidColorBrush x:Key="PreviewMutedBrush" Color="#D6D6D6" />
                     <SolidColorBrush x:Key="TimelineBrush" Color="#F3F3F3" />

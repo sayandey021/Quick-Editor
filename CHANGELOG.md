@@ -1,6 +1,27 @@
 # Changelog
 
+## 1.0.0
+- **Multi-Video Timeline & Merge**: append multiple video files from the timeline, preview them sequentially, and export the shared trim and adjustments as one merged video. Clips are normalized to a consistent output size and frame rate, and silent sections are added when some clips do not contain audio.
+- **Video List Management**: jump between clips from the sidebar, export a selected clip, merge all clips with Export copy, and remove clips from the timeline.
+- **Settings, Shortcuts & About**: added a Settings page with keyboard and mouse shortcuts, plus an About page with app details and GitHub/LinkedIn links. Settings now uses the existing title bar so window controls stay accessible without duplicating headers.
+- **Theme Contrast Improvements**: improved crop-ratio card contrast in light mode and made volume and timeline zoom slider tracks visible in both themes.
+- **Synchronized Version Management**: the version tool updates the project, package, and application manifests together; the About page displays the assembly version, and package builds validate that project and package versions match.
+
 ## 0.9
+
+- **Fixed Start Menu & Taskbar Icon Blank Space / Backplate**:
+  - Generated full suite of Windows Modern Resource Technology (MRT) unplated icon assets (`Square44x44Logo.targetsize-*_altform-unplated.png` and `_altform-lightunplated.png` across all target sizes 16, 20, 24, 30, 32, 36, 40, 44, 48, 64, 72, 80, 96, and 256).
+  - Generated complete scale asset sets (`scale-100`, `scale-125`, `scale-150`, `scale-200`, `scale-400`) for `Square44x44Logo`, `Square150x150Logo`, and `StoreLogo`.
+  - Eliminates the dark rounded square backplate box and removes the blank space/margins around the icon in the Windows 10/11 Start Menu, Taskbar, Task View, and Alt+Tab, rendering the full-bleed unplated icon cleanly like modern Windows 11 apps.
+
+- **Resolved UI Freezes and Playback Hangs ("App Stucking")**:
+  - **COM Apartment Deadlock & `E_NOINTERFACE` Fix**: moved `MediaFoundationReader` and `AudioPitchEngine.LoadAsync` initialization to an MTA thread (`Task.Run`). This resolves cross-apartment COM marshaling failures (`0x80004002`) and eliminates UI-thread deadlocks with `WaveOutEvent` background audio worker threads.
+  - **Fine-Grained Engine Lock Decoupling**: separated the monolithic audio engine lock into a dedicated `_streamLock` (for sample decoding and seeks) and `_stateLock` (for volume and DSP adjustments). Position queries and volume changes on the UI thread no longer block or wait on audio stream decode buffers.
+  - **Smooth Throttled Timeline Scrubbing**: playhead dragging now pauses active playback during the drag and updates the playhead and UI markers at a fluid 60+ FPS, while throttling video preview frame requests (~35ms interval) and performing a single clean seek and play resume on mouse release, preventing audio engine seek flooding and thread contention.
+  - **Non-Interfering Playback Clock**: `UpdateCurrentPosition()` now immediately skips position updates while user drag interactions (`_timelineDragMode != None`) are active, preventing the timer from fighting the user's mouse.
+  - **Cut-Skipping Infinite Loop Guard**: added single-trigger detection (`_lastJumpedCutId`) for interactive cut-skipping so asynchronous media seeks do not repeatedly re-trigger skips for the same cut region.
+  - **Eliminated Synchronous Disk Logging Bottlenecks**: removed synchronous `File.AppendAllText` calls from high-frequency audio read and seek paths.
+  - **Frame Invalidation Coalescing**: coalesced Win2D `VideoCanvas.Invalidate()` dispatches using atomic flags to prevent overwhelming the WinUI 3 `DispatcherQueue`.
 
 - **Studio-style Intermediate Cuts**:
   - Added **"New cut"** (Split at playhead) and **"Delete cut"** controls to the Trim toolbar with Segoe Fluent icons (`\uE8C0` scissors, `\uE74D` trash), allowing users to cut out multiple arbitrary middle/intermediate sections from video and audio files.
