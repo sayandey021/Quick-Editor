@@ -360,25 +360,11 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Button x:Name="ExportSelectedVideoButton" Click="ExportSelectedVideoButton_Click"
-                                HorizontalAlignment="Stretch" Height="38" Padding="12,0"
-                                Background="{ThemeResource AccentBrush}" Foreground="{ThemeResource AccentForegroundBrush}"
-                                BorderThickness="0" CornerRadius="8" IsEnabled="False">
-                            <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
-                                <FontIcon Glyph="&#xE74E;" FontSize="13" />
-                                <TextBlock Text="Export selected video" FontSize="12" FontWeight="SemiBold" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="RemoveVideoButton" Click="RemoveVideoButton_Click"
-                                HorizontalAlignment="Stretch" Height="34" Padding="12,0"
-                                Background="Transparent" Foreground="{ThemeResource TimelinePlayheadBrush}"
-                                BorderBrush="{ThemeResource LineBrush}" BorderThickness="1" CornerRadius="8"
-                                IsEnabled="False">
-                            <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
-                                <FontIcon Glyph="&#xE74D;" FontSize="12" />
-                                <TextBlock Text="Remove selected video" FontSize="11.5" />
-                            </StackPanel>
-                        </Button>
+                        <Button x:Name="ExportSelectedVideoButton" Content="Export selected" Click="ExportSelectedVideoButton_Click"
+                                FontSize="11" Padding="6,0" Height="32" />
+                        <Button x:Name="RemoveVideoButton" Content="Remove selected video" Click="RemoveVideoButton_Click"
+                                HorizontalAlignment="Stretch" FontSize="11" Height="32"
+                                IsEnabled="False" />
                     </StackPanel>
                     <StackPanel Spacing="8">
                         <TextBlock Text="Your clip" FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource InkBrush}" />
